@@ -1,0 +1,132 @@
+﻿<Application x:Class="EnglishCenter.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="View/NewStudentForm.xaml"
+             ShutdownMode="OnLastWindowClose">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Amber.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <SolidColorBrush x:Key="Blue1" Color="#011f4b"/>
+            <SolidColorBrush x:Key="Blue2" Color="#03396c"/>
+            <SolidColorBrush x:Key="Blue3" Color="#005b96"/>
+            <SolidColorBrush x:Key="Blue4" Color="#6497b1"/>
+            <SolidColorBrush x:Key="Blue5" Color="#b3cde0"/>
+            
+            <!-- TabControl-->
+            <Style TargetType="TabControl">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TabControl">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TabPanel Panel.ZIndex="1" 
+                                            Margin="0,0,0,0" 
+                                            IsItemsHost="True"
+                                            Background="{StaticResource Blue3}">
+                                </TabPanel>
+
+                                <Border Grid.Row="1" Height="5" VerticalAlignment="Top">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+                                            <GradientStop Offset="0" Color="Transparent" />
+                                            <GradientStop Offset="1" Color="Gray" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+
+                                <!-- Tab page -->
+                                <Border Grid.Row="1" 
+                                        Background="White" 
+                                        SnapsToDevicePixels="true"
+                                        Margin="0 5 0 0">
+                                    <ContentPresenter ContentSource="SelectedContent" />
+                                </Border>
+
+                            </Grid>
+
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <!-- =========================  -->
+            
+            <!-- ====TabItem====== -->
+            <Style TargetType="{x:Type TabItem}">
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TabItem}">
+                            <Grid>
+                                <Border  Name="Border" Margin="0,0,-4,0" BorderThickness="1,0,1,0" BorderBrush="White">
+                                    <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="12,2,12,2" RecognizesAccessKey="True"/>
+                                </Border>
+
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+
+                                    <Setter TargetName="Border" Property="Background" Value="Red" />
+                                    <Setter Property="Foreground" Value="White" />
+                                    <Setter TargetName="Border" Property="BorderThickness" Value="1,1,1,0" />
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="False">
+                                    <Setter TargetName="Border" Property="Background" Value="{StaticResource Blue3}" />
+                                    <Setter Property="Foreground" Value="AliceBlue"/>
+                                </Trigger>
+                                <!--
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Border" Property="Background" Value="Orange" />                                    
+                                </Trigger>-->
+
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+            </Style>
+
+            <!-- ========================= -->
+            
+            <!-- Dropdown button-->
+            <Style TargetType="Button" x:Key="DropdownButton" >
+                <Setter Property="Background" Value="Green"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Margin" Value="2"/>
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Grid RenderTransformOrigin="0.5,0.5" x:Name="RootGrid">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property ="IsPressed" Value ="True">
+                                    <Setter TargetName="RootGrid" Property="RenderTransform">
+                                        <Setter.Value>
+                                            <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <!--=====================-->
+            
+            
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
