@@ -40,7 +40,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="LopHoc.cs" />
+    <Compile Include="PhieuThuHocPhi.cs" />
+    <Compile Include="Phong.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThamSo.cs" />
+    <Compile Include="ThiXepLop.cs" />
+    <Compile Include="ThoiGianHoc.cs" />
+    <Compile Include="ThoiGianRanh.cs" />
+    <Compile Include="Thu.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

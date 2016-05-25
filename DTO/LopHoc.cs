@@ -8,14 +8,31 @@ namespace DTO
 {
     class LopHoc
     {
-        String mMaLop;
-        DateTime mNgayKhaiGiang;
-        DateTime mNgayBatDau;
-        DateTime mNgayKetThuc;
-        double mSoTien;
-        String mMaGiangVien;
-        String mMaCTHoc;
-        String mMaPhong;
+        private String mMaLop;
+        private DateTime mNgayKhaiGiang;
+        private DateTime mNgayBatDau;
+        private DateTime mNgayKetThuc;
+        private double mSoTien;
+        private String mMaGiangVien;
+        private String mMaCTHoc;
+        private String mMaPhong;
+
+        public LopHoc()
+        {
+        }
+
+        public LopHoc(String maLop, DateTime ngayKhaiGiang, DateTime ngayBD, DateTime ngayKT,
+            double soTien, String maGiangVien, String maCTHoc, String maPhong)
+        {
+            mMaLop = maLop;
+            mNgayKhaiGiang = ngayKhaiGiang;
+            mNgayBatDau = ngayBD;
+            mNgayKetThuc = ngayKT;
+            mSoTien = soTien;
+            mMaGiangVien = maGiangVien;
+            mMaCTHoc = maCTHoc;
+            mMaPhong = maPhong;
+        }
 
         public string MMaPhong
         {

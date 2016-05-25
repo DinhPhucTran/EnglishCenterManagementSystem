@@ -8,8 +8,18 @@ namespace DTO
 {
     class Phong
     {
-        String mMaPhong;
-        String mTenPhong;
+        private String mMaPhong;
+        private String mTenPhong;
+
+        public Phong()
+        {
+        }
+
+        public Phong(String maPhong, String tenPhong)
+        {
+            mMaPhong = maPhong;
+            mTenPhong = tenPhong;
+        }
 
         public string MMaPhong
         {

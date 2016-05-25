@@ -8,8 +8,17 @@ namespace DTO
 {
     class Thu
     {
-        String mMaThu;
-        String mTenThu;
+        private String mMaThu;
+        private String mTenThu;
+
+        public Thu()
+        { }
+
+        public Thu(String maThu, String tenThu)
+        {
+            mMaThu = maThu;
+            mTenThu = tenThu;
+        }
 
         public string MMaThu
         {

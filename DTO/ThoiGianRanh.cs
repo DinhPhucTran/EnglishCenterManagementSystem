@@ -8,9 +8,20 @@ namespace DTO
 {
     class ThoiGianRanh
     {
-        String mMaHV;
-        String mMaThu;
-        String mMaCa;
+        private String mMaHV;
+        private String mMaThu;
+        private String mMaCa;
+
+        public ThoiGianRanh()
+        {
+        }
+
+        public ThoiGianRanh(String maHV, String maThu, String maCa)
+        {
+            mMaHV = maHV;
+            mMaThu = maThu;
+            mMaCa = maCa;
+        }
 
         public string MMaHV
         {
