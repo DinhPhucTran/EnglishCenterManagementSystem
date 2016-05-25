@@ -1,0 +1,228 @@
+Create table THOIGIAN_HOC
+(
+	MaLop varchar(15),
+	MaThu varchar(15),
+	MaCa varchar(15),
+	constraint FK_TGHOC_LOP foreign key (MaLop) references LOP_HOC(MaLop),
+	constraint FK_TGHOC_THU foreign key (MaThu) references THU(MaThu),
+	constraint FK_TGHOC_CA foreign key (MaCa) references CA(MaCa),
+	constraint PK_TGHOC primary key (MaLop, MaThu, MaCa)
+)
+
+alter table Thi_xep_lop
+add NgayThi smalldatetime
+
+go
+
+CREATE PROCEDURE [DBO].
+[THOIGIAN_HOC_SELECT] ( @MaLop AS VARCHAR(15)) AS SELECT 
+[MaLop],[MaThu],[MaCa] FROM [THOIGIAN_HOC] 
+WHERE [MaLop] = @MaLop
+
+go
+
+CREATE PROCEDURE [DBO].
+[THOIGIAN_HOC_INSERT] (@MaThu AS VARCHAR(15) ,@MaCa AS VARCHAR(15) ) AS INSERT INTO THOIGIAN_HOC ( 
+[MaThu],[MaCa] ) VALUES ( 
+@MaThu,@MaCa)
+
+go
+
+CREATE PROCEDURE [DBO].
+[THOIGIAN_HOC_DELETE] ( @MaLop AS VARCHAR(15)) AS DELETE FROM THOIGIAN_HOC 
+WHERE [MaLop] = @MaLop
+
+go
+
+CREATE PROCEDURE [DBO].
+[THOIGIAN_HOC_UPDATE] (@MaLop AS VARCHAR(15) ,@MaThu AS VARCHAR(15) ,@MaCa AS VARCHAR(15) ) AS UPDATE THOIGIAN_HOC SET 
+[MaThu] = @MaThu,[MaCa] = @MaCa WHERE [MaLop] = @MaLop
+
+go
+
+ALTER PROCEDURE [dbo].[CA_SELECT] ( @MaCa AS VARCHAR(15)) AS SELECT 
+[MaCa],[ThoiGianBD],[ThoiGianKT] FROM [CA] 
+WHERE [MaCa] = @MaCa
+
+go
+
+ALTER PROCEDURE [dbo].[CA_DELETE] ( @MaCa AS VARCHAR(15)) AS DELETE FROM CA 
+WHERE [MaCa] = @MaCa
+
+go
+
+ALTER PROCEDURE [dbo].[CHI_TIET_LOP_HOC_DELETE] ( @MaLopHoc AS VARCHAR(15)) AS DELETE FROM CHI_TIET_LOP_HOC 
+WHERE [MaLopHoc] = @MaLopHoc
+
+GO
+
+
+ALTER PROCEDURE [dbo].[CHI_TIET_LOP_HOC_SELECT] ( @MaLopHoc AS VARCHAR(15)) AS SELECT 
+[MaLopHoc],[MaHV],[TinhTrangDongHP],[KetQuaThi],[SoTienNo] FROM [CHI_TIET_LOP_HOC] 
+WHERE [MaLopHoc] = @MaLopHoc
+
+GO
+
+
+ALTER PROCEDURE [dbo].[CHI_TIET_THI_XL_DELETE] ( @MaThiXepLop AS VARCHAR(15)) AS DELETE FROM CHI_TIET_THI_XL 
+WHERE [MaThiXepLop] = @MaThiXepLop
+
+GO
+
+
+ALTER PROCEDURE [dbo].[CHI_TIET_THI_XL_SELECT] ( @MaThiXepLop AS VARCHAR(15)) AS SELECT 
+[MaThiXepLop],[MaHV],[KetQuaThi],[ChuongTrinhDeNghi],[ChuongTrinhMongMuon] FROM [CHI_TIET_THI_XL] 
+WHERE [MaThiXepLop] = @MaThiXepLop
+
+GO
+
+
+ALTER PROCEDURE [dbo].[CHUONG_TRINH_HOC_DELETE] ( @MaCTHoc AS VARCHAR(15)) AS DELETE FROM CHUONG_TRINH_HOC 
+WHERE [MaCTHoc] = @MaCTHoc
+GO
+
+ALTER PROCEDURE [dbo].[CHUONG_TRINH_HOC_SELECT] ( @MaCTHoc AS VARCHAR(15))
+AS
+SELECT 
+[MaCTHoc],[TenCTHoc],[MaTrinhDo],[DiemSoToiThieu] FROM [CHUONG_TRINH_HOC] 
+WHERE [MaCTHoc] = @MaCTHoc
+
+GO
+
+
+ALTER PROCEDURE [dbo].[DE_THI_DELETE] ( @MaDeThi AS VARCHAR(15)) AS DELETE FROM DE_THI 
+WHERE [MaDeThi] = @MaDeThi
+
+GO
+
+
+
+ALTER PROCEDURE [dbo].[DE_THI_SELECT] ( @MaDeThi AS VARCHAR(15)) AS SELECT 
+[MaDeThi],[LoaiDeThi],[ChiTiet] FROM [DE_THI] 
+WHERE [MaDeThi] = @MaDeThi
+GO
+
+
+ALTER PROCEDURE [dbo].[GIANG_VIEN_DELETE] ( @MaGiangVien AS VARCHAR(15)) AS DELETE FROM GIANG_VIEN 
+WHERE [MaGiangVien] = @MaGiangVien
+GO
+
+
+
+ALTER PROCEDURE [dbo].[GIANG_VIEN_SELECT] ( @MaGiangVien AS VARCHAR(15)) AS SELECT 
+[MaGiangVien],[TenGiangVien],[DiaChi],[SoDT] FROM [GIANG_VIEN] 
+WHERE [MaGiangVien] = @MaGiangVien
+
+GO
+
+
+ALTER PROCEDURE [dbo].[HOC_VIEN_DELETE] ( @MaHocVien AS VARCHAR(15)) AS DELETE FROM HOC_VIEN 
+WHERE [MaHocVien] = @MaHocVien
+GO
+
+
+ALTER PROCEDURE [dbo].[HOC_VIEN_SELECT] ( @MaHocVien AS VARCHAR(15)) AS SELECT 
+[MaHocVien],[TenHocVien],[NgaySinh],[Phai],[DiaChi],[SoDT],[MaCTDaHoc],[MaCTMuonHoc],[MaTDDaHoc],[MaTDMuonHoc] FROM [HOC_VIEN] 
+WHERE [MaHocVien] = @MaHocVien
+GO
+
+
+
+ALTER PROCEDURE [dbo].[LOP_HOC_DELETE] ( @MaLop AS VARCHAR(15)) AS DELETE FROM LOP_HOC 
+WHERE [MaLop] = @MaLop
+GO
+
+
+
+ALTER PROCEDURE [dbo].[LOP_HOC_SELECT] ( @MaLop AS VARCHAR(15)) AS SELECT 
+[MaLop],[NgayKhaiGiang],[ThoiGianBD],[ThoiGianKT],[SoTien],[MaGV],[MaCTHoc],[MaPhong] FROM [LOP_HOC] 
+WHERE [MaLop] = @MaLop
+
+GO
+
+
+ALTER PROCEDURE [dbo].[PHIEU_THU_HOP_PHI_DELETE] ( @MaPhieuThu AS VARCHAR(15)) AS DELETE FROM PHIEU_THU_HOP_PHI 
+WHERE [MaPhieuThu] = @MaPhieuThu
+
+GO
+
+
+ALTER PROCEDURE [dbo].[PHIEU_THU_HOP_PHI_SELECT] ( @MaPhieuThu AS VARCHAR(15)) AS SELECT 
+[MaPhieuThu],[MaLopHoc],[MaHocVien],[NgayLap],[SoTienDong] FROM [PHIEU_THU_HOP_PHI] 
+WHERE [MaPhieuThu] = @MaPhieuThu
+
+GO
+
+
+ALTER PROCEDURE [dbo].[PHONG_DELETE] ( @MaPhong AS VARCHAR(15)) AS DELETE FROM PHONG 
+WHERE [MaPhong] = @MaPhong
+GO
+
+
+ALTER PROCEDURE [dbo].[PHONG_SELECT] ( @MaPhong AS VARCHAR(15)) AS SELECT 
+[MaPhong],[TenPhong] FROM [PHONG] 
+WHERE [MaPhong] = @MaPhong
+
+GO
+
+
+ALTER PROCEDURE [dbo].[THAM_SO_DELETE] ( @TenThamSo AS VARCHAR(15)) AS DELETE FROM THAM_SO 
+WHERE [TenThamSo] = @TenThamSo
+
+GO
+
+
+ALTER PROCEDURE [dbo].[THAM_SO_SELECT] ( @TenThamSo AS VARCHAR(15)) AS SELECT 
+[TenThamSo],[GiaTri] FROM [THAM_SO] 
+WHERE [TenThamSo] = @TenThamSo
+GO
+
+
+
+ALTER PROCEDURE [dbo].[THI_XEP_LOP_DELETE] ( @MaThiXL AS VARCHAR(15)) AS DELETE FROM THI_XEP_LOP 
+WHERE [MaThiXL] = @MaThiXL
+GO
+
+
+ALTER PROCEDURE [dbo].[THI_XEP_LOP_SELECT] ( @MaThiXL AS VARCHAR(15)) AS SELECT 
+[MaThiXL],[MaPhong],[CaThi],[MaDeThi] FROM [THI_XEP_LOP] 
+WHERE [MaThiXL] = @MaThiXL
+
+GO
+
+ALTER PROCEDURE [dbo].[THOIGIAN_HOC_DELETE] ( @MaLop AS VARCHAR(15)) AS DELETE FROM THOIGIAN_HOC 
+WHERE [MaLop] = @MaLop
+
+GO
+
+ALTER PROCEDURE [dbo].[THOIGIAN_HOC_SELECT] ( @MaLop AS VARCHAR(15)) AS SELECT 
+[MaLop],[MaThu],[MaCa] FROM [THOIGIAN_HOC] 
+WHERE [MaLop] = @MaLop
+
+GO
+
+
+
+ALTER PROCEDURE [dbo].[THOIGIAN_RANH_DELETE] ( @MaHV AS VARCHAR(15)) AS DELETE FROM THOIGIAN_RANH 
+WHERE [MaHV] = @MaHV
+
+GO
+
+
+ALTER PROCEDURE [dbo].[THOIGIAN_RANH_SELECT] ( @MaHV AS VARCHAR(15)) AS SELECT 
+[MaHV],[MaThu],[MaCa] FROM [THOIGIAN_RANH] 
+WHERE [MaHV] = @MaHV
+
+GO
+
+
+
+ALTER PROCEDURE [dbo].[THU_DELETE] ( @MaThu AS VARCHAR(15)) AS DELETE FROM THU 
+WHERE [MaThu] = @MaThu
+
+GO
+
+
+ALTER PROCEDURE [dbo].[THU_SELECT] ( @MaThu AS VARCHAR(15)) AS SELECT 
+[MaThu],[TenThu] FROM [THU] 
+WHERE [MaThu] = @MaThu
