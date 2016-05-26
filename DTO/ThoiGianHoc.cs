@@ -8,9 +8,20 @@ namespace DTO
 {
     public class ThoiGianHoc
     {
-        String mMaLop;
-        String mMaThu;
-        String mMaCa;
+        private String mMaLop;
+        private String mMaThu;
+        private String mMaCa;
+
+        public ThoiGianHoc()
+        {
+        }
+
+        public ThoiGianHoc(String maLop, String maThu, String maCa)
+        {
+            mMaLop = maLop;
+            mMaThu = maThu;
+            mMaCa = maCa;
+        }
 
         public string MMaLop
         {

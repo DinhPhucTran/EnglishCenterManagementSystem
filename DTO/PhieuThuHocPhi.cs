@@ -8,11 +8,23 @@ namespace DTO
 {
     public class PhieuThuHocPhi
     {
-        String mMaPhieuThu;
-        String mMaLopHoc;
-        String mMaHocVien;
-        DateTime mNgayLap;
-        double mSoTienDong;
+        private String mMaPhieuThu;
+        private String mMaLopHoc;
+        private String mMaHocVien;
+        private DateTime mNgayLap;
+        private double mSoTienDong;
+
+        public PhieuThuHocPhi()
+        { }
+
+        public PhieuThuHocPhi(String maPT, String maLop, String maHV, DateTime ngayLap, double soTienDong)
+        {
+            mMaPhieuThu = maPT;
+            mMaLopHoc = maLop;
+            mMaHocVien = maHV;
+            mNgayLap = ngayLap;
+            mSoTienDong = soTienDong;
+        }
 
         public string MMaPhieuThu
         {

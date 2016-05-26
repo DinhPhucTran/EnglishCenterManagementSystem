@@ -8,11 +8,24 @@ namespace DTO
 {
     public class ThiXepLop
     {
-        String mMaThiXL;
-        String mMaPhong;
-        String mCaThi;
-        String mDeThi;
-        DateTime mNgayThi;
+        private String mMaThiXL;
+        private String mMaPhong;
+        private String mCaThi;
+        private String mDeThi;
+        private DateTime mNgayThi;
+
+        public ThiXepLop()
+        {
+        }
+
+        public ThiXepLop(String maThiXL, String maPhong, String caThi, String deThi, DateTime ngayThi)
+        {
+            mMaThiXL = maThiXL;
+            mMaPhong = maPhong;
+            mCaThi = caThi;
+            mDeThi = deThi;
+            mNgayThi = ngayThi;
+        }
 
         public string MMaThiXL
         {

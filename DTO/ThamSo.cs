@@ -8,8 +8,18 @@ namespace DTO
 {
     public class ThamSo
     {
-        String mTenThamSo;
-        int mGiaTri;
+        private String mTenThamSo;
+        private int mGiaTri;
+
+        public ThamSo()
+        {
+        }
+
+        public ThamSo(String tenThamSo, int giaTri)
+        {
+            mTenThamSo = tenThamSo;
+            mGiaTri = giaTri;
+        }
 
         public string MTenThamSo
         {
