@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class DeThi
+    public class DeThi
     {
         String mMaDeThi;
 

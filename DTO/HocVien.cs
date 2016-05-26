@@ -8,7 +8,7 @@ namespace DTO
 {
     class HocVien
     {
-        String mMaHocVien;
+        public String mMaHocVien;
 
         public String MMaHocVien
         {

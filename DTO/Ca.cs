@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class Ca
+    public class Ca
     {
         String mMaCa;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class ChiTietThiXepLop
+    public class ChiTietThiXepLop
     {
         String mMaThiXepLop;
 

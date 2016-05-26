@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class TrinhDo
+    public class TrinhDo
     {
         String mMaTrinhDo;
 

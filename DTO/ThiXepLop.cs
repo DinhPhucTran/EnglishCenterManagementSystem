@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class ThiXepLop
+    public class ThiXepLop
     {
         String mMaThiXL;
         String mMaPhong;

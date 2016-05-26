@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class LopHoc
+    public class LopHoc
     {
         String mMaLop;
         DateTime mNgayKhaiGiang;
