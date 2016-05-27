@@ -469,16 +469,29 @@
                             <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
                         </StackPanel.Effect>
                         
-                        <ListBox Name="lbChuongTrinhHoc" HorizontalContentAlignment="Stretch">
-                            <ListBox.ItemTemplate>
+                        <ListView Name="lvChuongTrinhHoc" HorizontalContentAlignment="Stretch">
+                            <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    
+                                    <Grid Height="45" Margin="20 10 20 0" Background="#FAFAFA">
+                                        <Grid.Effect>
+                                            <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                                        </Grid.Effect>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="60"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <TextBlock Grid.Row="0" Name="Name"/>
+                                        <Button Grid.Column="1" Margin="5" FontSize="20" Padding="1">
+                                            <Image Source="Resources/edit.png"/>
+                                        </Button>
+                                    </Grid>
                                 </DataTemplate>
-                            </ListBox.ItemTemplate>
+                            </ListView.ItemTemplate>
                             
-                        </ListBox>
+                        </ListView>
 
-                        <ScrollViewer Height="{Binding ElementName=tabCourses_list, Path=ActualHeight}" Cursor="Arrow" VerticalScrollBarVisibility="Auto">
+                        <!--<ScrollViewer Height="{Binding ElementName=tabCourses_list, Path=ActualHeight}" Cursor="Arrow" VerticalScrollBarVisibility="Auto">
                             <StackPanel>
                                 <Grid>
                                     <TextBlock Text="Beginner" Foreground="Black" Margin="10, 10, 10, 0" FontSize="20"/>
@@ -715,7 +728,7 @@
                                     </Button>
                                 </Grid>
                             </StackPanel>
-                        </ScrollViewer>
+                        </ScrollViewer>-->
                     </StackPanel>
                 </Grid>
             </TabItem>
