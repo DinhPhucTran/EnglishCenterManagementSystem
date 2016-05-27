@@ -1,0 +1,2 @@
+alter table Chuong_trinh_hoc
+add DiemSoToiDa float

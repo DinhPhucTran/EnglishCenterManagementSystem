@@ -1,0 +1,31 @@
+use ql_anhngu
+
+go
+
+ALTER PROCEDURE [dbo].[TRINH_DO_DELETE] ( @MaTrinhDo AS INT) AS DELETE FROM TRINH_DO 
+WHERE [MaTrinhDo] = @MaTrinhDo
+GO
+ALTER PROCEDURE [dbo].[TRINH_DO_INSERT] (@TenTrinhDo AS VARCHAR(10) ) AS INSERT INTO TRINH_DO ( 
+[TenTrinhDo] ) VALUES ( @TenTrinhDo)
+GO
+ALTER PROCEDURE [dbo].[TRINH_DO_SELECT] ( @MaTrinhDo AS INT) AS SELECT 
+[MaTrinhDo],[TenTrinhDo] FROM [TRINH_DO] 
+WHERE [MaTrinhDo] = @MaTrinhDo
+GO
+ALTER PROCEDURE [dbo].[TRINH_DO_UPDATE] (@MaTrinhDo AS VARCHAR(15) ,@TenTrinhDo AS VARCHAR(10) ) AS UPDATE TRINH_DO SET 
+[TenTrinhDo] = @TenTrinhDo WHERE [MaTrinhDo] = @MaTrinhDo
+
+GO
+ALTER PROCEDURE [dbo].[CHUONG_TRINH_HOC_DELETE] ( @MaCTHoc AS INT) AS DELETE FROM CHUONG_TRINH_HOC 
+WHERE [MaCTHoc] = @MaCTHoc
+GO
+ALTER PROCEDURE [dbo].[CHUONG_TRINH_HOC_INSERT] (@TenCTHoc AS NVARCHAR ,@MaTrinhDo AS VARCHAR(15) ,@DiemSoToiThieu AS FLOAT ,@DiemSoToiDa AS FLOAT ) AS INSERT INTO CHUONG_TRINH_HOC ( 
+[TenCTHoc],[MaTrinhDo],[DiemSoToiThieu],[DiemSoToiDa] ) VALUES ( 
+@TenCTHoc,@MaTrinhDo,@DiemSoToiThieu,@DiemSoToiDa)
+GO
+ALTER PROCEDURE [dbo].[CHUONG_TRINH_HOC_SELECT] ( @MaCTHoc AS INT) AS SELECT 
+[MaCTHoc],[TenCTHoc],[MaTrinhDo],[DiemSoToiThieu],[DiemSoToiDa] FROM [CHUONG_TRINH_HOC] 
+WHERE [MaCTHoc] = @MaCTHoc
+GO
+ALTER PROCEDURE [dbo].[CHUONG_TRINH_HOC_UPDATE] (@MaCTHoc AS VARCHAR(15) ,@TenCTHoc AS NVARCHAR ,@MaTrinhDo AS VARCHAR(15) ,@DiemSoToiThieu AS FLOAT ,@DiemSoToiDa AS FLOAT ) AS UPDATE CHUONG_TRINH_HOC SET 
+[TenCTHoc] = @TenCTHoc,[MaTrinhDo] = @MaTrinhDo,[DiemSoToiThieu] = @DiemSoToiThieu,[DiemSoToiDa] = @DiemSoToiDa WHERE [MaCTHoc] = @MaCTHoc
