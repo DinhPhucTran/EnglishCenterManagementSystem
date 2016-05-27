@@ -10,31 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DTO;
 
-namespace EnglishCenter
+namespace EnglishCenter.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for PhieuThuHocPhi.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PhieuThuHocPhi : Window
     {
-        public MainWindow()
+        public PhieuThuHocPhi()
         {
             InitializeComponent();
-
-
         }
-
-        private void btn_AddStudent_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-
     }
-
-    
 }
