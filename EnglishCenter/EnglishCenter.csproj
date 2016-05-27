@@ -68,6 +68,9 @@
     <Compile Include="View\NewClassForm.xaml.cs">
       <DependentUpon>NewClassForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\NewCourseForm.xaml.cs">
+      <DependentUpon>NewCourseForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\NewStudentForm.xaml.cs">
       <DependentUpon>NewStudentForm.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\NewClassForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NewCourseForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,6 +190,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\add_user_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogicTier\BusinessLogicTier.csproj">
+      <Project>{62f38bc6-01b5-4207-93e0-310ef9cd1225}</Project>
+      <Name>BusinessLogicTier</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{0d6d8ee7-3d69-4397-8bf1-93320652d06c}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
