@@ -74,6 +74,9 @@
     <Compile Include="View\NewStudentForm.xaml.cs">
       <DependentUpon>NewStudentForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ThemLichThiXL.xaml.cs">
+      <DependentUpon>ThemLichThiXL.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,6 +102,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\NewStudentForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ThemLichThiXL.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,6 +207,9 @@
       <Project>{0d6d8ee7-3d69-4397-8bf1-93320652d06c}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\exam_white.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
