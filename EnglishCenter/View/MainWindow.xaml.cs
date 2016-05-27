@@ -13,8 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DTO;
+using BusinessLogicTier;
 
-namespace EnglishCenter
+namespace EnglishCenter.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -24,7 +25,8 @@ namespace EnglishCenter
         public MainWindow()
         {
             InitializeComponent();
-
+            List<TrinhDo> listTrinhDo = new TrinhDoBUS().getListTrinhDo();
+            lvChuongTrinhHoc.ItemsSource = listTrinhDo;
 
         }
 

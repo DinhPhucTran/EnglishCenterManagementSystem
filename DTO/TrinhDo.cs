@@ -10,6 +10,15 @@ namespace DTO
     {
         String mMaTrinhDo;
 
+        public TrinhDo()
+        { }
+
+        public TrinhDo(String maTrinhDo, String tenTrinhDo)
+        {
+            mMaTrinhDo = maTrinhDo;
+            mTenTrinhDo = tenTrinhDo;
+        }
+
         public String MMaTrinhDo
         {
             get { return mMaTrinhDo; }

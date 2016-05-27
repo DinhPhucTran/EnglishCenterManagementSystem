@@ -1,9 +1,9 @@
-﻿<Window x:Class="EnglishCenter.MainWindow"
+﻿<Window x:Class="EnglishCenter.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
         Title="English Center Management System" Height="600" Width="1024"
-        WindowState="Maximized"  Background="#F9F9F9">
+        WindowState="Maximized"  Background="#F9F9F9" Icon="/Resources/ic_apple.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -11,9 +11,9 @@
         </Grid.RowDefinitions>
 
         <DockPanel Background="White" Grid.Row="0">
-            <Image Source="Resources/banner.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <Image Source="/Resources/banner.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <DockPanel HorizontalAlignment="Right">
-                <Image Source="Resources/user_black.png" Width="25" Height="25" VerticalAlignment="Bottom" Margin="0 0 0 5"/>
+                <Image Source="/Resources/user_black.png" Width="25" Height="25" VerticalAlignment="Bottom" Margin="0 0 0 5"/>
                 <TextBlock FontSize="20" HorizontalAlignment="Center" Margin="5 0 0 5" Height="25" VerticalAlignment="Bottom">admin</TextBlock>
                 <Button Style="{StaticResource DropdownButton}" Width="15" Height="15" Foreground="Black" Cursor="Hand"
                         HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2 0 10 10">▼</Button>
@@ -23,7 +23,7 @@
             <TabItem Name="tabHome">
                 <TabItem.Header>
                     <WrapPanel Orientation="Horizontal">
-                        <Image Source="Resources/home.png" Height="30" Width="30"/>
+                        <Image Source="/Resources/home.png" Height="30" Width="30"/>
                     </WrapPanel>
                 </TabItem.Header>
                 <StackPanel Name="tabHome_mainPanel" Background="#F9F9F9">
@@ -68,7 +68,7 @@
                                    Padding="5">499</TextBlock>
                                 <TextBlock Grid.Row="1" Foreground="White"
                                    Padding="5" FontSize="15">Học viên</TextBlock>
-                                <Image Grid.Column="1" Grid.RowSpan="2" Source="Resources/students.png"/>
+                                <Image Grid.Column="1" Grid.RowSpan="2" Source="/Resources/students.png"/>
                                 <Button Grid.Row="2" Grid.ColumnSpan="2" Background="#008D4D" BorderThickness="0">Chi tiết ➠</Button>
                             </Grid>
 
@@ -88,7 +88,7 @@
                                    Padding="5">27</TextBlock>
                                 <TextBlock Grid.Row="1" Foreground="White"
                                    Padding="5" FontSize="15">Khóa học</TextBlock>
-                                <Image Grid.Column="1" Grid.RowSpan="2" Source="Resources/course.png"/>
+                                <Image Grid.Column="1" Grid.RowSpan="2" Source="/Resources/course.png"/>
                                 <Button Grid.Row="2" Grid.ColumnSpan="2" Background="#D15948" BorderThickness="0">Chi tiết ➠</Button>
                             </Grid>
 
@@ -108,7 +108,7 @@
                                    Padding="5">33</TextBlock>
                                 <TextBlock Grid.Row="1" Foreground="White"
                                    Padding="5" FontSize="15">Giảng viên</TextBlock>
-                                <Image Grid.Column="1" Grid.RowSpan="2" Source="Resources/user.png"/>
+                                <Image Grid.Column="1" Grid.RowSpan="2" Source="/Resources/user.png"/>
                                 <Button Grid.Row="2" Grid.ColumnSpan="2" Background="#00A4CC" BorderThickness="0">Chi tiết ➠</Button>
                             </Grid>
 
@@ -128,7 +128,7 @@
                                    Padding="5">52</TextBlock>
                                 <TextBlock Grid.Row="1" Foreground="White"
                                    Padding="5" FontSize="15">Lớp</TextBlock>
-                                <Image Grid.Column="1" Grid.RowSpan="2" Margin="5" Source="Resources/class.png"/>
+                                <Image Grid.Column="1" Grid.RowSpan="2" Margin="5" Source="/Resources/class.png"/>
                                 <Button Grid.Row="2" Grid.ColumnSpan="2" Background="#CF850F" BorderThickness="0">Chi tiết ➠</Button>
                             </Grid>
 
@@ -268,7 +268,7 @@
                                                     <ColumnDefinition Width="30"/>
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="0" Padding="5"  FontSize="20" VerticalAlignment="Center"> Giao tiếp quốc tế</TextBlock>
-                                                <Image Grid.Column="1" Source="Resources/students.png" />
+                                                <Image Grid.Column="1" Source="/Resources/students.png" />
                                                 <TextBlock Grid.Column="2" FontSize="25">77</TextBlock>
                                             </Grid>
 
@@ -279,7 +279,7 @@
                                                     <ColumnDefinition Width="30"/>
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="0" Padding="5"  FontSize="20" VerticalAlignment="Center"> Luyện thi TOEIC</TextBlock>
-                                                <Image Grid.Column="1" Source="Resources/students.png" />
+                                                <Image Grid.Column="1" Source="/Resources/students.png" />
                                                 <TextBlock Grid.Column="2" FontSize="25">58</TextBlock>
                                             </Grid>
 
@@ -290,7 +290,7 @@
                                                     <ColumnDefinition Width="30"/>
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="0" Padding="5"  FontSize="20" VerticalAlignment="Center"> Luyện thi IELTS</TextBlock>
-                                                <Image Grid.Column="1" Source="Resources/students.png" />
+                                                <Image Grid.Column="1" Source="/Resources/students.png" />
                                                 <TextBlock Grid.Column="2" FontSize="25">65</TextBlock>
                                             </Grid>
 
@@ -301,7 +301,7 @@
                                                     <ColumnDefinition Width="30"/>
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="0" Padding="5"  FontSize="20" VerticalAlignment="Center"> English for kids</TextBlock>
-                                                <Image Grid.Column="1" Source="Resources/students.png" />
+                                                <Image Grid.Column="1" Source="/Resources/students.png" />
                                                 <TextBlock Grid.Column="2" FontSize="25">123</TextBlock>
                                             </Grid>
 
@@ -312,7 +312,7 @@
                                                     <ColumnDefinition Width="30"/>
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="0" Padding="5"  FontSize="20" VerticalAlignment="Center"> English for teenaters</TextBlock>
-                                                <Image Grid.Column="1" Source="Resources/students.png" />
+                                                <Image Grid.Column="1" Source="/Resources/students.png" />
                                                 <TextBlock Grid.Column="2" FontSize="25">72</TextBlock>
                                             </Grid>
                                         </StackPanel>
@@ -330,7 +330,7 @@
             <TabItem Name="tabStudents">
                 <TabItem.Header>
                     <WrapPanel Orientation="Horizontal">
-                        <Image Width="30" Height="30" Source="Resources/students.png"/>
+                        <Image Width="30" Height="30" Source="/Resources/students.png"/>
                         <TextBlock Margin="5">HỌC VIÊN</TextBlock>
                         </WrapPanel>
                 </TabItem.Header>
@@ -364,7 +364,7 @@
                                         <RowDefinition Height="30"/>
                                     </Grid.RowDefinitions>
                                     <StackPanel Grid.Column="0" Grid.RowSpan="3" Background="#F39C12">
-                                        <Image Source="Resources/students_outline.png"/>
+                                        <Image Source="/Resources/students_outline.png"/>
                                     </StackPanel>
 
                                     <TextBlock Grid.Column="1" Grid.Row="0" Foreground="Black" FontSize="16" Padding="5">Học viên tiềm năng</TextBlock>
@@ -392,7 +392,7 @@
                                         <RowDefinition Height="30"/>
                                     </Grid.RowDefinitions>
                                     <StackPanel Grid.Column="0" Grid.RowSpan="3" Background="#00A65A">
-                                        <Image Source="Resources/students.png"/>
+                                        <Image Source="/Resources/students.png"/>
                                     </StackPanel>
 
                                     <TextBlock Grid.Column="1" Grid.Row="0" Foreground="Black" FontSize="16" Padding="5">Học viên chính thức</TextBlock>
@@ -413,7 +413,7 @@
 
                                     <TextBlock Foreground="Black" FontSize="20" Margin="10">Học viên đăng kí mới hàng tháng</TextBlock>
                                     
-                                    <Image Source="Resources/chart.png" Margin="15"/>
+                                    <Image Source="/Resources/chart.png" Margin="15"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Column="1" Margin="10" Background="White">
@@ -423,7 +423,7 @@
 
                                     <TextBlock Foreground="Black" FontSize="20" Margin="10">Học viên chính thức hàng tháng</TextBlock>
 
-                                    <Image Source="Resources/chart2.png" Margin="15"/>
+                                    <Image Source="/Resources/chart2.png" Margin="15"/>
                                 </StackPanel>
                             </Grid>
                             
@@ -435,7 +435,7 @@
             <TabItem Name="tabCourses">
                 <TabItem.Header>
                     <WrapPanel Orientation="Horizontal">
-                        <Image Source="Resources/course.png" Height="30" Width="30"/>
+                        <Image Source="/Resources/course.png" Height="30" Width="30"/>
                         <TextBlock VerticalAlignment="Center" Margin="5">KHÓA HỌC</TextBlock>
                     </WrapPanel>
                 </TabItem.Header>
@@ -481,9 +481,9 @@
                                             <ColumnDefinition Width="60"/>
                                         </Grid.ColumnDefinitions>
                                         
-                                        <TextBlock Grid.Row="0" Name="Name"/>
+                                        <TextBlock Grid.Row="0" Text="{Binding MTenTrinhDo}"/>
                                         <Button Grid.Column="1" Margin="5" FontSize="20" Padding="1">
-                                            <Image Source="Resources/edit.png"/>
+                                            <Image Source="/Resources/edit.png"/>
                                         </Button>
                                     </Grid>
                                 </DataTemplate>
@@ -517,11 +517,11 @@
                                            FontSize="15" Padding="10"> 77 Học viên</TextBlock>
 
                                     <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/edit.png"/>
+                                        <Image Source="/Resources/edit.png"/>
                                     </Button>
 
                                     <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/trash.png"/>
+                                        <Image Source="/Resources/trash.png"/>
                                     </Button>
                                 </Grid>
 
@@ -546,11 +546,11 @@
                                            FontSize="15" Padding="10"> 58 Học viên</TextBlock>
 
                                     <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/edit.png"/>
+                                        <Image Source="/Resources/edit.png"/>
                                     </Button>
 
                                     <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/trash.png"/>
+                                        <Image Source="/Resources/trash.png"/>
                                     </Button>
                                 </Grid>
 
@@ -575,11 +575,11 @@
                                            FontSize="15" Padding="10"> 65 Học viên</TextBlock>
 
                                     <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/edit.png"/>
+                                        <Image Source="/Resources/edit.png"/>
                                     </Button>
 
                                     <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/trash.png"/>
+                                        <Image Source="/Resources/trash.png"/>
                                     </Button>
                                 </Grid>
 
@@ -604,11 +604,11 @@
                                            FontSize="15" Padding="10"> 123 Học viên</TextBlock>
 
                                     <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/edit.png"/>
+                                        <Image Source="/Resources/edit.png"/>
                                     </Button>
 
                                     <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/trash.png"/>
+                                        <Image Source="/Resources/trash.png"/>
                                     </Button>
                                 </Grid>
 
@@ -633,11 +633,11 @@
                                            FontSize="15" Padding="10"> 72 Học viên</TextBlock>
 
                                     <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/edit.png"/>
+                                        <Image Source="/Resources/edit.png"/>
                                     </Button>
 
                                     <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/trash.png"/>
+                                        <Image Source="/Resources/trash.png"/>
                                     </Button>
                                 </Grid>
 
@@ -662,11 +662,11 @@
                                            FontSize="15" Padding="10"> 63 Học viên</TextBlock>
 
                                     <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/edit.png"/>
+                                        <Image Source="/Resources/edit.png"/>
                                     </Button>
 
                                     <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/trash.png"/>
+                                        <Image Source="/Resources/trash.png"/>
                                     </Button>
                                 </Grid>
 
@@ -691,11 +691,11 @@
                                            FontSize="15" Padding="10"> 28 Học viên</TextBlock>
 
                                     <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/edit.png"/>
+                                        <Image Source="/Resources/edit.png"/>
                                     </Button>
 
                                     <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/trash.png"/>
+                                        <Image Source="/Resources/trash.png"/>
                                     </Button>
                                 </Grid>
 
@@ -720,11 +720,11 @@
                                            FontSize="15" Padding="10"> 15 Học viên</TextBlock>
 
                                     <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/edit.png"/>
+                                        <Image Source="/Resources/edit.png"/>
                                     </Button>
 
                                     <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="Resources/trash.png"/>
+                                        <Image Source="/Resources/trash.png"/>
                                     </Button>
                                 </Grid>
                             </StackPanel>
@@ -736,7 +736,7 @@
             <TabItem Name="tabClasses">
                 <TabItem.Header>
                     <WrapPanel>
-                        <Image Width="25" Height="25" Source="Resources/class.png"/>
+                        <Image Width="25" Height="25" Source="/Resources/class.png"/>
                         <TextBlock Margin="10">LỚP</TextBlock>
                     </WrapPanel>
                 </TabItem.Header>
@@ -745,7 +745,7 @@
             <TabItem Name="tabFees">
                 <TabItem.Header>
                     <WrapPanel>
-                        <Image Width="30" Height="30" Source="Resources/cash.png"/>
+                        <Image Width="30" Height="30" Source="/Resources/cash.png"/>
                         <TextBlock Margin="10">HỌC PHÍ</TextBlock>
                     </WrapPanel>
                 </TabItem.Header>
@@ -754,7 +754,7 @@
             <TabItem Name="tabEmployees">
                 <TabItem.Header>
                     <WrapPanel>
-                        <Image Width="30" Height="30" Source="Resources/user.png"/>
+                        <Image Width="30" Height="30" Source="/Resources/user.png"/>
                         <TextBlock Margin="5">GIẢNG VIÊN</TextBlock>
                     </WrapPanel>
                 </TabItem.Header>
@@ -763,7 +763,7 @@
             <TabItem Name="tabReport">
                 <TabItem.Header>
                     <WrapPanel>
-                        <Image Width="30" Height="30" Source="Resources/report.png"/>
+                        <Image Width="30" Height="30" Source="/Resources/report.png"/>
                         <TextBlock Margin="5">BÁO CÁO</TextBlock>
                     </WrapPanel>
                 </TabItem.Header>
@@ -772,7 +772,7 @@
             <TabItem Name="tabSettings">
                 <TabItem.Header>
                     <WrapPanel>
-                        <Image Width="30" Height="30" Source="Resources/settings.png"/>
+                        <Image Width="30" Height="30" Source="/Resources/settings.png"/>
                         <TextBlock Margin="5">CÀI ĐẶT</TextBlock>
                     </WrapPanel>
                 </TabItem.Header>
