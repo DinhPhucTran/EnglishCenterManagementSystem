@@ -14,7 +14,6 @@ namespace DataAccessTier
         public CaDAO()
             : base()
         {
-
         }
 
         public bool xoaCa(String id)
