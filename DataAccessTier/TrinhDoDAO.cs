@@ -24,8 +24,10 @@ namespace DataAccessTier
                 {
                     connection.Open();
                 }
-                SqlCommand cmd = new SqlCommand();
-                
+                SqlCommand cmd = new SqlCommand("TRINH_DO_INSERT");
+                cmd.Parameters.AddWithValue("", trinhDo.MMaTrinhDo);
+                cmd.Parameters.AddWithValue("", trinhDo.MTenTrinhDo);
+                cmd.ExecuteNonQuery();
             }
             catch (Exception)
             {
