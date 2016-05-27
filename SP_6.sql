@@ -1,5 +1,10 @@
 use ql_anhngu
 
+go
+
+alter table Trinh_do
+alter column TenTrinhDo varchar(50)
+
 go 
 Alter PROCEDURE [DBO].
 [THOIGIAN_HOC_SELECT] ( @MaLop AS varchar(15)) AS SELECT 
