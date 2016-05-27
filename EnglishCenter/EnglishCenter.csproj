@@ -71,6 +71,9 @@
     <Compile Include="View\NewCourseForm.xaml.cs">
       <DependentUpon>NewCourseForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\NewLevelForm.xaml.cs">
+      <DependentUpon>NewLevelForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\NewStudentForm.xaml.cs">
       <DependentUpon>NewStudentForm.xaml</DependentUpon>
     </Compile>
@@ -104,6 +107,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\NewCourseForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NewLevelForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
