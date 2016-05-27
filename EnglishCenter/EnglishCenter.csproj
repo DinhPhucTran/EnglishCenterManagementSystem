@@ -80,6 +80,9 @@
     <Compile Include="View\PhieuThuHocPhi.xaml.cs">
       <DependentUpon>PhieuThuHocPhi.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ThemCaHoc.xaml.cs">
+      <DependentUpon>ThemCaHoc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ThemLichThiXL.xaml.cs">
       <DependentUpon>ThemLichThiXL.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PhieuThuHocPhi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ThemCaHoc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,6 +231,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\exam_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\time_white.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

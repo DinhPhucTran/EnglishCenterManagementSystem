@@ -1,7 +1,11 @@
 ﻿<Application x:Class="EnglishCenter.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+<<<<<<< HEAD
              StartupUri="View/NewLevelForm.xaml"
+=======
+             StartupUri="View/ThemCaHoc.xaml"
+>>>>>>> 04b497c72ec27132004f805aaef70a74b39a706e
              ShutdownMode="OnLastWindowClose">
     <Application.Resources>
         <ResourceDictionary>
