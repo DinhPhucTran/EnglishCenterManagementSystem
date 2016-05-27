@@ -1,18 +1,13 @@
-﻿<Window x:Class="EnglishCenter.View.NewStudentForm"
+﻿<Window x:Class="EnglishCenter.View.NewClassForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
-        Title="English Center" Height="640" Width="800"
+        Title="EnglishCenter" Height="640" Width="800"
         Background="#F8F8F8" Icon="/EnglishCenter;component/Resources/course.png">
-    <Grid Margin="10,10,10,10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="134"/>
-            <ColumnDefinition Width="315"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="67"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
@@ -20,67 +15,64 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="0"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Grid.ColumnSpan="3">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <Grid Margin="-10, -10, -10, 0" Background="#00C0EF">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="#00C0EF">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-                <Image Source="/EnglishCenter;component/Resources/add_user_white.png" Margin="10"/>
-                <TextBlock Grid.Column="1" Text="Tiếp nhận học viên" FontSize="30" Foreground="White" VerticalAlignment="Center"/>
-            </Grid>
-
-            <!--<Grid Grid.Row="1" Margin="36,0,173,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-                <RadioButton Grid.Column="0" Content="Học viên mới" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <RadioButton Grid.Column="1" Content="Học viên cũ" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Grid>-->
+            <Image Source="/EnglishCenter;component/Resources/class.png" Margin="10"/>
+            <TextBlock Grid.Column="1" Text="Thêm lớp mới" FontSize="30" Foreground="White" VerticalAlignment="Center"/>
         </Grid>
 
-        <!--<TextBlock Grid.Row="1" Grid.Column="0" Text="Mã học viên" FontSize="15" VerticalAlignment="Bottom" Padding="10" Height="40"/>
-        <TextBox Grid.Row="1" Grid.Column="1" wpf:TextFieldAssist.Hint="Nhập mã học viên" VerticalAlignment="Bottom" Margin="0,0,0,5" Height="25"/>-->
+        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Mã lớp" FontSize="15" />
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="5,0,100,5" Height="25"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" Margin="10,0,10,10" Text="Tên học viên" FontSize="15" Height="20"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="0, 0, 100, 5" wpf:TextFieldAssist.Hint="Nhập tên học viên" Height="25"/>
-
-        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="10,0,10,10" Text="Ngày sinh" FontSize="15" Height="20"/>
-        <DatePicker Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" Margin="0, 0, 80, 5" Height="25"/>
-        <RadioButton Grid.Row="2" Grid.Column="2" Content="Nam" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,10" Height="18" Width="47"/>
-        <RadioButton Grid.Row="2" Grid.Column="2" Content="Nữ" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="20,0,20,10" Height="18" Width="38"/>
-        <RadioButton Grid.Row="2" Grid.Column="2" Content="Khác" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,10" Height="18" Width="47"/>
-
-        <TextBlock Grid.Row="3" Grid.Column="0" Margin="10,0,10,10" Text="Địa chỉ" VerticalAlignment="Bottom" FontSize="15" Height="20"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="0, 0, 100, 5" Height="25"/>
-
-        <TextBlock Grid.Row="4" Grid.Column="0" Margin="10,0,10,10" Text="Số điện thoại" VerticalAlignment="Bottom" FontSize="15" Height="20"/>
-        <TextBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Bottom" Margin="0,0,24,5" Height="25"/>
-
-        <TextBlock Grid.Row="5" Grid.Column="0" Margin="10,0,10,10" Text="E-mail" VerticalAlignment="Bottom" FontSize="15" Height="20"/>
-        <TextBox Grid.Row="5" Grid.Column="1" VerticalAlignment="Bottom" Margin="0,0,24,5" Height="25"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Chương trình học" FontSize="15" />
+        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5, 0, 100, 0"/>
         
-        <ScrollViewer Grid.Row="6" Grid.ColumnSpan="3" VerticalScrollBarVisibility="Hidden">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Giáo viên" FontSize="15" />
+        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="5,0,100,5" Height="25"/>
 
-                <TextBlock Grid.Row="0" Margin="10,0,10,0" VerticalAlignment="Bottom" FontSize="15" Height="20" Text="Thời gian rảnh"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Phòng" FontSize="15" />
+        <ComboBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Bottom" Margin="5,0,100,5"/>
 
-                <Border Grid.Row="1" Margin="5, 10 , 5, 5" BorderBrush="#CCCCCC" BorderThickness="2">
+        <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Học phí" FontSize="15" />
+        <TextBox Grid.Row="5" Grid.Column="1" VerticalAlignment="Bottom" Margin="5,0,100,5"/>
+
+        <TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Ngày khai giảng" FontSize="15" />
+        <DatePicker Grid.Row="6" Grid.Column="1" VerticalAlignment="Bottom" Margin="5,0,400,5"/>
+
+        <Grid Grid.Row="7" Grid.ColumnSpan="2" Margin="20,0,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Grid.Column="0" Text="Ngày bắt đầu" VerticalAlignment="Bottom" Margin="0,0,5,5" FontSize="15"/>
+            <DatePicker Grid.Column="1" VerticalAlignment="Bottom" Margin="5,0,50,5"/>
+            <TextBlock Grid.Column="2" Text="Ngày kết thúc" VerticalAlignment="Bottom" Margin="20,0,5,5" FontSize="15"/>
+            <DatePicker Grid.Column="3" VerticalAlignment="Bottom" Margin="5,0,70,5"/>            
+        </Grid>
+
+        <Grid Grid.Row="8" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Margin="20,0,10,0" VerticalAlignment="Bottom" FontSize="15" Height="20" Text="Thời gian học"/>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+                <Border Margin="5, 10 , 5, 5" BorderBrush="#CCCCCC" BorderThickness="2">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -91,7 +83,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        
+
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -102,7 +94,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        
+
                         <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Monday"/>
                         <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Tuesday"/>
                         <TextBlock Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Wednesday"/>
@@ -110,7 +102,7 @@
                         <TextBlock Grid.Row="0" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Friday"/>
                         <TextBlock Grid.Row="0" Grid.Column="6" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Saturday"/>
                         <TextBlock Grid.Row="0" Grid.Column="7" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Sunday"/>
-                        
+
                         <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Ca 1"/>
                         <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Ca 2"/>
                         <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Ca 3"/>
@@ -123,14 +115,14 @@
                         <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="8" VerticalAlignment="Bottom" BorderBrush="#CCCCCC" BorderThickness="0.5" Margin="10, 0, 10, 0"/>
                         <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="8" VerticalAlignment="Bottom" BorderBrush="#CCCCCC" BorderThickness="0.5" Margin="10, 0, 10, 0"/>
                         <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="8" VerticalAlignment="Bottom" BorderBrush="#CCCCCC" BorderThickness="0.5" Margin="10, 0, 10, 0"/>
-                        
+
                         <CheckBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <CheckBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <CheckBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <CheckBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <CheckBox Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <CheckBox Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        
+
                         <CheckBox Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <CheckBox Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <CheckBox Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -175,14 +167,14 @@
                     </Grid>
                 </Border>
 
-            </Grid>
-
-        </ScrollViewer>
-        
-        <Grid Grid.Row="7" Grid.ColumnSpan="3" >
-            <Button Margin="10, 5, 10, 5" HorizontalAlignment="Right" Content="Lưu"/>
-            <Button Margin="10, 5, 100, 5" HorizontalAlignment="Right" Content="In"/>
-            <Button Margin="10, 5, 180, 5" HorizontalAlignment="Right" Content="Hủy" Name="btn_cancel" Click="btn_cancel_Click"/>
+            </ScrollViewer>
         </Grid>
+
+        <Grid Grid.Row="9" Grid.ColumnSpan="2">
+            <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5"/>
+            <Button Content="Lưu" HorizontalAlignment="Right" Margin="10,0,110,5"/>
+            <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,190,5"/>
+        </Grid>
+
     </Grid>
 </Window>
