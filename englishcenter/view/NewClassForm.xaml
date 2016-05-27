@@ -6,8 +6,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
+            <RowDefinition Height="0"/>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
@@ -36,10 +36,10 @@
         <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="5,0,100,5" Height="25"/>
 
         <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Chương trình học" FontSize="15" />
-        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5, 0, 100, 0"/>
+        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5, 20, 100, 0"/>
         
         <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Giáo viên" FontSize="15" />
-        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="5,0,100,5" Height="25"/>
+        <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="5,0,100,5" Height="25"/>
 
         <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Phòng" FontSize="15" />
         <ComboBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Bottom" Margin="5,0,100,5"/>
@@ -173,7 +173,7 @@
         <Grid Grid.Row="9" Grid.ColumnSpan="2">
             <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5"/>
             <Button Content="Lưu" HorizontalAlignment="Right" Margin="10,0,110,5"/>
-            <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,190,5"/>
+            <Button Content="Hủy" HorizontalAlignment="Right" Margin="10,0,190,5"/>
         </Grid>
 
     </Grid>
