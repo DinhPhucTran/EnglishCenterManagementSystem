@@ -11,6 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DTO;
+using BusinessLogicTier;
+using System.Text.RegularExpressions;
+
 
 namespace EnglishCenter.View
 {
@@ -19,9 +23,78 @@ namespace EnglishCenter.View
     /// </summary>
     public partial class NewCourseForm : Window
     {
+        private List<TrinhDo> mListTD;
         public NewCourseForm()
         {
             InitializeComponent();
+            mListTD = new TrinhDoBUS().getListTrinhDo();
+            cbLevel.ItemsSource = mListTD;
         }
+        void onLuuBtnClick(object sender, RoutedEventArgs e)
+        {
+            if (tb_CTH.Text.ToString().Equals(""))
+            {
+                MessageBox.Show("Tên chương trình không được rỗng");
+                return;
+            }
+          
+            
+            List<ChuongTrinhHoc> list = new ChuongTrinhHocBUS().getListChuongTrinhHoc();
+            for (int i = 0; i < list.Count; ++i)
+            {
+
+                if (string.Equals(tb_CTH.Text.ToString(),list[i].MTenChuongTrinhHoc,StringComparison.CurrentCultureIgnoreCase))
+                {
+                    MessageBox.Show("Tên Chương Trình Học Đã Tồn Tại");
+                    return;
+                }
+            }
+            ChuongTrinhHoc cth = new ChuongTrinhHoc();
+            cth.MMaChuongTrinhHoc = mListTD[cbLevel.SelectedIndex].MMaTrinhDo.ToString().Substring(0,3) + tb_minDiem.Text.ToString();
+
+            cth.MMaTrinhDo = mListTD[cbLevel.SelectedIndex].MMaTrinhDo;
+            try
+            {
+                cth.MDiemSoToiThieu = float.Parse(tb_minDiem.Text.ToString());
+                cth.MDiemSoToiDa = float.Parse(tb_maxDiem.Text.ToString());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Vui lòng kiểm tra lại Điểm số tối đa và điểm số tối thiểu");
+                return;
+            }
+            cth.MTenChuongTrinhHoc = tb_CTH.Text.ToString();
+            MessageBox.Show(cth.MTenChuongTrinhHoc);
+            bool result = new ChuongTrinhHocBUS().themChuongTrinhHoc(cth);
+            if (result)
+            {
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Thêm vào database thất bại");
+            }
+        }
+
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void onExitBtnClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        private void onClearBtnClick(object sender, RoutedEventArgs e)
+        {
+            tb_CTH.Clear();
+            tb_minDiem.Clear();
+            tb_maxDiem.Clear();
+        }
+
+     
+        
     }
 }

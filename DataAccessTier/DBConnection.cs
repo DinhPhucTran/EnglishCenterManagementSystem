@@ -12,9 +12,9 @@ namespace DataAccessTier
     public class DBConnection
     {
         protected SqlConnection connection;
-        //public string mConnectionString = "Data Source=WHITEFANGPC\\SANGPC;Initial Catalog=QL_ANHNGU;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+        public string mConnectionString = "Data Source=WHITEFANGPC\\SANGPC;Initial Catalog=QL_ANHNGU;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
         //public string mConnectionString = "Data Source=DP-INSPIRON;Initial Catalog=QL_ANHNGU;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
-        public string mConnectionString = "Data Source=DP-INSPIRON;Initial Catalog=QL_ANHNGU;Integrated Security=True";
+        //public string mConnectionString = "Data Source=DP-INSPIRON;Initial Catalog=QL_ANHNGU;Integrated Security=True";
 
         public DBConnection()
         {

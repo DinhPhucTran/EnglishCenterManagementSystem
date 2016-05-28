@@ -36,6 +36,13 @@ namespace DTO
             get { return mDiemSoToiThieu; }
             set { mDiemSoToiThieu = value; }
         }
+        float mDiemSoToiDa;
+
+        public float MDiemSoToiDa
+        {
+            get { return mDiemSoToiDa; }
+            set { mDiemSoToiDa = value; }
+        }
 
     }
 }
