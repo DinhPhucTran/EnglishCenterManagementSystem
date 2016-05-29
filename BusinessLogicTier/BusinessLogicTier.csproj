@@ -42,12 +42,9 @@
     <Compile Include="CaBUS.cs" />
     <Compile Include="ChuongTrinhHocBUS.cs" />
     <Compile Include="Class1.cs" />
-<<<<<<< HEAD
     <Compile Include="GiangVienBUS.cs" />
-=======
     <Compile Include="DeThiBUS.cs" />
     <Compile Include="PhongBUS.cs" />
->>>>>>> a7d990fe2f8145ca2109fb67cfa375d472b03cba
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThiXepLopBUS.cs" />
     <Compile Include="TrinhDoBUS.cs" />
