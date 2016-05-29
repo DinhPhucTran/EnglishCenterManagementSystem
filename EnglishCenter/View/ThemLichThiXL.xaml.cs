@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BusinessLogicTier;
+using DTO;
 
 namespace EnglishCenter.View
 {
@@ -22,6 +24,17 @@ namespace EnglishCenter.View
         public ThemLichThi()
         {
             InitializeComponent();
+
+            cb_phongThi.ItemsSource = new PhongBUS().getListPhong();
+            cb_phongThi.SelectedIndex = 0;
+
+            cb_caThi.ItemsSource = new CaBUS().getAllCa();
+            cb_caThi.SelectedIndex = 0;
+
+            cb_deThi.ItemsSource = new DeThiBUS().getListDeThi();
+            cb_deThi.SelectedIndex = 0;
+
+            
         }
     }
 }

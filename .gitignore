@@ -9,7 +9,7 @@ DataAccessTier/DBConnection.cs
 *.userosscache
 *.sln.docstates
 
-DBConnection.cs
+
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

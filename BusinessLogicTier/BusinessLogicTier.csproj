@@ -42,6 +42,8 @@
     <Compile Include="CaBUS.cs" />
     <Compile Include="ChuongTrinhHocBUS.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="DeThiBUS.cs" />
+    <Compile Include="PhongBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrinhDoBUS.cs" />
   </ItemGroup>
