@@ -43,6 +43,55 @@ namespace DataAccessTier
             return false;
         }
 
+        public bool xoaChuongTrinhHoc(String ma)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand command = new SqlCommand("CHUONG_TRINH_HOC_DELETE", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@MaCTHoc", ma);
+                command.ExecuteNonQuery();
+                connection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                Console.WriteLine(ex);
+            }
+            return false;
+        }
+
+        public bool suaChuongTrinhHoc(ChuongTrinhHoc cth)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand command = new SqlCommand("CHUONG_TRINH_HOC_UPDATE", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@MaCTHoc", cth.MMaChuongTrinhHoc);
+                command.Parameters.AddWithValue("@TenCTHoc", cth.MTenChuongTrinhHoc);
+                command.Parameters.AddWithValue("@MaTrinhDo", cth.MMaTrinhDo);
+                command.Parameters.AddWithValue("@DiemSoToiThieu", cth.MDiemSoToiThieu);
+                command.Parameters.AddWithValue("@DiemSoToiDa", cth.MDiemSoToiDa);
+                command.ExecuteNonQuery();
+                connection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                Console.WriteLine(ex);
+            }
+            return false;
+        }
         public List<ChuongTrinhHoc> getListChuongTrinhHoc()
         {
             try
