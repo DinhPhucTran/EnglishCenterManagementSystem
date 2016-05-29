@@ -42,9 +42,15 @@
     <Compile Include="CaDAO.cs" />
     <Compile Include="ChuongTrinhHocDAO.cs" />
     <Compile Include="DBConnection.cs" />
+<<<<<<< HEAD
     <Compile Include="GiangVienDAO.cs" />
     <Compile Include="LopHocDAO.cs" />
+=======
+    <Compile Include="DeThiDAO.cs" />
+    <Compile Include="PhongDAO.cs" />
+>>>>>>> a7d990fe2f8145ca2109fb67cfa375d472b03cba
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThiXepLopDAO.cs" />
     <Compile Include="TrinhDoDAO.cs" />
   </ItemGroup>
   <ItemGroup>

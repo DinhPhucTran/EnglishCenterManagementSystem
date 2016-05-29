@@ -21,5 +21,15 @@ namespace BusinessLogicTier
             return cthDao.themChuongTrinhHoc(cth);
             
         }
+
+        public bool xoaChuongTrinhHoc(String ma)
+        {
+            return new ChuongTrinhHocDAO().xoaChuongTrinhHoc(ma);
+        }
+        public bool suaChuongTrinhHoc(ChuongTrinhHoc cth)
+        {
+            ChuongTrinhHocDAO cthDao = new ChuongTrinhHocDAO();
+            return cthDao.suaChuongTrinhHoc(cth);
+        }
     }
 }

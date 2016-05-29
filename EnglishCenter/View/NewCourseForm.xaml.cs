@@ -64,7 +64,6 @@ namespace EnglishCenter.View
                 return;
             }
             cth.MTenChuongTrinhHoc = tb_CTH.Text.ToString();
-            MessageBox.Show(cth.MTenChuongTrinhHoc);
             bool result = new ChuongTrinhHocBUS().themChuongTrinhHoc(cth);
             if (result)
             {

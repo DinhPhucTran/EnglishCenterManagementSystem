@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"/>
@@ -30,21 +30,39 @@
         </Grid>
 
         <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Ngày thi" FontSize="15" />
-        <DatePicker Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="5,0,50,5" Height="25" Width="200" HorizontalAlignment="Left"/>
+        <DatePicker Name="dp_ngayThi" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="5,0,50,5" Height="25" Width="200" HorizontalAlignment="Left"/>
 
         <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Ca thi" FontSize="15" />
-        <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="5,0,50,5" Height="25" Width="200"/>
+        <ComboBox Name="cb_caThi" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="5,0,50,5" Height="25" Width="200">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding MMaCa}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
         <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Phòng thi" FontSize="15" />
-        <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="5,0,50,5" Height="25" Width="200"/>
+        <ComboBox Name="cb_phongThi" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="5,9.6,0,0" Height="25" Width="200">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding MTenPhong}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
         <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Đề thi" FontSize="15" />
-        <ComboBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="5,0,50,5" Height="25" Width="200"/>
+        <ComboBox Name="cb_deThi" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="5,0,50,5" Height="25" Width="200">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding MChiTiet}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
         <Grid Grid.Row="6" Grid.ColumnSpan="2">
-            <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5"/>
-            <Button Content="Lưu" HorizontalAlignment="Right" Margin="10,0,110,5"/>
-            <Button Content="Hủy" HorizontalAlignment="Right" Margin="10,0,190,5"/>
+            <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5" Click="Button_Thoat_Click"/>
+            <Button Content="Lưu" HorizontalAlignment="Right" Margin="10,0,110,5" Click="Button_Luu_Click"/>
+            <Button Content="Hủy" HorizontalAlignment="Right" Margin="10,0,190,5" Click="Button_Huy_Click"/>
         </Grid>
 
     </Grid>
