@@ -1,11 +1,12 @@
 ﻿use QL_ANHNGU
 
-insert into Ca values('0','7:00','8:30')
-insert into Ca values('1','9:00','10:30')
-insert into Ca values('2','13:00','14:30')
-insert into Ca values('3','15:00','16:30')
-insert into Ca values('4','17:00','18:30')
-insert into Ca values('5','19:00','20:30')
+insert into Ca values('1','7:00','9:00')
+insert into Ca values('2','9:00','11:00')
+insert into Ca values('3','13:00','15:00')
+insert into Ca values('4','15:00','17:00')
+insert into Ca values('5','17:00','19:00')
+insert into Ca values('6','19:00','21:00')
+
 
 
 Insert into TRINH_DO values('BEGIN','Beginner')
@@ -52,3 +53,13 @@ Insert into GIANG_VIEN values ('2','Lê Thanh Trọng','Quân 2 TPHCM','09696969
 Insert into GIANG_VIEN values ('3','Nguyễn Thị Nhơn','Quân 3 TPHCM','0969696969')
 Insert into GIANG_VIEN values ('4','Trần Đình Phúc','Quận 4 TPHCM','0969696969')
 
+Insert into Phong values('1','Phòng 1')
+Insert into Phong values('2','Phòng 2')
+Insert into Phong values('3','Phòng 3')
+Insert into Phong values('4','Phòng 4')
+Insert into Phong values('5','Phòng 5')
+
+
+Insert into DE_THI values ('1','TOEIC',N'Đề thi xếp lớp TOEIC')
+Insert into DE_THI values ('2','TOEFL',N'Đề thi xếp lớp TOEFL')
+Insert into DE_THI values ('3','IELTS',N'Đề thi xếp lớp IELTS')
