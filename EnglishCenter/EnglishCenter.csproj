@@ -83,6 +83,9 @@
     <Compile Include="View\DanhSachCa.xaml.cs">
       <DependentUpon>DanhSachCa.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ThemGiangVien.xaml.cs">
+      <DependentUpon>ThemGiangVien.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ThemLichThiXL.xaml.cs">
       <DependentUpon>ThemLichThiXL.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\DanhSachCa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ThemGiangVien.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

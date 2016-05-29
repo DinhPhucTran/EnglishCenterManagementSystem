@@ -8,6 +8,18 @@ namespace DTO
 {
     public class GiangVien
     {
+        public GiangVien()
+        {
+        }
+
+        public GiangVien(String maGV, String tenGV, String diaChi, String soDT)
+        {
+            mMaGiangVien = maGV;
+            mTenGiangVien = tenGV;
+            mDiaChi = diaChi;
+            mSoDienThoai = soDT;
+        }
+
         String mMaGiangVien;
 
         public String MMaGiangVien

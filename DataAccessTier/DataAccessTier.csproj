@@ -42,6 +42,8 @@
     <Compile Include="CaDAO.cs" />
     <Compile Include="ChuongTrinhHocDAO.cs" />
     <Compile Include="DBConnection.cs" />
+    <Compile Include="GiangVienDAO.cs" />
+    <Compile Include="LopHocDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrinhDoDAO.cs" />
   </ItemGroup>

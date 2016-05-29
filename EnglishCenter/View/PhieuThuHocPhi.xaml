@@ -9,8 +9,9 @@
             <RowDefinition Height="70"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
         
         <Grid.ColumnDefinitions>
@@ -33,13 +34,16 @@
         <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Tên học viên" FontSize="15" />
         <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="200" Margin="5,0,200,5" Height="25"/>
 
-        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Lớp" FontSize="15" />
-        <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="250" HorizontalAlignment="Left" Margin="5,0,50,5" Height="25"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Số điện thoại" FontSize="15" />
+        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="200" Margin="5,0,200,5" Height="25"/>
 
-        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Số tiền" FontSize="15" />
-        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="200" Margin="5,0,200,5" Height="25"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Lớp" FontSize="15" />
+        <ComboBox Name="LopBox" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="250" HorizontalAlignment="Left" Margin="5,0,50,5" Height="25"/>
 
-        <Grid Grid.Row="5" Grid.ColumnSpan="2">
+        <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Số tiền" FontSize="15" />
+        <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="200" Margin="5,0,200,5" Height="25"/>
+
+        <Grid Grid.Row="7" Grid.ColumnSpan="2">
             <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5"/>
             <Button Content="Lưu" HorizontalAlignment="Right" Margin="10,0,110,5"/>
             <Button Content="In" HorizontalAlignment="Right" Margin="10,0,190,5"/>
