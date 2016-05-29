@@ -8,6 +8,17 @@ namespace DTO
 {
     public class Ca
     {
+        public Ca()
+        {
+        }
+
+        public Ca(String maCa, DateTime thoiGianBD, DateTime thoiGianKT)
+        {
+            mMaCa = maCa;
+            mThoiGianBatDau = thoiGianBD;
+            mThoiGianKetThuc = thoiGianKT;
+        }
+
         String mMaCa;
 
         public String MMaCa

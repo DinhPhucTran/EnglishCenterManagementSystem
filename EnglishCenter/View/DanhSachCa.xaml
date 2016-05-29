@@ -1,0 +1,34 @@
+﻿<Window x:Class="EnglishCenter.View.DanhSachCa"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+        Title="English Center" Height="320" Width="500"
+        Background="#F8F8F8" Icon="/EnglishCenter;component/Resources/course.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="#FF09CAF9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="/EnglishCenter;component/Resources/time_white.png" Margin="10"/>
+            <TextBlock Grid.Column="1" Text="Danh sách Ca" FontSize="30" Foreground="White" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="1" Background="#FFEBEEF1">
+            <ScrollViewer>
+                <StackPanel Name="parentSP">
+                    <StackPanel Orientation="Horizontal" Background="#FFAAE1E6" Margin="20">
+                        <Label Name="ColumnMa" Content="Mã ca" Foreground="White" FontSize="20" Width="100"></Label>
+                        <Label Name="ColumnTGBD" Content="Thời gian bắt đầu" Foreground="White" FontSize="20" Width="200"></Label>
+                        <Label Name="ColumnTGKT" Content="Thời gian kết thúc" Foreground="White" FontSize="20"></Label>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>

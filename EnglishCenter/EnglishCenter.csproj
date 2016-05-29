@@ -80,8 +80,8 @@
     <Compile Include="View\PhieuThuHocPhi.xaml.cs">
       <DependentUpon>PhieuThuHocPhi.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ThemCaHoc.xaml.cs">
-      <DependentUpon>ThemCaHoc.xaml</DependentUpon>
+    <Compile Include="View\DanhSachCa.xaml.cs">
+      <DependentUpon>DanhSachCa.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ThemLichThiXL.xaml.cs">
       <DependentUpon>ThemLichThiXL.xaml</DependentUpon>
@@ -122,7 +122,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ThemCaHoc.xaml">
+    <Page Include="View\DanhSachCa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
