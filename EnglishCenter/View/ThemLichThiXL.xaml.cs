@@ -16,16 +16,16 @@ using DTO;
 
 namespace EnglishCenter.View
 {
-    /// <summary>
-    /// Interaction logic for ThemLichThi.xaml
-    /// </summary>
+    
+    
     public partial class ThemLichThi : Window
     {
+        List<Phong> mListPhong;
         public ThemLichThi()
         {
             InitializeComponent();
-
-            cb_phongThi.ItemsSource = new PhongBUS().getListPhong();
+            mListPhong = new PhongBUS().getListPhong();
+            cb_phongThi.ItemsSource = mListPhong;
             cb_phongThi.SelectedIndex = 0;
 
             cb_caThi.ItemsSource = new CaBUS().getAllCa();
@@ -36,5 +36,41 @@ namespace EnglishCenter.View
 
             
         }
+
+        private void Button_Huy_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Button_Luu_Click(object sender, RoutedEventArgs e)
+        {
+            ThiXepLop txl = new ThiXepLop();
+            txl.MCaThi = new CaBUS().getAllCa()[cb_caThi.SelectedIndex].MMaCa;
+            txl.MDeThi = new DeThiBUS().getListDeThi()[cb_deThi.SelectedIndex].MMaDeThi;
+            txl.MMaPhong = mListPhong[cb_phongThi.SelectedIndex].MMaPhong;
+            try
+            {
+                txl.MNgayThi = (DateTime)dp_ngayThi.SelectedDate;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ngày tháng không hợp lệ");
+                return;
+            }
+            
+            int result = new ThiXepLopBUS().themThiXepLop(txl);
+            if (result != 1)
+            {
+                MessageBox.Show("Thêm thất bại. Lịch thi đả tồn tại hoặc lổi kết nối vào database\nresult code: " + result);
+            }
+            else
+            {
+                this.Close();
+            }
+        }
+        private void Button_Thoat_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
