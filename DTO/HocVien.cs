@@ -13,21 +13,22 @@ namespace DTO
         {
         }
 
-        public HocVien(String maHV, String tenHV, DateTime ngaySinh, String phai, String diaChi, String soDT, String maTDDaHoc, String maTDMuonHoc, String maCTDaHoc, String maCTMuonHoc)
+        public HocVien(String maHV, String tenHV, DateTime ngaySinh, String phai, String diaChi, String email, String soDT, String maTDDaHoc, String maTDMuonHoc, String maCTDaHoc, String maCTMuonHoc)
         {
             mMaHocVien = maHV;
             mTenHocVien = tenHV;
             mNgaySinh = ngaySinh;
             mPhai = phai;
             mDiaChi = diaChi;
+            mEmail = email;
             mSdt = soDT;
             mMaTrinhDoDaHoc = maTDDaHoc;
             mMaTrinhDoMuonHoc = maTDMuonHoc;
             mMaChuongTrinhDaHoc = maCTDaHoc;
             mMaChuongTrinhMuonHoc = maCTMuonHoc;
         }
-
-        public String mMaHocVien;
+        String mEmail;
+        String mMaHocVien;
 
         public String MMaHocVien
         {
@@ -98,6 +99,17 @@ namespace DTO
             set { mMaTrinhDoMuonHoc = value; }
         }
 
+        public string MEmail
+        {
+            get
+            {
+                return mEmail;
+            }
 
+            set
+            {
+                mEmail = value;
+            }
+        }
     }
 }

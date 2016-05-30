@@ -43,6 +43,7 @@
     <Compile Include="ChuongTrinhHocBUS.cs" />
     <Compile Include="GiangVienBUS.cs" />
     <Compile Include="DeThiBUS.cs" />
+    <Compile Include="HocVienBUS.cs" />
     <Compile Include="LopHocBUS.cs" />
     <Compile Include="PhongBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
