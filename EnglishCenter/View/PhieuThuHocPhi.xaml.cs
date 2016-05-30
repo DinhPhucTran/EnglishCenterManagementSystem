@@ -22,6 +22,9 @@ namespace EnglishCenter.View
         public PhieuThuHocPhi()
         {
             InitializeComponent();
+            
         }
+
+
     }
 }

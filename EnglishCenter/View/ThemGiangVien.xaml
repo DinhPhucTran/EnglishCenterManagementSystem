@@ -1,0 +1,47 @@
+﻿<Window x:Class="EnglishCenter.View.ThemGiangVien"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EnglishCenter.View"
+        mc:Ignorable="d"
+        Title="ThemGiangVien" Height="350" Width="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="#00C0EF">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="/EnglishCenter;component/Resources/cash.png" Margin="10"/>
+            <TextBlock Grid.Column="1" Text="Thêm giảng viên" FontSize="30" Foreground="White" VerticalAlignment="Center"/>
+        </Grid>
+        
+        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Tên giảng viên" FontSize="15" />
+        <TextBox Name="TenGV_tb" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="200" Margin="5,0,200,5" Height="25"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Số điện thoại" FontSize="15" />
+        <TextBox Name="SoDT_tb" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="200" Margin="5,0,200,5" Height="25"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Địa chỉ" FontSize="15" />
+        <TextBox Name="DiaChi_tb" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="250" HorizontalAlignment="Left" Margin="5,0,50,5" Height="25"/>
+
+        <Grid Grid.Row="7" Grid.ColumnSpan="2">
+            <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5"/>
+            <Button Content="Lưu" HorizontalAlignment="Right" Margin="10,0,110,5" Click="Button_Click"/>
+        </Grid>
+
+    </Grid>
+</Window>
