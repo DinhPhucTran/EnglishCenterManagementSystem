@@ -6,8 +6,18 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class HocVien
+    public class HocVien
     {
+
+        public HocVien()
+        {
+        }
+
+        public HocVien(String maHV, String tenHV, DateTime ngaySinh, String phai, String diaChi, String soDT, String maTDDaHoc, String maTDMuonHoc, String maCTDaHoc, String maCTMuonHoc)
+        {
+
+        }
+
         public String mMaHocVien;
 
         public String MMaHocVien

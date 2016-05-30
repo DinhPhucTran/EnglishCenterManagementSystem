@@ -23,12 +23,26 @@ namespace EnglishCenter.View
     {
         CaBUS mCaBUS;
         ThuBUS mThuBUS;
+        List<CheckBox> mListThoiGianRanh;
+        RadioButton mPhaiRadioButton;
+        TrinhDoBUS mTrinhDoBUS;
+        ChuongTrinhHocBUS mChuongTrinhBUS;
+        List<TrinhDo> mListTrinhDo;
+        List<ChuongTrinhHoc> mListChuongTrinhHoc;
 
         public NewStudentForm()
         {
             InitializeComponent();
             mCaBUS = new CaBUS();
             mThuBUS = new ThuBUS();
+            mTrinhDoBUS = new TrinhDoBUS();
+            mChuongTrinhBUS = new ChuongTrinhHocBUS();
+            mListTrinhDo = mTrinhDoBUS.getListTrinhDo();
+            mListChuongTrinhHoc = mChuongTrinhBUS.getListChuongTrinhHoc();
+            TDoDaHoc_cb.ItemsSource = mListTrinhDo;
+            TDoMuonHoc_cb.ItemsSource = mListTrinhDo;
+            CTDaHoc_cb.ItemsSource = mListChuongTrinhHoc;
+            CTMuonHoc_cb.ItemsSource = mListChuongTrinhHoc;
             createThoiGianRanh();
         }
 
@@ -42,6 +56,7 @@ namespace EnglishCenter.View
             List<Thu> listThu = mThuBUS.getAllThu();
             List<Ca> listCa = mCaBUS.getAllCa();
             //ThoiGianRanh_Grid.ShowGridLines = true;
+            #region ThoiGianRanh_GUI
             for (int i = 0; i <= listCa.Count; i++)
             {
                 RowDefinition row = new RowDefinition();
@@ -79,9 +94,11 @@ namespace EnglishCenter.View
                 bd.VerticalAlignment = VerticalAlignment.Bottom;
                 bd.BorderBrush = Brushes.Gray;
                 bd.BorderThickness = new Thickness(0.5);
-                bd.Margin = new Thickness( 10, 0, 10, 0);
+                bd.Margin = new Thickness(10, 0, 10, 0);
                 ThoiGianRanh_Grid.Children.Add(bd);
             }
+
+            mListThoiGianRanh = new List<CheckBox>();
 
             for (int i = 0; i < listCa.Count; i++)
             {
@@ -91,11 +108,65 @@ namespace EnglishCenter.View
                     cb.Name = listThu[j].MMaThu + "_" + listCa[i].MMaCa;
                     cb.VerticalAlignment = VerticalAlignment.Center;
                     cb.HorizontalAlignment = HorizontalAlignment.Center;
+                    mListThoiGianRanh.Add(cb);
                     Grid.SetRow(cb, i + 1);
                     Grid.SetColumn(cb, j + 1);
                     ThoiGianRanh_Grid.Children.Add(cb);
                 }
+            } 
+            #endregion
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            List<CheckBox> listChecked = mListThoiGianRanh.FindAll(i => i.IsChecked == true);
+            String temp = "";
+            for (int i = 0; i < listChecked.Count; i++)
+            {
+                temp += listChecked[i].Name + "; ";
             }
+            MessageBox.Show(temp);
+        }
+
+        private void Save_btn_Click(object sender, RoutedEventArgs e)
+        {
+            String ten = TenHocVien_tb.Text;
+            if (ten == "")
+            {
+                MessageBox.Show("Please, fill in your Name!");
+                return;
+            }
+            DateTime? ngaySinh = NgaySinhHV_dp.SelectedDate;
+            if (ngaySinh == null)
+            {
+                MessageBox.Show("Please, choose your Birthday!");
+                return;
+            }
+            if (mPhaiRadioButton == null)
+            {
+                MessageBox.Show("You are female or male or ...? \n Please, check your Gender!");
+                return;
+            }
+            String phai = mPhaiRadioButton.Content.ToString();
+            String diaChi = DiaChi_tb.Text;
+            if (diaChi == "")
+            {
+                MessageBox.Show("Please, enter your Address!");
+                return;
+            }
+            String soDT = SoDT_tb.Text;
+            if (soDT == "")
+            {
+                MessageBox.Show("Please, enter your Phone Number!");
+                return;
+            }
+            //String tenCTHo
+            //HocVien hv = new HocVien(TenHocVien_tb.Text, DateTime.Parse(NgaySinhHV_dp.Text),);
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            mPhaiRadioButton = (RadioButton)sender;
         }
     }
 }
