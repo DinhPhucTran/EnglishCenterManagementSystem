@@ -17,10 +17,11 @@ Insert into TRINH_DO values('UPPER','Upper-Intermediate')
 Insert into TRINH_DO values('ADV','Advanced')
 
 
-Insert into CHUONG_TRINH_HOC values('IEL.BE','IELTS for Beginner','BEGIN',1,2)
-Insert into CHUONG_TRINH_HOC values('TOE.BE','TOEIC for Beginner','BEGIN',0,150)
-Insert into CHUONG_TRINH_HOC values('IEL.EL','IELTS for Elementary','ELEM',2,3)
-Insert into CHUONG_TRINH_HOC values('TOE.EL','TOEIC for Elementary','ELEM',151,300)
+Insert into CHUONG_TRINH_HOC values('IELT.BE','IELTS for Beginner','BEGIN',1,2)
+Insert into CHUONG_TRINH_HOC values('TOEI.BE','TOEIC for Beginner','BEGIN',0,150)
+Insert into CHUONG_TRINH_HOC values('IELT.EL','IELTS for Elementary','ELEM',2,3)
+Insert into CHUONG_TRINH_HOC values('TOEI.EL','TOEIC for Elementary','ELEM',151,300)
+
 Insert into CHUONG_TRINH_HOC values('IELT.PR','IELTS Pre-intermediate','PRE',3,4)
 Insert into CHUONG_TRINH_HOC values('TOEF.PR','TOEFL Pre-intermediate','PRE',0,31)
 Insert into CHUONG_TRINH_HOC values('TOEI.PR','TOEIC Pre-intermediate','PRE',301,400)
