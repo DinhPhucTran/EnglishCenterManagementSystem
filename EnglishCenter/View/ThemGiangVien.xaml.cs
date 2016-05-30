@@ -31,15 +31,23 @@ namespace EnglishCenter.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (TenGV_tb.Text == "" )
+            if (TenGV_tb.Text == "" || SoDT_tb.Text == "")
             {
-
+                MessageBox.Show("You must fill all information!", "ERROR");
+                return;
             }
-            int maxIdGV = mGiangVienBUS.getMaGiangVienMax();
-            GiangVien gv = new GiangVien((maxIdGV + 1).ToString(),
-                                            TenGV_tb.Text,
+            GiangVien gv = new GiangVien("",TenGV_tb.Text,
                                             DiaChi_tb.Text,
                                             SoDT_tb.Text);
+            bool insert = mGiangVienBUS.insertGiangVien(gv);
+            if (insert == true)
+            {
+                MessageBox.Show("Insert Successfully.");
+            }
+            else
+            {
+                MessageBox.Show("Insert Failed");
+            }
         }
     }
 }

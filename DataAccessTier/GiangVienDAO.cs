@@ -60,9 +60,9 @@ namespace DataAccessTier
                 SqlCommand cmd = new SqlCommand("GIANG_VIEN_INSERT", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@MaGiangVien", gv.MMaGiangVien);
-                cmd.Parameters.AddWithValue("@MaGiangVien", gv.MTenGiangVien);
-                cmd.Parameters.AddWithValue("@MaGiangVien", gv.MDiaChi);
-                cmd.Parameters.AddWithValue("@MaGiangVien", gv.MSoDienThoai);
+                cmd.Parameters.AddWithValue("@TenGiangVien", gv.MTenGiangVien);
+                cmd.Parameters.AddWithValue("@DiaChi", gv.MDiaChi);
+                cmd.Parameters.AddWithValue("@SoDT", gv.MSoDienThoai);
                 cmd.ExecuteNonQuery();
                 result = true;
                 connection.Close();
@@ -101,6 +101,7 @@ namespace DataAccessTier
 
         public String getMaxIdGiangVien()
         {
+            String result = "0";
             List<String> listMaGV = new List<string>();
             try
             {
@@ -128,7 +129,7 @@ namespace DataAccessTier
             {
                 return listMaGV.Select(v => int.Parse(v)).Max().ToString();
             }
-            return "0";
+            return result;
         }
     }
 }

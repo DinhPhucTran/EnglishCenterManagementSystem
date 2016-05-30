@@ -24,6 +24,12 @@ namespace BusinessLogicTier
 
         public bool insertGiangVien(GiangVien gv)
         {
+            int maxIdGV = this.getMaGiangVienMax();
+            if (maxIdGV <= 0)
+            {
+                return false;
+            }
+            gv.MMaGiangVien = (maxIdGV + 1).ToString();
             return mGiangVienDAO.insertGiangVien(gv);
         }
 
@@ -34,7 +40,16 @@ namespace BusinessLogicTier
 
         public int getMaGiangVienMax()
         {
-            return int.Parse(mGiangVienDAO.getMaxIdGiangVien());
+            int result = 0;
+            try
+            {
+                int.TryParse(mGiangVienDAO.getMaxIdGiangVien(), out result);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return result;
         }
     }
 }
