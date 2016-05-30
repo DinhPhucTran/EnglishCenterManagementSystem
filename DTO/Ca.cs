@@ -41,5 +41,11 @@ namespace DTO
             set { mThoiGianKetThuc = value; }
         }
 
+        public String toStringTgBD_TgKT()
+        {
+            return mThoiGianBatDau.Hour + ":" + mThoiGianBatDau.Minute + " - " +
+                   mThoiGianKetThuc.Hour + ":" + mThoiGianKetThuc.Minute;
+        }
+
     }
 }

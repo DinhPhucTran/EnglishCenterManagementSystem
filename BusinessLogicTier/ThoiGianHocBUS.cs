@@ -23,5 +23,10 @@ namespace BusinessLogicTier
         {
             return new ThoiGianHocDAO().suaThoiGianHoc(tgh);
         }
+         public bool insertThoiGianHoc(ThoiGianHoc tgHoc)
+        {
+            return new ThoiGianHocDAO().insertThoiGianHoc(tgHoc);
+        }
+       
     }
 }

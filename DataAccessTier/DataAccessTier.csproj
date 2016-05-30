@@ -49,6 +49,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThiXepLopDAO.cs" />
     <Compile Include="ThoiGianHocDAO.cs" />
+    <Compile Include="ThoiGianRanhDAO.cs" />
+    <Compile Include="ThuDAO.cs" />
     <Compile Include="TrinhDoDAO.cs" />
   </ItemGroup>
   <ItemGroup>

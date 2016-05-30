@@ -44,5 +44,9 @@ namespace DTO
             set { mDiemSoToiDa = value; }
         }
 
+        public override string ToString()
+        {
+            return mTenChuongTrinhHoc;
+        }
     }
 }

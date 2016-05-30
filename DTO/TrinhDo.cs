@@ -32,6 +32,9 @@ namespace DTO
             set { mTenTrinhDo = value; }
         }
 
-
+        public override string ToString()
+        {
+            return mTenTrinhDo;
+        }
     }
 }

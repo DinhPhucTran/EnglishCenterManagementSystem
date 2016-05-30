@@ -41,7 +41,6 @@
   <ItemGroup>
     <Compile Include="CaBUS.cs" />
     <Compile Include="ChuongTrinhHocBUS.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="GiangVienBUS.cs" />
     <Compile Include="DeThiBUS.cs" />
     <Compile Include="LopHocBUS.cs" />
@@ -49,6 +48,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThiXepLopBUS.cs" />
     <Compile Include="ThoiGianHocBUS.cs" />
+    <Compile Include="ThoiGianRanhBUS.cs" />
+    <Compile Include="ThuBUS.cs" />
     <Compile Include="TrinhDoBUS.cs" />
   </ItemGroup>
   <ItemGroup>
