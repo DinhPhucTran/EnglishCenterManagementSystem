@@ -36,16 +36,28 @@
         <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="5,0,100,5" Height="25"/>
 
         <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Chương trình học" FontSize="15" />
-        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5, 20, 100, 0"/>
+        <ComboBox Name="cb_chuongTrinhHoc" Grid.Row="2" Grid.Column="1" Margin="5, 20, 100, 0">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding MTenChuongTrinhHoc}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         
         <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Giáo viên" FontSize="15" />
-        <ComboBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="5,0,100,5" Height="25"/>
+        <ComboBox Name="cb_Gv" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="5,0,100,5" Height="25">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding MTenGiangVien}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
         <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Phòng" FontSize="15" />
-        <ComboBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Bottom" Margin="5,0,100,5"/>
+        <ComboBox Name="cb_phong" Grid.Row="4" Grid.Column="1" VerticalAlignment="Bottom" Margin="5,0,100,5"/>
 
         <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Học phí" FontSize="15" />
-        <TextBox Grid.Row="5" Grid.Column="1" VerticalAlignment="Bottom" Margin="5,0,100,5"/>
+        <TextBox Name="tb_hocPhi" Grid.Row="5" Grid.Column="1" VerticalAlignment="Bottom" Margin="5,0,100,5"/>
 
         <TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Ngày khai giảng" FontSize="15" />
         <DatePicker Grid.Row="6" Grid.Column="1" VerticalAlignment="Bottom" Margin="5,0,400,5"/>
@@ -171,9 +183,9 @@
         </Grid>
 
         <Grid Grid.Row="9" Grid.ColumnSpan="2">
-            <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5"/>
-            <Button Content="Lưu" HorizontalAlignment="Right" Margin="10,0,110,5"/>
-            <Button Content="Hủy" HorizontalAlignment="Right" Margin="10,0,190,5"/>
+            <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5" Click="Button_Thoat_Click"/>
+            <Button Content="Lưu" HorizontalAlignment="Right" Margin="10,0,110,5" Click="Button_Luu_Click"/>
+            <Button Content="Hủy" HorizontalAlignment="Right" Margin="10,0,190,5" Click="Button_Huy_Click"/>
         </Grid>
 
     </Grid>
