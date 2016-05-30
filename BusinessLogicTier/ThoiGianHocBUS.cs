@@ -10,16 +10,23 @@ namespace BusinessLogicTier
 {
     public class ThoiGianHocBUS
     {
-        ThoiGianHocDAO mThoiGianHocDAO;
-
-        public ThoiGianHocBUS()
+        public ThoiGianHocBUS() { }
+        public bool themThoiGianHoc(ThoiGianHoc tgh){
+            return new ThoiGianHocDAO().themThoiGianHoc(tgh);
+        }
+        public bool xoaThoiGianHoc(String maTgh)
         {
-            mThoiGianHocDAO = new ThoiGianHocDAO();
+            return new ThoiGianHocDAO().xoaThoiGianHoc(maTgh);
         }
 
-        public bool insertThoiGianHoc(ThoiGianHoc tgHoc)
+        public bool suaThoiGianHoc(ThoiGianHoc tgh)
         {
-            return mThoiGianHocDAO.insertThoiGianHoc(tgHoc);
+            return new ThoiGianHocDAO().suaThoiGianHoc(tgh);
         }
+         public bool insertThoiGianHoc(ThoiGianHoc tgHoc)
+        {
+            return new ThoiGianHocDAO().insertThoiGianHoc(tgHoc);
+        }
+       
     }
 }

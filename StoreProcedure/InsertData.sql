@@ -49,10 +49,10 @@ Insert into THU values('T7',N'Thứ 7')
 Insert into THU values('CN',N'Chủ Nhật')
 
 
-Insert into GIANG_VIEN values ('1','Phan Nguyệt Minh','Quận 1 TPHCM','0969696969')
-Insert into GIANG_VIEN values ('2','Lê Thanh Trọng','Quân 2 TPHCM','0969696969')
-Insert into GIANG_VIEN values ('3','Nguyễn Thị Nhơn','Quân 3 TPHCM','0969696969')
-Insert into GIANG_VIEN values ('4','Trần Đình Phúc','Quận 4 TPHCM','0969696969')
+Insert into GIANG_VIEN values ('1',N'Phan Nguyệt Minh','Quận 1 TPHCM','0969696969')
+Insert into GIANG_VIEN values ('2',N'Lê Thanh Trọng','Quân 2 TPHCM','0969696969')
+Insert into GIANG_VIEN values ('3',N'Nguyễn Thị Nhơn','Quân 3 TPHCM','0969696969')
+Insert into GIANG_VIEN values ('4',N'Trần Đình Phúc','Quận 4 TPHCM','0969696969')
 
 Insert into Phong values('1','Phòng 1')
 Insert into Phong values('2','Phòng 2')
