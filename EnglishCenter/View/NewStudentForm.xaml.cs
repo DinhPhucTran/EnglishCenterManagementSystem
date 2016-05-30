@@ -130,6 +130,7 @@ namespace EnglishCenter.View
 
         private void Save_btn_Click(object sender, RoutedEventArgs e)
         {
+            #region GetData
             String ten = TenHocVien_tb.Text;
             if (ten == "")
             {
@@ -160,8 +161,29 @@ namespace EnglishCenter.View
                 MessageBox.Show("Please, enter your Phone Number!");
                 return;
             }
-            //String tenCTHo
-            //HocVien hv = new HocVien(TenHocVien_tb.Text, DateTime.Parse(NgaySinhHV_dp.Text),);
+            String maTDDaHoc = "";
+            if (TDoDaHoc_cb.Text != "")
+            {
+                maTDDaHoc = mTrinhDoBUS.getMaTDFromTen(TDoDaHoc_cb.Text);
+            }
+            String maTDMuonHoc = "";
+            if (TDoMuonHoc_cb.Text != "")
+            {
+                maTDMuonHoc = mTrinhDoBUS.getMaTDFromTen(TDoMuonHoc_cb.Text);
+            }
+            String maCTDaHoc = "";
+            if (CTDaHoc_cb.Text != "")
+            {
+                maCTDaHoc = CTDaHoc_cb.Text;
+            }
+            String maCTMuonHoc = "";
+            if (CTMuonHoc_cb.Text != "")
+            {
+                maCTMuonHoc = CTMuonHoc_cb.Text;
+            } 
+            #endregion
+            HocVien hv = new HocVien("", ten, (DateTime)ngaySinh, phai, diaChi, soDT, maTDDaHoc, maTDMuonHoc, maCTDaHoc, maCTMuonHoc);
+            
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)

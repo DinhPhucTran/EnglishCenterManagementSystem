@@ -15,7 +15,16 @@ namespace DTO
 
         public HocVien(String maHV, String tenHV, DateTime ngaySinh, String phai, String diaChi, String soDT, String maTDDaHoc, String maTDMuonHoc, String maCTDaHoc, String maCTMuonHoc)
         {
-
+            mMaHocVien = maHV;
+            mTenHocVien = tenHV;
+            mNgaySinh = ngaySinh;
+            mPhai = phai;
+            mDiaChi = diaChi;
+            mSdt = soDT;
+            mMaTrinhDoDaHoc = maTDDaHoc;
+            mMaTrinhDoMuonHoc = maTDMuonHoc;
+            mMaChuongTrinhDaHoc = maCTDaHoc;
+            mMaChuongTrinhMuonHoc = maCTMuonHoc;
         }
 
         public String mMaHocVien;

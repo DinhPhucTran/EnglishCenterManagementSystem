@@ -72,5 +72,31 @@ namespace DataAccessTier
         {
             return true;
         }
+
+        public String getMaTrinhDoFromTen(String tenTrinhDo)
+        {
+            String result = "";
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("TRINH_DO_GET_MA_FROM_TEN", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@TenTrinhDo", tenTrinhDo);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                result = dt.Rows[0]["MaTrinhDo"].ToString();
+                connection.Close();
+            }
+            catch (Exception)
+            {
+                connection.Close();
+                throw;
+            }
+            return result;
+        }
     }
 }

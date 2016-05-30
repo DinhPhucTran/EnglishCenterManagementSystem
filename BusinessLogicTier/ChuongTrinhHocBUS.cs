@@ -10,6 +10,13 @@ namespace BusinessLogicTier
 {
     public class ChuongTrinhHocBUS
     {
+        ChuongTrinhHocDAO mChuongTrinhHocDAO;
+
+        public ChuongTrinhHocBUS()
+        {
+            mChuongTrinhHocDAO = new ChuongTrinhHocDAO();
+        }
+
         public List<ChuongTrinhHoc> getListChuongTrinhHoc()
         {
             return new ChuongTrinhHocDAO().getListChuongTrinhHoc();
@@ -30,6 +37,11 @@ namespace BusinessLogicTier
         {
             ChuongTrinhHocDAO cthDao = new ChuongTrinhHocDAO();
             return cthDao.suaChuongTrinhHoc(cth);
+        }
+
+        public String getMaCTFromTenCT(String tenCT)
+        {
+            return mChuongTrinhHocDAO.getMaChuongTrinhHocFromTen(tenCT);
         }
     }
 }

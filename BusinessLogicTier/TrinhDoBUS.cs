@@ -20,5 +20,10 @@ namespace BusinessLogicTier
         {
             return mTrinhDoDAO.getListTrinhDo();
         }
+
+        public String getMaTDFromTen(String tenTrinhDo)
+        {
+            return mTrinhDoDAO.getMaTrinhDoFromTen(tenTrinhDo);
+        }
     }
 }
