@@ -10,7 +10,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <DockPanel Background="White" Grid.Row="0">
+        <DockPanel Background="#f6f6f7" Grid.Row="0">
             <Image Source="/Resources/banner.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <DockPanel HorizontalAlignment="Right">
                 <Image Source="/Resources/user_black.png" Width="25" Height="25" VerticalAlignment="Bottom" Margin="0 0 0 5"/>
@@ -460,7 +460,7 @@
 
                             <TextBlock Grid.Column="0" Background="Red" Margin="0 0 1 0" Padding="5" VerticalAlignment="Center" 
                                        FontSize="20" Cursor="Arrow">5 Khóa học</TextBlock>
-                            <Button Grid.Column="1" Padding="0" FontSize="15">✛</Button>
+                            <Button Grid.Column="1" Padding="0" FontSize="15" Name="bt_themCth" Click="btThemCth_click">✛</Button>
                         </Grid>
                     </DockPanel>
 
