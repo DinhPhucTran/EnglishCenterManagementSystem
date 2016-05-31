@@ -62,7 +62,7 @@ namespace DataAccessTier
             }
             return false;
         }
-        public bool xoaThoiGianHoc(String maTg)
+        public bool xoaThoiGianHoc(String maLop)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace DataAccessTier
                 }
                 SqlCommand command = new SqlCommand("THOI_GIAN_HOC_DELETE", connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@MaLop", maTg);
+                command.Parameters.AddWithValue("@MaLop", maLop);
                 command.ExecuteNonQuery();
                 connection.Close();
                 return true;
@@ -110,6 +110,40 @@ namespace DataAccessTier
             }
             return false;
         }
+
+        public List<ThoiGianHoc> getThoiGianHocCuaLop(String maLop)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand command = new SqlCommand("THOIGIAN_HOC_CUA_LOP", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@MaLop", maLop);
+                SqlDataAdapter da = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                List<ThoiGianHoc> list = new List<ThoiGianHoc>();
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ThoiGianHoc tgh = new ThoiGianHoc();
+                    tgh.MMaLop = dt.Rows[i][0].ToString();
+                    tgh.MMaThu = dt.Rows[i][1].ToString();
+                    tgh.MMaCa = dt.Rows[i][2].ToString();
+                    list.Add(tgh);
+                }
+                connection.Close();
+                return list;
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                Console.WriteLine(ex);
+                return null;
+            }
+        } 
     }
     
 

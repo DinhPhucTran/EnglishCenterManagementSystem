@@ -61,5 +61,10 @@ namespace DTO
                 mMaCa = value;
             }
         }
+
+        public bool kiemTraTrungThoiGian(ThoiGianHoc tgh)
+        {
+            return (mMaThu.Equals(tgh.MMaThu) && mMaCa.Equals(tgh.MMaCa));
+        }
     }
 }
