@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DTO;
 using BusinessLogicTier;
+using System.Text.RegularExpressions;
 
 namespace EnglishCenter.View
 {
@@ -21,6 +22,7 @@ namespace EnglishCenter.View
     /// </summary>
     public partial class NewStudentForm : Window
     {
+        HocVienBUS mHocVienBUS;
         CaBUS mCaBUS;
         ThuBUS mThuBUS;
         List<CheckBox> mListThoiGianRanh;
@@ -33,6 +35,7 @@ namespace EnglishCenter.View
         public NewStudentForm()
         {
             InitializeComponent();
+            mHocVienBUS = new HocVienBUS();
             mCaBUS = new CaBUS();
             mThuBUS = new ThuBUS();
             mTrinhDoBUS = new TrinhDoBUS();
@@ -155,35 +158,41 @@ namespace EnglishCenter.View
                 MessageBox.Show("Please, enter your Address!");
                 return;
             }
+
             String soDT = SoDT_tb.Text;
-            if (soDT == "")
-            {
-                MessageBox.Show("Please, enter your Phone Number!");
+            if (!Regex.Match(soDT, @"^(\d[0-9]{9,11})$").Success)
+            {//@"^\d{9,11}$"
+                MessageBox.Show("Please, refill your Phone Number!");
                 return;
             }
-            String maTDDaHoc = "";
+
+
+            String maTDDaHoc = null;
             if (TDoDaHoc_cb.Text != "")
             {
                 maTDDaHoc = mTrinhDoBUS.getMaTDFromTen(TDoDaHoc_cb.Text);
             }
-            String maTDMuonHoc = "";
+            String maTDMuonHoc = null;
             if (TDoMuonHoc_cb.Text != "")
             {
                 maTDMuonHoc = mTrinhDoBUS.getMaTDFromTen(TDoMuonHoc_cb.Text);
             }
-            String maCTDaHoc = "";
+            String maCTDaHoc = null;
             if (CTDaHoc_cb.Text != "")
             {
-                maCTDaHoc = CTDaHoc_cb.Text;
+                maCTDaHoc = mChuongTrinhBUS.getMaCTFromTenCT(CTDaHoc_cb.Text);
             }
-            String maCTMuonHoc = "";
+            String maCTMuonHoc = null;
             if (CTMuonHoc_cb.Text != "")
             {
-                maCTMuonHoc = CTMuonHoc_cb.Text;
-            } 
+                maCTMuonHoc = mChuongTrinhBUS.getMaCTFromTenCT(CTMuonHoc_cb.Text);
+            }
             #endregion
-            HocVien hv = new HocVien("", ten, (DateTime)ngaySinh, phai, diaChi, soDT, maTDDaHoc, maTDMuonHoc, maCTDaHoc, maCTMuonHoc);
-            
+            HocVien hv = new HocVien("", ten, (DateTime)ngaySinh, phai, diaChi, Email_tb.Text, soDT, maTDDaHoc, maTDMuonHoc, maCTDaHoc, maCTMuonHoc);
+            if (mHocVienBUS.insertHocVien(hv))
+            {
+                MessageBox.Show("Insert Hoc Vien SuccessFully.");
+            }
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)

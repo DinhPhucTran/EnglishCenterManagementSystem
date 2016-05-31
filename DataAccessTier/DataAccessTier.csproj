@@ -43,6 +43,7 @@
     <Compile Include="ChuongTrinhHocDAO.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="GiangVienDAO.cs" />
+    <Compile Include="HocVienDAO.cs" />
     <Compile Include="LopHocDAO.cs" />
     <Compile Include="DeThiDAO.cs" />
     <Compile Include="PhongDAO.cs" />
