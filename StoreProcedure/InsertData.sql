@@ -54,13 +54,40 @@ Insert into GIANG_VIEN values ('2',N'Lê Thanh Trọng','Quân 2 TPHCM','0969696
 Insert into GIANG_VIEN values ('3',N'Nguyễn Thị Nhơn','Quân 3 TPHCM','0969696969')
 Insert into GIANG_VIEN values ('4',N'Trần Đình Phúc','Quận 4 TPHCM','0969696969')
 
-Insert into Phong values('1','Phòng 1')
-Insert into Phong values('2','Phòng 2')
-Insert into Phong values('3','Phòng 3')
-Insert into Phong values('4','Phòng 4')
-Insert into Phong values('5','Phòng 5')
+
+Insert into Phong values('1',N'Phòng 1')
+Insert into Phong values('2',N'Phòng 2')
+Insert into Phong values('3',N'Phòng 3')
+Insert into Phong values('4',N'Phòng 4')
+Insert into Phong values('5',N'Phòng 5')
+Insert into Phong values('6',N'Phòng 6')
+Insert into Phong values('7',N'Phòng 7')
+Insert into Phong values('8',N'Phòng 8')
+Insert into Phong values('9',N'Phòng 9')
+Insert into Phong values('10',N'Phòng 10')
+Insert into Phong values('11',N'Phòng 11')
+Insert into Phong values('12',N'Phòng 12')
+Insert into Phong values('13',N'Phòng 13')
+
+select * from phong
+
 
 
 Insert into DE_THI values ('1','TOEIC',N'Đề thi xếp lớp TOEIC')
 Insert into DE_THI values ('2','TOEFL',N'Đề thi xếp lớp TOEFL')
 Insert into DE_THI values ('3','IELTS',N'Đề thi xếp lớp IELTS')
+
+insert into LOP_HOC values('PR2016.1', '2016-06-01','2016-06-01','2016-08-01',2000000,'1','IELT.PR','1')
+insert into LOP_HOC values('PR2016.2', '2016-06-01','2016-06-01','2016-08-01',2000000,'1','TOEF.PR','2')
+insert into LOP_HOC values('PR2016.3', '2016-06-01','2016-06-01','2016-08-01',2000000,'1','TOEI.PR','3')
+insert into LOP_HOC values('IN2016.4', '2016-06-01','2016-06-01','2016-08-01',3000000,'2','IELT.INT','4')
+insert into LOP_HOC values('IN2016.5', '2016-06-01','2016-06-01','2016-08-01',3000000,'2','TOEF.INT','5')
+insert into LOP_HOC values('IN2016.6', '2016-06-01','2016-06-01','2016-08-01',3000000,'2','TOEI.INT','6')
+insert into LOP_HOC values('UP2016.7', '2016-06-01','2016-06-01','2016-08-01',3500000,'3','IELT.UP','7')
+insert into LOP_HOC values('UP2016.8', '2016-06-01','2016-06-01','2016-08-01',3500000,'3','TOEF.UP','8')
+insert into LOP_HOC values('UP2016.9', '2016-06-01','2016-06-01','2016-08-01',3500000,'3','TOEI.UP','9')
+insert into LOP_HOC values('AD2016.10', '2016-06-01','2016-06-01','2016-08-01',4000000,'4','IELT.AD','10')
+insert into LOP_HOC values('AD2016.11', '2016-06-01','2016-06-01','2016-08-01',4000000,'4','TOEF.AD','11')
+insert into LOP_HOC values('AD2016.12', '2016-06-01','2016-06-01','2016-08-01',4000000,'4','TOEI.AD','12')
+
+select * from LOP_HOC

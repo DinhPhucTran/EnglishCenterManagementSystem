@@ -1,11 +1,8 @@
 ﻿<Application x:Class="EnglishCenter.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-<<<<<<< HEAD
              StartupUri="View/NewClassForm.xaml">
-=======
-             StartupUri="View/NewStudentForm.xaml">
->>>>>>> 4def1afb5e7adca88b4f17fdeb8725cb14eaa1de
+
 
 
     <Application.Resources>
@@ -134,8 +131,4 @@
             
         </ResourceDictionary>
     </Application.Resources>
-<<<<<<< HEAD
 </Application>
-=======
-</Application>
->>>>>>> 4def1afb5e7adca88b4f17fdeb8725cb14eaa1de

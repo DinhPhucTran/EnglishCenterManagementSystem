@@ -44,7 +44,62 @@ namespace EnglishCenter.View
 
         private void Button_Luu_Click(object sender, RoutedEventArgs e)
         {
+            DateTime ngayKG, ngayBD, ngayKT;
+            try
+            {
+                ngayKG = (DateTime)dp_ngayKG.SelectedDate;
+                ngayBD = (DateTime)dp_ngayBD.SelectedDate;
+                ngayKT = (DateTime)dp_ngayKT.SelectedDate;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Thời gian nhập vào không hợp lệ");
+                return;
+            }
 
+            LopHoc lopHoc = new LopHoc();
+            lopHoc.MNgayBatDau = ngayBD;
+            lopHoc.MNgayKetThuc = ngayKT;
+            lopHoc.MNgayKhaiGiang = ngayKG;
+            lopHoc.MMaGiangVien = mListGV[cb_Gv.SelectedIndex].MMaGiangVien;
+            lopHoc.MMaCTHoc = mListCTH[cb_chuongTrinhHoc.SelectedIndex].MMaChuongTrinhHoc;
+            lopHoc.MMaPhong = mListPhong[cb_phong.SelectedIndex].MMaPhong;
+            try
+            {
+                lopHoc.MSoTien = double.Parse(tb_hocPhi.Text.ToString());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Học Phí không hợp lệ");
+                return;
+            }
+            
+            List<LopHoc> allLop = new LopHocBUS().getListLopHoc();
+            long max = getMaxID(allLop)+1;
+            lopHoc.MMaLop = mListCTH[cb_chuongTrinhHoc.SelectedIndex].MMaTrinhDo.ToString().Substring(0, 2) + DateTime.Today.Year.ToString() + "."+max;
+
+
+
+            bool result = new LopHocBUS().themLopHoc(lopHoc);
+            if (!result)
+            {
+                MessageBox.Show("failed for unknown reason");
+            }
+            else
+                this.Close();
+        }
+
+        private long getMaxID(List<LopHoc> list)
+        {
+            long max = 0;
+            for (int i = 0; i < list.Count; ++i)
+            {
+                if (max < long.Parse(list[i].MMaLop.ToString().Substring(7)))
+                {
+                    max = long.Parse(list[i].MMaLop.ToString().Substring(7));
+                }
+            }
+            return max;
         }
         private void Button_Thoat_Click(object sender, RoutedEventArgs e)
         {
