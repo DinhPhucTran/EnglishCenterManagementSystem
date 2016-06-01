@@ -50,5 +50,20 @@ namespace BusinessLogicTier
             hv.MMaHocVien = getMaHV();
             return mHocVienDAO.insertHocVien(hv);
         }
+
+        public List<String> getMaHVbyMaLop(String maLop)
+        {
+            return mHocVienDAO.getMaHVbyMaLop(maLop);
+        }
+
+        public HocVien selectHocVien(String maHocVien)
+        {
+            return mHocVienDAO.selectHocVien(maHocVien);
+        }
+
+        public int countHocVienByMaLop(String maLop)
+        {
+            return mHocVienDAO.countHocVienByMaLop(maLop);
+        }
     }
 }
