@@ -33,10 +33,38 @@ namespace DataAccessTier
                 cmd.Parameters.AddWithValue("@DiaChi", hv.MDiaChi);
                 cmd.Parameters.AddWithValue("@Email", hv.MEmail);
                 cmd.Parameters.AddWithValue("@SoDT", hv.MSdt);
-                cmd.Parameters.AddWithValue("@MaCTDaHoc", hv.MMaChuongTrinhDaHoc);
-                cmd.Parameters.AddWithValue("@MaCTMuonHoc", hv.MMaChuongTrinhMuonHoc);
-                cmd.Parameters.AddWithValue("@MaTDDaHoc", hv.MMaTrinhDoDaHoc);
-                cmd.Parameters.AddWithValue("@MaTDMuonHoc", hv.MMaTrinhDoMuonHoc);
+                if (hv.MMaChuongTrinhDaHoc == null)
+                {
+                    cmd.Parameters.AddWithValue("@MaCTDaHoc", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@MaCTDaHoc", hv.MMaChuongTrinhDaHoc);
+                }
+                if (hv.MMaChuongTrinhMuonHoc == null)
+                {
+                    cmd.Parameters.AddWithValue("@MaCTMuonHoc", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@MaCTMuonHoc", hv.MMaChuongTrinhMuonHoc);
+                }
+                if (hv.MMaTrinhDoDaHoc == null)
+                {
+                    cmd.Parameters.AddWithValue("@MaTDDaHoc", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@MaTDDaHoc", hv.MMaTrinhDoDaHoc);
+                }
+                if (hv.MMaTrinhDoMuonHoc == null)
+                {
+                    cmd.Parameters.AddWithValue("@MaTDMuonHoc", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@MaTDMuonHoc", hv.MMaTrinhDoMuonHoc);
+                }
                 cmd.ExecuteNonQuery();
                 connection.Close();
                 return true;
