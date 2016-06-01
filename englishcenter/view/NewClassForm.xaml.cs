@@ -114,40 +114,42 @@ namespace EnglishCenter.View
                 }
             }
 
-            if (selectedThoiGianHoc.Count != mTghBUS.themDanhSachThoiGianHoc(selectedThoiGianHoc))//lổi 
-            {
-                mTghBUS.xoaThoiGianHocCuaLop(lopHoc.MMaLop);
-                MessageBox.Show("Lổi trong quá trình thêm Thời gian học vào database");
-                return;
-            }
             bool result = new LopHocBUS().themLopHoc(lopHoc);
             if (!result)
             {
                 MessageBox.Show("failed for unknown reason");
+                return;
             }
             else
+            {
+                if (selectedThoiGianHoc.Count != mTghBUS.themDanhSachThoiGianHoc(selectedThoiGianHoc))//lổi 
+                {
+                    mTghBUS.xoaThoiGianHocCuaLop(lopHoc.MMaLop);
+                    new LopHocBUS().xoaLopHoc(lopHoc.MMaLop);
+                    MessageBox.Show("Lổi trong quá trình thêm Thời gian học vào database");
+                    return;
+                }
                 this.Close();
+            }
+                
+            
         }
 
         private List<ThoiGianHoc> getSelectedThoiGianHoc(String maLop)
         {
             List<ThoiGianHoc> result = new List<ThoiGianHoc>();
-            List<Thu> listThu = mThuBUS.getAllThu();
-            List<Ca> listCa = mCaBUS.getAllCa();
-            int k = 0;
-            for (int i = 0; i < listCa.Count; i++)
+          
+
+            foreach (CheckBox cb in mListThoiGianHoc)
             {
-                for (int j = 0; j < listThu.Count; j++)
+                if (cb.IsChecked == true)
                 {
-                    if (mListThoiGianHoc[i].IsChecked == true)
-                    {
-                        ThoiGianHoc tgh = new ThoiGianHoc();
-                        tgh.MMaCa = (i + 1).ToString();
-                        String thu = j==0?"CN":("T"+(j+1).ToString());
-                        tgh.MMaThu = thu;
-                        tgh.MMaLop = maLop;
-                        result.Add(tgh);
-                    }
+                    ThoiGianHoc tgh = new ThoiGianHoc();
+                    tgh.MMaLop = maLop;
+                    string [] words = cb.Name.ToString().Split('_');
+                    tgh.MMaThu = words[0];
+                    tgh.MMaCa = words[1];
+                    result.Add(tgh);
                 }
             }
             return result;

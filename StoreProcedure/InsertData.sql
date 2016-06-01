@@ -48,11 +48,11 @@ Insert into THU values('T6',N'Thứ 6')
 Insert into THU values('T7',N'Thứ 7')
 Insert into THU values('CN',N'Chủ Nhật')
 
-
-Insert into GIANG_VIEN values ('1',N'Phan Nguyệt Minh','Quận 1 TPHCM','0969696969')
-Insert into GIANG_VIEN values ('2',N'Lê Thanh Trọng','Quân 2 TPHCM','0969696969')
-Insert into GIANG_VIEN values ('3',N'Nguyễn Thị Nhơn','Quân 3 TPHCM','0969696969')
-Insert into GIANG_VIEN values ('4',N'Trần Đình Phúc','Quận 4 TPHCM','0969696969')
+delete from GIANG_VIEN
+Insert into GIANG_VIEN values ('1',N'Phan Nguyệt Minh',N'Quận 1 TPHCM','0969696969')
+Insert into GIANG_VIEN values ('2',N'Lê Thanh Trọng',N'Quân 2 TPHCM','0969696969')
+Insert into GIANG_VIEN values ('3',N'Nguyễn Thị Nhơn',N'Quân 3 TPHCM','0969696969')
+Insert into GIANG_VIEN values ('4',N'Trần Đình Phúc',N'Quận 4 TPHCM','0969696969')
 
 
 Insert into Phong values('1',N'Phòng 1')

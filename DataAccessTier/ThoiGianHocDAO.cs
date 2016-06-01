@@ -22,7 +22,7 @@ namespace DataAccessTier
                 {
                     connection.Open();
                 }
-                SqlCommand command = new SqlCommand("THOI_GIAN_HOC_INSERT", connection);
+                SqlCommand command = new SqlCommand("THOIGIAN_HOC_INSERT", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@MaLop", tgh.MMaLop);
                 command.Parameters.AddWithValue("@MaThu", tgh.MMaThu);
@@ -46,7 +46,7 @@ namespace DataAccessTier
                 {
                     connection.Open();
                 }
-                SqlCommand command = new SqlCommand("THOI_GIAN_HOC_INSERT", connection);
+                SqlCommand command = new SqlCommand("THOIGIAN_HOC_INSERT", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@MaLop", tgh.MMaLop);
                 command.Parameters.AddWithValue("@MaThu", tgh.MMaThu);
@@ -70,7 +70,7 @@ namespace DataAccessTier
                 {
                     connection.Open();
                 }
-                SqlCommand command = new SqlCommand("THOI_GIAN_HOC_DELETE", connection);
+                SqlCommand command = new SqlCommand("THOIGIAN_HOC_DELETE", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@MaLop", maLop);
                 command.ExecuteNonQuery();
@@ -94,7 +94,7 @@ namespace DataAccessTier
                 {
                     connection.Open();
                 }
-                SqlCommand command = new SqlCommand("THOI_GIAN_HOC_UPDATE", connection);
+                SqlCommand command = new SqlCommand("THOIGIAN_HOC_UPDATE", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@MaLop", tgh.MMaLop);
                 command.Parameters.AddWithValue("@MaThu", tgh.MMaThu);
