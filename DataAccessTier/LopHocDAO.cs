@@ -134,5 +134,44 @@ namespace DataAccessTier
             }
             return false;
         }
+
+        public List<LopHoc> getLopHocByTime(DateTime thoiGianBD, DateTime thoiGianKT)
+        {
+            try
+            {
+                if (connection.State != System.Data.ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("LOP_HOC_BY_TIME", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ThoiGianBD", thoiGianBD);
+                cmd.Parameters.AddWithValue("@ThoiGianKT", thoiGianKT);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                List<LopHoc> list = new List<LopHoc>();
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    LopHoc lop = new LopHoc();
+                    lop.MMaLop = dt.Rows[i][0].ToString();
+                    lop.MNgayKhaiGiang = DateTime.Parse(dt.Rows[i][1].ToString());
+                    lop.MNgayBatDau = DateTime.Parse(dt.Rows[i][2].ToString());
+                    lop.MNgayKetThuc = DateTime.Parse(dt.Rows[i][3].ToString());
+                    lop.MSoTien = double.Parse(dt.Rows[i][4].ToString());
+                    lop.MMaGiangVien = dt.Rows[i][5].ToString();
+                    lop.MMaCTHoc = dt.Rows[i][6].ToString();
+                    lop.MMaPhong = dt.Rows[i][7].ToString();
+                    list.Add(lop);
+                }
+                connection.Close();
+                return list;
+            }
+            catch (Exception)
+            {
+                connection.Close();
+                return null;
+            }
+        }
     }
 }

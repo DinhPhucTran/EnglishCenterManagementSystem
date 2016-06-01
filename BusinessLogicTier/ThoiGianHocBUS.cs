@@ -8,25 +8,48 @@ using DTO;
 
 namespace BusinessLogicTier
 {
+    
     public class ThoiGianHocBUS
     {
-        public ThoiGianHocBUS() { }
-        public bool themThoiGianHoc(ThoiGianHoc tgh){
-            return new ThoiGianHocDAO().themThoiGianHoc(tgh);
+        private ThoiGianHocDAO mDAO;
+        public ThoiGianHocBUS() {
+            mDAO = new ThoiGianHocDAO();
         }
-        public bool xoaThoiGianHoc(String maTgh)
+        public bool themThoiGianHoc(ThoiGianHoc tgh){
+            return mDAO.themThoiGianHoc(tgh);
+        }
+        public bool xoaThoiGianHocCuaLop(String maLop)
         {
-            return new ThoiGianHocDAO().xoaThoiGianHoc(maTgh);
+            return mDAO.xoaThoiGianHoc(maLop);
         }
 
         public bool suaThoiGianHoc(ThoiGianHoc tgh)
         {
-            return new ThoiGianHocDAO().suaThoiGianHoc(tgh);
+            return mDAO.suaThoiGianHoc(tgh);
         }
          public bool insertThoiGianHoc(ThoiGianHoc tgHoc)
         {
-            return new ThoiGianHocDAO().insertThoiGianHoc(tgHoc);
+            return mDAO.insertThoiGianHoc(tgHoc);
         }
-       
+         public List<ThoiGianHoc> getThoiGianHocCuaLop(String maLop)
+         {
+             return mDAO.getThoiGianHocCuaLop(maLop);
+         }
+         public int themDanhSachThoiGianHoc(List<ThoiGianHoc> list)
+         {
+             int result = 0;
+             foreach (ThoiGianHoc t in list)
+             {
+                 bool s = mDAO.themThoiGianHoc(t);
+                 if (s == true)
+                 {
+                     result++;
+                 }
+             }
+             return result;
+         }
+
+         
+        
     }
 }

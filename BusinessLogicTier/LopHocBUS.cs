@@ -18,6 +18,11 @@ namespace BusinessLogicTier
         {
             return new LopHocDAO().getAllLopHoc();
         }
+
+        public List<LopHoc> getListLopHocByTime(DateTime thoiGianBD, DateTime thoiGianKT)
+        {
+            return new LopHocDAO().getLopHocByTime(thoiGianBD,thoiGianKT);
+        }
         public bool themLopHoc(LopHoc lh)
         {
             //kiem tra logic
@@ -34,5 +39,6 @@ namespace BusinessLogicTier
         {
             return new LopHocDAO().suaLopHoc(lh);
         }
+
     }
 }

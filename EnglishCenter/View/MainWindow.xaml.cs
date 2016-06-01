@@ -35,6 +35,12 @@ namespace EnglishCenter.View
             
         }
 
+        private void btThemCth_click(object sender, RoutedEventArgs e)
+        {
+            NewCourseForm newCourseForm = new NewCourseForm();
+            newCourseForm.Show();
+        }
+
 
     }
 
