@@ -23,6 +23,7 @@ namespace EnglishCenter.View
     public partial class NewStudentForm : Window
     {
         HocVienBUS mHocVienBUS;
+        ThoiGianRanhBUS mThoiGianRanhBUS;
         CaBUS mCaBUS;
         ThuBUS mThuBUS;
         List<CheckBox> mListThoiGianRanh;
@@ -36,6 +37,7 @@ namespace EnglishCenter.View
         {
             InitializeComponent();
             mHocVienBUS = new HocVienBUS();
+            mThoiGianRanhBUS = new ThoiGianRanhBUS();
             mCaBUS = new CaBUS();
             mThuBUS = new ThuBUS();
             mTrinhDoBUS = new TrinhDoBUS();
@@ -119,18 +121,7 @@ namespace EnglishCenter.View
             } 
             #endregion
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            List<CheckBox> listChecked = mListThoiGianRanh.FindAll(i => i.IsChecked == true);
-            String temp = "";
-            for (int i = 0; i < listChecked.Count; i++)
-            {
-                temp += listChecked[i].Name + "; ";
-            }
-            MessageBox.Show(temp);
-        }
-
+        
         private void Save_btn_Click(object sender, RoutedEventArgs e)
         {
             #region GetData
@@ -188,16 +179,53 @@ namespace EnglishCenter.View
                 maCTMuonHoc = mChuongTrinhBUS.getMaCTFromTenCT(CTMuonHoc_cb.Text);
             }
             #endregion
+
             HocVien hv = new HocVien("", ten, (DateTime)ngaySinh, phai, diaChi, Email_tb.Text, soDT, maTDDaHoc, maTDMuonHoc, maCTDaHoc, maCTMuonHoc);
-            if (mHocVienBUS.insertHocVien(hv))
+
+            if (!mHocVienBUS.insertHocVien(hv))
             {
-                MessageBox.Show("Insert Hoc Vien SuccessFully.");
+                MessageBox.Show("Insert Hoc Vien Failed.");
             }
+
+            List<CheckBox> listChecked = mListThoiGianRanh.FindAll(i => i.IsChecked == true);
+
+            for (int i = 0; i < listChecked.Count; i++)
+            {
+                String thuCa = listChecked[i].Name;
+                ThoiGianRanh temp = new ThoiGianRanh(hv.MMaHocVien, thuCa.Substring(0, thuCa.IndexOf('_')), thuCa.Substring(thuCa.IndexOf('_') + 1));
+                if (!mThoiGianRanhBUS.insertThoiGianRanh(temp))
+                {
+                    MessageBox.Show("Insert Thoi Gian Ranh Failed.");
+                }
+            }
+
+            MessageBox.Show("Hoc vien inserted!");
+
+            resetComponent();
+        }
+
+        public void resetComponent()
+        {
+            TenHocVien_tb.Text = "";
+            NgaySinhHV_dp.SelectedDate = null;
+            mPhaiRadioButton = null;
+            DiaChi_tb.Text = "";
+            SoDT_tb.Text = "";
+            Email_tb.Text = "";
+            CTDaHoc_cb.SelectedIndex = -1;
+            CTMuonHoc_cb.SelectedIndex = -1;
+            TDoDaHoc_cb.SelectedIndex = -1;
+            TDoMuonHoc_cb.SelectedIndex = -1;
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             mPhaiRadioButton = (RadioButton)sender;
+        }
+
+        private void In_btn_Click(object sender, RoutedEventArgs e)
+        {
+            //in
         }
     }
 }

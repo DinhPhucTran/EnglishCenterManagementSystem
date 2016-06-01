@@ -95,7 +95,7 @@
             <TextBlock Grid.Row="2" Grid.Column="2" Margin="10,0,10,10" Text="Chương trình muốn học" VerticalAlignment="Bottom" FontSize="15" Height="20"/>
             <ComboBox Name="CTMuonHoc_cb" Text="{Binding DTO.ChuongTrinhHoc.MTenChuongTrinhHoc}" Grid.Row="2" Grid.Column="3" VerticalAlignment="Bottom" Margin="0,0,24,5" Height="25"/>
         </Grid>
-        
+
         <ScrollViewer Grid.Row="5" Grid.ColumnSpan="3" VerticalScrollBarVisibility="Hidden">
             <Grid>
                 <Grid.RowDefinitions>
@@ -116,11 +116,11 @@
             </Grid>
 
         </ScrollViewer>
-        
+
         <Grid Grid.Row="6" Grid.ColumnSpan="3" >
             <Button Name="Save_btn" Margin="10, 5, 10, 5" HorizontalAlignment="Right" Content="Lưu" Click="Save_btn_Click"/>
-            <Button Margin="10, 5, 100, 5" HorizontalAlignment="Right" Content="In" Click="Button_Click"/>
-            <Button Margin="10, 5, 180, 5" HorizontalAlignment="Right" Content="Hủy" Name="btn_cancel" Click="btn_cancel_Click"/>
+            <Button Margin="10, 5, 100, 5" HorizontalAlignment="Right" Content="In" Name="In_btn"/>
+            <Button Margin="0,0,180,9" HorizontalAlignment="Right" Content="Hủy" Name="btn_cancel" Click="btn_cancel_Click" VerticalAlignment="Bottom"/>
         </Grid>
     </Grid>
 </Window>
