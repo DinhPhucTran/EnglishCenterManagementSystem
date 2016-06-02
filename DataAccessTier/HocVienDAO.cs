@@ -126,6 +126,43 @@ namespace DataAccessTier
             return result;
         }
 
+        public List<HocVien> getHocVienByMaLop(String maLop)
+        {
+            List<HocVien> result = new List<HocVien>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand cmd = new SqlCommand("DANH_SACH_HOC_VIEN", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaLopHoc", maLop);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    HocVien hocvien = new HocVien();
+                    hocvien.MMaHocVien = dt.Rows[i]["MaHocVien"].ToString();
+                    hocvien.MTenHocVien = dt.Rows[i]["TenHocVien"].ToString();
+                    hocvien.MNgaySinh = DateTime.Parse(dt.Rows[i]["NgaySinh"].ToString());
+                    hocvien.MPhai = dt.Rows[i]["Phai"].ToString();
+                    hocvien.MDiaChi = dt.Rows[i]["DiaChi"].ToString();
+                    hocvien.MSdt = dt.Rows[i]["SoDT"].ToString();
+                    hocvien.MMaChuongTrinhDaHoc = dt.Rows[i]["MaCTDaHoc"].ToString();
+                    hocvien.MMaChuongTrinhMuonHoc = dt.Rows[i]["MaCTMuonHoc"].ToString();
+                    hocvien.MMaTrinhDoDaHoc = dt.Rows[i]["MaTDDaHoc"].ToString();
+                    hocvien.MMaTrinhDoMuonHoc = dt.Rows[i]["MaTDMuonHoc"].ToString();
+                    result.Add(hocvien);
+                }
+                connection.Close();
+            }
+            catch (Exception)
+            {
+                connection.Close();
+            }
+            return result;
+        }
+
         public HocVien selectHocVien(String maHV)
         {
             HocVien hocvien = new HocVien();
@@ -147,7 +184,7 @@ namespace DataAccessTier
                 hocvien.MSdt = dt.Rows[0]["SoDT"].ToString();
                 hocvien.MMaChuongTrinhDaHoc = dt.Rows[0]["MaCTDaHoc"].ToString();
                 hocvien.MMaChuongTrinhMuonHoc = dt.Rows[0]["MaCTMuonHoc"].ToString();
-                hocvien.MMaTrinhDoDaHoc = dt.Rows[0]["MaDTDaHoc"].ToString();
+                hocvien.MMaTrinhDoDaHoc = dt.Rows[0]["MaTDDaHoc"].ToString();
                 hocvien.MMaTrinhDoMuonHoc = dt.Rows[0]["MaTDMuonHoc"].ToString();
 
                 connection.Close();
