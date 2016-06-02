@@ -119,7 +119,7 @@
 
         <Grid Grid.Row="6" Grid.ColumnSpan="3" >
             <Button Name="Save_btn" Margin="10, 5, 10, 5" HorizontalAlignment="Right" Content="Lưu" Click="Save_btn_Click"/>
-            <Button Margin="10, 5, 100, 5" HorizontalAlignment="Right" Content="In" Name="In_btn"/>
+            <Button Margin="0,9,100,9" HorizontalAlignment="Right" Content="In" Name="In_btn" Height="Auto" Click="In_btn_Click"/>
             <Button Margin="0,0,180,9" HorizontalAlignment="Right" Content="Hủy" Name="btn_cancel" Click="btn_cancel_Click" VerticalAlignment="Bottom"/>
         </Grid>
     </Grid>
