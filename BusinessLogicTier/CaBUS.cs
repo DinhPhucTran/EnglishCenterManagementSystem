@@ -21,5 +21,10 @@ namespace BusinessLogicTier
         {
             return mCaDAO.getAllCa();
         }
+
+        public Ca selectCa(String maCa)
+        {
+            return mCaDAO.selectCa(maCa);
+        }
     }
 }

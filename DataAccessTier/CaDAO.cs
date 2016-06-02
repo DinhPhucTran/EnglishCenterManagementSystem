@@ -94,5 +94,31 @@ namespace DataAccessTier
             }
             return result;
         }
+
+        public Ca selectCa(String maCa)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand cmd = new SqlCommand("CA_SELECT", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaCa", maCa);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                Ca ca = new Ca();
+                ca.MMaCa = dt.Rows[0]["MaCa"].ToString();
+                ca.MThoiGianBatDau = DateTime.Parse(dt.Rows[0]["ThoiGianBD"].ToString());
+                ca.MThoiGianKetThuc = DateTime.Parse(dt.Rows[0]["ThoiGianKT"].ToString());
+                connection.Close();
+                return ca;
+            }
+            catch (Exception)
+            {
+                connection.Close();
+            }
+            return null;
+        }
     }
 }
