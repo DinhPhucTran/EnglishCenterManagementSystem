@@ -65,7 +65,8 @@
                                 <TextBlock Grid.Row="0" Foreground="White" 
                                    VerticalAlignment="Center"
                                    FontSize="40"
-                                   Padding="5">499</TextBlock>
+                                   Padding="5"
+                                   Name="tb_home_NumberOfStudent">499</TextBlock>
                                 <TextBlock Grid.Row="1" Foreground="White"
                                    Padding="5" FontSize="15">Học viên</TextBlock>
                                 <Image Grid.Column="1" Grid.RowSpan="2" Source="/Resources/students.png"/>
@@ -82,7 +83,7 @@
                                     <RowDefinition Height="30" />
                                     <RowDefinition Height="30"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Grid.Row="0" Foreground="White" 
+                                <TextBlock Grid.Row="0" Foreground="White" Name="tb_home_NumberOfCourse"
                                    VerticalAlignment="Center"
                                    FontSize="40"
                                    Padding="5">27</TextBlock>
@@ -102,7 +103,7 @@
                                     <RowDefinition Height="30" />
                                     <RowDefinition Height="30"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Grid.Row="0" Foreground="White" 
+                                <TextBlock Grid.Row="0" Foreground="White" Name="tb_home_NumberOfTeacher"
                                    VerticalAlignment="Center"
                                    FontSize="40"
                                    Padding="5">33</TextBlock>
@@ -122,7 +123,7 @@
                                     <RowDefinition Height="30" />
                                     <RowDefinition Height="30"/>
                                 </Grid.RowDefinitions>
-                                <TextBlock Grid.Row="0" Foreground="White" 
+                                <TextBlock Grid.Row="0" Foreground="White" Name="tb_home_NumberOfClass"
                                    VerticalAlignment="Center"
                                    FontSize="40"
                                    Padding="5">52</TextBlock>
@@ -136,23 +137,52 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="300"/>
                                     <ColumnDefinition/>
-                                    <ColumnDefinition Width="300"/>
+                                    <ColumnDefinition Width="400"/>
                                 </Grid.ColumnDefinitions>
                                 
                                 <StackPanel Grid.Column="0" Background="White" Orientation="Vertical" Margin="10 20 10 0">
                                     <StackPanel.Effect>
                                         <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
                                     </StackPanel.Effect>
-                                    <TextBlock Foreground="Black" FontSize="30" Margin="20 10 0 10">Lịch</TextBlock>
+                                    <!--<TextBlock Foreground="Black" FontSize="30" Margin="20 10 0 10">Lịch</TextBlock>-->
                                     <Calendar Width="280" HorizontalAlignment="Center"></Calendar>
                                 </StackPanel>
                                 
-                                <StackPanel Grid.Column="1" Background="White" Margin="10 20 10 0">
-                                    <StackPanel.Effect>
+                                <Grid Grid.Column="1" Background="White" Margin="10 20 10 0">
+                                    <Grid.Effect>
                                         <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                                    </StackPanel.Effect>
-                                    <TextBlock Foreground="Black" FontSize="30" Margin="20 10 0 10">Hoạt động</TextBlock>
-                                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    </Grid.Effect>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="60"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock  Grid.Row="0" Foreground="Black" FontSize="30" Margin="20 10 0 10">Lịch thi</TextBlock>
+                                    
+                                    <ListView Grid.Row="1" Name="lv_home_schedule" Margin="5,0,0,0" BorderThickness="0">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Background="#3C8DBC" Height="60" Margin="10" MinWidth="500">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="70"/>
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition/>
+                                                        <RowDefinition/>
+                                                    </Grid.RowDefinitions>
+
+                                                    <StackPanel Grid.Row="0" Grid.RowSpan="2" Background="Green">
+                                                        <TextBlock Grid.Row="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding day}"/>
+                                                        <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding year}"/>
+                                                    </StackPanel>
+
+                                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" Margin="5 0 5 0" TextWrapping="Wrap" Text="{Binding title}"/>
+                                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="15" Margin="5 0 5 0" TextWrapping="WrapWithOverflow" Text="{Binding detail}"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                    <!--<ScrollViewer VerticalScrollBarVisibility="Auto">
                                         <StackPanel>
                                             <Grid Name="HD1" Background="#3C8DBC" Height="60" Margin="10">
                                                 <Grid.ColumnDefinitions>
@@ -249,17 +279,39 @@
                                                 <TextBlock Grid.Row="1" Grid.Column="1" FontSize="15" TextWrapping="WrapWithOverflow">Các giảng viên được phân công thực hiện đúng yêu cầu</TextBlock>
                                             </Grid>
                                         </StackPanel>
-                                    </ScrollViewer>
-                                </StackPanel>
+                                    </ScrollViewer>-->
+                                </Grid>
                              
-                                <StackPanel Grid.Column="2" Background="White" Margin="10 20 20 0">
-                                    <StackPanel.Effect>
+                                <Grid Grid.Column="2" Background="White" Margin="0,20,30,0">
+                                    <Grid.Effect>
                                         <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                                    </StackPanel.Effect>
-
-                                    <TextBlock Foreground="Black" FontSize="30" Margin="20 10 0 10">Khóa học</TextBlock>
+                                    </Grid.Effect>
                                     
-                                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="60"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Foreground="Black" FontSize="30" Margin="20 10 0 5">Khóa học</TextBlock>
+                                    
+                                    <ListView Grid.Row="1" Name="lv_home_courses" Margin="2 0 0 2" BorderThickness="0">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Background="#39CCCC" Width="300" Height="40" Margin="10">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition Width="30"/>
+                                                        <ColumnDefinition Width="30"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Grid.Column="0" Padding="5"  FontSize="20" VerticalAlignment="Center" Text="{Binding TenCTH}"/>
+                                                    <Image Grid.Column="1" Source="/Resources/students.png" />
+                                                    <TextBlock Grid.Column="2" FontSize="25" Text="{Binding NumberOfStudent}"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                    
+                                    <!--<ScrollViewer VerticalScrollBarVisibility="Auto">
                                         <StackPanel>
                                             <Grid Background="#39CCCC" Width="250" Height="40" Margin="10">
                                                 <Grid.ColumnDefinitions>
@@ -316,8 +368,8 @@
                                                 <TextBlock Grid.Column="2" FontSize="25">72</TextBlock>
                                             </Grid>
                                         </StackPanel>
-                                    </ScrollViewer>
-                                </StackPanel>
+                                    </ScrollViewer>-->
+                                </Grid>
                                 
                             </Grid>
                             
@@ -368,8 +420,8 @@
                                     </StackPanel>
 
                                     <TextBlock Grid.Column="1" Grid.Row="0" Foreground="Black" FontSize="16" Padding="5">Học viên tiềm năng</TextBlock>
-                                    <TextBlock Grid.Column="1" Grid.Row="1" Foreground="Black" FontSize="40" Margin="5 0 0 0" Grid.RowSpan="2">128</TextBlock>
-                                    <Button Grid.Column="1" Grid.Row="2" Width="20" Height="20" Margin="0 0 5 5" HorizontalAlignment="Right" Padding="0">✛</Button>
+                                    <TextBlock Grid.Column="1" Grid.Row="1" Foreground="Black" FontSize="40" Margin="5 0 0 0" Grid.RowSpan="2" Name="tb_numberOfNewStudent">128</TextBlock>
+                                    <!--<Button Grid.Column="1" Grid.Row="2" Width="20" Height="20" Margin="0 0 5 5" HorizontalAlignment="Right" Padding="0">✛</Button>-->
                                 </Grid>
                                 
                                 <Grid Grid.Column="1">
@@ -396,35 +448,44 @@
                                     </StackPanel>
 
                                     <TextBlock Grid.Column="1" Grid.Row="0" Foreground="Black" FontSize="16" Padding="5">Học viên chính thức</TextBlock>
-                                    <TextBlock Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Foreground="Black" FontSize="40" Margin="5 0 0 0">499</TextBlock>
-                                    <Button Grid.Column="1" Grid.Row="2" Width="20" Height="20" Margin="0 0 5 5" HorizontalAlignment="Right" Padding="0">✛</Button>
+                                    <TextBlock Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Foreground="Black" FontSize="40" Margin="5 0 0 0" Name="tb_numberOfActiveStudent">499</TextBlock>
+                                    <!--<Button Grid.Column="1" Grid.Row="2" Width="20" Height="20" Margin="0 0 5 5" HorizontalAlignment="Right" Padding="0">✛</Button>-->
                                 </Grid>
                             </Grid>
                             
                             <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="0" Margin="10" Background="White">
-                                    <StackPanel.Effect>
-                                        <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                                    </StackPanel.Effect>
+                                <ListView Name="lv_dsHocVien" Background="White">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Background="#F9F9F9" Margin="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="250"/>
+                                                    <ColumnDefinition Width="100*"/>
+                                                    <ColumnDefinition Width="50*"/>
+                                                    <ColumnDefinition Width="50*"/>
+                                                </Grid.ColumnDefinitions>
+                                                
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
 
-                                    <TextBlock Foreground="Black" FontSize="20" Margin="10">Học viên đăng kí mới hàng tháng</TextBlock>
-                                    
-                                    <Image Source="/Resources/chart.png" Margin="15"/>
-                                </StackPanel>
-
-                                <StackPanel Grid.Column="1" Margin="10" Background="White">
-                                    <StackPanel.Effect>
-                                        <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                                    </StackPanel.Effect>
-
-                                    <TextBlock Foreground="Black" FontSize="20" Margin="10">Học viên chính thức hàng tháng</TextBlock>
-
-                                    <Image Source="/Resources/chart2.png" Margin="15"/>
-                                </StackPanel>
+                                                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,10,2" FontSize="15" Name="tb_lv_tenHV" Text="{Binding MTenHocVien}"/>
+                                                <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,10,2" Name="tb_lv_maHV" Text="{Binding MMaHocVien}"/>
+                                                <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Name="bt_lv_editHV">
+                                                    <Button.Background>
+                                                        <ImageBrush ImageSource="/EnglishCenter;component/Resources/edit.png"/>
+                                                    </Button.Background>
+                                                </Button>
+                                                <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Name="bt_lv_viewHV">
+                                                    <Button.Background>
+                                                        <ImageBrush ImageSource="/EnglishCenter;component/Resources/info.png"/>
+                                                    </Button.Background>
+                                                </Button>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
                             </Grid>
                             
                         </Grid>

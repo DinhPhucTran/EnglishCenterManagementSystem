@@ -23,5 +23,19 @@ namespace EnglishCenter.View
         {
             InitializeComponent();
         }
+
+        private void Button_Luu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Button_Thoat_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Button_Huy_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
