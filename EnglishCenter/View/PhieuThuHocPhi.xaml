@@ -31,8 +31,8 @@
             <TextBlock Grid.Column="1" Text="Phiếu thu học phí" FontSize="30" Foreground="White" VerticalAlignment="Center"/>
         </Grid>
 
-        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Tên học viên" FontSize="15" />
-        <ComboBox Name="cb_tenHocVien" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="200" Margin="5,0,200,5" Height="25">
+        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Tên học viên" FontSize="15" />
+        <ComboBox Name="cb_tenHocVien" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="200" Margin="5,0,200,5" Height="25" SelectionChanged="cb_tenHocVien_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding MTenHocVien}"/>
@@ -40,8 +40,8 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Số điện thoại" FontSize="15" />
-        <TextBox Name="tb_sdt" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="200" Margin="5,0,200,5" Height="25" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Số điện thoại" FontSize="15" />
+        <TextBox Name="tb_sdt" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="200" Margin="5,0,200,5" Height="25" PreviewTextInput="NumberValidationTextBox"/>
 
         <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Lớp" FontSize="15" />
         <ComboBox Name="cb_lop"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="250" HorizontalAlignment="Left" Margin="5,0,50,5" Height="25" SelectionChanged="cb_lop_SelectionChanged">
