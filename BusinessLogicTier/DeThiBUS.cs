@@ -10,15 +10,30 @@ namespace BusinessLogicTier
 {
     public class DeThiBUS
     {
-        public DeThiBUS() { }
+        DeThiDAO mDeThiDAO;
+
+        public DeThiBUS() {
+            mDeThiDAO = new DeThiDAO();
+        }
 
         public List<DeThi> getListDeThi()
         {
             return new DeThiDAO().getListDeThi();
         }
 
+        public int getIndex()
+        {
+            List<DeThi> ds = mDeThiDAO.getListDeThi();
+            if (ds.Count > 0)
+            {
+                return ds.Select(m => int.Parse(m.MMaDeThi)).Max() + 1;
+            }
+            return 1;
+        }
+
         public bool themDeThi(DeThi dth)
         {
+            dth.MMaDeThi = getIndex().ToString();
             return new DeThiDAO().themDeThi(dth);
         }
 

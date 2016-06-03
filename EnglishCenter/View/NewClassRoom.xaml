@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EnglishCenter.View"
         mc:Ignorable="d"
-        Title="NewClassRoom" Height="350" Width="400">
+        Title="NewClassRoom" Height="400" Width="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
@@ -28,22 +28,24 @@
         </Grid>
 
         <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Tên phòng" FontSize="15" />
-        <TextBox Name="TenPhong_tb" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="200" HorizontalAlignment="Left" Margin="5,0,50,5" Height="25"/>
+        <TextBox Name="TenPhong_tb" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="150" HorizontalAlignment="Left" Margin="5,0,50,5" Height="25"/>
 
         <Grid Grid.Row="7" Grid.ColumnSpan="2">
-            <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5"/>
-            <Button Content="Lưu" HorizontalAlignment="Right" Margin="10,0,110,5" Click="Button_Click"/>
+            <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5" Click="Button_Click"/>
         </Grid>
-        <GroupBox x:Name="groupBox" Header="Danh sách phòng" HorizontalAlignment="Left" Margin="9,13,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="373" Height="129">
+        <GroupBox x:Name="groupBox" Header="Danh sách phòng" HorizontalAlignment="Left" Margin="9,13,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="373" Height="182">
             <ScrollViewer>
-                <ListView x:Name="dsPhong_lv" HorizontalAlignment="Left" Height="100" Margin="0,6,0,0" VerticalAlignment="Top" Width="358">
-                    <GridView>
-                        <GridViewColumn Header="Mã phòng" Width="100" DisplayMemberBinding="{Binding MaPhong}"/>
-                        <GridViewColumn Header="Tên Phòng" Width="250" DisplayMemberBinding="{Binding TenPhong}"/>
-                    </GridView>
+                <ListView x:Name="dsPhong_lv" HorizontalAlignment="Left" Height="163" VerticalAlignment="Top" Width="358">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Mã phòng" Width="100" DisplayMemberBinding="{Binding MMaPhong}"/>
+                            <GridViewColumn Header="Tên Phòng" Width="250" DisplayMemberBinding="{Binding MTenPhong}"/>
+                        </GridView>
+                    </ListView.View>
                 </ListView>
             </ScrollViewer>
         </GroupBox>
+        <Button x:Name="Add_btn" Content="Thêm" Grid.Column="1" HorizontalAlignment="Left" Margin="203,18,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Add_btn_Click"/>
 
     </Grid>
 </Window>

@@ -54,7 +54,7 @@
         <ComboBox Name="cb_deThi" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="5,0,50,5" Height="25" Width="200">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding MChiTiet}"/>
+                    <TextBlock Text="{Binding MLoaiDeThi}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
