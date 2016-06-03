@@ -48,6 +48,7 @@ namespace EnglishCenter.View
             dsPhong_lv.ItemsSource = mPhongBUS.getListPhong();
         }
 
+<<<<<<< HEAD
         public bool isTheSameNameRoom()
         {
             Phong p = mDanhSachPhong.Find(m => m.MTenPhong.ToLower() == TenPhong_tb.Text.ToLower());
@@ -57,6 +58,13 @@ namespace EnglishCenter.View
             }
             return false;
         }
+=======
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+>>>>>>> 3fe0054a003e562cf43b24024ddc1a1a791cb950
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

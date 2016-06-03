@@ -106,6 +106,11 @@ namespace EnglishCenter.View
             }
         }
 
+        private void cb_tenHocVien_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            tb_sdt.Text = mListHocVien[cb_tenHocVien.SelectedIndex].MSdt;
+        }
+
 
 
     }

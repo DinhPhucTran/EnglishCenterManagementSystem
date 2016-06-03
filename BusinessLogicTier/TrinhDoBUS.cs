@@ -25,5 +25,10 @@ namespace BusinessLogicTier
         {
             return mTrinhDoDAO.getMaTrinhDoFromTen(tenTrinhDo);
         }
+
+        public bool themTrinhDo(TrinhDo t)
+        {
+            return mTrinhDoDAO.themTrinhDo(t);
+        }
     }
 }
