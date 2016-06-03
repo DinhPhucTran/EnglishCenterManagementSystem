@@ -62,6 +62,11 @@ namespace EnglishCenter.View
                 ngayKG = (DateTime)dp_ngayKG.SelectedDate;
                 ngayBD = (DateTime)dp_ngayBD.SelectedDate;
                 ngayKT = (DateTime)dp_ngayKT.SelectedDate;
+                if (ngayKT.CompareTo(ngayBD) <= 0)
+                {
+                    MessageBox.Show("Ngày kết thúc phải lớn hơn ngày bắt đầu!");
+                    return;
+                }
             }
             catch (Exception)
             {
@@ -129,7 +134,7 @@ namespace EnglishCenter.View
                     MessageBox.Show("Lổi trong quá trình thêm Thời gian học vào database");
                     return;
                 }
-                this.Close();
+                MessageBox.Show("Thêm thành công!");
             }
                 
             
