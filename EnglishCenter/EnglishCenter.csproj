@@ -68,6 +68,9 @@
     <Compile Include="View\NewClassForm.xaml.cs">
       <DependentUpon>NewClassForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\NewClassRoom.xaml.cs">
+      <DependentUpon>NewClassRoom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\NewCourseForm.xaml.cs">
       <DependentUpon>NewCourseForm.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\NewClassForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NewClassRoom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
