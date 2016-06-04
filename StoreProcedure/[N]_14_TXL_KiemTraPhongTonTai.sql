@@ -1,4 +1,9 @@
-select MaPhong from LOP_HOC where LOP_HOC.MaLop in
-(
-select MaLop from LOP_HOC Where ThoiGianKT>= @ThoiGianBD and ThoiGianBD <= ''
-)
+--Danh sach ten phong
+create procedure PHONG_LIST_TENPHONG
+as
+select TenPhong From phong
+
+--
+
+alter table DE_THI
+alter column LoaiDeThi nvarchar(200)

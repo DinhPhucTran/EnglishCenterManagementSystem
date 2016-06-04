@@ -41,6 +41,7 @@ namespace EnglishCenter.View
         {
 
         }
+
         private void Button_Luu_Click(object sender, RoutedEventArgs e)
         {
             ThiXepLop txl = new ThiXepLop();

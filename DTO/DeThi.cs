@@ -10,6 +10,17 @@ namespace DTO
     {
         String mMaDeThi;
 
+        public DeThi()
+        {
+        }
+
+        public DeThi(String maDeThi, String loaiDT, String chiTiet)
+        {
+            mMaDeThi = maDeThi;
+            mLoaiDeThi = loaiDT;
+            mChiTiet = chiTiet;
+        }
+
         public String MMaDeThi
         {
             get { return mMaDeThi; }

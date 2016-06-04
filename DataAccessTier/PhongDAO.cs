@@ -37,7 +37,6 @@ namespace DataAccessTier
             catch (Exception)
             {
                 connection.Close();
-                throw;
             }
             return result;
         }
