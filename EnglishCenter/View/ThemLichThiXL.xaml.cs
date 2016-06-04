@@ -34,14 +34,14 @@ namespace EnglishCenter.View
             cb_deThi.ItemsSource = new DeThiBUS().getListDeThi();
             cb_deThi.SelectedIndex = 0;
 
-            
+            System.Console.WriteLine(DateTime.Today.DayOfWeek.ToString());
         }
 
         private void Button_Huy_Click(object sender, RoutedEventArgs e)
         {
-
+            resetComponent();
         }
-
+        
         private void Button_Luu_Click(object sender, RoutedEventArgs e)
         {
             ThiXepLop txl = new ThiXepLop();
@@ -58,20 +58,33 @@ namespace EnglishCenter.View
                 return;
             }
             
-            int result = new ThiXepLopBUS().themThiXepLop(txl);
-            if (result != 1)
+            bool result = new ThiXepLopBUS().themThiXepLop(txl);
+            if (!result)
             {
-                MessageBox.Show("Thêm thất bại. Lịch thi đả tồn tại hoặc lổi kết nối vào database\nresult code: " + result);
+                MessageBox.Show("Thêm thất bại.");
+                return;
             }
-            else
-            {
-                this.Close();
-            }
+            
+            MessageBox.Show("Lịch thi xếp lớp được thêm thành công.");
+            resetComponent();
         }
         private void Button_Thoat_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        public void resetComponent()
+        {
+            dp_ngayThi.Text = "";
+            cb_caThi.Text = "";
+            cb_deThi.Text = "";
+            cb_phongThi.Text = "";
+        }
+
+        private void dp_ngayThi_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //List<Ca> caRanh;
+            //List<Phong> phongRanh;
+        }
     }
 }

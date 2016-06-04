@@ -14,30 +14,65 @@ namespace BusinessLogicTier
         public ThiXepLopBUS() {
             mThiXepLop = new ThiXepLopDAO();
         }
+
         public List<ThiXepLop> getListThiXepLop()
         {
             return mThiXepLop.getListThiXepLop();
         }
 
-        //return value = 0, da ton tai
-        // = 1 succses
-        // = 2 failed
-        public int themThiXepLop(ThiXepLop txl){
-            List<ThiXepLop> list = mThiXepLop.getListThiXepLop();
-            int max = 0;
-            foreach (ThiXepLop t in list)
+        public int getIndex()
+        {
+            List<ThiXepLop> ds = mThiXepLop.getListThiXepLop();
+            if (ds.Count == 0)
             {
-                if (max < int.Parse(t.MMaPhong))
-                {
-                    max = int.Parse(t.MMaPhong);
-                }
-                if (t.MCaThi.Equals(txl.MCaThi) && t.MDeThi.Equals(txl.MDeThi) && t.MMaPhong.Equals(txl.MMaPhong) && t.MNgayThi.Equals(txl.MNgayThi))
-                {
-                    return 0;
-                }
+                return 1;
             }
-            txl.MMaThiXL = (max + 1).ToString();
-            return mThiXepLop.themThiXepLop(txl)?1:2;
+            return ds.Select(m => int.Parse(m.MMaThiXL)).Max() + 1;
+        }
+        
+        public bool themThiXepLop(ThiXepLop txl){
+            List<LopHoc_ThoiGianDTO> ds = mThiXepLop.layThongTinCacLopTaiThoiDiemXepLop(txl);
+            String maThuCuaNgayThi = "";
+            switch (txl.MNgayThi.DayOfWeek)
+            {
+                case DayOfWeek.Sunday:
+                    maThuCuaNgayThi = "CN";
+                    break;
+                case DayOfWeek.Monday:
+                    maThuCuaNgayThi = "T2";
+                    break;
+                case DayOfWeek.Tuesday:
+                    maThuCuaNgayThi = "T3";
+                    break;
+                case DayOfWeek.Wednesday:
+                    maThuCuaNgayThi = "T4";
+                    break;
+                case DayOfWeek.Thursday:
+                    maThuCuaNgayThi = "T5";
+                    break;
+                case DayOfWeek.Friday:
+                    maThuCuaNgayThi = "T6";
+                    break;
+                case DayOfWeek.Saturday:
+                    maThuCuaNgayThi = "T7";
+                    break;
+            }
+            LopHoc_ThoiGianDTO temp = ds.Find(m => (m.MMaPhong == txl.MMaPhong && m.MMaCa == txl.MCaThi && m.MMaThu == maThuCuaNgayThi));
+            if (temp != null)
+            {
+                return false;
+            }
+            List<ThiXepLop> same = mThiXepLop.getListThiXepLopByTime(txl);
+            if (same.Count != 0)
+            {
+                return false;
+            }
+            txl.MMaThiXL = getIndex().ToString();
+            if (!mThiXepLop.themThiXepLop(txl))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

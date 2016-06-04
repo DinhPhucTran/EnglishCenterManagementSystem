@@ -27,7 +27,7 @@ namespace DTO
             mNgayThi = ngayThi;
         }
 
-        public string MMaThiXL
+        public String MMaThiXL
         {
             get
             {
@@ -40,7 +40,7 @@ namespace DTO
             }
         }
 
-        public string MMaPhong
+        public String MMaPhong
         {
             get
             {
@@ -53,7 +53,7 @@ namespace DTO
             }
         }
 
-        public string MCaThi
+        public String MCaThi
         {
             get
             {
@@ -66,7 +66,7 @@ namespace DTO
             }
         }
 
-        public string MDeThi
+        public String MDeThi
         {
             get
             {
