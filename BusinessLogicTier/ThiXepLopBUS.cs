@@ -27,9 +27,9 @@ namespace BusinessLogicTier
             int max = 0;
             foreach (ThiXepLop t in list)
             {
-                if (max < int.Parse(t.MMaPhong))
+                if (max < int.Parse(t.MMaThiXL))
                 {
-                    max = int.Parse(t.MMaPhong);
+                    max = int.Parse(t.MMaThiXL);
                 }
                 if (t.MCaThi.Equals(txl.MCaThi) && t.MDeThi.Equals(txl.MDeThi) && t.MMaPhong.Equals(txl.MMaPhong) && t.MNgayThi.Equals(txl.MNgayThi))
                 {
