@@ -31,6 +31,7 @@ namespace BusinessLogicTier
         }
         
         public bool themThiXepLop(ThiXepLop txl){
+            //Kiem tra ngay thi > ngay hien tai
             List<LopHoc_ThoiGianDTO> ds = mThiXepLop.layThongTinCacLopTaiThoiDiemXepLop(txl);
             String maThuCuaNgayThi = "";
             switch (txl.MNgayThi.DayOfWeek)
