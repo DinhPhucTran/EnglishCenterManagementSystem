@@ -93,6 +93,9 @@
     <Compile Include="View\NewStudentForm.xaml.cs">
       <DependentUpon>NewStudentForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\NhapKetQuaThiXL.xaml.cs">
+      <DependentUpon>NhapKetQuaThiXL.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PhieuThuHocPhi.xaml.cs">
       <DependentUpon>PhieuThuHocPhi.xaml</DependentUpon>
     </Compile>
@@ -144,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\NewStudentForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NhapKetQuaThiXL.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

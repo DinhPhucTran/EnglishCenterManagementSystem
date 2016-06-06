@@ -20,14 +20,14 @@ namespace BusinessLogicTier
             return mThiXepLop.getListThiXepLop();
         }
 
-        public int getIndex()
+        public String getIndex()
         {
             List<ThiXepLop> ds = mThiXepLop.getListThiXepLop();
             if (ds.Count == 0)
             {
-                return 1;
+                return "TXL" + DateTime.Now.Year.ToString() + "_1";
             }
-            return ds.Select(m => int.Parse(m.MMaThiXL)).Max() + 1;
+            return "TXL" + ds.Select(m => int.Parse(m.MMaThiXL.Substring(m.MMaThiXL.IndexOf('_') + 1))).Max() + 1;
         }
         
         public bool themThiXepLop(ThiXepLop txl){

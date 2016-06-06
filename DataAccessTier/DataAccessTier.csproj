@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CaDAO.cs" />
+    <Compile Include="ChiTietThiXepLopDAO.cs" />
     <Compile Include="ChuongTrinhHocDAO.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="GiangVienDAO.cs" />
