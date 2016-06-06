@@ -1,14 +1,12 @@
 ﻿<Window x:Class="EnglishCenter.View.ThemLichThi"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="English Center" Height="400" Width="400"
-        Background="#F8F8F8" Icon="/EnglishCenter;component/Resources/course.png">
+        Title="English Center" Height="600" Width="800"
+        Background="#F8F8F8" Icon="/EnglishCenter;component/Resources/course.png" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
@@ -17,49 +15,53 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="#00C0EF">
+        <Grid Grid.Row="0" Grid.ColumnSpan="4" Background="#00C0EF">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="103*"/>
+                <ColumnDefinition Width="239*"/>
             </Grid.ColumnDefinitions>
 
             <Image Source="/EnglishCenter;component/Resources/exam_white.png" Margin="10"/>
-            <TextBlock Grid.Column="1" Text="Thêm lịch thi xếp lớp" FontSize="30" Foreground="White" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Text="Thêm lịch thi xếp lớp" FontSize="30" Foreground="White" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,15"/>
         </Grid>
 
         <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Ngày thi" FontSize="15" />
-        <DatePicker Name="dp_ngayThi" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="5,0,50,5" Height="25" Width="200" HorizontalAlignment="Left"/>
-
-        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Ca thi" FontSize="15" />
-        <ComboBox Name="cb_caThi" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="5,0,50,5" Height="25" Width="200">
+        <DatePicker Name="dp_ngayThi" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Margin="5,0,50,5" Height="25" Width="200" HorizontalAlignment="Left" SelectedDateChanged="dp_ngayThi_SelectedDateChanged"/>
+        
+        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Đề thi" FontSize="15" />
+        <ComboBox Name="cb_deThi" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="5,0,50,5" Height="25" Width="200">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding MMaCa}"/>
+                    <TextBlock Text="{Binding MLoaiDeThi}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Phòng thi" FontSize="15" />
-        <ComboBox Name="cb_phongThi" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="5,9.6,0,0" Height="25" Width="200">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding MTenPhong}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+        <ScrollViewer Grid.Row="3" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Hidden">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Đề thi" FontSize="15" />
-        <ComboBox Name="cb_deThi" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="5,0,50,5" Height="25" Width="200">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding MChiTiet}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+                <TextBlock Grid.Row="0" Margin="10,0,10,0" VerticalAlignment="Bottom" Foreground="Blue" FontSize="15" Height="20" Text="Chọn thời gian thi"/>
+                <ScrollViewer Grid.Row="1" Height="200" VerticalScrollBarVisibility="Visible" CanContentScroll="True">
 
-        <Grid Grid.Row="6" Grid.ColumnSpan="2">
+                        <Grid Name="ThoiGianThi_Grid">
+                        </Grid>
+
+                    </ScrollViewer>
+                
+
+            </Grid>
+        </ScrollViewer>
+
+        <Grid Grid.Row="4" Grid.ColumnSpan="4">
             <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5" Click="Button_Thoat_Click"/>
             <Button Content="Lưu" HorizontalAlignment="Right" Margin="10,0,110,5" Click="Button_Luu_Click"/>
             <Button Content="Hủy" HorizontalAlignment="Right" Margin="10,0,190,5" Click="Button_Huy_Click"/>

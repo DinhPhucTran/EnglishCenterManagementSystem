@@ -71,6 +71,9 @@
     <Compile Include="View\NewClassForm.xaml.cs">
       <DependentUpon>NewClassForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\NewClassRoom.xaml.cs">
+      <DependentUpon>NewClassRoom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\NewCourseForm.xaml.cs">
       <DependentUpon>NewCourseForm.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,8 @@
     </Compile>
     <Compile Include="View\PhieuThuHocPhi1HV.xaml.cs">
       <DependentUpon>PhieuThuHocPhi1HV.xaml</DependentUpon>
+    <Compile Include="View\ThemDeThi.xaml.cs">
+      <DependentUpon>ThemDeThi.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ThemGiangVien.xaml.cs">
       <DependentUpon>ThemGiangVien.xaml</DependentUpon>
@@ -115,6 +120,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\NewClassRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\NewCourseForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -136,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PhieuThuHocPhi1HV.xaml">
+		<SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ThemDeThi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

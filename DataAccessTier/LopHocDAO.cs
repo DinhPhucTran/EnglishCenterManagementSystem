@@ -174,6 +174,7 @@ namespace DataAccessTier
             }
         }
 
+<<<<<<< HEAD
         public List<LopHoc> getListLopHocByMaHV(String maHv)
         {
             List<LopHoc> result = new List<LopHoc>();
@@ -305,6 +306,32 @@ namespace DataAccessTier
                     lop.MNgayKhaiGiang = DateTime.Parse(dt.Rows[i]["NgayKhaiGiang"].ToString());
                     lop.MSoTien = double.Parse(dt.Rows[i]["SoTien"].ToString());
                     listLop.Add(lop);
+=======
+        public List<LopHoc_ThoiGianDTO> getListLopHocByDay(String maThu, DateTime ngayThi)
+        {
+            List<LopHoc_ThoiGianDTO> result = new List<LopHoc_ThoiGianDTO>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("Lop_Hoc_LIST_BY_DAY", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@NgayThi", ngayThi);
+                cmd.Parameters.AddWithValue("@MaThu", maThu);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    LopHoc_ThoiGianDTO temp = new LopHoc_ThoiGianDTO();
+                    temp.MMaLop = dt.Rows[i]["MaLop"].ToString();
+                    temp.MMaPhong = dt.Rows[i]["MaPhong"].ToString();
+                    temp.MMaThu = dt.Rows[i]["MaThu"].ToString();
+                    temp.MMaCa = dt.Rows[i]["MaCa"].ToString();
+                    result.Add(temp);
+>>>>>>> 84d4a7a6b1f6c9752da37351fe3ae9b337c52b35
                 }
                 connection.Close();
             }
@@ -312,8 +339,13 @@ namespace DataAccessTier
             {
                 connection.Close();
             }
+<<<<<<< HEAD
             return listLop;
         }
 
+=======
+            return result;
+        }
+>>>>>>> 84d4a7a6b1f6c9752da37351fe3ae9b337c52b35
     }
 }

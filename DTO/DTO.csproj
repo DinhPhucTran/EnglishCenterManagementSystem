@@ -47,6 +47,7 @@
     <Compile Include="GiangVien.cs" />
     <Compile Include="HocVien.cs" />
     <Compile Include="LopHoc.cs" />
+    <Compile Include="LopHoc_ThoiGianDTO.cs" />
     <Compile Include="PhieuThuHocPhi.cs" />
     <Compile Include="Phong.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

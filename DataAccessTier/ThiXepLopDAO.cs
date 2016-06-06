@@ -13,6 +13,44 @@ namespace DataAccessTier
     public class ThiXepLopDAO:DBConnection
     {
         public ThiXepLopDAO() { }
+
+        public List<ThiXepLop> getListThiXepLopByTime(ThiXepLop txl)
+        {
+            List<ThiXepLop> ds = new List<ThiXepLop>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("THI_XEP_LOP_LIST_BY_DATE", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaPhong", txl.MMaPhong);
+                cmd.Parameters.AddWithValue("@NgayThi", txl.MNgayThi);
+                //cmd.Parameters.Add("@NgayThi", SqlDbType.SmallDateTime).Value = txl.MNgayThi;
+                cmd.Parameters.AddWithValue("@CaThi", txl.MCaThi);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ThiXepLop temp = new ThiXepLop( dt.Rows[i]["MaThiXL"].ToString(),
+                                                    dt.Rows[i]["MaPhong"].ToString(),
+                                                    dt.Rows[i]["CaThi"].ToString(), 
+                                                    dt.Rows[i]["MaDeThi"].ToString(),
+                                                    DateTime.Parse(dt.Rows[i]["NgayThi"].ToString()));
+                    ds.Add(temp);
+                }
+                connection.Close();
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message.ToString());
+            }
+            return ds;
+        }
+
         public List<ThiXepLop> getListThiXepLop()
         {
             try
@@ -99,6 +137,41 @@ namespace DataAccessTier
                 Console.WriteLine(ex);
             }
             return false;
+        }
+
+        public List<LopHoc_ThoiGianDTO> layThongTinCacLopTaiThoiDiemXepLop(ThiXepLop txl)
+        {
+            List<LopHoc_ThoiGianDTO> ds = new List<LopHoc_ThoiGianDTO>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("LOP_HOC_LIST_TO_ADD_THIXL", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                cmd.Parameters.AddWithValue("@MaPhong", txl.MMaPhong);
+                cmd.Parameters.AddWithValue("@NgayThi", txl.MNgayThi);
+                cmd.Parameters.AddWithValue("@MaCa", txl.MCaThi);
+                da.Fill(dt);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    var temp = new LopHoc_ThoiGianDTO();
+                    temp.MMaLop = dt.Rows[i]["MaLop"].ToString();
+                    temp.MMaPhong = dt.Rows[i]["MaPhong"].ToString();
+                    temp.MMaThu = dt.Rows[i]["MaThu"].ToString();
+                    temp.MMaCa = dt.Rows[i]["MaCa"].ToString();
+                    ds.Add(temp);
+                }
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message.ToString());
+            }
+            return ds;
         }
 
         public bool xoaThiXepLop(String maTxl)
