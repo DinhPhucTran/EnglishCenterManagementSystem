@@ -21,17 +21,20 @@ namespace EnglishCenter.View
     public partial class ThemLichThi : Window
     {
         List<Phong> mListPhong;
-        List<Ca> mListCa;
+        //List<Ca> mListCa;
         PhongBUS mPhongBUS;
         CaBUS mCaBUS;
+        ThiXepLopBUS mThiXepLopBUS;
         List<RadioButton> mThoiGianThi;
         List<LopHoc_ThoiGianDTO> mDanhSachLopVaThoiGian;
         LopHocBUS mLopHocBUS;
+        List<ThiXepLop> mDanhSachThiXepLopTrongNgay;
 
         public ThemLichThi()
         {
             InitializeComponent();
             mLopHocBUS = new LopHocBUS();
+            mThiXepLopBUS = new ThiXepLopBUS();
             mPhongBUS = new PhongBUS();
             mCaBUS = new CaBUS();
             mListPhong = mPhongBUS.getListPhong();
@@ -47,9 +50,7 @@ namespace EnglishCenter.View
         private void Button_Luu_Click(object sender, RoutedEventArgs e)
         {
             ThiXepLop txl = new ThiXepLop();
-            //txl.MCaThi = new CaBUS().getAllCa()[cb_caThi.SelectedIndex].MMaCa;
-            //txl.MDeThi = new DeThiBUS().getListDeThi()[cb_deThi.SelectedIndex].MMaDeThi;
-            //txl.MMaPhong = mListPhong[cb_phongThi.SelectedIndex].MMaPhong;
+            #region KiemTraNgayThi
             try
             {
                 txl.MNgayThi = (DateTime)dp_ngayThi.SelectedDate;
@@ -59,6 +60,48 @@ namespace EnglishCenter.View
                 MessageBox.Show("Ngày tháng không hợp lệ");
                 return;
             }
+            //ngày thi phải lớn hơn ngày hiện tại.
+            if (txl.MNgayThi < DateTime.Today)
+            {
+                String temp = DateTime.Today.ToString();
+                MessageBox.Show("Hôm nay là ngày " + temp.Substring(0, temp.IndexOf(" ")) + ". \nVui lòng chọn ngày thi sau ngày hiện tại.");
+                return;
+            }
+
+            //ngày thi của 1 thi xếp lớp phải thuộc tất cả các lớp đang mở chưa khai giảng
+            List<LopHoc> dsLopDangMo = mLopHocBUS.getListLopHocWithNgayThiXL(txl.MNgayThi);
+            if (dsLopDangMo.Count <= 0)
+            {
+                MessageBox.Show("Ngày thi xếp lớp không phù hợp cho các lớp đang mở hiện tại.");
+                return;
+            }
+            #endregion
+
+            #region KiemTraDeThi
+            if (cb_deThi.Text == "")
+            {
+                MessageBox.Show("Vui lòng chọn đề thi!");
+                return;
+            }
+
+            txl.MDeThi = ((DeThi)cb_deThi.SelectedItem).MMaDeThi;
+            #endregion
+
+            #region KiemTraDiaDiemVaCaThi
+            if (mThoiGianThi.Find(m => m.IsChecked == true) == null)
+            {
+                MessageBox.Show("Vui lòng chọn thời gian thi!");
+                return;
+            }
+            String ca_phong = mThoiGianThi.Find(m => m.IsChecked == true).Name;
+            if (ca_phong.IndexOf('C') <= -1 && ca_phong.IndexOf('_') <= -1)
+            {
+                MessageBox.Show("Không add được học viên!");
+                return;
+            }
+            txl.MCaThi = ca_phong.Substring(ca_phong.IndexOf('C') + 1, ca_phong.IndexOf('_') - (ca_phong.IndexOf('C') + 1));
+            txl.MMaPhong = ca_phong.Substring(ca_phong.IndexOf('P') + 1, ca_phong.Length - (ca_phong.IndexOf('P') + 1));
+            #endregion
 
             bool result = new ThiXepLopBUS().themThiXepLop(txl);
             if (!result)
@@ -81,13 +124,20 @@ namespace EnglishCenter.View
             //cb_caThi.Text = "";
             cb_deThi.Text = "";
             //cb_phongThi.Text = "";
+            ThoiGianThi_Grid.Children.Clear();
+            ThoiGianThi_Grid.ColumnDefinitions.Clear();
+            ThoiGianThi_Grid.RowDefinitions.Clear();
         }
 
         private void dp_ngayThi_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            mDanhSachLopVaThoiGian = mLopHocBUS.getListLopHocByDay(DateTime.Parse(dp_ngayThi.Text));
-            //List<Ca> caRanh;
-            //List<Phong> phongRanh;
+            if (dp_ngayThi.Text == "")
+            {
+                return;
+            }
+            DateTime ngayThi = DateTime.Parse(dp_ngayThi.Text);
+            mDanhSachLopVaThoiGian = mLopHocBUS.getListLopHocByDay(ngayThi);
+            mDanhSachThiXepLopTrongNgay = mThiXepLopBUS.getAllThiXLByDay(ngayThi);
             createThoiGianRanh();
         }
 
@@ -114,7 +164,7 @@ namespace EnglishCenter.View
             for (int i = 0; i < listCa.Count; i++)
             {
                 TextBlock tb = new TextBlock();
-                tb.Text = listCa[i].MMaCa;
+                tb.Text = "Ca " + listCa[i].MMaCa;
                 tb.VerticalAlignment = VerticalAlignment.Center;
                 tb.HorizontalAlignment = HorizontalAlignment.Center;
                 Grid.SetRow(tb, 0);
@@ -152,8 +202,12 @@ namespace EnglishCenter.View
                     {
                         continue;
                     }
+                    if (mDanhSachThiXepLopTrongNgay.Find(m => (m.MMaPhong == listPhong[i].MMaPhong && m.MCaThi == listCa[j].MMaCa)) != null)
+                    {
+                        continue;
+                    }
                     RadioButton cb = new RadioButton();
-                    cb.Name = "Ca" + listCa[j].MMaCa + "_" + "Phong" + listPhong[i].MMaPhong;
+                    cb.Name = "C" + listCa[j].MMaCa + "_" + "P" + listPhong[i].MMaPhong;
                     cb.VerticalAlignment = VerticalAlignment.Center;
                     cb.HorizontalAlignment = HorizontalAlignment.Center;
                     mThoiGianThi.Add(cb);
