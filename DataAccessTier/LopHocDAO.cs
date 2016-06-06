@@ -174,7 +174,6 @@ namespace DataAccessTier
             }
         }
 
-<<<<<<< HEAD
         public List<LopHoc> getListLopHocByMaHV(String maHv)
         {
             List<LopHoc> result = new List<LopHoc>();
@@ -306,7 +305,14 @@ namespace DataAccessTier
                     lop.MNgayKhaiGiang = DateTime.Parse(dt.Rows[i]["NgayKhaiGiang"].ToString());
                     lop.MSoTien = double.Parse(dt.Rows[i]["SoTien"].ToString());
                     listLop.Add(lop);
-=======
+                }
+            }
+            catch (Exception)
+            {
+                connection.Close();
+            }
+                return listLop;
+        }
         public List<LopHoc_ThoiGianDTO> getListLopHocByDay(String maThu, DateTime ngayThi)
         {
             List<LopHoc_ThoiGianDTO> result = new List<LopHoc_ThoiGianDTO>();
@@ -331,7 +337,6 @@ namespace DataAccessTier
                     temp.MMaThu = dt.Rows[i]["MaThu"].ToString();
                     temp.MMaCa = dt.Rows[i]["MaCa"].ToString();
                     result.Add(temp);
->>>>>>> 84d4a7a6b1f6c9752da37351fe3ae9b337c52b35
                 }
                 connection.Close();
             }
@@ -339,13 +344,8 @@ namespace DataAccessTier
             {
                 connection.Close();
             }
-<<<<<<< HEAD
-            return listLop;
-        }
-
-=======
+            
             return result;
         }
->>>>>>> 84d4a7a6b1f6c9752da37351fe3ae9b337c52b35
     }
 }

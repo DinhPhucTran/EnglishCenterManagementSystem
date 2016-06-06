@@ -40,7 +40,6 @@ namespace BusinessLogicTier
             return new LopHocDAO().suaLopHoc(lh);
         }
 
-<<<<<<< HEAD
         public List<LopHoc> getListLopHocByMaHV(String maHv)
         {
             return new LopHocDAO().getListLopHocByMaHV(maHv);
@@ -54,7 +53,7 @@ namespace BusinessLogicTier
         public List<LopHoc> selectLopHoc(String maLop)
         {
             return new LopHocDAO().selectLopHoc(maLop);
-=======
+        }
         public List<LopHoc_ThoiGianDTO> getListLopHocByDay(DateTime ngayThi)
         {
             return new LopHocDAO().getListLopHocByDay(getMaThuFromDay(ngayThi), ngayThi);
@@ -80,7 +79,6 @@ namespace BusinessLogicTier
                     return "T7";
             }
             return "";
->>>>>>> 84d4a7a6b1f6c9752da37351fe3ae9b337c52b35
         }
     }
 }

@@ -91,6 +91,7 @@
     </Compile>
     <Compile Include="View\PhieuThuHocPhi1HV.xaml.cs">
       <DependentUpon>PhieuThuHocPhi1HV.xaml</DependentUpon>
+	</Compile>
     <Compile Include="View\ThemDeThi.xaml.cs">
       <DependentUpon>ThemDeThi.xaml</DependentUpon>
     </Compile>
