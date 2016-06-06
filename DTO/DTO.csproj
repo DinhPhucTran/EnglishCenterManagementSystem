@@ -43,9 +43,12 @@
     <Compile Include="ChiTietLopHoc.cs" />
     <Compile Include="ChiTietThiXepLop.cs" />
     <Compile Include="ChuongTrinhHoc.cs" />
+    <Compile Include="ChuongTrinhHoc_SoHV.cs" />
     <Compile Include="DeThi.cs" />
     <Compile Include="GiangVien.cs" />
     <Compile Include="HocVien.cs" />
+    <Compile Include="HocVien_Lop.cs" />
+    <Compile Include="ListItemThiXepLop.cs" />
     <Compile Include="LopHoc.cs" />
     <Compile Include="LopHoc_ThoiGianDTO.cs" />
     <Compile Include="PhieuThuHocPhi.cs" />
