@@ -21,7 +21,6 @@ namespace EnglishCenter.View
     public partial class ThemLichThi : Window
     {
         List<Phong> mListPhong;
-        //List<Ca> mListCa;
         PhongBUS mPhongBUS;
         CaBUS mCaBUS;
         ThiXepLopBUS mThiXepLopBUS;
@@ -113,6 +112,7 @@ namespace EnglishCenter.View
             MessageBox.Show("Lịch thi xếp lớp được thêm thành công.");
             resetComponent();
         }
+
         private void Button_Thoat_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

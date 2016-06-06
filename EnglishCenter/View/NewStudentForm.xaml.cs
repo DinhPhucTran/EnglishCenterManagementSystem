@@ -124,7 +124,7 @@ namespace EnglishCenter.View
         
         private void Save_btn_Click(object sender, RoutedEventArgs e)
         {
-            #region GetData
+            #region SaveHocVien
             String ten = TenHocVien_tb.Text;
             if (ten == "")
             {
@@ -151,12 +151,12 @@ namespace EnglishCenter.View
             }
 
             String soDT = SoDT_tb.Text;
-            if (!Regex.Match(soDT, @"^(\d[0-9]{9,11})$").Success)
-            {//@"^\d{9,11}$"
+            //if (!Regex.Match(soDT, @"^(\d[0-9]{9,11})$").Success)
+            if(soDT == "")
+            {
                 MessageBox.Show("Please, refill your Phone Number!");
                 return;
             }
-
 
             String maTDDaHoc = null;
             if (TDoDaHoc_cb.Text != "")
@@ -178,7 +178,6 @@ namespace EnglishCenter.View
             {
                 maCTMuonHoc = mChuongTrinhBUS.getMaCTFromTenCT(CTMuonHoc_cb.Text);
             }
-            #endregion
 
             HocVien hv = new HocVien("", ten, (DateTime)ngaySinh, phai, diaChi, Email_tb.Text, soDT, maTDDaHoc, maTDMuonHoc, maCTDaHoc, maCTMuonHoc);
 
@@ -186,7 +185,9 @@ namespace EnglishCenter.View
             {
                 MessageBox.Show("Insert Hoc Vien Failed.");
             }
+            #endregion
 
+            #region SaveThoiGianRanh
             List<CheckBox> listChecked = mListThoiGianRanh.FindAll(i => i.IsChecked == true);
 
             for (int i = 0; i < listChecked.Count; i++)
@@ -197,11 +198,14 @@ namespace EnglishCenter.View
                 {
                     MessageBox.Show("Insert Thoi Gian Ranh Failed.");
                 }
-            }
+            } 
+            #endregion
 
             MessageBox.Show("Hoc vien inserted!");
 
             resetComponent();
+
+
         }
 
         public void resetComponent()
