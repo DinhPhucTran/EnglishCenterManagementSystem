@@ -9,7 +9,7 @@ namespace DTO
     public class ChuongTrinhHoc_SoHV
     {
         public ChuongTrinhHoc ChuongTrinhHoc { get; set; }
-        public String NumberOfStudent { get; set; }
+        public int SoHocVien { get; set; }
         public String TenCTH { get; set; }
     }
 }
