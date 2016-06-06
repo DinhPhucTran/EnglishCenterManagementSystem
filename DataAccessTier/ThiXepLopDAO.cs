@@ -85,6 +85,40 @@ namespace DataAccessTier
             }
         }
 
+        public List<ThiXepLop> getAllThiXepLopByDay(DateTime ngayThi)
+        {
+            List<ThiXepLop> result = new List<ThiXepLop>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("THI_XEP_LOP_LIST_BY_DAY", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@NgayThi", ngayThi);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ThiXepLop temp = new ThiXepLop();
+                    temp.MMaThiXL = dt.Rows[i]["MaThiXL"].ToString();
+                    temp.MMaPhong = dt.Rows[i]["MaPhong"].ToString();
+                    temp.MDeThi = dt.Rows[i]["MaDeThi"].ToString();
+                    temp.MNgayThi = DateTime.Parse(dt.Rows[i]["NgayThi"].ToString());
+                    temp.MCaThi = dt.Rows[i]["CaThi"].ToString();
+                    result.Add(temp);
+                }
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
+        }
+
         public bool themThiXepLop(ThiXepLop txl)
         {
             try

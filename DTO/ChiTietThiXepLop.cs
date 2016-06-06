@@ -8,6 +8,18 @@ namespace DTO
 {
     public class ChiTietThiXepLop
     {
+        public ChiTietThiXepLop()
+        { }
+
+        public ChiTietThiXepLop(String maThiXepLop, String maHV, float ketQuaThi, String maCT_TrungTamDeNghi, String maCT_HvMongMuon)
+        {
+            mMaThiXepLop = maThiXepLop;
+            mMaHocVien = maHV;
+            mKetQuaThi = ketQuaThi;
+            mChuongTrinhDeNghi = maCT_TrungTamDeNghi;
+            mChuongTrinhMongMuon = maCT_HvMongMuon;
+        }
+
         String mMaThiXepLop;
 
         public String MMaThiXepLop
