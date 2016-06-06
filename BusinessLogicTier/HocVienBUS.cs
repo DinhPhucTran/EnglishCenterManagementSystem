@@ -70,5 +70,10 @@ namespace BusinessLogicTier
         {
             return mHocVienDAO.countHocVienByMaLop(maLop);
         }
+
+        public List<HocVien> getListHocVien()
+        {
+            return mHocVienDAO.getListHocVien();
+        }
     }
 }

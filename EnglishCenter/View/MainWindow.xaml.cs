@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DTO;
 using BusinessLogicTier;
+using System.Text.RegularExpressions;
 
 namespace EnglishCenter.View
 {
@@ -21,24 +22,54 @@ namespace EnglishCenter.View
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
+
     {
+        public List<LopHoc> listLopDangMo;
+        public List<TrinhDo> listTrinhDo;
+        public List<ChuongTrinhHoc> listChuongTrinhHoc;
+        public List<GiangVien> listGiangVien;
+        public List<HocVien> listActiveStudent; // Danh sách học viên đang học
+        public List<HocVienWithLop> listHvDangHocWLop; // Danh sách học viên đang học + lớp
+        public List<HocVien> listNewStudent; // Danh sách học viên chưa xếp lớp
+        public List<HocVienWithLop> listFilterHv;
+        public List<HocVien> listAllStudent;// Danh sách tất cả học viên (đanh học, chưa xếp lớp, không còn học)
+
         public MainWindow()
         {
             InitializeComponent();
-            List<TrinhDo> listTrinhDo = new TrinhDoBUS().getListTrinhDo();
-            List<LopHoc> listLopDangMo = new LopHocBUS().getListLopHocByTime(DateTime.Now, DateTime.Now);
-            List<ChuongTrinhHoc> listChuongTrinhHoc = new ChuongTrinhHocBUS().getListChuongTrinhHoc();
-            List<GiangVien> listGiangVien = new GiangVienBUS().getListGiangVien();
+            listTrinhDo = new TrinhDoBUS().getListTrinhDo();
+            listLopDangMo = new LopHocBUS().getListLopHocByTime(DateTime.Now, DateTime.Now);
+            listChuongTrinhHoc = new ChuongTrinhHocBUS().getListChuongTrinhHoc();
+            listGiangVien = new GiangVienBUS().getListGiangVien();
 
-            List<HocVien> listActiveStudent = new List<HocVien>();
+            listActiveStudent = new List<HocVien>();
+            listHvDangHocWLop = new List<HocVienWithLop>();
             foreach (LopHoc lop in listLopDangMo)
             {
                 List<String> listMaHV = new HocVienBUS().getMaHVbyMaLop(lop.MMaLop);
                 foreach (String ma in listMaHV)
                 {
                     listActiveStudent.Add(new HocVienBUS().selectHocVien(ma));
+                    HocVienWithLop hv = new HocVienWithLop();
+                    hv.HocVien = new HocVienBUS().selectHocVien(ma);
+                    hv.Lop = lop;
+                    listHvDangHocWLop.Add(hv);
                 }
             }
+
+            //Lấy danh sách học viên chưa từng được xếp lớp
+            List<LopHoc> listAllLopHoc = new LopHocBUS().getListLopHoc();
+            List<HocVien> listHVdaXepLop = new List<HocVien>(); //List học viên đã xếp lớp (cả hv cũ và đang học)
+            foreach (LopHoc lop in listAllLopHoc)
+            {
+                List<String> listMaHV = new HocVienBUS().getMaHVbyMaLop(lop.MMaLop);
+                foreach (String ma in listMaHV)
+                {
+                    listHVdaXepLop.Add(new HocVienBUS().selectHocVien(ma));
+                }
+            }
+            listAllStudent = new HocVienBUS().getListHocVien();
+            listNewStudent = listAllStudent.Except(listHVdaXepLop, new MaHvComparer()).ToList<HocVien>();
 
             List<ChuongTrinhHoc_SoHV> listHomeChuongTrinhHoc = new List<ChuongTrinhHoc_SoHV>();
             foreach (ChuongTrinhHoc cth in listChuongTrinhHoc)
@@ -79,14 +110,20 @@ namespace EnglishCenter.View
             }
             lv_home_schedule.ItemsSource = listHomeThi;
 
-            lv_dsHocVien.ItemsSource = listActiveStudent;
+            lv_dsHocVien.ItemsSource = listHvDangHocWLop;
             lvChuongTrinhHoc.ItemsSource = listTrinhDo;
             tb_numberOfActiveStudent.Text = listActiveStudent.Count.ToString();
             tb_home_NumberOfStudent.Text = listActiveStudent.Count.ToString();
             tb_home_NumberOfCourse.Text = listChuongTrinhHoc.Count.ToString();
             tb_home_NumberOfTeacher.Text = listGiangVien.Count.ToString();
             tb_home_NumberOfClass.Text = listLopDangMo.Count.ToString();
+            tb_numberOfNewStudent.Text = listNewStudent.Count.ToString();
 
+            //Filter box items
+            //tb_filterHV_lop.ItemsSource = listLopDangMo;
+            //tb_filterHV_lop.ValueMemberPath = "MMaLop";
+            cb_filterHV_lop.ItemsSource = listLopDangMo;
+            
         }
 
         private void btn_AddStudent_Click(object sender, RoutedEventArgs e)
@@ -101,6 +138,7 @@ namespace EnglishCenter.View
             newCourseForm.Show();
         }
 
+        #region Extended classes
         internal class ChuongTrinhHoc_SoHV
         {
             public ChuongTrinhHoc ChuongTrinhHoc { get; set; }
@@ -115,7 +153,206 @@ namespace EnglishCenter.View
             public String title { get; set; }
             public String detail { get; set; }
         }
-    }
 
-    
+        public class HocVienWithLop
+        {
+            private HocVien hocVien;
+            private LopHoc lopHoc;
+
+            public HocVienWithLop() { }
+            public HocVienWithLop(HocVien hv, LopHoc lop)
+            {
+                hocVien = hv;
+                lopHoc = lop;
+            }
+            public HocVien HocVien
+            {
+                get { return hocVien; }
+                set { hocVien = value; }
+            }
+            public LopHoc Lop
+            {
+                get { return lopHoc; }
+                set { lopHoc = value; }
+            }
+        }
+
+        internal class MaHvComparer : IEqualityComparer<HocVien>
+        {
+            public int GetHashCode(HocVien hv)
+            {
+                if (hv == null)
+                {
+                    return 0;
+                }
+                return hv.MMaHocVien.GetHashCode();
+            }
+
+            public bool Equals(HocVien x1, HocVien x2)
+            {
+                if (object.ReferenceEquals(x1, x2))
+                {
+                    return true;
+                }
+                if (object.ReferenceEquals(x1, null) ||
+                    object.ReferenceEquals(x2, null))
+                {
+                    return false;
+                }
+                return x1.MMaHocVien == x2.MMaHocVien;
+            }
+        }
+        #endregion
+
+        private void bt_editHvClick(object sender, RoutedEventArgs e)
+        {
+            
+            
+        }
+
+        private void bt_viewHvClick(object sender, RoutedEventArgs e)
+        {
+            popup_detailHV.IsOpen = false;
+            Button button = sender as Button;
+            HocVienWithLop hocvien = button.DataContext as HocVienWithLop;
+           
+            tb_popup_tenHV.Text = hocvien.HocVien.MTenHocVien;
+            tb_popup_gioiTinh.Text = hocvien.HocVien.MPhai;
+            tb_popup_ngaySinh.Text = hocvien.HocVien.MNgaySinh.ToShortDateString();
+            tb_popup_email.Text = hocvien.HocVien.MEmail;
+            tb_popup_sdt.Text = hocvien.HocVien.MSdt;
+            tb_popup_diachi.Text = hocvien.HocVien.MDiaChi;
+            if(hocvien.Lop != null)
+                tb_popup_lop.Text = hocvien.Lop.MMaLop;
+            popup_detailHV.IsOpen = true;
+            
+        }
+
+        private void bt_popupClick(object sender, RoutedEventArgs e)
+        {
+            popup_detailHV.IsOpen = false;
+        }
+
+        private void bt_hocPhiHvClick(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            HocVienWithLop hocvien = button.DataContext as HocVienWithLop;
+            if (hocvien.Lop != null)
+            {
+                PhieuThuHocPhi1HV phieuThu = new PhieuThuHocPhi1HV();
+                phieuThu.MaHocVien = hocvien.HocVien.MMaHocVien;
+                phieuThu.tb_tenHocVien.Text = hocvien.HocVien.MTenHocVien;
+                phieuThu.tb_lop.Text = hocvien.Lop.MMaLop;
+                phieuThu.tb_sdt.Text = hocvien.HocVien.MSdt;
+                phieuThu.Show();
+            }
+        }
+
+        private void bt_filterHvClick(object sender, RoutedEventArgs e)
+        {
+            LopHoc lop = (LopHoc)cb_filterHV_lop.SelectedValue;
+            if (lop == null)
+            {
+                listFilterHv = new List<HocVienWithLop>();
+                if (tb_filterHV_maHv.Text != "")
+                {
+                    try
+                    {
+                        HocVienWithLop hv = listHvDangHocWLop.First(item => item.HocVien.MMaHocVien.Equals(tb_filterHV_maHv.Text));
+                        listFilterHv.Add(hv);
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        try
+                        {
+                            HocVien hv = listAllStudent.First(item => item.MMaHocVien.Equals(tb_filterHV_maHv.Text));
+                            listFilterHv.Add(new HocVienWithLop(hv, new LopHocBUS().getLopMoiNhatByMaHV(hv.MMaHocVien)));
+                        }
+                        catch (InvalidOperationException)
+                        {
+
+                        }
+                    }
+
+                    lv_dsHocVien.ItemsSource = listFilterHv;
+                }
+                else
+                {
+                    LopHocBUS lopBus = new LopHocBUS();
+                    foreach (HocVien hv in listAllStudent)
+                    {
+                        if ((tb_filterHV_ten.Text != "" && Regex.IsMatch(hv.MTenHocVien, tb_filterHV_ten.Text, RegexOptions.IgnoreCase))
+                        || (tb_filterHV_sdt.Text != "" && Regex.IsMatch(hv.MSdt, tb_filterHV_sdt.Text))
+                        || (tb_filterHV_email.Text != "" && Regex.IsMatch(hv.MEmail, tb_filterHV_email.Text)))
+                        {
+                            listFilterHv.Add(new HocVienWithLop(hv, lopBus.getLopMoiNhatByMaHV(hv.MMaHocVien)));
+                            //MessageBox.Show(lopBus.getLopMoiNhatByMaHV(hv.MMaHocVien).MMaLop);
+                        }
+                    }
+
+                    if (tb_filterHV_ten.Text != "" || tb_filterHV_sdt.Text != "" || tb_filterHV_email.Text != "")
+                        lv_dsHocVien.ItemsSource = listFilterHv;
+                    else
+                        lv_dsHocVien.ItemsSource = listHvDangHocWLop;
+                }
+                
+            }
+        }
+
+        private void tb_filterHv_maHvTextChanged(object sender, RoutedEventArgs e)
+        {
+            if (tb_filterHV_maHv.Text != "")
+            {
+                tb_filterHV_ten.IsEnabled = false;
+                tb_filterHV_sdt.IsEnabled = false;
+                tb_filterHV_email.IsEnabled = false;
+            }
+            else
+            {
+                tb_filterHV_ten.IsEnabled = true;
+                tb_filterHV_sdt.IsEnabled = true;
+                tb_filterHV_email.IsEnabled = true;
+            }
+        }
+
+        private void cb_filterHV_lopSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LopHoc lop = (LopHoc) cb_filterHV_lop.SelectedValue;
+            if (lop != null)
+            {
+                HocVienBUS bus = new HocVienBUS();
+                listFilterHv = new List<HocVienWithLop>();
+                List<String> listMaHv = bus.getMaHVbyMaLop(lop.MMaLop);
+                List<HocVien> listFilterHvByLop = new List<HocVien>();
+                foreach (String ma in listMaHv)
+                {
+                    HocVien hv = bus.selectHocVien(ma);
+                    listFilterHvByLop.Add(hv);
+                    listFilterHv.Add(new HocVienWithLop(hv, lop));
+                }
+                lv_dsHocVien.ItemsSource = listFilterHv;
+
+                tb_filterHV_maHv.ItemsSource = listFilterHvByLop;
+                tb_filterHV_maHv.ValueMemberPath = "MMaHocVien";
+                tb_filterHV_ten.ItemsSource = listFilterHvByLop;
+                tb_filterHV_ten.ValueMemberPath = "MTenHocVien";
+                tb_filterHV_email.ItemsSource = listFilterHvByLop;
+                tb_filterHV_email.ValueMemberPath = "MEmail";
+                tb_filterHV_sdt.ItemsSource = listFilterHvByLop;
+                tb_filterHV_sdt.ValueMemberPath = "MSdt";
+            }
+            else
+            {
+                lv_dsHocVien.ItemsSource = listHvDangHocWLop;
+            }
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+
+    }    
 }
