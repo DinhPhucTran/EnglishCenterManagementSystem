@@ -88,7 +88,7 @@ namespace EnglishCenter.View
                 }
                 ChuongTrinhHoc_SoHV cthHv = new ChuongTrinhHoc_SoHV();
                 cthHv.ChuongTrinhHoc = cth;
-                cthHv.NumberOfStudent = c.ToString();
+                cthHv.SoHocVien = c;
                 cthHv.TenCTH = cth.MTenChuongTrinhHoc;
                 listHomeChuongTrinhHoc.Add(cthHv);
             }
@@ -110,7 +110,7 @@ namespace EnglishCenter.View
             }
             lv_home_schedule.ItemsSource = listHomeThi;
 
-            lv_dsHocVien.ItemsSource = listHvDangHocWLop;
+            lv_dsHocVien.ItemsSource = listHvDangHocWLop.OrderBy(o => o.HocVien.MTenHocVien).ToList();
             tb_numberOfActiveStudent.Text = listActiveStudent.Count.ToString();
             tb_home_NumberOfStudent.Text = listActiveStudent.Count.ToString();
             tb_home_NumberOfCourse.Text = listChuongTrinhHoc.Count.ToString();
@@ -121,9 +121,12 @@ namespace EnglishCenter.View
             cb_filterHV_lop.ItemsSource = listLopDangMo;
 
 
-            //Tab Khóa học
-            lvChuongTrinhHoc.ItemsSource = listChuongTrinhHoc;
-            
+            //Tab Chương trình học
+            lvChuongTrinhHoc.ItemsSource = ChuongTrinhHoc_TrinhDo.getList(listHomeChuongTrinhHoc);
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvChuongTrinhHoc.ItemsSource);
+            PropertyGroupDescription groupDescription = new PropertyGroupDescription("TrinhDo.MTenTrinhDo");
+            view.GroupDescriptions.Add(groupDescription);
+            tb_soCTH.Text = listChuongTrinhHoc.Count.ToString();
         }
 
         private void btn_AddStudent_Click(object sender, RoutedEventArgs e)
@@ -164,6 +167,48 @@ namespace EnglishCenter.View
                 return x1.MMaHocVien == x2.MMaHocVien;
             }
         }
+
+        public class ChuongTrinhHoc_TrinhDo
+        {
+            private ChuongTrinhHoc_SoHV mCth;
+            private TrinhDo mTd;
+
+            public ChuongTrinhHoc_SoHV CTH
+            {
+                get { return mCth; }
+                set { mCth = value; }
+            }
+
+            public TrinhDo TrinhDo
+            {
+                get { return mTd; }
+                set { mTd = value; }
+            }
+            public String TenTrinhDo
+            {
+                get { return mTd.MTenTrinhDo; }
+            }
+
+            public int SoHV
+            {
+                get { return mCth.SoHocVien; }
+            }
+
+            public static List<ChuongTrinhHoc_TrinhDo> getList(List<ChuongTrinhHoc_SoHV> cths)
+            {
+                List<ChuongTrinhHoc_TrinhDo> list = new List<ChuongTrinhHoc_TrinhDo>();
+                TrinhDoBUS bus = new TrinhDoBUS();
+                foreach (ChuongTrinhHoc_SoHV cth in cths)
+                {
+                    ChuongTrinhHoc_TrinhDo cth_td = new ChuongTrinhHoc_TrinhDo();
+                    cth_td.CTH = cth;
+                    cth_td.TrinhDo = bus.selectTrinhDo(cth.ChuongTrinhHoc.MMaTrinhDo);
+                    list.Add(cth_td);
+                }
+                return list;
+
+            }
+        }
         #endregion
 
         private void bt_editHvClick(object sender, RoutedEventArgs e)
@@ -184,8 +229,10 @@ namespace EnglishCenter.View
             tb_popup_email.Text = hocvien.HocVien.MEmail;
             tb_popup_sdt.Text = hocvien.HocVien.MSdt;
             tb_popup_diachi.Text = hocvien.HocVien.MDiaChi;
-            if(hocvien.Lop != null)
+            if (hocvien.Lop != null)
                 tb_popup_lop.Text = hocvien.Lop.MMaLop;
+            else
+                tb_popup_lop.Text = "";
             popup_detailHV.IsOpen = true;
             
         }
@@ -219,23 +266,32 @@ namespace EnglishCenter.View
                 listFilterHv = new List<HocVien_Lop>();
                 if (tb_filterHV_maHv.Text != "")
                 {
-                    try
+                    
+                    foreach (HocVien hv in listAllStudent)
                     {
-                        HocVien_Lop hv = listHvDangHocWLop.First(item => item.HocVien.MMaHocVien.Equals(tb_filterHV_maHv.Text));
-                        listFilterHv.Add(hv);
-                    }
-                    catch (InvalidOperationException)
-                    {
-                        try
+                        if (hv.MMaHocVien.Contains(tb_filterHV_maHv.Text))
                         {
-                            HocVien hv = listAllStudent.First(item => item.MMaHocVien.Equals(tb_filterHV_maHv.Text));
                             listFilterHv.Add(new HocVien_Lop(hv, new LopHocBUS().getLopMoiNhatByMaHV(hv.MMaHocVien)));
                         }
-                        catch (InvalidOperationException)
-                        {
-
-                        }
                     }
+                    
+                    //try
+                    //{
+                    //    HocVien_Lop hv = listHvDangHocWLop.First(item => item.HocVien.MMaHocVien.Equals(tb_filterHV_maHv.Text));
+                    //    listFilterHv.Add(hv);
+                    //}
+                    //catch (InvalidOperationException)
+                    //{
+                    //    try
+                    //    {
+                    //        HocVien hv = listAllStudent.First(item => item.MMaHocVien.Equals(tb_filterHV_maHv.Text));
+                    //        listFilterHv.Add(new HocVien_Lop(hv, new LopHocBUS().getLopMoiNhatByMaHV(hv.MMaHocVien)));
+                    //    }
+                    //    catch (InvalidOperationException)
+                    //    {
+
+                    //    }
+                    //}
 
                     lv_dsHocVien.ItemsSource = listFilterHv;
                 }
@@ -243,9 +299,9 @@ namespace EnglishCenter.View
                 {
                     foreach (HocVien hv in listAllStudent)
                     {
-                        if ((tb_filterHV_ten.Text != "" && Regex.IsMatch(hv.MTenHocVien, tb_filterHV_ten.Text, RegexOptions.IgnoreCase))
-                        || (tb_filterHV_sdt.Text != "" && Regex.IsMatch(hv.MSdt, tb_filterHV_sdt.Text))
-                        || (tb_filterHV_email.Text != "" && Regex.IsMatch(hv.MEmail, tb_filterHV_email.Text)))
+                        if ((Regex.IsMatch(hv.MTenHocVien, tb_filterHV_ten.Text, RegexOptions.IgnoreCase))
+                        && (hv.MSdt.Contains(tb_filterHV_sdt.Text))
+                        && (Regex.IsMatch(hv.MEmail, tb_filterHV_email.Text)))
                         {
                             listFilterHv.Add(new HocVien_Lop(hv, lopBus.getLopMoiNhatByMaHV(hv.MMaHocVien)));
                             //MessageBox.Show(lopBus.getLopMoiNhatByMaHV(hv.MMaHocVien).MMaLop);
@@ -255,7 +311,7 @@ namespace EnglishCenter.View
                     if (tb_filterHV_ten.Text != "" || tb_filterHV_sdt.Text != "" || tb_filterHV_email.Text != "")
                         lv_dsHocVien.ItemsSource = listFilterHv;
                     else
-                        lv_dsHocVien.ItemsSource = listHvDangHocWLop;
+                        lv_dsHocVien.ItemsSource = listHvDangHocWLop.OrderBy(o => o.HocVien.MTenHocVien).ToList();
                 }
 
             }
@@ -264,9 +320,9 @@ namespace EnglishCenter.View
                 List<HocVien_Lop> listFilter = new List<HocVien_Lop>();
                 foreach (HocVien_Lop hv in listFilterHv)
                 {
-                    if ((tb_filterHV_ten.Text != "" && Regex.IsMatch(hv.HocVien.MTenHocVien, tb_filterHV_ten.Text, RegexOptions.IgnoreCase))
-                        || (tb_filterHV_sdt.Text != "" && Regex.IsMatch(hv.HocVien.MSdt, tb_filterHV_sdt.Text))
-                        || (tb_filterHV_email.Text != "" && Regex.IsMatch(hv.HocVien.MEmail, tb_filterHV_email.Text)))
+                    if ((Regex.IsMatch(hv.HocVien.MTenHocVien, tb_filterHV_ten.Text, RegexOptions.IgnoreCase))
+                        && (hv.HocVien.MSdt.Contains(tb_filterHV_sdt.Text))
+                        && (Regex.IsMatch(hv.HocVien.MEmail, tb_filterHV_email.Text)))
                     {
                         listFilter.Add(hv);
                     }
@@ -323,6 +379,11 @@ namespace EnglishCenter.View
             }
             else
             {
+                tb_filterHV_maHv.ItemsSource = null;
+                tb_filterHV_ten.ItemsSource = null;
+                tb_filterHV_email.ItemsSource = null;
+                tb_filterHV_sdt.ItemsSource = null;
+
                 lv_dsHocVien.ItemsSource = listHvDangHocWLop;
             }
         }
@@ -333,6 +394,27 @@ namespace EnglishCenter.View
             e.Handled = regex.IsMatch(e.Text);
         }
 
+        private void tb_filterHv_maKeyUp(object sender, KeyEventArgs e)
+        {
+            //Search tự động
+            //bt_filterHV.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+
+            //Search khi ấn Enter
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                bt_filterHV.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                e.Handled = true;
+            }
+        }
+
+        private void EnterKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                bt_filterHV.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                e.Handled = true;
+            }
+        }
 
     }    
 }

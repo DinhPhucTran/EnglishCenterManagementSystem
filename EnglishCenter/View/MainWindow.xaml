@@ -306,7 +306,7 @@
                                                     </Grid.ColumnDefinitions>
                                                     <TextBlock Grid.Column="0" Padding="5"  FontSize="20" VerticalAlignment="Center" Text="{Binding TenCTH}"/>
                                                     <Image Grid.Column="1" Source="/Resources/students.png" />
-                                                    <TextBlock Grid.Column="2" FontSize="25" Text="{Binding NumberOfStudent}"/>
+                                                    <TextBlock Grid.Column="2" FontSize="25" Text="{Binding SoHocVien}"/>
                                                 </Grid>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
@@ -468,7 +468,7 @@
                                     <ListView Name="lv_dsHocVien" Background="White" BorderThickness="0">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid Background="#F9F9F9" Margin="1">
+                                                <Grid Background="#FFE7ECF1" Margin="1">
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="250"/>
                                                         <ColumnDefinition Width="100*"/>
@@ -594,14 +594,16 @@
                                               DisplayMemberPath="MMaLop" SelectionChanged="cb_filterHV_lopSelectionChanged"/>
                                     <toolkit:AutoCompleteBox Grid.Row="2" Grid.Column="1" Name="tb_filterHV_maHv" FilterMode="Contains"  
                                                              IsTextCompletionEnabled="False" Margin="5 12 15 3" FontSize="14" 
-                                                             TextChanged="tb_filterHv_maHvTextChanged" PreviewTextInput="NumberValidationTextBox">
+                                                             TextChanged="tb_filterHv_maHvTextChanged" PreviewTextInput="NumberValidationTextBox" KeyUp="tb_filterHv_maKeyUp">
                                         <toolkit:AutoCompleteBox.ItemTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding MMaHocVien}"/>
                                             </DataTemplate>
                                         </toolkit:AutoCompleteBox.ItemTemplate>
                                     </toolkit:AutoCompleteBox>
-                                    <toolkit:AutoCompleteBox Grid.Row="2" Grid.Column="3" Name="tb_filterHV_ten" FilterMode="Contains"  IsTextCompletionEnabled="False" Margin="2 12 25 3" FontSize="14">
+                                    <toolkit:AutoCompleteBox Grid.Row="2" Grid.Column="3" Name="tb_filterHV_ten" 
+                                                             FilterMode="Contains"  IsTextCompletionEnabled="False" Margin="2 12 25 3" 
+                                                             FontSize="14" KeyUp="EnterKeyUp">
                                         <toolkit:AutoCompleteBox.ItemTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding MTenHocVien}"/>
@@ -610,14 +612,15 @@
                                     </toolkit:AutoCompleteBox>
                                     <toolkit:AutoCompleteBox Grid.Row="3" Grid.Column="1" Name="tb_filterHV_sdt" FilterMode="Contains"  
                                                              IsTextCompletionEnabled="False" Margin="5 12 15 3" FontSize="14"
-                                                             PreviewTextInput="NumberValidationTextBox">
+                                                             PreviewTextInput="NumberValidationTextBox" KeyUp="EnterKeyUp">
                                         <toolkit:AutoCompleteBox.ItemTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding MSdt}"/>
                                             </DataTemplate>
                                         </toolkit:AutoCompleteBox.ItemTemplate>
                                     </toolkit:AutoCompleteBox>
-                                    <toolkit:AutoCompleteBox Grid.Row="3" Grid.Column="3" Name="tb_filterHV_email" FilterMode="Contains"  IsTextCompletionEnabled="False" Margin="2 12 25 3" FontSize="14">
+                                    <toolkit:AutoCompleteBox Grid.Row="3" Grid.Column="3" Name="tb_filterHV_email" FilterMode="Contains"  
+                                                             IsTextCompletionEnabled="False" Margin="2 12 25 3" FontSize="14" KeyUp="EnterKeyUp">
                                         <toolkit:AutoCompleteBox.ItemTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding MEmail}"/>
@@ -656,18 +659,21 @@
                     <DockPanel Grid.Row="0">
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20 0 0 10" 
                                    Foreground="Black" FontSize="25">DANH SÁCH CHƯƠNG TRÌNH HỌC</TextBlock>
-                        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="15 0 20 10" Background="White" Height="30">
+                        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="15 0 20 12" Background="White" Height="31">
                             <Grid.Effect>
                                 <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
                             </Grid.Effect>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
+                                <ColumnDefinition/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Column="0" Background="Red" Margin="0 0 1 0" Padding="5" VerticalAlignment="Center" 
-                                       FontSize="20" Cursor="Arrow">5 Chương trình học</TextBlock>
-                            <Button Grid.Column="1" Padding="0" FontSize="15" Name="bt_themCth" Click="btThemCth_click">✛</Button>
+                            <TextBlock Grid.Column="0" Background="Red" Margin="0 0 -1 0" Padding="5 5 4 6" VerticalAlignment="Center" 
+                                       FontSize="20" Cursor="Arrow" Name="tb_soCTH"/>
+                            <TextBlock Grid.Column="1" Background="Red" Margin="0 0 1 0" Padding="5 5 8 6" VerticalAlignment="Center" FontSize="20" Cursor="Arrow"
+                                       Text="Chương trình học"/>
+                            <Button Grid.Column="2" Padding="0" FontSize="15" Name="bt_themCth" Click="btThemCth_click">✛</Button>
                         </Grid>
                     </DockPanel>
 
@@ -679,18 +685,32 @@
                         <ListView Name="lvChuongTrinhHoc" HorizontalContentAlignment="Stretch">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Height="45" Margin="20 10 20 0" Background="#FAFAFA">
+                                    <Grid Height="60" Margin="10 7 20 0" Background="#FFCFD7DE">
                                         <Grid.Effect>
                                             <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
                                         </Grid.Effect>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="60"/>
+                                            <ColumnDefinition Width="80"/>
                                         </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
 
-                                        <TextBlock Grid.Row="0" Text="{Binding MTenChuongTrinhHoc}"/>
-                                        <Button Grid.Column="1" Margin="5" FontSize="20" Padding="1">
-                                            <Image Source="/Resources/edit.png"/>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" FontSize="14" Text="{Binding CTH.ChuongTrinhHoc.MTenChuongTrinhHoc}"/>
+                                        <Grid Grid.Row="1" Grid.Column="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="25"/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding CTH.SoHocVien}" Margin="10 5 5 5"/>
+                                            <TextBlock Grid.Column="1" Text="Học viên" Margin="0 5 5 5"/>
+                                        </Grid>
+                                        <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Margin="5" Padding="0" BorderThickness="0" Width="40">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/EnglishCenter;component/Resources/edit.png"/>
+                                            </Button.Background>
                                         </Button>
                                     </Grid>
                                 </DataTemplate>
@@ -700,7 +720,7 @@
                                 <GroupStyle>
                                     <GroupStyle.HeaderTemplate>
                                         <DataTemplate>
-                                            <TextBlock FontWeight="Bold" FontSize="16" Text="{Binding MTenChuongTrinhHoc}"/>
+                                            <TextBlock FontWeight="Bold" FontSize="15" Margin="10 30 5 3" Text="{Binding Name}"/>
                                         </DataTemplate>
                                     </GroupStyle.HeaderTemplate>
                                 </GroupStyle>

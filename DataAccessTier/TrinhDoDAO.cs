@@ -98,5 +98,30 @@ namespace DataAccessTier
             }
             return result;
         }
+
+        public TrinhDo selectTrinhDo(String maTD)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand cmd = new SqlCommand("TRINH_DO_SELECT", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaTrinhDo", maTD);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                TrinhDo result = new TrinhDo();
+                result.MMaTrinhDo = dt.Rows[0]["MaTrinhDo"].ToString();
+                result.MTenTrinhDo = dt.Rows[0]["TenTrinhDo"].ToString();
+                connection.Close();
+                return result;
+            }
+            catch (Exception)
+            {
+                connection.Close();
+            }
+            return null;
+        }
     }
 }

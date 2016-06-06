@@ -30,5 +30,10 @@ namespace BusinessLogicTier
         {
             return mTrinhDoDAO.themTrinhDo(t);
         }
+
+        public TrinhDo selectTrinhDo(String maTD)
+        {
+            return mTrinhDoDAO.selectTrinhDo(maTD);
+        }
     }
 }
