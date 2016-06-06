@@ -10,11 +10,11 @@ insert into Ca values('6','19:00','21:00')
 
 
 Insert into TRINH_DO values('BEGIN','Beginner')
-Insert into TRINH_DO values('ELEM','Elementary')
-Insert into TRINH_DO values('PRE','Pre-Intermediate')
+Insert into TRINH_DO values('ELEMN','Elementary')
+Insert into TRINH_DO values('PREIN','Pre-Intermediate')
 Insert into TRINH_DO values('INTER','Intermediate')
 Insert into TRINH_DO values('UPPER','Upper-Intermediate')
-Insert into TRINH_DO values('ADV','Advanced')
+Insert into TRINH_DO values('ADVAN','Advanced')
 
 
 Insert into CHUONG_TRINH_HOC values('IELT.BE','IELTS for Beginner','BEGIN',1,2)
