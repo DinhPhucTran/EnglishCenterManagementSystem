@@ -8,6 +8,7 @@
             <RowDefinition Height="70"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
@@ -41,27 +42,21 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-
-        <ScrollViewer Grid.Row="3" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Hidden">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="0" Margin="10,0,10,301" VerticalAlignment="Bottom" Foreground="Blue" FontSize="15" Height="20" Text="Chọn thời gian thi" Grid.RowSpan="2"/>
-                <ScrollViewer VerticalScrollBarVisibility="Visible" CanContentScroll="True" Margin="0,70,0,37" Grid.RowSpan="2">
-
+        <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" Foreground="Blue" FontSize="15" Height="20" Text="Chọn thời gian thi"/>
+        <!--<ScrollViewer Grid.Row="3" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Hidden">-->
+        <Grid Grid.Row="4" Grid.ColumnSpan="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer VerticalScrollBarVisibility="Visible" CanContentScroll="True" Grid.RowSpan="2">
                     <Grid Name="ThoiGianThi_Grid">
                     </Grid>
-
                 </ScrollViewer>
-
-
             </Grid>
-        </ScrollViewer>
+        <!--</ScrollViewer>-->
 
-        <Grid Grid.Row="4" Grid.ColumnSpan="4">
+        <Grid Grid.Row="5" Grid.ColumnSpan="4">
             <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5" Click="Button_Thoat_Click"/>
             <Button Content="Lưu" HorizontalAlignment="Right" Margin="10,0,110,5" Click="Button_Luu_Click"/>
             <Button Content="Hủy" HorizontalAlignment="Right" Margin="10,0,190,5" Click="Button_Huy_Click"/>

@@ -54,6 +54,12 @@ namespace BusinessLogicTier
         {
             return new LopHocDAO().selectLopHoc(maLop);
         }
+
+        public List<LopHoc> getListLopHocWithNgayThiXL(DateTime ngayThi)
+        {
+            return new LopHocDAO().getListLopHocWithNgayThiXL(ngayThi);
+        }
+
         public List<LopHoc_ThoiGianDTO> getListLopHocByDay(DateTime ngayThi)
         {
             return new LopHocDAO().getListLopHocByDay(getMaThuFromDay(ngayThi), ngayThi);

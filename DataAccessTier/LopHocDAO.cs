@@ -313,6 +313,7 @@ namespace DataAccessTier
             }
                 return listLop;
         }
+
         public List<LopHoc_ThoiGianDTO> getListLopHocByDay(String maThu, DateTime ngayThi)
         {
             List<LopHoc_ThoiGianDTO> result = new List<LopHoc_ThoiGianDTO>();
@@ -345,6 +346,43 @@ namespace DataAccessTier
                 connection.Close();
             }
             
+            return result;
+        }
+
+        public List<LopHoc> getListLopHocWithNgayThiXL(DateTime ngayThi)
+        {
+            List<LopHoc> result = new List<LopHoc>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("LOP_HOC_LIST_WITH_NGAY_THI_XEP_LOP", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@NgayThi", ngayThi);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    LopHoc lop = new LopHoc();
+                    lop.MMaLop = dt.Rows[i]["MaLop"].ToString();
+                    lop.MNgayKhaiGiang = DateTime.Parse(dt.Rows[i]["NgayKhaiGiang"].ToString());
+                    lop.MNgayBatDau = DateTime.Parse(dt.Rows[i]["ThoiGianBD"].ToString());
+                    lop.MNgayKetThuc = DateTime.Parse(dt.Rows[i]["ThoiGianKT"].ToString());
+                    lop.MSoTien = double.Parse(dt.Rows[i]["SoTien"].ToString());
+                    lop.MMaGiangVien = dt.Rows[i]["MaGV"].ToString();
+                    lop.MMaCTHoc = dt.Rows[i]["MaCTHoc"].ToString();
+                    lop.MMaPhong = dt.Rows[i]["MaPhong"].ToString();
+                    result.Add(lop);
+                }
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
             return result;
         }
     }
