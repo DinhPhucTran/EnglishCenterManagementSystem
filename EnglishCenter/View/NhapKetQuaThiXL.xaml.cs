@@ -27,14 +27,22 @@ namespace EnglishCenter.View
             InitializeComponent();
             List<ThiXepLop> mDanhSachTXL = new ThiXepLopBUS().getTXLNow();
             dsTXL_cb.ItemsSource = mDanhSachTXL;
-            //List<ChiTietThiXepLop> mDanhSachChiTietTXL = new ChiTietThiXepLopBUS().getChiTietTXLByMaTXL();
-            //listHV_lv.ItemsSource = mDanhSachChiTietTXL;
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void dsTXL_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dsTXL_cb.Text == "")
+            {
+                return;
+            }
+            List<ChiTietThiXepLop> mDanhSachChiTietTXL = new ChiTietThiXepLopBUS().getChiTietTXLByMaTXL(dsTXL_cb.Text);
+            listHV_lv.ItemsSource = mDanhSachChiTietTXL;
         }
     }
 }

@@ -27,7 +27,7 @@
         </Grid>
         <Grid Grid.Row="1">
             <GroupBox Header="Chọn lớp" Margin="5">
-                <ComboBox Name="dsTXL_cb" Text="{Binding DTO.ThiXepLop.MMaThiXL}"/>
+                <ComboBox Name="dsTXL_cb" DisplayMemberPath="MMaThiXL" SelectionChanged="dsTXL_cb_SelectionChanged"/>
             </GroupBox>
         </Grid>        
         <ListView Name="listHV_lv" Grid.Row="2">
