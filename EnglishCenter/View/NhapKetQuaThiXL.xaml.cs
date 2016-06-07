@@ -37,11 +37,7 @@ namespace EnglishCenter.View
 
         private void dsTXL_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dsTXL_cb.Text == "")
-            {
-                return;
-            }
-            List<ChiTietThiXepLop> mDanhSachChiTietTXL = new ChiTietThiXepLopBUS().getChiTietTXLByMaTXL(dsTXL_cb.Text);
+            List<ChiTietThiXepLop> mDanhSachChiTietTXL = new ChiTietThiXepLopBUS().getChiTietTXLByMaTXL(((ThiXepLop)dsTXL_cb.SelectedItem).MMaThiXL);
             listHV_lv.ItemsSource = mDanhSachChiTietTXL;
         }
     }
