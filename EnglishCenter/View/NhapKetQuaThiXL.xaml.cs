@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BusinessLogicTier;
 using DTO;
+using System.Text.RegularExpressions;
 
 namespace EnglishCenter.View
 {
@@ -24,8 +25,16 @@ namespace EnglishCenter.View
         public NhapKetQuaThiXL()
         {
             InitializeComponent();
-            List<ChiTietThiXepLop> mDanhSachChiTietTXL = new ChiTietThiXepLopBUS().getAllChiTietTXL();
-            listHV_lv.ItemsSource = mDanhSachChiTietTXL;
+            List<ThiXepLop> mDanhSachTXL = new ThiXepLopBUS().getTXLNow();
+            dsTXL_cb.ItemsSource = mDanhSachTXL;
+            //List<ChiTietThiXepLop> mDanhSachChiTietTXL = new ChiTietThiXepLopBUS().getChiTietTXLByMaTXL();
+            //listHV_lv.ItemsSource = mDanhSachChiTietTXL;
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

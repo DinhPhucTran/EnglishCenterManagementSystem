@@ -17,5 +17,15 @@ namespace BusinessLogicTier
         {
             return new ChiTietThiXepLopDAO().getAllChiTietTXL();
         }
+
+        public bool updateKetQuaThi(List<ChiTietThiXepLop> ds)
+        {
+            return new ChiTietThiXepLopDAO().updateKetQuaThi(ds);
+        }
+
+        public List<ChiTietThiXepLop> getChiTietTXLByMaTXL(String maTXL)
+        {
+            return new ChiTietThiXepLopDAO().getChiTietTXLByMaTXL(maTXL);
+        }
     }
 }
