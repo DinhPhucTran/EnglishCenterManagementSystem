@@ -32,7 +32,12 @@ namespace BusinessLogicTier
 
         public List<ThiXepLop> getAllThiXLByThoiGianRanh(String maHV)
         {
-            return new ThiXepLopDAO().getAllThiXLByThoiGianRanh(maHV);
+            List<ThiXepLop> result = new ThiXepLopDAO().getAllThiXLByThoiGianRanh(maHV);
+            if (result.Count == 0)
+            {
+                return getTXLNow();
+            }
+            return result;
         }
 
         public bool themThiXepLop(ThiXepLop txl){
