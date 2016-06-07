@@ -14,6 +14,40 @@ namespace DataAccessTier
     {
         public ThiXepLopDAO() { }
 
+        public List<ThiXepLop> getAllThiXLByThoiGianRanh(String maHV)
+        {
+            List<ThiXepLop> result = new List<ThiXepLop>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("THI_XEP_LOP_BY_TGRANH", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaHV", maHV);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                result = dt.AsEnumerable().Select(m =>
+                    new ThiXepLop
+                    {
+                        MMaThiXL = m.Field<String>("MaThiXL"),
+                        MMaPhong = m.Field<String>("MaPhong"),
+                        MCaThi = m.Field<String>("CaThi"),
+                        MDeThi = m.Field<String>("MaDeThi"),
+                        MNgayThi = m.Field<DateTime>("NgayThi")
+                    }
+                ).ToList();
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
+        }
+
         public List<ThiXepLop> getListThiXepLopByTime(ThiXepLop txl)
         {
             List<ThiXepLop> ds = new List<ThiXepLop>();
@@ -229,6 +263,38 @@ namespace DataAccessTier
                 Console.WriteLine(ex);
             }
             return false;
+        }
+
+        public List<ThiXepLop> getTXLNow()
+        {
+            List<ThiXepLop> result = new List<ThiXepLop>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("THI_XEP_LOP_NOW", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                result = dt.AsEnumerable().Select(m =>
+                    new ThiXepLop
+                    {
+                        MMaThiXL = m.Field<String>("MaThiXL"),
+                        MMaPhong = m.Field<String>("MaPhong"),
+                        MCaThi = m.Field<String>("CaThi"),
+                        MDeThi = m.Field<String>("MaDeThi"),
+                        MNgayThi = m.Field<DateTime>("NgayThi")
+                    }).ToList();
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
         }
     }
 

@@ -15,6 +15,42 @@ namespace DataAccessTier
         {
         }
 
+        public List<LopHoc> getAllLopHocByMaChuongTrinhHoc(String maCTHoc)
+        {
+            List<LopHoc> result = new List<LopHoc>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("LOP_HOC_BY_MA_CHUONG_TRINH_HOC", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaChuongTrinh", maCTHoc);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                result = dt.AsEnumerable().Select(m =>
+                    new LopHoc
+                    {
+                        MMaLop = m.Field<String>("MaLop"),
+                        MNgayKhaiGiang = m.Field<DateTime>("NgayKhaiGiang"),
+                        MNgayBatDau = m.Field<DateTime>("ThoiGianBD"),
+                        MNgayKetThuc = m.Field<DateTime>("ThoiGianKT"),
+                        MSoTien = double.Parse(m.Field<decimal>("SoTien").ToString()),
+                        MMaGiangVien = m.Field<String>("MaGV"),
+                        MMaCTHoc = m.Field<String>("MaCTHoc"),
+                        MMaPhong = m.Field<String>("MaPhong")
+                    }).ToList();
+            }
+            catch (Exception e)
+           {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
+        }
+
         public List<LopHoc> getAllLopHoc()
         {
             try
@@ -50,8 +86,9 @@ namespace DataAccessTier
                 connection.Close();
                 return null;
             }
-            
+
         }
+
         public bool themLopHoc(LopHoc lop)
         {
             try
@@ -264,11 +301,11 @@ namespace DataAccessTier
                     }
                 }
 
-                if(listLop.Count > 0)
+                if (listLop.Count > 0)
                 {
                     return listLop.OrderByDescending(item => item.MNgayBatDau).First();
                 }
-                    
+
                 connection.Close();
 
             }
@@ -311,7 +348,7 @@ namespace DataAccessTier
             {
                 connection.Close();
             }
-                return listLop;
+            return listLop;
         }
 
         public List<LopHoc_ThoiGianDTO> getListLopHocByDay(String maThu, DateTime ngayThi)
@@ -345,7 +382,7 @@ namespace DataAccessTier
             {
                 connection.Close();
             }
-            
+
             return result;
         }
 
@@ -383,6 +420,13 @@ namespace DataAccessTier
                 connection.Close();
                 System.Console.WriteLine(e.Message);
             }
+            return result;
+        }
+
+        public List<LopHoc> getListLopHocDangMo()
+        {
+            List<LopHoc> result = new List<LopHoc>();
+
             return result;
         }
     }

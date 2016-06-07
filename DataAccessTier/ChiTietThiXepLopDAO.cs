@@ -81,5 +81,69 @@ namespace DataAccessTier
             }
             return result;
         }
+
+        public List<ChiTietThiXepLop> getChiTietTXLByMaTXL(String maTXL)
+        {
+            List<ChiTietThiXepLop> result = new List<ChiTietThiXepLop>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("CHI_TIET_THI_XEP_LOP_BY_MA_TXL", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaTXL", maTXL);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ChiTietThiXepLop temp = new ChiTietThiXepLop();
+                    temp.MMaThiXepLop = dt.Rows[i]["MaThiXepLop"].ToString();
+                    temp.MMaHocVien = dt.Rows[i]["MaHV"].ToString();
+                    temp.MKetQuaThi = float.Parse(dt.Rows[i]["KetQuaThi"].ToString());
+                    temp.MChuongTrinhDeNghi = dt.Rows[i]["ChuongTrinhDeNghi"].ToString();
+                    temp.MChuongTrinhMongMuon = dt.Rows[i]["ChuongTrinhMongMuon"].ToString();
+                    result.Add(temp);
+                }
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
+        }
+
+        public bool updateKetQuaThi(List<ChiTietThiXepLop> ds)
+        {
+            bool result = false;
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                foreach(ChiTietThiXepLop i in ds)
+                {
+                    SqlCommand cmd = new SqlCommand("CHI_TIET_THI_XL_UPDATE", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@MaThiXepLop", i.MMaThiXepLop);
+                    cmd.Parameters.AddWithValue("@MaHV", i.MMaHocVien);
+                    cmd.Parameters.AddWithValue("@KetQuaThi", i.MKetQuaThi);
+                    cmd.Parameters.AddWithValue("@ChuongTrinhDeNghi", i.MChuongTrinhDeNghi);
+                    cmd.Parameters.AddWithValue("@ChuongTrinhMongMuon", i.MChuongTrinhMongMuon);
+                    cmd.ExecuteNonQuery();
+                }
+                result = true;
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
+        }
     }
 }

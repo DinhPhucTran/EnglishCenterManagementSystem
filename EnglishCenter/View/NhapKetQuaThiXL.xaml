@@ -5,25 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EnglishCenter.View"
         mc:Ignorable="d"
-        Title="NhapKetQuaThiXL" Height="300" Width="300" WindowStartupLocation="CenterScreen">
+        Title="NhapKetQuaThiXL" Height="500" Width="300" WindowStartupLocation="CenterScreen">
     <Grid>
-        <ListView Name="listHV_lv">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="#00C0EF">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="/EnglishCenter;component/Resources/course.png" Margin="10"/>
+            <TextBlock Grid.Column="1" Text="Kết quả thi" FontSize="30" Foreground="White" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <GroupBox Header="Chọn lớp" Margin="5">
+                <ComboBox Name="dsTXL_cb" DisplayMemberPath="MMaThiXL" SelectionChanged="dsTXL_cb_SelectionChanged"/>
+            </GroupBox>
+        </Grid>        
+        <ListView Name="listHV_lv" Grid.Row="2">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Background="#F9F9F9" Margin="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="250"/>
-                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
                             <RowDefinition/>
-                            <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,10,2" Foreground="Black" FontSize="15" Name="tb_lv_maHV" Text="{Binding ChiTietThiXepLop.MMaHocVien}"/>
-                        <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding ChiTietThiXepLop.MKetQuaThi}"/>
-                        
+                        <TextBlock Grid.Row="0" Grid.Column="0" Foreground="Black" FontSize="15" Text="{Binding MMaHocVien}"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Width="100" Text="{Binding MKetQuaThi}" PreviewTextInput="NumberValidationTextBox" Foreground="Black" />
+
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

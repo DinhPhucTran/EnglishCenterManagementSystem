@@ -29,35 +29,15 @@ namespace BusinessLogicTier
             }
             return "TXL" + ds.Select(m => int.Parse(m.MMaThiXL.Substring(m.MMaThiXL.IndexOf('_') + 1))).Max() + 1;
         }
-        
+
+        public List<ThiXepLop> getAllThiXLByThoiGianRanh(String maHV)
+        {
+            return new ThiXepLopDAO().getAllThiXLByThoiGianRanh(maHV);
+        }
+
         public bool themThiXepLop(ThiXepLop txl){
             List<LopHoc_ThoiGianDTO> ds = mThiXepLop.layThongTinCacLopTaiThoiDiemXepLop(txl);
-            String maThuCuaNgayThi = "";
-            switch (txl.MNgayThi.DayOfWeek)
-            {
-                case DayOfWeek.Sunday:
-                    maThuCuaNgayThi = "CN";
-                    break;
-                case DayOfWeek.Monday:
-                    maThuCuaNgayThi = "T2";
-                    break;
-                case DayOfWeek.Tuesday:
-                    maThuCuaNgayThi = "T3";
-                    break;
-                case DayOfWeek.Wednesday:
-                    maThuCuaNgayThi = "T4";
-                    break;
-                case DayOfWeek.Thursday:
-                    maThuCuaNgayThi = "T5";
-                    break;
-                case DayOfWeek.Friday:
-                    maThuCuaNgayThi = "T6";
-                    break;
-                case DayOfWeek.Saturday:
-                    maThuCuaNgayThi = "T7";
-                    break;
-            }
-            LopHoc_ThoiGianDTO temp = ds.Find(m => (m.MMaPhong == txl.MMaPhong && m.MMaCa == txl.MCaThi && m.MMaThu == maThuCuaNgayThi));
+            LopHoc_ThoiGianDTO temp = ds.Find(m => (m.MMaPhong == txl.MMaPhong && m.MMaCa == txl.MCaThi && m.MMaThu == txl.MNgayThi.DayOfWeek.ToString()));
             if (temp != null)
             {
                 return false;
@@ -78,6 +58,11 @@ namespace BusinessLogicTier
         public List<ThiXepLop> getAllThiXLByDay(DateTime ngayThi)
         {
             return mThiXepLop.getAllThiXepLopByDay(ngayThi);
+        }
+
+        public List<ThiXepLop> getTXLNow()
+        {
+            return new ThiXepLopDAO().getTXLNow();
         }
     }
 }
