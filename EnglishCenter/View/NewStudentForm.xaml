@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
         Title="English Center" Height="700" Width="850"
-        Background="#F8F8F8" Icon="/EnglishCenter;component/Resources/course.png">
+        Background="#F8F8F8" Icon="/EnglishCenter;component/Resources/course.png"
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="10,10,10,10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -117,10 +118,113 @@
 
         </ScrollViewer>
 
-        <Grid Grid.Row="6" Grid.ColumnSpan="3" >
-            <Button Name="Save_btn" Margin="10, 5, 10, 5" HorizontalAlignment="Right" Content="Lưu" Click="Save_btn_Click"/>
-            <Button Margin="0,9,100,9" HorizontalAlignment="Right" Content="In" Name="In_btn" Height="Auto" Click="In_btn_Click"/>
-            <Button Margin="0,0,180,9" HorizontalAlignment="Right" Content="Hủy" Name="btn_cancel" Click="btn_cancel_Click" VerticalAlignment="Bottom"/>
+        <Grid Grid.Row="6" Grid.ColumnSpan="3" Margin="10 0 10 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Content="Xếp lịch thi" Margin="10 0 10 0" Name="bt_xepLichThi" Click="bt_xepLichThiClick"/>
+            <Button Grid.Column="2" Content="Xếp lớp" Margin="10 0 10 0" Name="bt_xepLop" Click="bt_xepLopClick" />
+            <Button Grid.Column="5" Name="Save_btn" Margin="10 0 10 0" Content="Lưu" Click="Save_btn_Click"/>
+            <Button Grid.Column="4" Margin="10 0 10 0" Content="In" Name="In_btn" Click="In_btn_Click"/>
+            <Button Grid.Column="3" Margin="10 0 10 0" Content="Hủy" Name="btn_cancel" Click="btn_cancel_Click"/>
         </Grid>
+
+        <Popup PlacementTarget="{Binding ElementName=bt_xepLichThi}"
+               AllowsTransparency="True"  
+               PopupAnimation="Fade"
+               Placement="Top" VerticalOffset="-10" HorizontalOffset="-160"
+               Name="popup_xepLichThi">
+            <Grid Background="White" Margin="25" Width="305">
+                <Grid.Effect>
+                    <DropShadowEffect Color="#FFC3C3C3" BlurRadius="20" Direction="280"/>
+                </Grid.Effect>
+                <Border BorderBrush="#00C0EF" BorderThickness="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Margin="0 5 5 0" Content="⛌" Padding="0" Background="Transparent" HorizontalAlignment="Right"
+                        Name="bt_popup_close" Width="20" Height="20" BorderThickness="0" Foreground="#FFC3C3C3" Click="bt_popupThiXLCloseClick"/>
+                        <TextBlock Grid.Row="1" FontSize="15" Margin="10 0 0 5" Text="DANH SÁCH THI XẾP LỚP"/>
+                        <ListView Grid.Row="2" Margin="10 0 10 0" Background="#FAFAFA" Name="lv_popup_thiXL">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Ngày thi" Width="80" DisplayMemberBinding="{Binding StringNgayThi}"/>
+                                    <GridViewColumn Header="Thời gian" Width="140" DisplayMemberBinding="{Binding StringThoiGian}"/>
+                                    <GridViewColumn Header="Phòng" Width="50" DisplayMemberBinding="{Binding ThiXL.MMaPhong}"/>
+                                </GridView>
+                            </ListView.View>
+                            <!--<ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Background="White">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <TextBlock Grid.Column="0" Margin="5 5 5 5" Foreground="Black" Text="{Binding StringNgayThi}"/>
+                                <TextBlock Grid.Column="1" Margin="10 5 5 5" Foreground="Black" Text="{Binding StringThoiGian}"/>
+                                <TextBlock Grid.Column="2" Margin="10 5 5 5" Foreground="Black" Text="Phòng"/>
+                                <TextBlock Grid.Column="3" Margin="5" Foreground="Black" Text="{Binding ThiXL.MCaThi}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>-->
+                        </ListView>
+                        <Button Grid.Row="3" HorizontalAlignment="Center" Content="OK" Margin="0 10 0 10" Click="bt_popupThiXL_OK_Click"/>
+                    </Grid>
+                </Border>                
+            </Grid>
+        </Popup>
+
+        <Popup PlacementTarget="{Binding ElementName=bt_xepLop}"
+               AllowsTransparency="True"  
+               PopupAnimation="Fade"
+               Placement="Top" VerticalOffset="-10"
+               Name="popup_xepLop">
+            <Grid Background="White" Margin="25" Width="350">
+                <Grid.Effect>
+                    <DropShadowEffect Color="#FFC3C3C3" BlurRadius="20" Direction="280"/>
+                </Grid.Effect>
+                <Border BorderBrush="#00C0EF" BorderThickness="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Margin="0 5 5 0" Content="⛌" Padding="0" Background="Transparent" HorizontalAlignment="Right"
+                        Width="20" Height="20" BorderThickness="0" Foreground="#FFC3C3C3" Click="bt_xepLopCloseClick"/>
+                        <TextBlock Grid.Row="1" FontSize="15" Margin="10 0 0 5" Text="DANH SÁCH LỚP"/>
+                        <ListView Grid.Row="2" Margin="10 0 10 0" Name="lv_popup_xepLop">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0 2 0 2" Background="#FFDAD9D9">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0" Margin="5" FontWeight="SemiBold" Text="{Binding MaLop}"/>
+                                        <TextBlock Grid.Row="1" Margin="5" Text="{Binding StringThoiGianHoc}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <Button Grid.Row="3" HorizontalAlignment="Center" Content="OK" Margin="0 10 0 10" Click="bt_popupXepLop_OK_Click"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Popup>
+
     </Grid>
 </Window>
