@@ -1,9 +1,4 @@
-create procedure CHUONG_TRINH_HOC_DENGHI
-(
-	@MaChiTietTXL varchar(15),
-	@MaHV varchar(15)
-)
-as
+create
  procedure CHUONG_TRINH_HOC_DENGHI
 (
 	@MaChiTietTXL varchar(15),
