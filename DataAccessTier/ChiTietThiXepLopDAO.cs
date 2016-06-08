@@ -159,5 +159,31 @@ namespace DataAccessTier
             }
             return result;
         }
+
+        public String getMaCTHocDeNghi(String maTXL, String maHV)
+        {
+            String result = "";
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("CHUONG_TRINH_HOC_DENGHI", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaChiTietTXL", maTXL);//dat nham ten trong procedure
+                cmd.Parameters.AddWithValue("@MaHV", maHV);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                result = dt.Rows[0]["MaCTHoc"].ToString();
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
+        }
     }
 }

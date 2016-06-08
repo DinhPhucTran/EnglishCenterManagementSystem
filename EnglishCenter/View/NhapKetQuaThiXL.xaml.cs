@@ -47,13 +47,14 @@ namespace EnglishCenter.View
         private void Luu_btn_Click(object sender, RoutedEventArgs e)
         {
             List<ChiTietThiXepLop> temp = new List<ChiTietThiXepLop>();
-            //lấy lớp thi xếp lớp hiện tại
-            ThiXepLop txlHienTai = new ThiXepLopBUS().selectThiXLByMaTXL(mMaThiXL);
-            //lấy ra mã đề thi và loại đề thi, sau khi lấy loại đề thi lấy ra chương trình thi
-            foreach(ChiTietThiXepLop i in listHV_lv.ItemsSource)
+            ChiTietThiXepLopBUS ctTXL_BUS = new ChiTietThiXepLopBUS();
+            foreach (ChiTietThiXepLop i in listHV_lv.ItemsSource) 
             {
+                i.MChuongTrinhDeNghi = ctTXL_BUS.getMaCTHocDeNghi(i.MMaThiXepLop, i.MMaHocVien);
                 temp.Add(i);
             }
+            //anh xa tu chuong trinh mong muon lay ra chuong trinh de nghi cho hoc vien
+            //co diem ->  lay ra chuong trinh hoc co diem thap nhat lon hon diem thi va lay min 
             bool flag = new ChiTietThiXepLopBUS().updateKetQuaThi(temp);
             if (flag == false)
             {
