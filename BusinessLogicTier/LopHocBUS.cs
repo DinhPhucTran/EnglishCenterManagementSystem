@@ -74,5 +74,10 @@ namespace BusinessLogicTier
         {
             return new LopHocDAO().getAllLopHocByMaChuongTrinhHoc(maCTHoc);
         }
+
+        public List<ThoiGianHoc> getAllLopHocByTGRanhVaCTMuonHoc(String maHV)
+        {
+            return new LopHocDAO().getListLopHocByTGRanhVaCTMuonHoc(maHV);
+        }
     }
 }

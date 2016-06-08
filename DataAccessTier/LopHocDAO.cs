@@ -429,5 +429,36 @@ namespace DataAccessTier
 
             return result;
         }
+
+        public List<ThoiGianHoc> getListLopHocByTGRanhVaCTMuonHoc(String maHV)
+        {
+            List<ThoiGianHoc> result = new List<ThoiGianHoc>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("LOP_HOC_LIST_BY_TGRANH_CTHOCMONGMUON", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaHV", maHV);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                result = dt.AsEnumerable().Select(m =>
+                    new ThoiGianHoc
+                    {
+                        MMaLop = m.Field<String>("MaLop"),
+                        MMaThu = m.Field<String>("MaThu"),
+                        MMaCa = m.Field<String>("MaCa")
+                    }).ToList();
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
+        }
     }
 }
