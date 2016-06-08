@@ -31,8 +31,14 @@ namespace BusinessLogicTier
 
         public bool xoaLopHoc(String maLop)
         {
+            ThoiGianHocDAO tghDAO = new ThoiGianHocDAO();
+            bool isDone = tghDAO.xoaThoiGianHoc(maLop);
             LopHocDAO lhDAO = new LopHocDAO();
-            return lhDAO.xoaLopHoc(maLop);
+            if (isDone)
+            {
+                return lhDAO.xoaLopHoc(maLop);
+            }
+            return isDone;
         }
 
         public bool suaLopHoc(LopHoc lh)
