@@ -69,5 +69,10 @@ namespace BusinessLogicTier
         {
             return new ThiXepLopDAO().getTXLNow();
         }
+
+        public ThiXepLop selectThiXLByMaTXL(String maTXL)
+        {
+            return new ThiXepLopDAO().selectThiXLByMaTXL(maTXL);
+        }
     }
 }

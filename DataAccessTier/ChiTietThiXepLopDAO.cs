@@ -132,8 +132,22 @@ namespace DataAccessTier
                     cmd.Parameters.AddWithValue("@MaThiXepLop", i.MMaThiXepLop);
                     cmd.Parameters.AddWithValue("@MaHV", i.MMaHocVien);
                     cmd.Parameters.AddWithValue("@KetQuaThi", i.MKetQuaThi);
-                    cmd.Parameters.AddWithValue("@ChuongTrinhDeNghi", i.MChuongTrinhDeNghi);
-                    cmd.Parameters.AddWithValue("@ChuongTrinhMongMuon", i.MChuongTrinhMongMuon);
+                    if (i.MChuongTrinhDeNghi == "")
+                    {
+                        cmd.Parameters.AddWithValue("@ChuongTrinhDeNghi", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@ChuongTrinhDeNghi", i.MChuongTrinhDeNghi);
+                    }
+                    if (i.MChuongTrinhMongMuon == "")
+                    {
+                        cmd.Parameters.AddWithValue("@ChuongTrinhMongMuon", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@ChuongTrinhMongMuon", i.MChuongTrinhMongMuon);
+                    }
                     cmd.ExecuteNonQuery();
                 }
                 result = true;

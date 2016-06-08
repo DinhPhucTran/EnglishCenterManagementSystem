@@ -296,6 +296,38 @@ namespace DataAccessTier
             }
             return result;
         }
-    }
 
+        public ThiXepLop selectThiXLByMaTXL(String maTXL)
+        {
+            ThiXepLop result = null;
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("THI_XEP_LOP_SELECT", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaThiXL", maTXL);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                result = dt.AsEnumerable().Select(m =>
+                    new ThiXepLop
+                    {
+                        MMaThiXL = m.Field<String>("MaThiXL"),
+                        MMaPhong = m.Field<String>("MaPhong"),
+                        MCaThi = m.Field<String>("CaThi"),
+                        MDeThi = m.Field<String>("MaDeThi"),
+                        MNgayThi = m.Field<DateTime>("NgayThi")
+                    }).First();
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
+        }
+    }
 }
