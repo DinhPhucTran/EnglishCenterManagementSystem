@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BusinessLogicTier;
 using DTO;
+using System.Text.RegularExpressions;
 
 namespace EnglishCenter.View
 {
@@ -21,11 +22,46 @@ namespace EnglishCenter.View
     /// </summary>
     public partial class NhapKetQuaThiXL : Window
     {
+        String mMaThiXL;
         public NhapKetQuaThiXL()
         {
             InitializeComponent();
-            List<ChiTietThiXepLop> mDanhSachChiTietTXL = new ChiTietThiXepLopBUS().getAllChiTietTXL();
+            List<ThiXepLop> mDanhSachTXL = new ThiXepLopBUS().getTXLNow();
+            dsTXL_cb.ItemsSource = mDanhSachTXL;
+            //mDanhSachTXL = dsTXL_cb.ItemsSource;
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void dsTXL_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            mMaThiXL = ((ThiXepLop)dsTXL_cb.SelectedItem).MMaThiXL;
+            List<ChiTietThiXepLop> mDanhSachChiTietTXL = new ChiTietThiXepLopBUS().getChiTietTXLByMaTXL(mMaThiXL);
             listHV_lv.ItemsSource = mDanhSachChiTietTXL;
+        }
+
+        private void Luu_btn_Click(object sender, RoutedEventArgs e)
+        {
+            List<ChiTietThiXepLop> temp = new List<ChiTietThiXepLop>();
+            ChiTietThiXepLopBUS ctTXL_BUS = new ChiTietThiXepLopBUS();
+            foreach (ChiTietThiXepLop i in listHV_lv.ItemsSource) 
+            {
+                i.MChuongTrinhDeNghi = ctTXL_BUS.getMaCTHocDeNghi(i.MMaThiXepLop, i.MMaHocVien);
+                temp.Add(i);
+            }
+            //anh xa tu chuong trinh mong muon lay ra chuong trinh de nghi cho hoc vien
+            //co diem ->  lay ra chuong trinh hoc co diem thap nhat lon hon diem thi va lay min 
+            bool flag = new ChiTietThiXepLopBUS().updateKetQuaThi(temp);
+            if (flag == false)
+            {
+                MessageBox.Show("Điểm thi chưa được cập nhật!");
+                return;
+            }
+            //lay chuong trinh de nghi tu diem thi
         }
     }
 }

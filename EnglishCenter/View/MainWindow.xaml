@@ -11,7 +11,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <DockPanel Background="#f6f6f7" Grid.Row="0">
+        <DockPanel Background="#ededee" Grid.Row="0">
             <Image Source="/Resources/banner.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
             <DockPanel HorizontalAlignment="Right">
                 <Image Source="/Resources/user_black.png" Width="25" Height="25" VerticalAlignment="Bottom" Margin="0 0 0 5"/>
@@ -422,13 +422,14 @@
 
                                     <TextBlock Grid.Column="1" Grid.Row="0" Foreground="Black" FontSize="16" Padding="5">Học viên tiềm năng</TextBlock>
                                     <TextBlock Grid.Column="1" Grid.Row="1" Foreground="Black" FontSize="40" Margin="5 0 0 0" Grid.RowSpan="2" Name="tb_numberOfNewStudent">128</TextBlock>
-                                    <!--<Button Grid.Column="1" Grid.Row="2" Width="20" Height="20" Margin="0 0 5 5" HorizontalAlignment="Right" Padding="0">✛</Button>-->
+                                    <Button Grid.Column="1" Grid.Row="2" Width="20" Height="20" Margin="0 0 5 5" HorizontalAlignment="Right" Padding="0" 
+                                            Click="bt_hvtnClick" Content="➟" ToolTip="Hiển thị danh sách học viên tiềm năng"/>
                                 </Grid>
                                 
                                 <Grid Grid.Column="1">
-                                    <Button Grid.Column="1" Grid.Row="2" Width="100" Height="40" Margin="0 0 5 5" 
-                                            HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0" 
-                                            ToolTip="Thêm học viên" Name="btn_AddStudent" FontSize="30" Click="btn_AddStudent_Click">✛</Button>
+                                    <Button Grid.Column="1" Grid.Row="2" Width="100" Height="40" 
+                                            HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0 -11 0 5" 
+                                            ToolTip="Thêm học viên" Name="btn_AddStudent" FontSize="40" Click="btn_AddStudent_Click" Content="+"/>
                                 </Grid>
 
                                 <Grid Grid.Column="2" Width="350" Height="100" Background="White">
@@ -450,7 +451,8 @@
 
                                     <TextBlock Grid.Column="1" Grid.Row="0" Foreground="Black" FontSize="16" Padding="5">Học viên chính thức</TextBlock>
                                     <TextBlock Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Foreground="Black" FontSize="40" Margin="5 0 0 0" Name="tb_numberOfActiveStudent">499</TextBlock>
-                                    <!--<Button Grid.Column="1" Grid.Row="2" Width="20" Height="20" Margin="0 0 5 5" HorizontalAlignment="Right" Padding="0">✛</Button>-->
+                                    <Button Grid.Column="1" Grid.Row="2" Width="20" Height="20" Margin="0 0 5 5" HorizontalAlignment="Right" Padding="0" 
+                                            Click="bt_hvctClick" Content="➟" ToolTip="Hiển thị danh sách học viên chính thức"/>
                                 </Grid>
                             </Grid>
                             
@@ -470,7 +472,7 @@
                                             <DataTemplate>
                                                 <Grid Background="#FFE7ECF1" Margin="1">
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="250"/>
+                                                        <ColumnDefinition Width="180"/>
                                                         <ColumnDefinition Width="100*"/>
                                                         <ColumnDefinition Width="50*"/>
                                                         <ColumnDefinition Width="50*"/>
@@ -483,7 +485,8 @@
                                                     </Grid.RowDefinitions>
 
                                                     <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,10,2" FontSize="15" Name="tb_lv_tenHV" Text="{Binding HocVien.MTenHocVien}"/>
-                                                    <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,10,2" Name="tb_lv_maHV" Text="{Binding HocVien.MMaHocVien}"/>
+                                                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 0 5 2" Text="{Binding Lop.MMaLop, StringFormat='Lớp {0}'}"/>
+                                                    <TextBlock Grid.Row="1" Grid.Column="1" Margin="5,0,10,2" Name="tb_lv_maHV" Text="{Binding HocVien.MMaHocVien}"/>
                                                     <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Margin="5 5 10 5" BorderThickness="0" 
                                                             VerticalAlignment="Center" HorizontalAlignment="Center" Name="bt_lv_hocPhiHv" Click="bt_hocPhiHvClick">
                                                         <Button.Background>

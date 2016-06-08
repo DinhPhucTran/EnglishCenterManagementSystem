@@ -32,6 +32,8 @@ namespace EnglishCenter.View
         ChuongTrinhHocBUS mChuongTrinhBUS;
         List<TrinhDo> mListTrinhDo;
         List<ChuongTrinhHoc> mListChuongTrinhHoc;
+        List<ThiXepLop_Ca> mListThiXLCa;
+        List<Lop_ThoiGianHoc> mListLopThoiGian;
 
         public NewStudentForm()
         {
@@ -49,6 +51,24 @@ namespace EnglishCenter.View
             CTDaHoc_cb.ItemsSource = mListChuongTrinhHoc;
             CTMuonHoc_cb.ItemsSource = mListChuongTrinhHoc;
             createThoiGianRanh();
+
+            //Khởi tạo popup Thi xếp lớp
+            List<ThiXepLop> listThiXL = new ThiXepLopBUS().getListThiXepLop();
+            mListThiXLCa = new List<ThiXepLop_Ca>();
+            foreach (ThiXepLop xl in listThiXL)
+            {
+                mListThiXLCa.Add(new ThiXepLop_Ca(xl, mCaBUS.selectCa(xl.MCaThi)));
+            }
+            lv_popup_thiXL.ItemsSource = mListThiXLCa;
+
+            //Khởi tạo popup Xếp lớp
+            ThoiGianHocBUS thoiGianHocBus = new ThoiGianHocBUS();
+            mListLopThoiGian = new List<Lop_ThoiGianHoc>();
+            foreach (LopHoc lop in MainWindow.listLopDangMo)
+            {
+                mListLopThoiGian.Add(new Lop_ThoiGianHoc(lop, thoiGianHocBus.getThoiGianHocCuaLop(lop.MMaLop)));
+            }
+            lv_popup_xepLop.ItemsSource = mListLopThoiGian;
         }
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
@@ -230,6 +250,38 @@ namespace EnglishCenter.View
         private void In_btn_Click(object sender, RoutedEventArgs e)
         {
             //in
+        }
+
+        private void bt_xepLichThiClick(object sender, RoutedEventArgs e)
+        {
+            popup_xepLichThi.IsOpen = true;
+        }
+
+        private void bt_popupThiXLCloseClick(object sender, RoutedEventArgs e)
+        {
+            popup_xepLichThi.IsOpen = false;
+        }
+
+        private void bt_popupThiXL_OK_Click(object sender, RoutedEventArgs e)
+        {
+            popup_xepLichThi.IsOpen = false;
+        }
+
+
+
+        private void bt_xepLopCloseClick(object sender, RoutedEventArgs e)
+        {
+            popup_xepLop.IsOpen = false;
+        }
+
+        private void bt_xepLopClick(object sender, RoutedEventArgs e)
+        {
+            popup_xepLop.IsOpen = true;
+        }
+
+        private void bt_popupXepLop_OK_Click(object sender, RoutedEventArgs e)
+        {
+            popup_xepLop.IsOpen = false;
         }
     }
 }
