@@ -36,5 +36,10 @@ namespace BusinessLogicTier
         {
             return new ChiTietThiXepLopDAO().insertChiTietThiXepLop(txl);
         }
+
+        public String getMaCTHocDeNghi(String maTXL, String maHV)
+        {
+            return new ChiTietThiXepLopDAO().getMaCTHocDeNghi(maTXL, maHV);
+        }
     }
 }

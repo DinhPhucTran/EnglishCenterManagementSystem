@@ -296,6 +296,64 @@ namespace DataAccessTier
             }
             return result;
         }
-    }
 
+        public ThiXepLop selectThiXLByMaTXL(String maTXL)
+        {
+            ThiXepLop result = null;
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("THI_XEP_LOP_SELECT", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaThiXL", maTXL);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                result = dt.AsEnumerable().Select(m =>
+                    new ThiXepLop
+                    {
+                        MMaThiXL = m.Field<String>("MaThiXL"),
+                        MMaPhong = m.Field<String>("MaPhong"),
+                        MCaThi = m.Field<String>("CaThi"),
+                        MDeThi = m.Field<String>("MaDeThi"),
+                        MNgayThi = m.Field<DateTime>("NgayThi")
+                    }).First();
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
+        }
+
+        public List<DateTime> getKhoangThoiGianThiXL(DateTime currentTime){
+            List<DateTime> khoangTG = new List<DateTime>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("GET_KHOANG_THOI_GIAN_THI_XL", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@CurrentTime", currentTime);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                khoangTG.Add(DateTime.Parse(dt.Rows[0][0].ToString()));
+                khoangTG.Add(DateTime.Parse(dt.Rows[0][1].ToString()));
+                
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return khoangTG;
+        }
+    }
 }

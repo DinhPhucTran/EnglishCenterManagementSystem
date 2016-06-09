@@ -1,0 +1,54 @@
+﻿<Window x:Class="EnglishCenter.View.KetQuaThiXepLop"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="KetQuaThiXepLop" Height="750" Width="1300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Kết quả thi xếp lớp" Foreground="Black" Margin="10 0 0 5" VerticalAlignment="Bottom"/>
+
+
+        <ListView Name="lv_ketQua" Background="White" BorderThickness="0" Grid.Row="2" Grid.Column="0" Width="1300">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="#FFE7ECF1" Margin="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0"  Margin="5,0,10,2" Name="tb_tenHV" Text="{Binding MTenHV}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1"  Margin="5,0,10,2" Name="tb_ngaySinh" Text="{Binding MNgaySinh}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="2"  Margin="5,0,10,2" Name="tb_gioiTinh" Text="{Binding MGioiTinh}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="3"  Margin="5,0,10,2" Name="tb_sdt" Text="{Binding MSdt}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="4"  Margin="5,0,10,2" Name="tb_tdDaHoc" Text="{Binding MMaCTDaHoc}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="5"  Margin="5,0,10,2" Name="tb_ctMongMuon" Text="{Binding MMaCTMuonHoc}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="6"  Margin="5,0,10,2" Name="tb_KQT" Text="{Binding MKetQua}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="7"  Margin="5,0,10,2" Name="tb_email" Text="{Binding MEmail}"/>
+                        <ComboBox Grid.Row="0" Grid.Column="8"  Margin="5,0,10,2" Name="cb_lopDeNghi" Text="{Binding HocVien.MTenHocVien}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

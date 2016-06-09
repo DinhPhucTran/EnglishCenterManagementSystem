@@ -15,28 +15,28 @@ Insert into TRINH_DO values('PREIN','Pre-Intermediate')
 Insert into TRINH_DO values('INTER','Intermediate')
 Insert into TRINH_DO values('UPPER','Upper-Intermediate')
 Insert into TRINH_DO values('ADVAN','Advanced')
-
+select * from TRINH_DO
 
 Insert into CHUONG_TRINH_HOC values('IELT.BE','IELTS for Beginner','BEGIN',1,2)
 Insert into CHUONG_TRINH_HOC values('TOEI.BE','TOEIC for Beginner','BEGIN',0,150)
-Insert into CHUONG_TRINH_HOC values('IELT.EL','IELTS for Elementary','ELEM',2,3)
-Insert into CHUONG_TRINH_HOC values('TOEI.EL','TOEIC for Elementary','ELEM',151,300)
+Insert into CHUONG_TRINH_HOC values('IELT.EL','IELTS for Elementary','ELEMN',2,3)
+Insert into CHUONG_TRINH_HOC values('TOEI.EL','TOEIC for Elementary','ELEMN',151,300)
 
-Insert into CHUONG_TRINH_HOC values('IELT.PR','IELTS Pre-intermediate','PRE',3,4)
-Insert into CHUONG_TRINH_HOC values('TOEF.PR','TOEFL Pre-intermediate','PRE',0,31)
-Insert into CHUONG_TRINH_HOC values('TOEI.PR','TOEIC Pre-intermediate','PRE',301,400)
+Insert into CHUONG_TRINH_HOC values('IELT.PR','IELTS Pre-intermediate','PREIN',3,4)
+Insert into CHUONG_TRINH_HOC values('TOEF.PR','TOEFL Pre-intermediate','PREIN',0,31)
+Insert into CHUONG_TRINH_HOC values('TOEI.PR','TOEIC Pre-intermediate','PREIN',301,400)
 
-Insert into CHUONG_TRINH_HOC values('IELT.INT','IELTS Intermediate','INTER',4,5)
-Insert into CHUONG_TRINH_HOC values('TOEF.INT','TOEFL Intermediate','INTER',31,34)
-Insert into CHUONG_TRINH_HOC values('TOEI.INT','TOEIC Intermediate','INTER',401,525)
+Insert into CHUONG_TRINH_HOC values('IELT.IN','IELTS Intermediate','INTER',4,5)
+Insert into CHUONG_TRINH_HOC values('TOEF.IN','TOEFL Intermediate','INTER',31,34)
+Insert into CHUONG_TRINH_HOC values('TOEI.IN','TOEIC Intermediate','INTER',401,525)
 
 Insert into CHUONG_TRINH_HOC values('IELT.UP','IELTS upper-intermediate','UPPER',5,6)
 Insert into CHUONG_TRINH_HOC values('TOEF.UP','TOEFL upper-intermediate','UPPER',35,59)
 Insert into CHUONG_TRINH_HOC values('TOEI.UP','TOEIC upper-intermediate','UPPER',526,750)
 
-Insert into CHUONG_TRINH_HOC values('IELT.AD','IELTS Advanced','ADV',6,7)
-Insert into CHUONG_TRINH_HOC values('TOEF.AD','TOEFL Advanced','ADV',60,93)
-Insert into CHUONG_TRINH_HOC values('TOEI.AD','TOEIC Advanced','ADV',751,900)
+Insert into CHUONG_TRINH_HOC values('IELT.AD','IELTS Advanced','ADVAN',6,7)
+Insert into CHUONG_TRINH_HOC values('TOEF.AD','TOEFL Advanced','ADVAN',60,93)
+Insert into CHUONG_TRINH_HOC values('TOEI.AD','TOEIC Advanced','ADVAN',751,900)
 
 
 

@@ -11,6 +11,7 @@
             <RowDefinition Height="70"/>
             <RowDefinition Height="80"/>
             <RowDefinition/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="#00C0EF">
             <Grid.RowDefinitions>
@@ -50,5 +51,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Name="Luu_btn" Grid.Row="3" Margin="50, 0, 50 , 0" Content="Lưu" FontSize="20" Click="Luu_btn_Click"/>
     </Grid>
 </Window>

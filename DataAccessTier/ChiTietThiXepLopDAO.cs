@@ -132,8 +132,22 @@ namespace DataAccessTier
                     cmd.Parameters.AddWithValue("@MaThiXepLop", i.MMaThiXepLop);
                     cmd.Parameters.AddWithValue("@MaHV", i.MMaHocVien);
                     cmd.Parameters.AddWithValue("@KetQuaThi", i.MKetQuaThi);
-                    cmd.Parameters.AddWithValue("@ChuongTrinhDeNghi", i.MChuongTrinhDeNghi);
-                    cmd.Parameters.AddWithValue("@ChuongTrinhMongMuon", i.MChuongTrinhMongMuon);
+                    if (i.MChuongTrinhDeNghi == "")
+                    {
+                        cmd.Parameters.AddWithValue("@ChuongTrinhDeNghi", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@ChuongTrinhDeNghi", i.MChuongTrinhDeNghi);
+                    }
+                    if (i.MChuongTrinhMongMuon == "")
+                    {
+                        cmd.Parameters.AddWithValue("@ChuongTrinhMongMuon", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@ChuongTrinhMongMuon", i.MChuongTrinhMongMuon);
+                    }
                     cmd.ExecuteNonQuery();
                 }
                 result = true;
@@ -172,6 +186,32 @@ namespace DataAccessTier
                 }
                 cmd.ExecuteNonQuery();
                 result = true;
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
+        }
+
+        public String getMaCTHocDeNghi(String maTXL, String maHV)
+        {
+            String result = "";
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("CHUONG_TRINH_HOC_DENGHI", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaChiTietTXL", maTXL);//dat nham ten trong procedure
+                cmd.Parameters.AddWithValue("@MaHV", maHV);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                result = dt.Rows[0]["MaCTHoc"].ToString();
             }
             catch (Exception e)
             {
