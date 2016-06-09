@@ -25,23 +25,29 @@ namespace EnglishCenter.View
 
     {
         public static List<LopHoc> listLopDangMo;
-        public List<TrinhDo> listTrinhDo;
-        public List<ChuongTrinhHoc> listChuongTrinhHoc;
-        public List<GiangVien> listGiangVien;
-        public List<HocVien> listActiveStudent; // Danh sách học viên đang học
-        public List<HocVien_Lop> listHvDangHocWLop; // Danh sách học viên đang học + lớp
-        public List<HocVien> listNewStudent; // Danh sách học viên chưa xếp lớp
-        public List<HocVien_Lop> listFilterHv;
-        public List<HocVien> listAllStudent;// Danh sách tất cả học viên (đanh học, chưa xếp lớp, không còn học)
+        public static List<TrinhDo> listTrinhDo;
+        public static List<ChuongTrinhHoc> listChuongTrinhHoc;
+        public static List<GiangVien> listGiangVien;
+        public static List<HocVien> listActiveStudent; // Danh sách học viên đang học
+        public static List<HocVien_Lop> listHvDangHocWLop; // Danh sách học viên đang học + lớp
+        public static List<HocVien> listNewStudent; // Danh sách học viên chưa xếp lớp
+        public static List<HocVien_Lop> listFilterHv;
+        public static List<HocVien> listAllStudent;// Danh sách tất cả học viên (đanh học, chưa xếp lớp, không còn học)
 
         public MainWindow()
         {
             InitializeComponent();
-            listTrinhDo = new TrinhDoBUS().getListTrinhDo();
-            listLopDangMo = new LopHocBUS().getListLopHocByTime(DateTime.Now, DateTime.Now);
-            listChuongTrinhHoc = new ChuongTrinhHocBUS().getListChuongTrinhHoc();
-            listGiangVien = new GiangVienBUS().getListGiangVien();
+            updateListLopDangMo();
+            updateListGiaoVien();
+            updateListTrinhDo();
+            updateListChuongTrinhHoc();
+            updateListHocVien();
+            updateLichThi();
+            
+        }
 
+        private void updateListHocVien()
+        {
             listActiveStudent = new List<HocVien>();
             listHvDangHocWLop = new List<HocVien_Lop>();
             foreach (LopHoc lop in listLopDangMo)
@@ -71,6 +77,22 @@ namespace EnglishCenter.View
             listAllStudent = new HocVienBUS().getListHocVien();
             listNewStudent = listAllStudent.Except(listHVdaXepLop, new MaHvComparer()).ToList<HocVien>();
 
+            lv_dsHocVien.ItemsSource = listHvDangHocWLop.OrderBy(o => o.HocVien.MTenHocVien).ToList();
+            tb_numberOfActiveStudent.Text = listActiveStudent.Count.ToString();
+            tb_home_NumberOfStudent.Text = listActiveStudent.Count.ToString();
+            tb_numberOfNewStudent.Text = listNewStudent.Count.ToString();
+        }
+
+        private void updateListLopDangMo()
+        {
+            listLopDangMo = new LopHocBUS().getListLopHocByTime(DateTime.Now, DateTime.Now);
+            tb_home_NumberOfClass.Text = listLopDangMo.Count.ToString();
+            cb_filterHV_lop.ItemsSource = listLopDangMo;
+        }
+
+        private void updateListChuongTrinhHoc()
+        {
+            listChuongTrinhHoc = new ChuongTrinhHocBUS().getListChuongTrinhHoc();
             List<ChuongTrinhHoc_SoHV> listHomeChuongTrinhHoc = new List<ChuongTrinhHoc_SoHV>();
             foreach (ChuongTrinhHoc cth in listChuongTrinhHoc)
             {
@@ -92,8 +114,25 @@ namespace EnglishCenter.View
                 cthHv.TenCTH = cth.MTenChuongTrinhHoc;
                 listHomeChuongTrinhHoc.Add(cthHv);
             }
-            lv_home_courses.ItemsSource = listHomeChuongTrinhHoc;
 
+            lv_home_courses.ItemsSource = listHomeChuongTrinhHoc;
+            lvChuongTrinhHoc.ItemsSource = ChuongTrinhHoc_TrinhDo.getList(listHomeChuongTrinhHoc);
+            tb_home_NumberOfCourse.Text = listChuongTrinhHoc.Count.ToString();
+
+            //ListView grouping
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvChuongTrinhHoc.ItemsSource);
+            PropertyGroupDescription groupDescription = new PropertyGroupDescription("TrinhDo.MTenTrinhDo");
+            view.GroupDescriptions.Add(groupDescription);
+            tb_soCTH.Text = listChuongTrinhHoc.Count.ToString();
+        }
+
+        public static void updateListTrinhDo()
+        {
+            listTrinhDo = new TrinhDoBUS().getListTrinhDo();
+        }
+
+        private void updateLichThi()
+        {
             List<ListItemThiXepLop> listHomeThi = new List<ListItemThiXepLop>();
             List<ThiXepLop> listThiXepLop = new ThiXepLopBUS().getListThiXepLop();
             foreach (ThiXepLop xl in listThiXepLop)
@@ -103,42 +142,31 @@ namespace EnglishCenter.View
                 item.year = xl.MNgayThi.Year.ToString();
                 item.title = "Thi xếp lớp";
                 CaBUS caBus = new CaBUS();
-                item.detail = "Phòng " + xl.MMaPhong + ",  " 
+                item.detail = "Phòng " + xl.MMaPhong + ",  "
                     + caBus.selectCa(xl.MCaThi).MThoiGianBatDau.ToShortTimeString() + " - "
                     + caBus.selectCa(xl.MCaThi).MThoiGianKetThuc.ToShortTimeString();
                 listHomeThi.Add(item);
             }
             lv_home_schedule.ItemsSource = listHomeThi;
+        }
 
-            lv_dsHocVien.ItemsSource = listHvDangHocWLop.OrderBy(o => o.HocVien.MTenHocVien).ToList();
-            tb_numberOfActiveStudent.Text = listActiveStudent.Count.ToString();
-            tb_home_NumberOfStudent.Text = listActiveStudent.Count.ToString();
-            tb_home_NumberOfCourse.Text = listChuongTrinhHoc.Count.ToString();
+        private void updateListGiaoVien()
+        {
+            listGiangVien = new GiangVienBUS().getListGiangVien();
             tb_home_NumberOfTeacher.Text = listGiangVien.Count.ToString();
-            tb_home_NumberOfClass.Text = listLopDangMo.Count.ToString();
-            tb_numberOfNewStudent.Text = listNewStudent.Count.ToString();
-
-            cb_filterHV_lop.ItemsSource = listLopDangMo;
-
-
-            //Tab Chương trình học
-            lvChuongTrinhHoc.ItemsSource = ChuongTrinhHoc_TrinhDo.getList(listHomeChuongTrinhHoc);
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvChuongTrinhHoc.ItemsSource);
-            PropertyGroupDescription groupDescription = new PropertyGroupDescription("TrinhDo.MTenTrinhDo");
-            view.GroupDescriptions.Add(groupDescription);
-            tb_soCTH.Text = listChuongTrinhHoc.Count.ToString();
         }
 
         private void btn_AddStudent_Click(object sender, RoutedEventArgs e)
         {
             NewStudentForm studentForm = new NewStudentForm();
-            studentForm.Show();
+            studentForm.DataChanged += ThemHocVien_DataChanged;
+            studentForm.ShowDialog();
         }
 
         private void btThemCth_click(object sender, RoutedEventArgs e)
         {
             NewCourseForm newCourseForm = new NewCourseForm();
-            newCourseForm.Show();
+            newCourseForm.ShowDialog();
         }
 
         #region Extended classes
@@ -459,6 +487,13 @@ namespace EnglishCenter.View
         {
             lv_dsHocVien.ItemsSource = listHvDangHocWLop;
         }
+
+        private void ThemHocVien_DataChanged(object sender, EventArgs e)
+        {
+            //System.Windows.MessageBox.Show("Updated", "MainWindow");
+            updateListHocVien();
+        }
+
 
     }    
 }

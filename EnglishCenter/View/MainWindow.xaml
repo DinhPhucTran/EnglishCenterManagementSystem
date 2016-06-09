@@ -387,262 +387,256 @@
                         <TextBlock Margin="5">HỌC VIÊN</TextBlock>
                         </WrapPanel>
                 </TabItem.Header>
-                
-                <StackPanel Name="tabStudents_mainPanel">
-                    <ScrollViewer Height="{Binding ElementName=tabStudents_mainPanel, Path=ActualHeight}" VerticalScrollBarVisibility="Auto">
-                        <Grid Name="tabStudents_mainGrid" Background="#F9F9F9" Cursor="Arrow">
+
+                <Grid Name="tabStudents_mainGrid" Background="#F9F9F9" Cursor="Arrow">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0" Width="320" Height="100" Background="White">
+                            <Grid.Effect>
+                                <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                            </Grid.Effect>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="150"/>
+                                <RowDefinition Height="30"/>
                                 <RowDefinition/>
+                                <RowDefinition Height="30"/>
                             </Grid.RowDefinitions>
+                            <StackPanel Grid.Column="0" Grid.RowSpan="3" Background="#F39C12">
+                                <Image Source="/Resources/students_outline.png"/>
+                            </StackPanel>
 
-                            <Grid Grid.Row="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1" Grid.Row="0" Foreground="Black" FontSize="16" Padding="5">Học viên tiềm năng</TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="1" Foreground="Black" FontSize="40" Margin="5 0 0 0" Grid.RowSpan="2" Name="tb_numberOfNewStudent">128</TextBlock>
+                            <Button Grid.Column="1" Grid.Row="2" Width="20" Height="20" Margin="0 0 5 5" HorizontalAlignment="Right" Padding="0" 
+                                            Click="bt_hvtnClick" Content="⬇" ToolTip="Hiển thị danh sách học viên tiềm năng"/>
+                        </Grid>
 
-                                <Grid Grid.Column="0" Width="320" Height="100" Background="White">
-                                    <Grid.Effect>
-                                        <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                                    </Grid.Effect>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="100"/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="30"/>
-                                        <RowDefinition/>
-                                        <RowDefinition Height="30"/>
-                                    </Grid.RowDefinitions>
-                                    <StackPanel Grid.Column="0" Grid.RowSpan="3" Background="#F39C12">
-                                        <Image Source="/Resources/students_outline.png"/>
-                                    </StackPanel>
-
-                                    <TextBlock Grid.Column="1" Grid.Row="0" Foreground="Black" FontSize="16" Padding="5">Học viên tiềm năng</TextBlock>
-                                    <TextBlock Grid.Column="1" Grid.Row="1" Foreground="Black" FontSize="40" Margin="5 0 0 0" Grid.RowSpan="2" Name="tb_numberOfNewStudent">128</TextBlock>
-                                    <Button Grid.Column="1" Grid.Row="2" Width="20" Height="20" Margin="0 0 5 5" HorizontalAlignment="Right" Padding="0" 
-                                            Click="bt_hvtnClick" Content="➟" ToolTip="Hiển thị danh sách học viên tiềm năng"/>
-                                </Grid>
-                                
-                                <Grid Grid.Column="1">
-                                    <Button Grid.Column="1" Grid.Row="2" Width="100" Height="40" 
+                        <Grid Grid.Column="1">
+                            <Button Grid.Column="1" Grid.Row="2" Width="100" Height="40" 
                                             HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0 -11 0 5" 
                                             ToolTip="Thêm học viên" Name="btn_AddStudent" FontSize="40" Click="btn_AddStudent_Click" Content="+"/>
-                                </Grid>
+                        </Grid>
 
-                                <Grid Grid.Column="2" Width="350" Height="100" Background="White">
-                                    <Grid.Effect>
-                                        <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                                    </Grid.Effect>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="100"/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="30"/>
-                                        <RowDefinition/>
-                                        <RowDefinition Height="30"/>
-                                    </Grid.RowDefinitions>
-                                    <StackPanel Grid.Column="0" Grid.RowSpan="3" Background="#00A65A">
-                                        <Image Source="/Resources/students.png"/>
-                                    </StackPanel>
+                        <Grid Grid.Column="2" Width="350" Height="100" Background="White">
+                            <Grid.Effect>
+                                <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                            </Grid.Effect>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Column="0" Grid.RowSpan="3" Background="#00A65A">
+                                <Image Source="/Resources/students.png"/>
+                            </StackPanel>
 
-                                    <TextBlock Grid.Column="1" Grid.Row="0" Foreground="Black" FontSize="16" Padding="5">Học viên chính thức</TextBlock>
-                                    <TextBlock Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Foreground="Black" FontSize="40" Margin="5 0 0 0" Name="tb_numberOfActiveStudent">499</TextBlock>
-                                    <Button Grid.Column="1" Grid.Row="2" Width="20" Height="20" Margin="0 0 5 5" HorizontalAlignment="Right" Padding="0" 
-                                            Click="bt_hvctClick" Content="➟" ToolTip="Hiển thị danh sách học viên chính thức"/>
-                                </Grid>
-                            </Grid>
-                            
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="450"/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="1" Grid.Row="0" Foreground="Black" FontSize="16" Padding="5">Học viên chính thức</TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Foreground="Black" FontSize="40" Margin="5 0 0 0" Name="tb_numberOfActiveStudent">499</TextBlock>
+                            <Button Grid.Column="1" Grid.Row="2" Width="20" Height="20" Margin="0 0 5 5" HorizontalAlignment="Right" Padding="0" 
+                                            Click="bt_hvctClick" Content="⬇" ToolTip="Hiển thị danh sách học viên chính thức"/>
+                        </Grid>
+                    </Grid>
 
-                                <Grid Margin="10" Grid.Column="0" Height="400">
-                                    <Grid.Effect>
-                                        <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                                    </Grid.Effect>
-                                    <ListView Name="lv_dsHocVien" Background="White" BorderThickness="0">
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Grid Background="#FFE7ECF1" Margin="1">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="180"/>
-                                                        <ColumnDefinition Width="100*"/>
-                                                        <ColumnDefinition Width="50*"/>
-                                                        <ColumnDefinition Width="50*"/>
-                                                        <ColumnDefinition Width="50*"/>
-                                                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
 
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition/>
-                                                        <RowDefinition/>
-                                                    </Grid.RowDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.Effect>
+                                <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                            </Grid.Effect>
+                            <ListView Name="lv_dsHocVien" Background="White" BorderThickness="0" Margin="15 5 10 10">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Background="#FFE7ECF1" Margin="5 1 1 1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="180"/>
+                                                <ColumnDefinition Width="100*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                            </Grid.ColumnDefinitions>
 
-                                                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,10,2" FontSize="15" Name="tb_lv_tenHV" Text="{Binding HocVien.MTenHocVien}"/>
-                                                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 0 5 2" Text="{Binding Lop.MMaLop, StringFormat='Lớp {0}'}"/>
-                                                    <TextBlock Grid.Row="1" Grid.Column="1" Margin="5,0,10,2" Name="tb_lv_maHV" Text="{Binding HocVien.MMaHocVien}"/>
-                                                    <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Margin="5 5 10 5" BorderThickness="0" 
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,10,2" FontSize="15" Name="tb_lv_tenHV" Text="{Binding HocVien.MTenHocVien}"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 0 5 2" Text="{Binding Lop.MMaLop, StringFormat='Lớp {0}'}"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="1" Margin="5,0,10,2" Name="tb_lv_maHV" Text="{Binding HocVien.MMaHocVien}"/>
+                                            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Margin="5 5 10 5" BorderThickness="0" 
                                                             VerticalAlignment="Center" HorizontalAlignment="Center" Name="bt_lv_hocPhiHv" Click="bt_hocPhiHvClick">
-                                                        <Button.Background>
-                                                            <ImageBrush ImageSource="/EnglishCenter;component/Resources/cash.png"/>
-                                                        </Button.Background>
-                                                    </Button>
-                                                    <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Margin="10 5 5 5" BorderThickness="0" 
+                                                <Button.Background>
+                                                    <ImageBrush ImageSource="/EnglishCenter;component/Resources/cash.png"/>
+                                                </Button.Background>
+                                            </Button>
+                                            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Margin="10 5 5 5" BorderThickness="0" 
                                                             VerticalAlignment="Center" HorizontalAlignment="Center" Name="bt_lv_editHV" Click="bt_editHvClick">
-                                                        <Button.Background>
-                                                            <ImageBrush ImageSource="/EnglishCenter;component/Resources/edit.png"/>
-                                                        </Button.Background>
-                                                    </Button>
-                                                    <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="4" Margin="5 5 10 5" BorderThickness="0" 
+                                                <Button.Background>
+                                                    <ImageBrush ImageSource="/EnglishCenter;component/Resources/edit.png"/>
+                                                </Button.Background>
+                                            </Button>
+                                            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="4" Margin="5 5 10 5" BorderThickness="0" 
                                                             VerticalAlignment="Center" HorizontalAlignment="Center" Name="bt_lv_viewHV" Click="bt_viewHvClick">
-                                                        <Button.Background>
-                                                            <ImageBrush ImageSource="/EnglishCenter;component/Resources/info_white.png"/>
-                                                        </Button.Background>
-                                                    </Button>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
-                                    <Popup PlacementTarget="{Binding ElementName=lv_dsHocVien}"              
+                                                <Button.Background>
+                                                    <ImageBrush ImageSource="/EnglishCenter;component/Resources/info_white.png"/>
+                                                </Button.Background>
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <Popup PlacementTarget="{Binding ElementName=lv_dsHocVien}"              
                                            AllowsTransparency="True"  
-                                           PopupAnimation="Scroll"
+                                           PopupAnimation="Fade"
                                            Placement="Right"
                                            HorizontalOffset="10"
                                            Name="popup_detailHV">
-                                        <Grid Background="White" Margin="20">
-                                            <Grid.Effect>
-                                                <DropShadowEffect Color="#FFC3C3C3" BlurRadius="15" Direction="280"/>
-                                            </Grid.Effect>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="30"/>
-                                                <RowDefinition Height="30"/>
-                                                <RowDefinition Height="30"/>
-                                                <RowDefinition Height="30"/>
-                                                <RowDefinition Height="30"/>
-                                                <RowDefinition Height="30"/>
-                                                <RowDefinition Height="30"/>
-                                                <RowDefinition Height="30"/>
-                                                <RowDefinition />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="70"/>
-                                                <ColumnDefinition/>
-                                            </Grid.ColumnDefinitions>
-
-                                            <Button Grid.Row="0" Grid.Column="1" Margin="0 0 5 0" Content="⛌" Padding="0" Background="Transparent" HorizontalAlignment="Right"
-                                                    Name="bt_popup_close" Width="20" Height="20" Click="bt_popupClick" BorderThickness="0" Foreground="#FFC3C3C3"/>
-
-                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Học viên: " Foreground="Black" Margin="5"/>
-                                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Phái: " Foreground="Black" Margin="5"/>
-                                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Lớp: " Foreground="Black" Margin="5"/>
-                                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Ngày sinh: " Foreground="Black" Margin="5"/>
-                                            <TextBlock Grid.Row="5" Grid.Column="0" Text="SĐT: " Foreground="Black" Margin="5"/>
-                                            <TextBlock Grid.Row="6" Grid.Column="0" Text="Email: " Foreground="Black" Margin="5"/>
-                                            <TextBlock Grid.Row="7" Grid.Column="0" Text="Địa chỉ: " Foreground="Black" Margin="5"/>
-                                            
-                                            <TextBlock Grid.Row="1" Grid.Column="1" Name="tb_popup_tenHV" Text="Adam Levin Katy Perry" 
-                                                       Foreground="Black" Margin="0 0 5 6" FontSize="17" FontWeight="SemiBold"/>
-                                            <TextBlock Grid.Row="2" Grid.Column="1" Name="tb_popup_gioiTinh" Text="Nam" Foreground="Black" Margin="0 5 5 5"/>
-                                            <TextBlock Grid.Row="3" Grid.Column="1" Name="tb_popup_lop" Foreground="Black" Margin="0 5 5 5"/>
-                                            <TextBlock Grid.Row="4" Grid.Column="1" Name="tb_popup_ngaySinh" Foreground="Black" Margin="0 5 5 5" Text="5/6/1995"/>
-                                            <TextBlock Grid.Row="5" Grid.Column="1" Name="tb_popup_sdt" Foreground="Black" Margin="0 5 5 5" Text="01698833511"/>
-                                            <TextBlock Grid.Row="6" Grid.Column="1" Name="tb_popup_email" Foreground="Black" Margin="0 5 5 5" Text="abc@gmail.com"/>
-                                            <TextBlock Grid.Row="7" Grid.Column="1" Name="tb_popup_diachi" Foreground="Black" Margin="0 5 5 5" Text="NYC, USA"/>
-                                            
-                                        </Grid>
-                                    </Popup>
-                                </Grid>
-                                
-                                <Grid Grid.Column="1" Margin="10" Background="White" Height="240" VerticalAlignment="Top">
+                                <Grid Background="White" Margin="20">
                                     <Grid.Effect>
-                                        <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                                        <DropShadowEffect Color="#FFC3C3C3" BlurRadius="15" Direction="280"/>
                                     </Grid.Effect>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="40"/>
-                                        <RowDefinition Height="40"/>
-                                        <RowDefinition Height="40"/>
-                                        <RowDefinition Height="40"/>
-                                        <RowDefinition/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="80"/>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="70"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    
-                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Lớp" Foreground="Black" Margin="10 0 0 5" VerticalAlignment="Bottom"/>
-                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Mã học viên" Foreground="Black" Margin="10 0 0 5" VerticalAlignment="Bottom"/>
-                                    <TextBlock Grid.Row="2" Grid.Column="2" Text="Tên học viên" Foreground="Black" Margin="5" VerticalAlignment="Bottom"/>
-                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="SĐT" Foreground="Black" Margin="10 0 0 5" VerticalAlignment="Bottom"/>
-                                    <TextBlock Grid.Row="3" Grid.Column="2" Text="Email" Foreground="Black" Margin="5" VerticalAlignment="Bottom"/>
-                                    <Button Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Width="80" HorizontalAlignment="Right" Margin="10 10 23 10"
+
+                                    <Button Grid.Row="0" Grid.Column="1" Margin="0 0 5 0" Content="⛌" Padding="0" Background="Transparent" HorizontalAlignment="Right"
+                                                    Name="bt_popup_close" Width="20" Height="20" Click="bt_popupClick" BorderThickness="0" Foreground="#FFC3C3C3"/>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Học viên: " Foreground="Black" Margin="5"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Phái: " Foreground="Black" Margin="5"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Lớp: " Foreground="Black" Margin="5"/>
+                                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Ngày sinh: " Foreground="Black" Margin="5"/>
+                                    <TextBlock Grid.Row="5" Grid.Column="0" Text="SĐT: " Foreground="Black" Margin="5"/>
+                                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Email: " Foreground="Black" Margin="5"/>
+                                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Địa chỉ: " Foreground="Black" Margin="5"/>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Name="tb_popup_tenHV" Text="Adam Levin Katy Perry" 
+                                                       Foreground="Black" Margin="0 0 5 6" FontSize="17" FontWeight="SemiBold"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" Name="tb_popup_gioiTinh" Text="Nam" Foreground="Black" Margin="0 5 5 5"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="1" Name="tb_popup_lop" Foreground="Black" Margin="0 5 5 5"/>
+                                    <TextBlock Grid.Row="4" Grid.Column="1" Name="tb_popup_ngaySinh" Foreground="Black" Margin="0 5 5 5" Text="5/6/1995"/>
+                                    <TextBlock Grid.Row="5" Grid.Column="1" Name="tb_popup_sdt" Foreground="Black" Margin="0 5 5 5" Text="01698833511"/>
+                                    <TextBlock Grid.Row="6" Grid.Column="1" Name="tb_popup_email" Foreground="Black" Margin="0 5 5 5" Text="abc@gmail.com"/>
+                                    <TextBlock Grid.Row="7" Grid.Column="1" Name="tb_popup_diachi" Foreground="Black" Margin="0 5 5 5" Text="NYC, USA"/>
+
+                                </Grid>
+                            </Popup>
+                        </Grid>
+
+                        <Grid Grid.Column="1" Margin="10" Background="White" Height="240" VerticalAlignment="Top">
+                            <Grid.Effect>
+                                <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                            </Grid.Effect>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Lớp" Foreground="Black" Margin="10 0 0 5" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Mã học viên" Foreground="Black" Margin="10 0 0 5" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="2" Grid.Column="2" Text="Tên học viên" Foreground="Black" Margin="5" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="SĐT" Foreground="Black" Margin="10 0 0 5" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="3" Grid.Column="2" Text="Email" Foreground="Black" Margin="5" VerticalAlignment="Bottom"/>
+                            <Button Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Width="80" HorizontalAlignment="Right" Margin="10 10 23 10"
                                             Content="Tìm" Name="bt_filterHV" Click="bt_filterHvClick"/>
-                                    
-                                    <!--<TextBox Grid.Row="1" Grid.Column="1" Name="tb_filterHV_lop" Margin="5 12 15 0" Foreground="Blue" FontSize="15"/>-->
-                                    <!--<toolkit:AutoCompleteBox Grid.Row="1" Grid.Column="1" Name="tb_filterHV_lop" FilterMode="Contains"  IsTextCompletionEnabled="False" Margin="5 12 15 3" FontSize="14">
+
+                            <!--<TextBox Grid.Row="1" Grid.Column="1" Name="tb_filterHV_lop" Margin="5 12 15 0" Foreground="Blue" FontSize="15"/>-->
+                            <!--<toolkit:AutoCompleteBox Grid.Row="1" Grid.Column="1" Name="tb_filterHV_lop" FilterMode="Contains"  IsTextCompletionEnabled="False" Margin="5 12 15 3" FontSize="14">
                                         <toolkit:AutoCompleteBox.ItemTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding MMaLop}"/>
                                             </DataTemplate>
                                         </toolkit:AutoCompleteBox.ItemTemplate>
                                     </toolkit:AutoCompleteBox>-->
-                                    <ComboBox Grid.Row="1" Grid.Column="1" IsEditable="True" Margin="5 12 15 5" Foreground="Black" Name="cb_filterHV_lop" 
+                            <ComboBox Grid.Row="1" Grid.Column="1" IsEditable="True" Margin="5 12 15 5" Foreground="Black" Name="cb_filterHV_lop" 
                                               DisplayMemberPath="MMaLop" SelectionChanged="cb_filterHV_lopSelectionChanged"/>
-                                    <toolkit:AutoCompleteBox Grid.Row="2" Grid.Column="1" Name="tb_filterHV_maHv" FilterMode="Contains"  
+                            <toolkit:AutoCompleteBox Grid.Row="2" Grid.Column="1" Name="tb_filterHV_maHv" FilterMode="Contains"  
                                                              IsTextCompletionEnabled="False" Margin="5 12 15 3" FontSize="14" 
                                                              TextChanged="tb_filterHv_maHvTextChanged" PreviewTextInput="NumberValidationTextBox" KeyUp="tb_filterHv_maKeyUp">
-                                        <toolkit:AutoCompleteBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding MMaHocVien}"/>
-                                            </DataTemplate>
-                                        </toolkit:AutoCompleteBox.ItemTemplate>
-                                    </toolkit:AutoCompleteBox>
-                                    <toolkit:AutoCompleteBox Grid.Row="2" Grid.Column="3" Name="tb_filterHV_ten" 
+                                <toolkit:AutoCompleteBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding MMaHocVien}"/>
+                                    </DataTemplate>
+                                </toolkit:AutoCompleteBox.ItemTemplate>
+                            </toolkit:AutoCompleteBox>
+                            <toolkit:AutoCompleteBox Grid.Row="2" Grid.Column="3" Name="tb_filterHV_ten" 
                                                              FilterMode="Contains"  IsTextCompletionEnabled="False" Margin="2 12 25 3" 
                                                              FontSize="14" KeyUp="EnterKeyUp">
-                                        <toolkit:AutoCompleteBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding MTenHocVien}"/>
-                                            </DataTemplate>
-                                        </toolkit:AutoCompleteBox.ItemTemplate>
-                                    </toolkit:AutoCompleteBox>
-                                    <toolkit:AutoCompleteBox Grid.Row="3" Grid.Column="1" Name="tb_filterHV_sdt" FilterMode="Contains"  
+                                <toolkit:AutoCompleteBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding MTenHocVien}"/>
+                                    </DataTemplate>
+                                </toolkit:AutoCompleteBox.ItemTemplate>
+                            </toolkit:AutoCompleteBox>
+                            <toolkit:AutoCompleteBox Grid.Row="3" Grid.Column="1" Name="tb_filterHV_sdt" FilterMode="Contains"  
                                                              IsTextCompletionEnabled="False" Margin="5 12 15 3" FontSize="14"
                                                              PreviewTextInput="NumberValidationTextBox" KeyUp="EnterKeyUp">
-                                        <toolkit:AutoCompleteBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding MSdt}"/>
-                                            </DataTemplate>
-                                        </toolkit:AutoCompleteBox.ItemTemplate>
-                                    </toolkit:AutoCompleteBox>
-                                    <toolkit:AutoCompleteBox Grid.Row="3" Grid.Column="3" Name="tb_filterHV_email" FilterMode="Contains"  
+                                <toolkit:AutoCompleteBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding MSdt}"/>
+                                    </DataTemplate>
+                                </toolkit:AutoCompleteBox.ItemTemplate>
+                            </toolkit:AutoCompleteBox>
+                            <toolkit:AutoCompleteBox Grid.Row="3" Grid.Column="3" Name="tb_filterHV_email" FilterMode="Contains"  
                                                              IsTextCompletionEnabled="False" Margin="2 12 25 3" FontSize="14" KeyUp="EnterKeyUp">
-                                        <toolkit:AutoCompleteBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding MEmail}"/>
-                                            </DataTemplate>
-                                        </toolkit:AutoCompleteBox.ItemTemplate>
-                                    </toolkit:AutoCompleteBox>
-                                    <!--<TextBox Grid.Row="2" Grid.Column="1" Name="tb_filterHV_ten" Margin="5 12 15 0" Foreground="Blue" FontSize="15"/>
+                                <toolkit:AutoCompleteBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding MEmail}"/>
+                                    </DataTemplate>
+                                </toolkit:AutoCompleteBox.ItemTemplate>
+                            </toolkit:AutoCompleteBox>
+                            <!--<TextBox Grid.Row="2" Grid.Column="1" Name="tb_filterHV_ten" Margin="5 12 15 0" Foreground="Blue" FontSize="15"/>
                                     <TextBox Grid.Row="2" Grid.Column="3" Name="tb_filterHV_maHv" VerticalAlignment="Center" Margin="5 12 20 0" Foreground="Blue" FontSize="15"/>
                                     <TextBox Grid.Row="3" Grid.Column="1" Name="tb_filterHV_sdt" VerticalAlignment="Center" Margin="5 12 15 0" Foreground="Blue" FontSize="15"/>
                                     <TextBox Grid.Row="3" Grid.Column="3" Name="tb_filterHV_email" VerticalAlignment="Center" Margin="5 12 20 0" Foreground="Blue" FontSize="15"/>-->
-                                    
-                                    
-                                </Grid>
-                                
-                            </Grid>
-                            
+
+
                         </Grid>
-                    </ScrollViewer>
-                </StackPanel>
+                    </Grid>
+                </Grid>
             </TabItem>
 
             <TabItem Name="tabCourses">
@@ -980,6 +974,73 @@
                         <TextBlock Margin="10">LỚP</TextBlock>
                     </WrapPanel>
                 </TabItem.Header>
+                <Grid Background="#F9F9F9">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0" Background="White" Margin="20">
+                        <Grid.Effect>
+                            <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                        </Grid.Effect>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <toolkit:AutoCompleteBox Grid.Row="0" Margin="10" IsTextCompletionEnabled="False" FilterMode="Contains">
+                            <toolkit:AutoCompleteBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock/>
+                                </DataTemplate>
+                            </toolkit:AutoCompleteBox.ItemTemplate>
+                        </toolkit:AutoCompleteBox>
+                        
+                        <ListView Grid.Row="1" Margin="10">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" FontSize="15" FontWeight="SemiBold"/>
+                                        <TextBlock Grid.Row="0" Grid.Column="2"/>
+                                        <Button Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Margin="5">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="/EnglishCenter;component/Resources/time_white.png"/>
+                                            </Button.Background>
+                                        </Button>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Giáo viên: "/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Ngày bắt đầu: "/>
+                                        <TextBlock Grid.Row="2" Grid.Column="1"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="2" Text="Ngày kết thúc: "/>
+                                        <TextBlock Grid.Row="2" Grid.Column="3"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+
+                    <Grid Grid.Column="1" Background="White" Margin="20">
+                        <Grid.Effect>
+                            <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                        </Grid.Effect>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                </Grid>
             </TabItem>
 
             <TabItem Name="tabFees">

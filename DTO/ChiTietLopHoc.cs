@@ -24,9 +24,9 @@ namespace DTO
             get { return mMaHocVien; }
             set { mMaHocVien = value; }
         }
-        String mTinhTrangDongHocPhi;
+        int mTinhTrangDongHocPhi;
 
-        public String MTinhTrangDongHocPhi
+        public int MTinhTrangDongHocPhi
         {
             get { return mTinhTrangDongHocPhi; }
             set { mTinhTrangDongHocPhi = value; }
