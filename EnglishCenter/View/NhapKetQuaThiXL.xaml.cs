@@ -35,6 +35,10 @@ namespace EnglishCenter.View
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+            if (String.IsNullOrEmpty(((TextBox)sender).Text))
+            {
+                ((TextBox)sender).Text = "0";
+            }
         }
 
         private void dsTXL_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -50,6 +54,7 @@ namespace EnglishCenter.View
             ChiTietThiXepLopBUS ctTXL_BUS = new ChiTietThiXepLopBUS();
             foreach (ChiTietThiXepLop i in listHV_lv.ItemsSource) 
             {
+                
                 i.MChuongTrinhDeNghi = ctTXL_BUS.getMaCTHocDeNghi(i.MMaThiXepLop, i.MMaHocVien);
                 temp.Add(i);
             }
@@ -62,6 +67,22 @@ namespace EnglishCenter.View
                 return;
             }
             //lay chuong trinh de nghi tu diem thi
+        }
+        
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(((TextBox)sender).Text))
+            {
+                ((TextBox)sender).Text = "0";
+            }
+        }
+        
+        private void TextBox_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (String.IsNullOrEmpty(((TextBox)sender).Text))
+            {
+                ((TextBox)sender).Text = "0";
+            }
         }
     }
 }
