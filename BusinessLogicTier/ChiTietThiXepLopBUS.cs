@@ -27,6 +27,15 @@ namespace BusinessLogicTier
         {
             return new ChiTietThiXepLopDAO().getChiTietTXLByMaTXL(maTXL);
         }
+        public bool addHocVien(HocVien hv, ThiXepLop txl)
+        {
+            return new ChiTietThiXepLopDAO().addHocVien(hv, txl);
+        }
+
+        public bool insertChiTietThiXepLop(ChiTietThiXepLop txl)
+        {
+            return new ChiTietThiXepLopDAO().insertChiTietThiXepLop(txl);
+        }
 
         public String getMaCTHocDeNghi(String maTXL, String maHV)
         {

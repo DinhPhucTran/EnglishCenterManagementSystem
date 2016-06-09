@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using DTO;
 using BusinessLogicTier;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace EnglishCenter.View
 {
@@ -22,6 +23,8 @@ namespace EnglishCenter.View
     /// </summary>
     public partial class NewStudentForm : Window
     {
+        public delegate void DataChangedEventHandler(object sender, EventArgs e);
+        public event DataChangedEventHandler DataChanged;
         HocVienBUS mHocVienBUS;
         ThoiGianRanhBUS mThoiGianRanhBUS;
         CaBUS mCaBUS;
@@ -34,6 +37,15 @@ namespace EnglishCenter.View
         List<ChuongTrinhHoc> mListChuongTrinhHoc;
         List<ThiXepLop_Ca> mListThiXLCa;
         List<Lop_ThoiGianHoc> mListLopThoiGian;
+        ChiTietLopHoc mChiTietLop;
+        ChiTietThiXepLop mChiTietThiXL;
+        List<ThiXepLop> mListAllThiXL;
+        //List<ThiXepLop> mListThiXLDeNghi;
+        ThiXepLop_Ca mSelectedTXL;
+        Lop_ThoiGianHoc mSelectedLop;
+        int lv_thiXL_selectedIndex = -1;
+        int lv_xepLop_selectedIndex = -1;
+        List<Lop_ThoiGianHoc> mListLopDangMo;
 
         public NewStudentForm()
         {
@@ -52,23 +64,6 @@ namespace EnglishCenter.View
             CTMuonHoc_cb.ItemsSource = mListChuongTrinhHoc;
             createThoiGianRanh();
 
-            //Khởi tạo popup Thi xếp lớp
-            List<ThiXepLop> listThiXL = new ThiXepLopBUS().getListThiXepLop();
-            mListThiXLCa = new List<ThiXepLop_Ca>();
-            foreach (ThiXepLop xl in listThiXL)
-            {
-                mListThiXLCa.Add(new ThiXepLop_Ca(xl, mCaBUS.selectCa(xl.MCaThi)));
-            }
-            lv_popup_thiXL.ItemsSource = mListThiXLCa;
-
-            //Khởi tạo popup Xếp lớp
-            ThoiGianHocBUS thoiGianHocBus = new ThoiGianHocBUS();
-            mListLopThoiGian = new List<Lop_ThoiGianHoc>();
-            foreach (LopHoc lop in MainWindow.listLopDangMo)
-            {
-                mListLopThoiGian.Add(new Lop_ThoiGianHoc(lop, thoiGianHocBus.getThoiGianHocCuaLop(lop.MMaLop)));
-            }
-            lv_popup_xepLop.ItemsSource = mListLopThoiGian;
         }
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
@@ -221,10 +216,40 @@ namespace EnglishCenter.View
             } 
             #endregion
 
-            MessageBox.Show("Hoc vien inserted!");
+            MessageBox.Show("Tiếp nhận học viên thành công", "New Age English");
+
+            #region Save ChiTietThiXepLop
+            if (mChiTietThiXL != null)
+            {
+                mChiTietThiXL.MMaHocVien = hv.MMaHocVien;
+                mChiTietThiXL.MChuongTrinhMongMuon = hv.MMaChuongTrinhMuonHoc;
+                if (!(new ChiTietThiXepLopBUS().insertChiTietThiXepLop(mChiTietThiXL)))
+                    MessageBox.Show("Xếp lịch thi không thành công!", "Thông báo");
+                else
+                    MessageBox.Show("Xếp lịch thi thành công", "Thông báo");
+            }
+            #endregion
+
+            #region Save ChiTietLopHoc
+            if (mChiTietLop != null)
+            {
+                mChiTietLop.MMaHocVien = hv.MMaHocVien;
+                mChiTietLop.MTinhTrangDongHocPhi = 0;
+                if (!(new ChiTietLopHocBUS().insertChiTietLopHoc(mChiTietLop)))
+                    MessageBox.Show("Xếp lớp không thành công!", "Thông báo");
+                else
+                    MessageBox.Show("Đã thêm học viên vào lớp " + mChiTietLop.MMaLopHoc, "Thông báo");
+            }
+            #endregion
 
             resetComponent();
 
+            //Notify changes
+            DataChangedEventHandler handler = DataChanged;
+            if (handler != null)
+            {
+                handler(this, new EventArgs());
+            }
 
         }
 
@@ -254,7 +279,45 @@ namespace EnglishCenter.View
 
         private void bt_xepLichThiClick(object sender, RoutedEventArgs e)
         {
+            popup_xepLop.IsOpen = false;
             popup_xepLichThi.IsOpen = true;
+
+            //Khởi tạo popup Thi xếp lớp
+            if(mListAllThiXL == null)
+                mListAllThiXL = new ThiXepLopBUS().getListThiXepLop();
+            mListThiXLCa = new List<ThiXepLop_Ca>();
+            //mListThiXLDeNghi = new List<ThiXepLop>();
+            List<CheckBox> listChecked = mListThoiGianRanh.FindAll(i => i.IsChecked == true);
+            foreach (ThiXepLop xl in mListAllThiXL)
+            {
+                String thuCa;
+                String thu;
+                String ca;
+                for (int i = 0; i < listChecked.Count; i++)
+                {
+                    thuCa = listChecked[i].Name;
+                    thu = thuCa.Substring(0, thuCa.IndexOf('_'));
+                    ca = thuCa.Substring(thuCa.IndexOf('_') + 1);
+                    if (xl.MNgayThi.ToString("dddd", new CultureInfo("en-US")).Equals(thu) && xl.MCaThi.Equals(ca))
+                    {
+                        //mListThiXLDeNghi.Add(xl);
+                        mListThiXLCa.Add(new ThiXepLop_Ca(xl, mCaBUS.selectCa(xl.MCaThi)));
+                        break;
+                        
+                    }
+                } 
+                
+            }
+            if (mListThiXLCa.Count == 0)
+            {
+                foreach (ThiXepLop xl in mListAllThiXL)
+                {
+                    mListThiXLCa.Add(new ThiXepLop_Ca(xl, mCaBUS.selectCa(xl.MCaThi)));
+                }
+            }
+            lv_popup_thiXL.ItemsSource = mListThiXLCa;
+            lv_popup_thiXL.SelectedIndex = lv_thiXL_selectedIndex;
+            lv_popup_thiXL.Focus();
         }
 
         private void bt_popupThiXLCloseClick(object sender, RoutedEventArgs e)
@@ -265,8 +328,27 @@ namespace EnglishCenter.View
         private void bt_popupThiXL_OK_Click(object sender, RoutedEventArgs e)
         {
             popup_xepLichThi.IsOpen = false;
+            mSelectedTXL = (ThiXepLop_Ca)lv_popup_thiXL.SelectedValue;
+           
+            if (mSelectedTXL != null)
+            {
+                mChiTietThiXL = new ChiTietThiXepLop();
+                mChiTietThiXL.MMaThiXepLop = mSelectedTXL.ThiXL.MMaThiXL;
+                //if (CTMuonHoc_cb.Text != "")
+                //{
+                //    mChiTietThiXL.MChuongTrinhMongMuon = mChuongTrinhBUS.getMaCTFromTenCT(CTMuonHoc_cb.Text);
+                //}
+                lv_thiXL_selectedIndex = lv_popup_thiXL.SelectedIndex;
+                mSelectedLop = null;
+            }
         }
 
+        private void bt_popupThiXL_Clear_Click(object sender, RoutedEventArgs e)
+        {
+            mSelectedTXL = null;
+            lv_thiXL_selectedIndex = -1;
+            lv_popup_thiXL.SelectedIndex = -1;
+        }
 
 
         private void bt_xepLopCloseClick(object sender, RoutedEventArgs e)
@@ -276,12 +358,108 @@ namespace EnglishCenter.View
 
         private void bt_xepLopClick(object sender, RoutedEventArgs e)
         {
+            popup_xepLichThi.IsOpen = false;
             popup_xepLop.IsOpen = true;
+
+            ThoiGianHocBUS thoiGianHocBus = new ThoiGianHocBUS();
+            if (mListLopDangMo == null)
+            {
+                mListLopDangMo = new List<Lop_ThoiGianHoc>();
+                foreach (LopHoc lop in MainWindow.listLopDangMo)
+                {
+                    mListLopDangMo.Add(new Lop_ThoiGianHoc(lop, thoiGianHocBus.getThoiGianHocCuaLop(lop.MMaLop)));
+                }
+            }            
+            
+            mListLopThoiGian = new List<Lop_ThoiGianHoc>();
+            List<CheckBox> listChecked = mListThoiGianRanh.FindAll(i => i.IsChecked == true);
+            List<Lop_ThoiGianHoc> listLopDungCTH = new List<Lop_ThoiGianHoc>();
+            foreach (Lop_ThoiGianHoc lop in mListLopDangMo)
+            {
+                if (CTMuonHoc_cb.Text != "")
+                {
+                    String maCTMuonHoc = mChuongTrinhBUS.getMaCTFromTenCT(CTMuonHoc_cb.SelectedValue.ToString());
+                    if (lop.LopHoc.MMaCTHoc.Equals(maCTMuonHoc))
+                    {
+                        listLopDungCTH.Add(lop);
+                        String thuCa;
+                        String thu;
+                        String ca;
+                        for (int i = 0; i < listChecked.Count; i++)
+                        {
+                            thuCa = listChecked[i].Name;
+                            thu = thuCa.Substring(0, thuCa.IndexOf('_'));
+                            ca = thuCa.Substring(thuCa.IndexOf('_') + 1);
+                            foreach (ThoiGianHoc tgh in lop.ListThoiGianHoc)
+                            {
+                                if (tgh.MMaCa.Equals(ca) && tgh.MMaThu.Equals(thu))
+                                    lop.SoCaDungYeuCau++;
+                            }
+                        }
+                        if (lop.SoCaDungYeuCau > 0)
+                            mListLopThoiGian.Add(lop);
+                    }
+                }
+                else
+                {
+                    String thuCa;
+                    String thu;
+                    String ca;
+                    for (int i = 0; i < listChecked.Count; i++)
+                    {
+                        thuCa = listChecked[i].Name;
+                        thu = thuCa.Substring(0, thuCa.IndexOf('_'));
+                        ca = thuCa.Substring(thuCa.IndexOf('_') + 1);
+                        foreach (ThoiGianHoc tgh in lop.ListThoiGianHoc)
+                        {
+                            if (tgh.MMaCa.Equals(ca) && tgh.MMaThu.Equals(thu))
+                                lop.SoCaDungYeuCau++;
+                        }
+                    }
+                    if (lop.SoCaDungYeuCau > 0)
+                        mListLopThoiGian.Add(lop);
+                }                
+            }
+            if (mListLopThoiGian.Count > 0)
+                lv_popup_xepLop.ItemsSource = mListLopThoiGian;
+            else if (listLopDungCTH.Count > 0)
+                lv_popup_xepLop.ItemsSource = listLopDungCTH;
+            else
+                lv_popup_xepLop.ItemsSource = mListLopDangMo;
+            lv_popup_xepLop.SelectedIndex = lv_xepLop_selectedIndex;
+            lv_popup_xepLop.Focus();
         }
 
         private void bt_popupXepLop_OK_Click(object sender, RoutedEventArgs e)
         {
             popup_xepLop.IsOpen = false;
+            mChiTietLop = new ChiTietLopHoc();
+            Lop_ThoiGianHoc lop = (Lop_ThoiGianHoc)lv_popup_xepLop.SelectedValue;
+            if (lop != null)
+            {
+                mChiTietLop.MMaLopHoc = lop.MaLop;
+                lv_xepLop_selectedIndex = lv_popup_xepLop.SelectedIndex;
+                mSelectedTXL = null;
+            }
         }
+
+        private void bt_popupXepLop_Clear_Click(object sender, RoutedEventArgs e)
+        {
+            lv_xepLop_selectedIndex = -1;
+            lv_popup_xepLop.SelectedIndex = -1;
+            mSelectedLop = null;
+        }
+
+        private void bt_popupXepLop_ShowAll_Click(object sender, RoutedEventArgs e)
+        {
+            lv_popup_xepLop.ItemsSource = mListLopDangMo;
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
     }
 }
