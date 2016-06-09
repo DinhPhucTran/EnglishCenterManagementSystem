@@ -11,7 +11,7 @@ namespace BusinessLogicTier
     {
         public List<KetQuaThi> getKetQuaThi(DateTime from, DateTime to)
         {
-            return new KetQuaThiXLDAO().getListKQT(from, to);
+                return new KetQuaThiXLDAO().getListKQT(from, to);
         }
     }
 }

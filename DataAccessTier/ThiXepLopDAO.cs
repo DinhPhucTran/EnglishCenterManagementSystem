@@ -329,5 +329,31 @@ namespace DataAccessTier
             }
             return result;
         }
+
+        public List<DateTime> getKhoangThoiGianThiXL(DateTime currentTime){
+            List<DateTime> khoangTG = new List<DateTime>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("GET_KHOANG_THOI_GIAN_THI_XL", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@CurrentTime", currentTime);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                khoangTG.Add(DateTime.Parse(dt.Rows[0][0].ToString()));
+                khoangTG.Add(DateTime.Parse(dt.Rows[0][1].ToString()));
+                
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return khoangTG;
+        }
     }
 }

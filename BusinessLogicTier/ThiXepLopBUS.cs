@@ -74,5 +74,9 @@ namespace BusinessLogicTier
         {
             return new ThiXepLopDAO().selectThiXLByMaTXL(maTXL);
         }
+
+        public List<DateTime> getKhoangThoiGianLayThiXepLop(DateTime currentTime){
+            return new ThiXepLopDAO().getKhoangThoiGianThiXL(currentTime);
+        }
     }
 }

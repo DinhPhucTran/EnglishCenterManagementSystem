@@ -21,10 +21,13 @@ namespace EnglishCenter.View
     /// </summary>
     public partial class KetQuaThiXepLop : Window
     {
+        private KetQuaThiXLBUS mBUS;
         public KetQuaThiXepLop()
         {
+            mBUS =  new KetQuaThiXLBUS();
             InitializeComponent();
-            List<KetQuaThi> list = new KetQuaThiXLBUS().getKetQuaThi(new DateTime(2016, 1, 1), new DateTime(2016, 8, 1));
+            List<DateTime> khoangTG = new ThiXepLopBUS().getKhoangThoiGianLayThiXepLop(DateTime.Now);
+            List<KetQuaThi> list =mBUS.getKetQuaThi(khoangTG[0],khoangTG[1]);
             lv_ketQua.ItemsSource = list;
             
         }
