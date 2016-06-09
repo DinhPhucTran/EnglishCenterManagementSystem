@@ -27,7 +27,8 @@ namespace BusinessLogicTier
             {
                 return "TXL" + DateTime.Now.Year.ToString() + "_1";
             }
-            return "TXL" + ds.Select(m => int.Parse(m.MMaThiXL.Substring(m.MMaThiXL.IndexOf('_') + 1))).Max() + 1;
+            int temp = ds.Select(m => int.Parse(m.MMaThiXL.Substring(m.MMaThiXL.IndexOf('_') + 1))).Max() + 1;
+            return "TXL" + DateTime.Now.Year.ToString() + "_" + temp;
         }
 
         public List<ThiXepLop> getAllThiXLByThoiGianRanh(String maHV)
