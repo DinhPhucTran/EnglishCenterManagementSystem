@@ -45,7 +45,7 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0" Grid.Column="0" Foreground="Black" FontSize="15" Text="{Binding MMaHocVien}"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" Width="100" Text="{Binding MKetQuaThi}" LostFocus="TextBox_LostFocus" PreviewTextInput="NumberValidationTextBox" Foreground="Black" MouseDown="TextBox_MouseDown" MouseLeave="TextBox_MouseLeave" />
+                        <TextBox Grid.Row="0" Grid.Column="1" Width="100" Text="{Binding MKetQuaThi}" PreviewTextInput="NumberValidationTextBox" Foreground="Black" MouseLeave="TextBox_MouseLeave" />
 
                     </Grid>
                 </DataTemplate>
