@@ -51,5 +51,10 @@ namespace BusinessLogicTier
             }
             return result;
         }
+
+        public GiangVien selectGiangVien(String maGV)
+        {
+            return mGiangVienDAO.selectGiangVien(maGV);
+        }
     }
 }

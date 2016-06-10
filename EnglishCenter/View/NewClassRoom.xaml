@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EnglishCenter.View"
         mc:Ignorable="d"
-        Title="NewClassRoom" Height="400" Width="400">
+        Title="New Age English" Height="400" Width="400"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
@@ -34,16 +35,14 @@
             <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5" Click="Button_Click"/>
         </Grid>
         <GroupBox x:Name="groupBox" Header="Danh sách phòng" HorizontalAlignment="Left" Margin="9,13,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="373" Height="182">
-            <ScrollViewer>
-                <ListView x:Name="dsPhong_lv" HorizontalAlignment="Left" Height="163" VerticalAlignment="Top" Width="358">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Mã phòng" Width="100" DisplayMemberBinding="{Binding MMaPhong}"/>
-                            <GridViewColumn Header="Tên Phòng" Width="250" DisplayMemberBinding="{Binding MTenPhong}"/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </ScrollViewer>
+            <ListView x:Name="dsPhong_lv" HorizontalAlignment="Left" Height="163" VerticalAlignment="Top" Width="358">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Mã phòng" Width="100" DisplayMemberBinding="{Binding MMaPhong}"/>
+                        <GridViewColumn Header="Tên Phòng" Width="250" DisplayMemberBinding="{Binding MTenPhong}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </GroupBox>
         <Button x:Name="Add_btn" Content="Thêm" Grid.Column="1" HorizontalAlignment="Left" Margin="203,18,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Add_btn_Click"/>
 

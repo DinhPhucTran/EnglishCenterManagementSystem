@@ -53,6 +53,7 @@
     <Compile Include="ListItemThiXepLop.cs" />
     <Compile Include="LopHoc.cs" />
     <Compile Include="LopHoc_ThoiGianDTO.cs" />
+    <Compile Include="Lop_GiangVien.cs" />
     <Compile Include="Lop_ThoiGianHoc.cs" />
     <Compile Include="Permission.cs" />
     <Compile Include="PhieuThuHocPhi.cs" />

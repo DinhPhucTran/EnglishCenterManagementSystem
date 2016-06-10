@@ -460,5 +460,40 @@ namespace DataAccessTier
             }
             return result;
         }
+
+        public List<LopHoc> getListLopHocByMaGiangVien(String maGv)
+        {
+            List<LopHoc> list = new List<LopHoc>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand cmd = new SqlCommand("LOP_HOC_LIST_BY_MAGV", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaGV", maGv);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    LopHoc lop = new LopHoc();
+                    lop.MMaLop = dt.Rows[i]["MaLop"].ToString();
+                    lop.MNgayKhaiGiang = DateTime.Parse(dt.Rows[i]["NgayKhaiGiang"].ToString());
+                    lop.MNgayBatDau = DateTime.Parse(dt.Rows[i]["ThoiGianBD"].ToString());
+                    lop.MNgayKetThuc = DateTime.Parse(dt.Rows[i]["ThoiGianKT"].ToString());
+                    lop.MSoTien = double.Parse(dt.Rows[i]["SoTien"].ToString());
+                    lop.MMaGiangVien = dt.Rows[i]["MaGV"].ToString();
+                    lop.MMaCTHoc = dt.Rows[i]["MaCTHoc"].ToString();
+                    lop.MMaPhong = dt.Rows[i]["MaPhong"].ToString();
+                    list.Add(lop);
+                }
+                connection.Close();
+            }
+            catch (Exception)
+            {
+                connection.Close();
+            }
+            return list;
+        }
     }
 }

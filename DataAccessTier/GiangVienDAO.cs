@@ -131,5 +131,31 @@ namespace DataAccessTier
             }
             return result;
         }
+
+        public GiangVien selectGiangVien(String maGV)
+        {
+            GiangVien gv = new GiangVien();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand cmd = new SqlCommand("GIANG_VIEN_SELECT", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaGiangVien", maGV);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                gv.MMaGiangVien = maGV;
+                gv.MTenGiangVien = dt.Rows[0]["TenGiangVien"].ToString();
+                gv.MDiaChi = dt.Rows[0]["DiaChi"].ToString();
+                gv.MSoDienThoai = dt.Rows[0]["SoDT"].ToString();
+                connection.Close();
+            }
+            catch (Exception)
+            {
+                connection.Close();
+            }
+            return gv;
+        }
     }
 }

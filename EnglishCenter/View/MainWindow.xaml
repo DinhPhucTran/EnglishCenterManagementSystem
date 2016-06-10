@@ -182,105 +182,7 @@
                                                 </Grid>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
-                                    </ListView>
-                                    <!--<ScrollViewer VerticalScrollBarVisibility="Auto">
-                                        <StackPanel>
-                                            <Grid Name="HD1" Background="#3C8DBC" Height="60" Margin="10">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="70"/>
-                                                    <ColumnDefinition/>
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition/>
-                                                    <RowDefinition/>
-                                                </Grid.RowDefinitions>
-
-                                                <StackPanel Grid.Row="0" Grid.RowSpan="2" Background="Green">
-                                                    <TextBlock Grid.Row="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom">25-4</TextBlock>
-                                                    <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top">2016</TextBlock>
-                                                </StackPanel>
-
-                                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" TextWrapping="Wrap"> Thi xếp lớp Anh văn giao tiếp</TextBlock>
-                                                <TextBlock Grid.Row="1" Grid.Column="1" FontSize="15" TextWrapping="WrapWithOverflow">Các giảng viên được phân công thực hiện đúng yêu cầu</TextBlock>
-                                            </Grid>
-
-                                            <Grid Name="HD2" Background="#3C8DBC" Height="60" Margin="10">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="70"/>
-                                                    <ColumnDefinition/>
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition/>
-                                                    <RowDefinition/>
-                                                </Grid.RowDefinitions>
-
-                                                <StackPanel Grid.Row="0" Grid.RowSpan="2" Background="Green">
-                                                    <TextBlock Grid.Row="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom">25-4</TextBlock>
-                                                    <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top">2016</TextBlock>
-                                                </StackPanel>
-
-                                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" TextWrapping="Wrap"> Thi xếp lớp Anh văn giao tiếp</TextBlock>
-                                                <TextBlock Grid.Row="1" Grid.Column="1" FontSize="15" TextWrapping="WrapWithOverflow">Các giảng viên được phân công thực hiện đúng yêu cầu</TextBlock>
-                                            </Grid>
-
-                                            <Grid Name="HD3" Background="#3C8DBC" Height="60" Margin="10">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="70"/>
-                                                    <ColumnDefinition/>
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition/>
-                                                    <RowDefinition/>
-                                                </Grid.RowDefinitions>
-
-                                                <StackPanel Grid.Row="0" Grid.RowSpan="2" Background="Green">
-                                                    <TextBlock Grid.Row="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom">25-4</TextBlock>
-                                                    <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top">2016</TextBlock>
-                                                </StackPanel>
-
-                                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" TextWrapping="Wrap"> Thi xếp lớp Anh văn giao tiếp</TextBlock>
-                                                <TextBlock Grid.Row="1" Grid.Column="1" FontSize="15" TextWrapping="WrapWithOverflow">Các giảng viên được phân công thực hiện đúng yêu cầu</TextBlock>
-                                            </Grid>
-
-                                            <Grid Name="HD4" Background="#3C8DBC" Height="60" Margin="10">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="70"/>
-                                                    <ColumnDefinition/>
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition/>
-                                                    <RowDefinition/>
-                                                </Grid.RowDefinitions>
-
-                                                <StackPanel Grid.Row="0" Grid.RowSpan="2" Background="Green">
-                                                    <TextBlock Grid.Row="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom">25-4</TextBlock>
-                                                    <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top">2016</TextBlock>
-                                                </StackPanel>
-
-                                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" TextWrapping="Wrap"> Thi xếp lớp Anh văn giao tiếp</TextBlock>
-                                                <TextBlock Grid.Row="1" Grid.Column="1" FontSize="15" TextWrapping="WrapWithOverflow">Các giảng viên được phân công thực hiện đúng yêu cầu</TextBlock>
-                                            </Grid>
-
-                                            <Grid Name="HD5" Background="#3C8DBC" Height="60" Margin="10">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="70"/>
-                                                    <ColumnDefinition/>
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition/>
-                                                    <RowDefinition/>
-                                                </Grid.RowDefinitions>
-
-                                                <StackPanel Grid.Row="0" Grid.RowSpan="2" Background="Green">
-                                                    <TextBlock Grid.Row="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom">25-4</TextBlock>
-                                                    <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top">2016</TextBlock>
-                                                </StackPanel>
-
-                                                <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" TextWrapping="Wrap"> Thi xếp lớp Anh văn giao tiếp</TextBlock>
-                                                <TextBlock Grid.Row="1" Grid.Column="1" FontSize="15" TextWrapping="WrapWithOverflow">Các giảng viên được phân công thực hiện đúng yêu cầu</TextBlock>
-                                            </Grid>
-                                        </StackPanel>
-                                    </ScrollViewer>-->
+                                    </ListView>                                    
                                 </Grid>
                              
                                 <Grid Grid.Column="2" Background="White" Margin="0,20,30,0">
@@ -656,22 +558,45 @@
                     <DockPanel Grid.Row="0">
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20 0 0 10" 
                                    Foreground="Black" FontSize="25">DANH SÁCH CHƯƠNG TRÌNH HỌC</TextBlock>
-                        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="15 0 20 12" Background="White" Height="31">
-                            <Grid.Effect>
-                                <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                            </Grid.Effect>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="30"/>
-                            </Grid.ColumnDefinitions>
+                        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Margin="15 0 20 8" Background="White" Height="31" HorizontalAlignment="Right">
+                                <Grid.Effect>
+                                    <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                                </Grid.Effect>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="30"/>
+                                </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Column="0" Background="Red" Margin="0 0 -1 0" Padding="5 5 4 6" VerticalAlignment="Center" 
+                                <TextBlock Grid.Column="0" Background="Red" Margin="0 0 -1 0" Padding="5 5 4 6" VerticalAlignment="Center" 
+                                       FontSize="20" Cursor="Arrow" Name="tb_soTrinhDo"/>
+                                <TextBlock Grid.Column="1" Background="Red" Margin="0 0 1 0" Padding="5 5 8 6" VerticalAlignment="Center" FontSize="20" Cursor="Arrow"
+                                       Text="Trình độ"/>
+                                <Button Grid.Column="2" Padding="0" FontSize="15" Name="bt_themTrinhDo" Click="btThemTrinhDo_click">✛</Button>
+                            </Grid>
+                            
+                            <Grid Grid.Row="1" Margin="15 0 20 12" Background="White" Height="31">
+                                <Grid.Effect>
+                                    <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                                </Grid.Effect>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="30"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Background="Red" Margin="0 0 -1 0" Padding="5 5 4 6" VerticalAlignment="Center" 
                                        FontSize="20" Cursor="Arrow" Name="tb_soCTH"/>
-                            <TextBlock Grid.Column="1" Background="Red" Margin="0 0 1 0" Padding="5 5 8 6" VerticalAlignment="Center" FontSize="20" Cursor="Arrow"
+                                <TextBlock Grid.Column="1" Background="Red" Margin="0 0 1 0" Padding="5 5 8 6" VerticalAlignment="Center" FontSize="20" Cursor="Arrow"
                                        Text="Chương trình học"/>
-                            <Button Grid.Column="2" Padding="0" FontSize="15" Name="bt_themCth" Click="btThemCth_click">✛</Button>
-                        </Grid>
+                                <Button Grid.Column="2" Padding="0" FontSize="15" Name="bt_themCth" Click="btThemCth_click">✛</Button>
+                            </Grid>
+                        </Grid>                        
                     </DockPanel>
 
                     <Grid Name="tabCourses_list" Grid.Row="1" Margin="20 5 20 15" Background="White">
@@ -722,247 +647,8 @@
                                     </GroupStyle.HeaderTemplate>
                                 </GroupStyle>
                             </ListView.GroupStyle>
-                            
                         </ListView>
-
-                        <!--<ScrollViewer Height="{Binding ElementName=tabCourses_list, Path=ActualHeight}" Cursor="Arrow" VerticalScrollBarVisibility="Auto">
-                            <StackPanel>
-                                <Grid>
-                                    <TextBlock Text="Beginner" Foreground="Black" Margin="10, 10, 10, 0" FontSize="20"/>
-                                </Grid>
-                                <Grid Height="45" Margin="20 10 20 0" Background="#FAFAFA">
-                                    <Grid.Effect>
-                                        <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                                    </Grid.Effect>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="150"/>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="50"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" FontSize="20" Margin="10,5,10,5">
-                                    <Hyperlink Command="" Foreground="Blue" TextDecorations="None">
-                                        1. Giao tiếp quốc tế
-                                    </Hyperlink>
-                                    </TextBlock>
-
-                                    <TextBlock Grid.Column="1" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right"
-                                           FontSize="15" Padding="10"> 77 Học viên</TextBlock>
-
-                                    <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/edit.png"/>
-                                    </Button>
-
-                                    <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/trash.png"/>
-                                    </Button>
-                                </Grid>
-
-                                <Grid Height="45" Margin="20 10 20 5" Background="#F9F9F9">
-                                    <Grid.Effect>
-                                        <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                                    </Grid.Effect>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="150"/>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="50"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" FontSize="20" Padding="10">
-                                    <Hyperlink Command="" Foreground="Blue" TextDecorations="None">
-                                        2. Luyện thi TOEIC
-                                    </Hyperlink>
-                                    </TextBlock>
-
-                                    <TextBlock Grid.Column="1" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right"
-                                           FontSize="15" Padding="10"> 58 Học viên</TextBlock>
-
-                                    <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/edit.png"/>
-                                    </Button>
-
-                                    <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/trash.png"/>
-                                    </Button>
-                                </Grid>
-
-                                <Grid Height="45" Margin="20 10 20 5" Background="#F9F9F9">
-                                    <Grid.Effect>
-                                        <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                                    </Grid.Effect>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="150"/>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="50"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" FontSize="20" Padding="10">
-                                    <Hyperlink Command="" Foreground="Blue" TextDecorations="None">
-                                        3. Luyện thi IELTS
-                                    </Hyperlink>
-                                    </TextBlock>
-
-                                    <TextBlock Grid.Column="1" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right"
-                                           FontSize="15" Padding="10"> 65 Học viên</TextBlock>
-
-                                    <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/edit.png"/>
-                                    </Button>
-
-                                    <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/trash.png"/>
-                                    </Button>
-                                </Grid>
-
-                                <Grid Height="45" Margin="20 10 20 5" Background="#F9F9F9">
-                                    <Grid.Effect>
-                                        <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                                    </Grid.Effect>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="150"/>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="50"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" FontSize="20" Padding="10">
-                                    <Hyperlink Command="" Foreground="Blue" TextDecorations="None">
-                                        4. English for kids
-                                    </Hyperlink>
-                                    </TextBlock>
-
-                                    <TextBlock Grid.Column="1" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right"
-                                           FontSize="15" Padding="10"> 123 Học viên</TextBlock>
-
-                                    <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/edit.png"/>
-                                    </Button>
-
-                                    <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/trash.png"/>
-                                    </Button>
-                                </Grid>
-
-                                <Grid Height="45" Margin="20 10 20 5" Background="#F9F9F9">
-                                    <Grid.Effect>
-                                        <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                                    </Grid.Effect>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="150"/>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="50"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" FontSize="20" Padding="10">
-                                    <Hyperlink Command="" Foreground="Blue" TextDecorations="None">
-                                        5. English for teenagers
-                                    </Hyperlink>
-                                    </TextBlock>
-
-                                    <TextBlock Grid.Column="1" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right"
-                                           FontSize="15" Padding="10"> 72 Học viên</TextBlock>
-
-                                    <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/edit.png"/>
-                                    </Button>
-
-                                    <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/trash.png"/>
-                                    </Button>
-                                </Grid>
-
-                                <Grid Height="45" Margin="20 10 20 5" Background="#F9F9F9">
-                                    <Grid.Effect>
-                                        <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                                    </Grid.Effect>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="150"/>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="50"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" FontSize="20" Padding="10">
-                                    <Hyperlink Command="" Foreground="Blue" TextDecorations="None">
-                                        6. Luyện thi TOEFL iBT
-                                    </Hyperlink>
-                                    </TextBlock>
-
-                                    <TextBlock Grid.Column="1" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right"
-                                           FontSize="15" Padding="10"> 63 Học viên</TextBlock>
-
-                                    <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/edit.png"/>
-                                    </Button>
-
-                                    <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/trash.png"/>
-                                    </Button>
-                                </Grid>
-
-                                <Grid Height="45" Margin="20 10 20 5" Background="#F9F9F9">
-                                    <Grid.Effect>
-                                        <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                                    </Grid.Effect>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="150"/>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="50"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" FontSize="20" Padding="10">
-                                    <Hyperlink Command="" Foreground="Blue" TextDecorations="None">
-                                        7. Tiếng Anh chuyên ngành
-                                    </Hyperlink>
-                                    </TextBlock>
-
-                                    <TextBlock Grid.Column="1" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right"
-                                           FontSize="15" Padding="10"> 28 Học viên</TextBlock>
-
-                                    <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/edit.png"/>
-                                    </Button>
-
-                                    <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/trash.png"/>
-                                    </Button>
-                                </Grid>
-
-                                <Grid Height="45" Margin="20 10 20 5" Background="#F9F9F9">
-                                    <Grid.Effect>
-                                        <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
-                                    </Grid.Effect>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="150"/>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="50"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Grid.Column="0" FontSize="20" Padding="10">
-                                    <Hyperlink Command="" Foreground="Blue" TextDecorations="None">
-                                        8. Giao tiếp cấp tốc
-                                    </Hyperlink>
-                                    </TextBlock>
-
-                                    <TextBlock Grid.Column="1" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Right"
-                                           FontSize="15" Padding="10"> 15 Học viên</TextBlock>
-
-                                    <Button Grid.Column="2" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/edit.png"/>
-                                    </Button>
-
-                                    <Button Grid.Column="3" Margin="5" FontSize="20" Padding="1">
-                                        <Image Source="/Resources/trash.png"/>
-                                    </Button>
-                                </Grid>
-                            </StackPanel>
-                        </ScrollViewer>-->
+                        
                     </Grid>
                 </Grid>
             </TabItem>
@@ -975,70 +661,273 @@
                     </WrapPanel>
                 </TabItem.Header>
                 <Grid Background="#F9F9F9">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0" Background="White" Margin="20">
+                    <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="20 10 20 -10" Background="White" Height="31">
+                        <Grid.Effect>
+                            <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                        </Grid.Effect>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="1" Background="Red" Margin="1 0 -1 0" Padding="5 5 4 6" VerticalAlignment="Center" 
+                                       FontSize="20" Cursor="Arrow" Name="tb_soLopDangMo"/>
+                        <TextBlock Grid.Column="2" Background="Red" Margin="0 0 0 0" Padding="5 5 8 6" VerticalAlignment="Center" FontSize="20" Cursor="Arrow"
+                                       Text="Lớp đang mở"/>
+                        <Button Grid.Column="0" Padding="0" FontSize="15" Click="bt_themLop_click">✛</Button>
+                    </Grid>
+
+                    <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Margin="15 10 20 -10" Background="White" Height="31">
+                        <Grid.Effect>
+                            <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                        </Grid.Effect>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Background="Red" Margin="0 0 -1 0" Padding="5 5 4 6" VerticalAlignment="Center" 
+                                       FontSize="20" Cursor="Arrow" Name="tb_soPhong"/>
+                        <TextBlock Grid.Column="1" Background="Red" Margin="0 0 1 0" Padding="5 5 8 6" VerticalAlignment="Center" FontSize="20" Cursor="Arrow"
+                                       Text="Phòng học"/>
+                        <Button Grid.Column="2" Padding="0" FontSize="15" Click="bt_themPhong_click">✛</Button>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="0" Background="White" Margin="20">
                         <Grid.Effect>
                             <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
                         </Grid.Effect>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <toolkit:AutoCompleteBox Grid.Row="0" Margin="10" IsTextCompletionEnabled="False" FilterMode="Contains">
-                            <toolkit:AutoCompleteBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock/>
-                                </DataTemplate>
-                            </toolkit:AutoCompleteBox.ItemTemplate>
-                        </toolkit:AutoCompleteBox>
-                        
-                        <ListView Grid.Row="1" Margin="10">
+                        <TextBlock Grid.Row="0" Margin="10" FontSize="20" Text="DANH SÁCH LỚP" Foreground="#FF4D4D4D"/>
+                        <Grid Grid.Row="1" Margin="10" Width="300" HorizontalAlignment="Left">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Column="0" Foreground="Black" Name="tb_lopSearch" KeyUp="tb_lopSearch_keyUp"/>                            
+                            <Button Grid.Column="1" BorderThickness="0" Name="bt_lopSearch" Click="bt_lopSearch_click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/EnglishCenter;component/Resources/search.png" Stretch="Uniform"/>
+                                </Button.Background>
+
+                            </Button>
+                        </Grid>
+
+                        <ListView Grid.Row="2" Margin="10" Name= "lv_tabLop_dsLop" HorizontalContentAlignment="Stretch">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid>
+                                    <Grid Background="#FFE2E0E0" Margin="5" Cursor="Arrow">
                                         <Grid.RowDefinitions>
+                                            <RowDefinition/>
                                             <RowDefinition/>
                                             <RowDefinition/>
                                             <RowDefinition/>
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="90"/>
                                             <ColumnDefinition/>
                                             <ColumnDefinition/>
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Row="0" Grid.Column="0" FontSize="15" FontWeight="SemiBold"/>
-                                        <TextBlock Grid.Row="0" Grid.Column="2"/>
-                                        <Button Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" Margin="5">
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" FontSize="16" FontWeight="SemiBold" Text="{Binding Lop.MMaLop}"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 5 0 0" Text="Phòng: "/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="5 5 0 0" FontSize="12" Text="{Binding Lop.MMaPhong}"/>
+                                        <Button Grid.Row="0" Grid.RowSpan="5" Grid.Column="2" HorizontalAlignment="Right" Margin="10" BorderThickness="0" Click="bt_dsLop_ViewTGH">
                                             <Button.Background>
-                                                <ImageBrush ImageSource="/EnglishCenter;component/Resources/time_white.png"/>
+                                                <ImageBrush ImageSource="/EnglishCenter;component/Resources/timeTable_white.png"/>
                                             </Button.Background>
                                         </Button>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Giáo viên: "/>
-                                        <TextBlock Grid.Row="1" Grid.Column="1"/>
-                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Ngày bắt đầu: "/>
-                                        <TextBlock Grid.Row="2" Grid.Column="1"/>
-                                        <TextBlock Grid.Row="2" Grid.Column="2" Text="Ngày kết thúc: "/>
-                                        <TextBlock Grid.Row="2" Grid.Column="3"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Margin="5 0 0 0" VerticalAlignment="Bottom" Text="Giáo viên: "/>
+                                        <TextBlock Grid.Row="2" Grid.Column="1" Margin="5 0 0 0" FontSize="14" Text="{Binding TenGiangVien}"/>
+                                        <TextBlock Grid.Row="3" Grid.Column="0" Margin="5 0 0 0" VerticalAlignment="Bottom" Text="Ngày bắt đầu: "/>
+                                        <TextBlock Grid.Row="3" Grid.Column="1" Margin="5 0 0 0" FontSize="14" Text="{Binding StringNgayBD}"/>
+                                        <TextBlock Grid.Row="4" Grid.Column="0" Margin="5 0 0 5" VerticalAlignment="Bottom" Text="Ngày kết thúc: "/>
+                                        <TextBlock Grid.Row="4" Grid.Column="1" Margin="5 0 0 5" FontSize="14" Text="{Binding StringNgayKT}"/>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <Popup PlacementTarget="{Binding ElementName=lv_tabLop_dsLop}"              
+                                           AllowsTransparency="True"  
+                                           PopupAnimation="Fade"
+                                           Placement="Right"
+                                           HorizontalOffset="-100"
+                                           Name="popup_lopTGH" StaysOpen="False">
+                            <Grid Background="White" Margin="20">
+                                <Grid.Effect>
+                                    <DropShadowEffect Color="#FFC3C3C3" BlurRadius="15" Direction="280"/>
+                                </Grid.Effect>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Button Grid.Row="0" Grid.Column="1" Margin="0 0 5 0" Content="⛌" Padding="0" Background="Transparent" HorizontalAlignment="Right"
+                                                    Name="bt_popupLopTGH_close" Width="20" Height="20" BorderThickness="0" Foreground="#FFC3C3C3" Click="bt_popupLopTGH_Close_Click"/>
+                                <TextBlock Grid.Row="1" Margin="10" Text="{Binding LopHoc.MMaLop, StringFormat='Thời gian học Lớp {0}'}" Foreground="Black"/>
+                                <ListView Grid.Row="2" Name="lv_popupTGH_ThoiGianHoc">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn DisplayMemberBinding="{Binding MMaThu}"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding MMaCa, StringFormat='Ca {0}'}"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                        </Popup>
                     </Grid>
 
-                    <Grid Grid.Column="1" Background="White" Margin="20">
+                    <Grid Grid.Row="1" Grid.Column="1" Background="White" Margin="20"  Cursor="Arrow">
                         <Grid.Effect>
                             <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
                         </Grid.Effect>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
+                            <RowDefinition Height="60"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
+                        
+                        <TextBlock Grid.Row="0" Margin="10" FontSize="20" Text="THỜI KHÓA BIỂU" Foreground="#FF4D4D4D"/>
+                        
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="300"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" HorizontalAlignment="Right" Margin="10" BorderThickness="0" Click="bt_preDay_click" >
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/EnglishCenter;component/Resources/leftArrow.png"/>
+                                </Button.Background>
+                            </Button>
+                            <Grid Grid.Column="1" Margin="15 10 5 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="230"/>
+                                    <ColumnDefinition Width="18"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="1/1/1" FontSize="20" Foreground="Black" 
+                                           TextAlignment="Center" Background="White" Margin="5" Name="tb_currentDate"/>
+                                <DatePicker Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                        MinWidth="150" Name="datePicker_currentDate" Foreground="Black" SelectedDateChanged="datePicker_currentDate_selectedDateChanged"/>
+                            </Grid>
+                            
+                            <Button Grid.Column="2" HorizontalAlignment="Left" Margin="5 10 10 10" BorderThickness="0" Click="bt_nextDay_click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="/EnglishCenter;component/Resources/rightArrow.png"/>
+                                </Button.Background>
+
+                            </Button>
+                        </Grid>
+
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                            <Grid Grid.Row="2" Margin="5" Name="grid_TKB" ShowGridLines="True"/>
+                        </ScrollViewer>                        
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem Name="tabExams">
+                <TabItem.Header>
+                    <WrapPanel>
+                        <Image Width="25" Height="25" Source="/Resources/exam_white.png"/>
+                        <TextBlock Margin="5">THI</TextBlock>
+                    </WrapPanel>
+                </TabItem.Header>
+                <Grid Background="#F9F9F9" Cursor="Arrow">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Row="1" Grid.Column="0" Background="White" Margin="20 20 20 10">
+                        <Grid.Effect>
+                            <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                        </Grid.Effect>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock  Grid.Row="0" Foreground="Black" FontSize="30" Margin="20 10 0 10">Lịch thi</TextBlock>
+
+                        <ListView Grid.Row="1" Name="lv_exams_schedule" Margin="5,0,0,0" BorderThickness="0">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Background="#3C8DBC" Height="60" Margin="10 5 5 0" MinWidth="400">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <StackPanel Grid.Row="0" Grid.RowSpan="2" Background="Green">
+                                            <TextBlock Grid.Row="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding day}"/>
+                                            <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding year}"/>
+                                        </StackPanel>
+
+                                        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" Margin="5 0 5 0" TextWrapping="Wrap" Text="{Binding title}"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" FontSize="15" Margin="5 0 5 0" TextWrapping="WrapWithOverflow" Text="{Binding detail}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                    
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        
+                        <Grid Grid.Row="0" Width="350" Height="100" Background="White" Margin="10">
+                            <Grid.Effect>
+                                <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                            </Grid.Effect>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Column="0" Grid.RowSpan="3" Background="#00A65A">
+                                <Image Source="/Resources/exam_white.png" Margin="20"/>
+                            </StackPanel>
+
+                            <TextBlock Grid.Column="1" Grid.Row="0" Foreground="Black" FontSize="16" Padding="5">Thi xếp lớp</TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Foreground="Black" FontSize="40" Margin="5 0 0 0" Name="tb_soTXL">499</TextBlock>
+                        </Grid>
+                        
+                        <Button Grid.Row="1" HorizontalAlignment="Center" Content="Thêm lịch thi xếp lớp" VerticalAlignment="Bottom" Click="bt_themTXL_click"/>
+                        <Button Grid.Row="2" HorizontalAlignment="Center" Content="Thêm đề thi" Click="bt_themDeThi_click"/>
+                        <Button Grid.Row="3" HorizontalAlignment="Center" Content="Nhập kết quả thi xếp lớp" VerticalAlignment="Top" Click="bt_nhapKetQuaTXL_click"/>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -1056,9 +945,69 @@
                 <TabItem.Header>
                     <WrapPanel>
                         <Image Width="30" Height="30" Source="/Resources/user.png"/>
-                        <TextBlock Margin="5">GIẢNG VIÊN</TextBlock>
+                        <TextBlock Margin="5">GIÁO VIÊN</TextBlock>
                     </WrapPanel>
                 </TabItem.Header>
+                <Grid Background="#F9F9F9">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="120"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Row="1" Grid.Column="0" Background="White" Margin="15 10 10 10">
+                        <Grid.Effect>
+                            <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                        </Grid.Effect>
+                    </Grid>
+
+                    <Grid Grid.Row="2" Grid.Column="0">
+                        <Grid.Effect>
+                            <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                        </Grid.Effect>
+                        <ListView Name="lv_dsGiangVien" Background="White" BorderThickness="0" Margin="15 5 10 10">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+
+                    <Grid Grid.Row="2" Grid.Column="2" Background="White" Margin="15 10 10 10">
+                        <Grid.Effect>
+                            <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                        </Grid.Effect>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="1" Width="320" Height="100" Background="White">
+                        <Grid.Effect>
+                            <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                        </Grid.Effect>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Column="0" Grid.RowSpan="3" Background="#F39C12">
+                            <Image Source="/Resources/user.png" Margin="10"/>
+                        </StackPanel>
+
+                        <TextBlock Grid.Column="1" Grid.Row="0" Foreground="Black" FontSize="16" Padding="5">Giáo viên</TextBlock>
+                        <TextBlock Grid.Column="1" Grid.Row="1" Foreground="Black" FontSize="40" Margin="5 0 0 0" Grid.RowSpan="2" Name="tb_soGiangVien">38</TextBlock>
+                        <Button Grid.Column="1" Grid.Row="2" Width="20" Height="20" Margin="0 0 5 5" HorizontalAlignment="Right" Padding="-5" 
+                                            Click="bt_hvtnClick" Content="+" FontSize="20" ToolTip="Hiển thị danh sách học viên tiềm năng"/>
+                    </Grid>
+                </Grid>
             </TabItem>
 
             <TabItem Name="tabReport">
