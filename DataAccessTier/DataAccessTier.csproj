@@ -44,19 +44,23 @@
     <Compile Include="ChiTietThiXepLopDAO.cs" />
     <Compile Include="ChuongTrinhHocDAO.cs" />
     <Compile Include="DBConnection.cs" />
+    <Compile Include="DetailPermissionDAO.cs" />
     <Compile Include="GiangVienDAO.cs" />
     <Compile Include="HocVienDAO.cs" />
     <Compile Include="KetQuaThiXLDAO.cs" />
     <Compile Include="LopHocDAO.cs" />
     <Compile Include="DeThiDAO.cs" />
+    <Compile Include="PermissionDAO.cs" />
     <Compile Include="PhieuThuHocPhiDAO.cs" />
     <Compile Include="PhongDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TabManagerDAO.cs" />
     <Compile Include="ThiXepLopDAO.cs" />
     <Compile Include="ThoiGianHocDAO.cs" />
     <Compile Include="ThoiGianRanhDAO.cs" />
     <Compile Include="ThuDAO.cs" />
     <Compile Include="TrinhDoDAO.cs" />
+    <Compile Include="UserDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">

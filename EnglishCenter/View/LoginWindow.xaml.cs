@@ -47,5 +47,12 @@ namespace EnglishCenter.View
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng");
             
         }
+
+        private void signup_btn_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            SignUpWindow signUp = new SignUpWindow();
+            signUp.Show();
+            this.Close();
+        }
     }
 }

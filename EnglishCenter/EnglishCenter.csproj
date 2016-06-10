@@ -108,6 +108,9 @@
     <Compile Include="View\PhieuThuHocPhi1HV.xaml.cs">
       <DependentUpon>PhieuThuHocPhi1HV.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SignUpWindow.xaml.cs">
+      <DependentUpon>SignUpWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ThemDeThi.xaml.cs">
       <DependentUpon>ThemDeThi.xaml</DependentUpon>
     </Compile>
@@ -170,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PhieuThuHocPhi1HV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SignUpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
