@@ -85,5 +85,10 @@ namespace BusinessLogicTier
         {
             return new LopHocDAO().getListLopHocByTGRanhVaCTMuonHoc(maHV);
         }
+
+        public List<LopHoc> getListLopHocByMaGiangVien(String maGv)
+        {
+            return new LopHocDAO().getListLopHocByMaGiangVien(maGv);
+        }
     }
 }

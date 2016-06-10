@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using DTO;
 using BusinessLogicTier;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace EnglishCenter.View
 {
@@ -33,6 +34,10 @@ namespace EnglishCenter.View
         public static List<HocVien> listNewStudent; // Danh sách học viên chưa xếp lớp
         public static List<HocVien_Lop> listFilterHv;
         public static List<HocVien> listAllStudent;// Danh sách tất cả học viên (đanh học, chưa xếp lớp, không còn học)
+        private DateTime mCurrentDate;
+        private List<Ca> mListCa;
+        private List<Phong> mListPhong;
+        public static List<Lop_GiangVien> mListLopGV;
 
         public MainWindow()
         {
@@ -43,7 +48,9 @@ namespace EnglishCenter.View
             updateListChuongTrinhHoc();
             updateListHocVien();
             updateLichThi();
-            
+            mCurrentDate = DateTime.Today;
+            initTKB();
+            fillTKB();
         }
 
         private void updateListHocVien()
@@ -88,6 +95,16 @@ namespace EnglishCenter.View
             listLopDangMo = new LopHocBUS().getListLopHocByTime(DateTime.Now, DateTime.Now);
             tb_home_NumberOfClass.Text = listLopDangMo.Count.ToString();
             cb_filterHV_lop.ItemsSource = listLopDangMo;
+
+            //Tab Lớp
+            mListLopGV = new List<Lop_GiangVien>();
+            GiangVienBUS gvBus = new GiangVienBUS();
+            foreach (LopHoc lop in listLopDangMo)
+            {
+                mListLopGV.Add(new Lop_GiangVien(lop, gvBus.selectGiangVien(lop.MMaGiangVien)));
+            }
+            lv_tabLop_dsLop.ItemsSource = mListLopGV;
+            tb_soLopDangMo.Text = listLopDangMo.Count.ToString();
         }
 
         private void updateListChuongTrinhHoc()
@@ -126,9 +143,10 @@ namespace EnglishCenter.View
             tb_soCTH.Text = listChuongTrinhHoc.Count.ToString();
         }
 
-        public static void updateListTrinhDo()
+        private void updateListTrinhDo()
         {
             listTrinhDo = new TrinhDoBUS().getListTrinhDo();
+            tb_soTrinhDo.Text = listTrinhDo.Count.ToString();
         }
 
         private void updateLichThi()
@@ -148,6 +166,8 @@ namespace EnglishCenter.View
                 listHomeThi.Add(item);
             }
             lv_home_schedule.ItemsSource = listHomeThi;
+            lv_exams_schedule.ItemsSource = listHomeThi;
+            tb_soTXL.Text = listHomeThi.Count.ToString();
         }
 
         private void updateListGiaoVien()
@@ -167,6 +187,12 @@ namespace EnglishCenter.View
         {
             NewCourseForm newCourseForm = new NewCourseForm();
             newCourseForm.ShowDialog();
+        }
+
+        private void btThemTrinhDo_click(object sender, RoutedEventArgs e)
+        {
+            NewLevelForm levelForm = new NewLevelForm();
+            levelForm.ShowDialog();
         }
 
         #region Extended classes
@@ -494,6 +520,188 @@ namespace EnglishCenter.View
             updateListHocVien();
         }
 
+        private void bt_popupLopTGH_Close_Click(object sender, RoutedEventArgs e)
+        {
+            popup_lopTGH.IsOpen = false;
+        }
+
+        private void bt_dsLop_ViewTGH(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            Lop_GiangVien lopGV = button.DataContext as Lop_GiangVien;
+            popup_lopTGH.IsOpen = false;
+            List<ThoiGianHoc> listTGH = new ThoiGianHocBUS().getThoiGianHocCuaLop(lopGV.Lop.MMaLop);
+            if (listTGH != null)
+            {
+                if (listTGH.Count > 0)
+                {
+                    lv_popupTGH_ThoiGianHoc.ItemsSource = listTGH;
+                    popup_lopTGH.IsOpen = true;
+                }                
+            }
+        }
+
+        private void initTKB()
+        {
+            mListCa = new CaBUS().getAllCa();
+            mListPhong = (new PhongBUS().getListPhong()).OrderBy(o => Int32.Parse(o.MMaPhong)).ToList();
+            grid_TKB.RowDefinitions.Add(new RowDefinition());
+            grid_TKB.ColumnDefinitions.Add(new ColumnDefinition());
+            foreach (Phong phong in mListPhong)
+            {
+                grid_TKB.RowDefinitions.Add(new RowDefinition());
+            }
+            foreach (Ca ca in mListCa)
+            {
+                grid_TKB.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+            tb_soPhong.Text = mListPhong.Count.ToString();
+        }
+
+        private void fillTKB()
+        {
+            grid_TKB.Children.Clear();
+
+            for (int i = 0; i < mListCa.Count; i++)
+            {
+                TextBlock tbCa = new TextBlock();
+                tbCa.Text = "Ca " + (Int32.Parse(mListCa[i].MMaCa) + 1) + "\n" + mListCa[i].toStringTgBD_TgKT();
+                tbCa.Foreground = Brushes.Black;
+                tbCa.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+                tbCa.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                tbCa.FontSize = 15;
+                tbCa.TextAlignment = TextAlignment.Center;
+                tbCa.Padding = new Thickness(5, 0, 5, 0);
+                tbCa.Background = new SolidColorBrush(Color.FromRgb(226, 224, 224));
+                Grid.SetColumn(tbCa, i + 1);
+                Grid.SetRow(tbCa, 0);
+                grid_TKB.Children.Add(tbCa);
+            }
+
+            for (int i = 0; i < mListPhong.Count; i++)
+            {
+                TextBlock tbPhong = new TextBlock();
+                tbPhong.Text = mListPhong[i].MTenPhong;
+                tbPhong.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+                tbPhong.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+                tbPhong.Padding = new Thickness(10, 5, 10, 5);
+                tbPhong.FontSize = 15;
+                tbPhong.Foreground = Brushes.Black;
+                tbPhong.Background = new SolidColorBrush(Color.FromRgb(226, 224, 224));
+                Grid.SetRow(tbPhong, i + 1);
+                Grid.SetColumn(tbPhong, 0);
+                grid_TKB.Children.Add(tbPhong);
+            }
+
+            String today = mCurrentDate.ToString("dddd", new CultureInfo("en-US"));
+            tb_currentDate.Text = today + ", " + mCurrentDate.ToShortDateString();
+            List<Lop_ThoiGianHoc> listLopTGH = new List<Lop_ThoiGianHoc>();
+            ThoiGianHocBUS thoiGianHocBus = new ThoiGianHocBUS();
+            foreach (LopHoc lop in listLopDangMo)
+                listLopTGH.Add(new Lop_ThoiGianHoc(lop, thoiGianHocBus.getThoiGianHocCuaLop(lop.MMaLop)));
+            foreach (Lop_ThoiGianHoc lop in listLopTGH)
+            {
+                foreach (ThoiGianHoc tgh in lop.ListThoiGianHoc)
+                {
+                    if (tgh.MMaThu.Equals(today))
+                    {
+                        TextBlock tb = new TextBlock();
+                        tb.Text = lop.MaLop;
+                        tb.Background = Brushes.Blue;
+                        tb.Foreground = Brushes.White;
+                        tb.TextAlignment = TextAlignment.Center;
+                        tb.Padding = new Thickness(0, 7, 0, 5);
+                        tb.ToolTip = "Lớp: " + lop.MaLop + 
+                            "\nNgày bắt đầu: " + lop.LopHoc.MNgayBatDau.ToShortDateString() +
+                            "\nNgày kết thúc: " + lop.LopHoc.MNgayKetThuc.ToShortDateString();
+                        Grid.SetColumn(tb, Int32.Parse(tgh.MMaCa) + 1);
+                        Grid.SetRow(tb, Int32.Parse(lop.LopHoc.MMaPhong));
+                        grid_TKB.Children.Add(tb);
+                    }
+                }
+            }
+        }
+
+        private void bt_preDay_click(object sender, RoutedEventArgs e)
+        {
+            mCurrentDate = mCurrentDate.AddDays(-1);
+            fillTKB();
+        }
+
+        private void bt_nextDay_click(object sender, RoutedEventArgs e)
+        {
+            mCurrentDate = mCurrentDate.AddDays(1);
+            fillTKB();
+        }
+
+        private void datePicker_currentDate_selectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            mCurrentDate = (DateTime)datePicker_currentDate.SelectedDate;
+            fillTKB();
+        }
+
+        private void tb_lopSearch_keyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                bt_lopSearch.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                e.Handled = true;
+            }
+        }
+
+        private void bt_lopSearch_click(object sender, RoutedEventArgs e)
+        {
+            List<Lop_GiangVien> listLopSearch = new List<Lop_GiangVien>();
+            if(tb_lopSearch.Text == "")
+                lv_tabLop_dsLop.ItemsSource = mListLopGV;
+            else {
+                foreach (Lop_GiangVien lop in mListLopGV)
+                {
+                    if(Regex.IsMatch(lop.Lop.MMaLop, tb_lopSearch.Text, RegexOptions.IgnoreCase)
+                        || Regex.IsMatch(ConvertToUnSign(lop.TenGiangVien), ConvertToUnSign(tb_lopSearch.Text), RegexOptions.IgnoreCase))
+                    {
+                        listLopSearch.Add(lop);
+                    }
+                }
+                lv_tabLop_dsLop.ItemsSource = listLopSearch;
+            }
+        }
+
+        private void bt_themLop_click(object sender, RoutedEventArgs e)
+        {
+            NewClassForm classForm = new NewClassForm();
+            classForm.DataChanged += ThemLop_DataChanged;
+            classForm.ShowDialog();
+        }
+
+        private void bt_themPhong_click(object sender, RoutedEventArgs e)
+        {
+            NewClassRoom classRoom = new NewClassRoom();
+            classRoom.ShowDialog();
+        }
+
+        private void bt_themTXL_click(object sender, RoutedEventArgs e)
+        {
+            ThemLichThi themLichThi = new ThemLichThi();
+            themLichThi.ShowDialog();
+        }
+
+        private void bt_themDeThi_click(object sender, RoutedEventArgs e)
+        {
+            ThemDeThi themDeThi = new ThemDeThi();
+            themDeThi.ShowDialog();
+        }
+
+        private void bt_nhapKetQuaTXL_click(object sender, RoutedEventArgs e)
+        {
+            NhapKetQuaThiXL nhapKQ = new NhapKetQuaThiXL();
+            nhapKQ.ShowDialog();
+        }
+
+        private void ThemLop_DataChanged(object sender, EventArgs e)
+        {
+            updateListLopDangMo();
+        }
 
     }    
 }

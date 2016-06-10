@@ -30,6 +30,9 @@ namespace EnglishCenter.View
         ThoiGianHocBUS mTghBUS;
         List<CheckBox> mListThoiGianHoc;
 
+        public delegate void DataChangedEventHandler(object sender, EventArgs e);
+        public event DataChangedEventHandler DataChanged;
+
         public NewClassForm()
         {
             InitializeComponent();
@@ -136,8 +139,13 @@ namespace EnglishCenter.View
                 }
                 MessageBox.Show("Thêm thành công!");
             }
-                
-            
+
+            //Notify changes
+            DataChangedEventHandler handler = DataChanged;
+            if (handler != null)
+            {
+                handler(this, new EventArgs());
+            }
         }
 
         private List<ThoiGianHoc> getSelectedThoiGianHoc(String maLop)
