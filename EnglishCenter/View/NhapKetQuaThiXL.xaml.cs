@@ -63,5 +63,13 @@ namespace EnglishCenter.View
             }
             //lay chuong trinh de nghi tu diem thi
         }
+        
+        private void TextBox_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (String.IsNullOrEmpty(((TextBox)sender).Text))
+            {
+                ((TextBox)sender).Text = "0";
+            }
+        }
     }
 }
