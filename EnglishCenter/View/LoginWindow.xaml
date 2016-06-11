@@ -10,16 +10,15 @@
     <Grid>
         <Image Source="/EnglishCenter;component/Resources/bigben.jpg" Stretch="UniformToFill">
         </Image>
-        <Image Source="/EnglishCenter;component/Resources/user.png" Margin="112,84,449,265"/>
-        <Image Source="/EnglishCenter;component/Resources/locked.png" RenderTransformOrigin="0.5,0.5" Margin="117,140,449,206">
+        <Image Source="/EnglishCenter;component/Resources/user.png" Margin="113,108,448,241"/>
+        <Image Source="/EnglishCenter;component/Resources/locked.png" RenderTransformOrigin="0.5,0.5" Margin="118,164,448,182">
 
         </Image>
 
         <TextBlock Foreground="White" Margin="10,10,439,346" FontSize="16" FontWeight="Bold">ĐĂNG NHẬP</TextBlock>
-        <TextBox Name="tbUsername" Foreground="White" Margin="156,98,94,272" BorderBrush="#89FFFFFF" wpf:TextFieldAssist.Hint="Tên đăng nhập" FontSize="14"></TextBox>
-        <PasswordBox Name="tbPass" Foreground="White" Margin="156,155,94,216" BorderBrush="#89FFFFFF" wpf:TextFieldAssist.Hint="Mật khẩu" FontSize="14"></PasswordBox>
-        <Button Name="loginButton" Foreground="White" Margin="229,226,201,123" Height="Auto" Click="login_Click">Đăng nhập</Button>
-        <Label Name="signup_btn" FontSize="15" Foreground="Yellow" Margin="288,302,239,68" Height="Auto" Width="Auto" MouseDown="signup_btn_MouseDown">Đăng ký</Label>
+        <TextBox Name="tbUsername" Foreground="White" Margin="157,122,93,248" BorderBrush="#89FFFFFF" wpf:TextFieldAssist.Hint="Tên đăng nhập" FontSize="14"></TextBox>
+        <PasswordBox Name="tbPass" Foreground="White" Margin="157,179,93,192" BorderBrush="#89FFFFFF" wpf:TextFieldAssist.Hint="Mật khẩu" FontSize="14"></PasswordBox>
+        <Button Name="loginButton" Foreground="White" Margin="230,250,200,99" Height="Auto" Click="login_Click">Đăng nhập</Button>
         <Button Margin="574,0,0,379" Padding="0" Height="Auto" Background="Red" Cursor="Arrow" ToolTip="Đóng" BorderThickness="0" Click="Button_Click">❌</Button>
     </Grid>
 </Window>

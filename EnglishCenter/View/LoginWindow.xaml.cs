@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BusinessLogicTier;
+using DTO;
 
 namespace EnglishCenter.View
 {
@@ -19,9 +21,11 @@ namespace EnglishCenter.View
     /// </summary>
     public partial class LoginWindow : Window
     {
+        MainWindow mainWindow;
         public LoginWindow()
         {
             InitializeComponent();
+            mainWindow = new MainWindow();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -38,21 +42,24 @@ namespace EnglishCenter.View
 
         private void login_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            if (tbUsername.Text == "dp" && tbPass.Password == "abc") {
+            if (tbUsername.Text == "")
+            {
+                MessageBox.Show("Tên đăng nhập không đúng.");
+                return;
+            }
+            if (tbPass.Password == "")
+            {
+                MessageBox.Show("Mật khẩu không đúng.");
+                return;
+            }
+            User user = new User(tbUsername.Text, tbPass.Password, "");
+            if (new UserBUS().checkUser(user)) {
                 mainWindow.Show();
                 this.Close();
             }                
             else
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng");
             
-        }
-
-        private void signup_btn_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            SignUpWindow signUp = new SignUpWindow();
-            signUp.Show();
-            this.Close();
         }
     }
 }
