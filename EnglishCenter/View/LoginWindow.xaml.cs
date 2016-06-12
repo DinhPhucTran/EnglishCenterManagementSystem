@@ -36,8 +36,8 @@ namespace EnglishCenter.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //App.Current.Shutdown();
-            this.Close();
+            App.Current.Shutdown();
+            //this.Close();
         }
 
         private void login_Click(object sender, RoutedEventArgs e)
@@ -54,6 +54,8 @@ namespace EnglishCenter.View
             }
             User user = new User(tbUsername.Text, tbPass.Password, "");
             if (new UserBUS().checkUser(user)) {
+                User u = new UserBUS().selectUserByUsername(tbUsername.Text);
+                mainWindow.User = u;
                 mainWindow.Show();
                 this.Close();
             }                
