@@ -90,5 +90,14 @@ namespace EnglishCenter.View
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng");
             
         }
+
+        private void tb_username_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                loginButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                e.Handled = true;
+            }
+        }
     }
 }

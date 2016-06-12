@@ -316,5 +316,28 @@ namespace DataAccessTier
             }
             return false;
         }
+
+        public bool insertHocVienNgayTiepNhan(HocVien hv, DateTime ngay)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand cmd = new SqlCommand("HOCVIEN_NGAYTIEPNHAN_INSERT", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaHocVien", hv.MMaHocVien);
+                cmd.Parameters.Add("@NgayTiepNhan", SqlDbType.Date).Value = ngay.ToString("yyyy-MM-dd h:m:s");
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+
     }
 }

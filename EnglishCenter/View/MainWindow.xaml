@@ -619,11 +619,11 @@
                                     <ColumnDefinition Width="21.07"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Column="0" Background="Red" Margin="0,-3,168.95,-4" Padding="5 5 4 6" VerticalAlignment="Center" 
-                                       FontSize="20" Cursor="Arrow" Name="tb_soCTH" Grid.ColumnSpan="2"/>
-                                <TextBlock Grid.Column="1" Background="Red" Margin="0,-3,0.95,-4" Padding="5 5 8 6" VerticalAlignment="Center" FontSize="20" Cursor="Arrow"
+                                <TextBlock Grid.Column="0" Background="Red" Margin="0 0 -1 0" Padding="5 5 4 6" VerticalAlignment="Center" 
+                                       FontSize="20" Cursor="Arrow" Name="tb_soCTH"/>
+                                <TextBlock Grid.Column="1" Background="Red" Margin="0 0 1 0" Padding="5 5 8 6" VerticalAlignment="Center" FontSize="20" Cursor="Arrow"
                                        Text="Chương trình học"/>
-                                <Button Grid.Column="2" Padding="0" FontSize="15" Name="bt_themCth" Click="btThemCth_click" Grid.ColumnSpan="2" Margin="0.05,0,-0.05,-1">✛</Button>
+                                <Button Grid.Column="2" Padding="0" FontSize="15" Name="bt_themCth" Click="btThemCth_click" Grid.ColumnSpan="2">✛</Button>
                             </Grid>
                         </Grid>
                     </DockPanel>
