@@ -39,5 +39,35 @@ namespace DataAccessTier
             }
             return result;
         }
+
+        public List<User> getListUser()
+        {
+            List<User> result = new List<User>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("USER_LIST", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                result = dt.AsEnumerable().Select(m =>
+                   new User
+                   {
+                       MUsername = m.Field<String>("mUsername"),
+                       MPassword = m.Field<String>("mPassword"),
+                       MPermission = m.Field<String>("mPermission")
+                   }).ToList();
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
+        }
     }
 }

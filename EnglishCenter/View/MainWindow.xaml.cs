@@ -42,6 +42,7 @@ namespace EnglishCenter.View
         public MainWindow()
         {
             InitializeComponent();
+            updateListUser();
             updateListLopDangMo();
             updateListGiaoVien();
             updateListTrinhDo();
@@ -703,5 +704,10 @@ namespace EnglishCenter.View
             updateListLopDangMo();
         }
 
+        private void updateListUser()
+        {
+            List<User> userList = new UserBUS().getListUser();
+            lv_dsUser.ItemsSource = userList;
+        }
     }    
 }

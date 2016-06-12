@@ -14,5 +14,10 @@ namespace BusinessLogicTier
         {
             return new UserDAO().checkUser(user);
         }
+
+        public List<User> getListUser()
+        {
+            return new UserDAO().getListUser();
+        }
     }
 }
