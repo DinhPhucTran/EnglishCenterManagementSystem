@@ -111,5 +111,16 @@ namespace DTO
                 mEmail = value;
             }
         }
+
+        public HocVien(String maHV, String tenHV, DateTime ngaySinh, String phai, String diaChi, String email, String soDT)
+        {
+            mMaHocVien = maHV;
+            mTenHocVien = tenHV;
+            mNgaySinh = ngaySinh;
+            mPhai = phai;
+            mDiaChi = diaChi;
+            mEmail = email;
+            mSdt = soDT;
+        }
     }
 }

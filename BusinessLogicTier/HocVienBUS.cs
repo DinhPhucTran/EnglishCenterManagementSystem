@@ -75,5 +75,10 @@ namespace BusinessLogicTier
         {
             return mHocVienDAO.getListHocVien();
         }
+
+        public bool updateHocVien(HocVien hv)
+        {
+            return mHocVienDAO.updateHocVien(hv);
+        }
     }
 }

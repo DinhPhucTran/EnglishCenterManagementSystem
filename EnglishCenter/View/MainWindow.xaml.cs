@@ -31,6 +31,7 @@ namespace EnglishCenter.View
         public static List<GiangVien> listGiangVien;
         public static List<HocVien> listActiveStudent; // Danh sách học viên đang học
         public static List<HocVien_Lop> listHvDangHocWLop; // Danh sách học viên đang học + lớp
+        public static List<HocVien_Lop> listHVNoHocPhi;
         public static List<HocVien> listNewStudent; // Danh sách học viên chưa xếp lớp
         public static List<HocVien_Lop> listFilterHv;
         public static List<HocVien> listAllStudent;// Danh sách tất cả học viên (đanh học, chưa xếp lớp, không còn học)
@@ -38,10 +39,18 @@ namespace EnglishCenter.View
         private List<Ca> mListCa;
         private List<Phong> mListPhong;
         public static List<Lop_GiangVien> mListLopGV;
+        private TrinhDoBUS mTrinhDoBus;
+        private ChuongTrinhHocBUS mCTHBus;
+        private HocVienBUS mHocVienBus;
+        private LopHocBUS mLopHocBus;
 
         public MainWindow()
         {
             InitializeComponent();
+            mTrinhDoBus = new TrinhDoBUS();
+            mCTHBus = new ChuongTrinhHocBUS();
+            mHocVienBus = new HocVienBUS();
+            mLopHocBus = new LopHocBUS();
             updateListLopDangMo();
             updateListGiaoVien();
             updateListTrinhDo();
@@ -57,6 +66,7 @@ namespace EnglishCenter.View
         {
             listActiveStudent = new List<HocVien>();
             listHvDangHocWLop = new List<HocVien_Lop>();
+            
             foreach (LopHoc lop in listLopDangMo)
             {
                 List<String> listMaHV = new HocVienBUS().getMaHVbyMaLop(lop.MMaLop);
@@ -105,11 +115,33 @@ namespace EnglishCenter.View
             }
             lv_tabLop_dsLop.ItemsSource = mListLopGV;
             tb_soLopDangMo.Text = listLopDangMo.Count.ToString();
+            upDateListHvNoHP();
+            
+        }
+
+        private void upDateListHvNoHP()
+        {
+            listHVNoHocPhi = new List<HocVien_Lop>();
+            ChiTietLopHocBUS ctBus = new ChiTietLopHocBUS();
+            List<ChiTietLopHoc> listChiTietLop = new List<ChiTietLopHoc>();
+            foreach (LopHoc lop in listLopDangMo)
+            {
+                List<ChiTietLopHoc> ct = ctBus.selectChiTietLopHoc(lop.MMaLop);
+                listChiTietLop.AddRange(ct);
+            }
+            listHVNoHocPhi = new List<HocVien_Lop>();
+            foreach (ChiTietLopHoc ctl in listChiTietLop)
+            {
+                if (ctl.MSoTienNo > 0)
+                    listHVNoHocPhi.Add(new HocVien_Lop(mHocVienBus.selectHocVien(ctl.MMaHocVien), mLopHocBus.selectLopHoc(ctl.MMaLopHoc)));
+            }
+            lv_dsHocVien_HP.ItemsSource = listHVNoHocPhi;
+            tb_soHvNoHp.Text = listHVNoHocPhi.Count.ToString();
         }
 
         private void updateListChuongTrinhHoc()
         {
-            listChuongTrinhHoc = new ChuongTrinhHocBUS().getListChuongTrinhHoc();
+            listChuongTrinhHoc = mCTHBus.getListChuongTrinhHoc();
             List<ChuongTrinhHoc_SoHV> listHomeChuongTrinhHoc = new List<ChuongTrinhHoc_SoHV>();
             foreach (ChuongTrinhHoc cth in listChuongTrinhHoc)
             {
@@ -123,7 +155,7 @@ namespace EnglishCenter.View
 
                 foreach (LopHoc lop in listLop)
                 {
-                    c += new HocVienBUS().countHocVienByMaLop(lop.MMaLop);
+                    c += mHocVienBus.countHocVienByMaLop(lop.MMaLop);
                 }
                 ChuongTrinhHoc_SoHV cthHv = new ChuongTrinhHoc_SoHV();
                 cthHv.ChuongTrinhHoc = cth;
@@ -145,7 +177,7 @@ namespace EnglishCenter.View
 
         private void updateListTrinhDo()
         {
-            listTrinhDo = new TrinhDoBUS().getListTrinhDo();
+            listTrinhDo = mTrinhDoBus.getListTrinhDo();
             tb_soTrinhDo.Text = listTrinhDo.Count.ToString();
         }
 
@@ -174,6 +206,8 @@ namespace EnglishCenter.View
         {
             listGiangVien = new GiangVienBUS().getListGiangVien();
             tb_home_NumberOfTeacher.Text = listGiangVien.Count.ToString();
+            lv_dsGiangVien.ItemsSource = listGiangVien;
+            tb_soGiangVien.Text = listGiangVien.Count.ToString();
         }
 
         private void btn_AddStudent_Click(object sender, RoutedEventArgs e)
@@ -267,8 +301,10 @@ namespace EnglishCenter.View
 
         private void bt_editHvClick(object sender, RoutedEventArgs e)
         {
-            
-            
+            Button button = sender as Button;
+            HocVien_Lop hv = button.DataContext as HocVien_Lop;
+            SuaHocVien sua = new SuaHocVien(hv.HocVien);            
+            sua.ShowDialog();
         }
 
         private void bt_viewHvClick(object sender, RoutedEventArgs e)
@@ -404,13 +440,12 @@ namespace EnglishCenter.View
             LopHoc lop = (LopHoc) cb_filterHV_lop.SelectedValue;
             if (lop != null)
             {
-                HocVienBUS bus = new HocVienBUS();
                 listFilterHv = new List<HocVien_Lop>();
-                List<String> listMaHv = bus.getMaHVbyMaLop(lop.MMaLop);
+                List<String> listMaHv = mHocVienBus.getMaHVbyMaLop(lop.MMaLop);
                 List<HocVien> listFilterHvByLop = new List<HocVien>();
                 foreach (String ma in listMaHv)
                 {
-                    HocVien hv = bus.selectHocVien(ma);
+                    HocVien hv = mHocVienBus.selectHocVien(ma);
                     listFilterHvByLop.Add(hv);
                     listFilterHv.Add(new HocVien_Lop(hv, lop));
                 }
@@ -535,6 +570,7 @@ namespace EnglishCenter.View
             {
                 if (listTGH.Count > 0)
                 {
+                    tb_popupTGH.Text = "Thời gian học lớp " + lopGV.Lop.MMaLop;
                     lv_popupTGH_ThoiGianHoc.ItemsSource = listTGH;
                     popup_lopTGH.IsOpen = true;
                 }                
@@ -544,6 +580,7 @@ namespace EnglishCenter.View
         private void initTKB()
         {
             mListCa = new CaBUS().getAllCa();
+            bt_soCa.Content = mListCa.Count.ToString() + " Ca";
             mListPhong = (new PhongBUS().getListPhong()).OrderBy(o => Int32.Parse(o.MMaPhong)).ToList();
             grid_TKB.RowDefinitions.Add(new RowDefinition());
             grid_TKB.ColumnDefinitions.Add(new ColumnDefinition());
@@ -701,6 +738,101 @@ namespace EnglishCenter.View
         private void ThemLop_DataChanged(object sender, EventArgs e)
         {
             updateListLopDangMo();
+        }
+
+        private void tb_gvSearch_keyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                bt_gvSearch.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                e.Handled = true;
+            }
+        }
+
+        private void bt_gvSearch_click(object sender, RoutedEventArgs e)
+        {
+            List<GiangVien> listgvSearch = new List<GiangVien>();
+            if (tb_gvSearch.Text == "")
+                lv_dsGiangVien.ItemsSource = listGiangVien;
+            else
+            {
+                foreach (GiangVien gv in listGiangVien)
+                {
+                    if (Regex.IsMatch(gv.MMaGiangVien, tb_gvSearch.Text, RegexOptions.IgnoreCase)
+                        || Regex.IsMatch(ConvertToUnSign(gv.MTenGiangVien), ConvertToUnSign(tb_gvSearch.Text), RegexOptions.IgnoreCase))
+                    {
+                        listgvSearch.Add(gv);
+                    }
+                }
+                lv_dsGiangVien.ItemsSource = listgvSearch;
+            }
+        }
+
+        private void lv_dsGiangVien_selectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            GiangVien gv = (GiangVien)lv_dsGiangVien.SelectedValue;
+            lv_lopByGv.ItemsSource = new LopHocBUS().getListLopHocByMaGiangVien(gv.MMaGiangVien);
+        }
+
+        private void bt_popupChiTietLop_close(object sender, RoutedEventArgs e)
+        {
+            popup_chiTietLop.IsOpen = false;
+        }
+
+        private void bt_dsLop_viewChiTietLop(object sender, RoutedEventArgs e)
+        {
+            popup_chiTietLop.IsOpen = false;
+            Button button = sender as Button;
+            Lop_GiangVien lop = button.DataContext as Lop_GiangVien;
+            List<ChiTietLopHoc> listCTL = new ChiTietLopHocBUS().selectChiTietLopHoc(lop.Lop.MMaLop);
+            List<ChiTietLopHoc_TenHV> listCTL_Ten = new List<ChiTietLopHoc_TenHV>();
+            foreach (ChiTietLopHoc ct in listCTL)
+            {
+                ChiTietLopHoc_TenHV ten = new ChiTietLopHoc_TenHV();
+                ten.ChiTietLop = ct;
+                ten.TenHocVien = mHocVienBus.selectHocVien(ct.MMaHocVien).MTenHocVien;
+                listCTL_Ten.Add(ten);
+            }
+            lv_popupChiTietLop.ItemsSource = listCTL_Ten;
+            tb_popupChiTietLop.Text = "Chi tiết lớp " + lop.Lop.MMaLop;
+            popup_chiTietLop.IsOpen = true;
+        }
+
+        private void item_dsNoHP_MouseLeftDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                Grid grid = sender as Grid;
+                HocVien_Lop hocvien = grid.DataContext as HocVien_Lop;
+                if (hocvien.Lop != null)
+                {
+                    PhieuThuHocPhi1HV phieuThu = new PhieuThuHocPhi1HV();
+                    phieuThu.MaHocVien = hocvien.HocVien.MMaHocVien;
+                    phieuThu.tb_tenHocVien.Text = hocvien.HocVien.MTenHocVien;
+                    phieuThu.tb_lop.Text = hocvien.Lop.MMaLop;
+                    phieuThu.tb_sdt.Text = hocvien.HocVien.MSdt;
+                    phieuThu.Show();
+                }
+                e.Handled = true;
+            }
+        }
+
+        private void bt_lapPhieuThuHP_click(object sender, RoutedEventArgs e)
+        {
+            PhieuThuHocPhi phieu = new PhieuThuHocPhi();
+            phieu.DataChanged += ThuHocPhi_DataChanged;
+            phieu.ShowDialog();
+        }
+
+        private void ThuHocPhi_DataChanged(object sender, EventArgs e)
+        {
+            upDateListHvNoHP();
+        }
+
+        private void bt_soCa_click(object sender, RoutedEventArgs e)
+        {
+            DanhSachCa dsCa = new DanhSachCa();
+            dsCa.ShowDialog();
         }
 
     }    
