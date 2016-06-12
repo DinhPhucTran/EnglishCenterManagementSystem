@@ -40,6 +40,26 @@ namespace EnglishCenter.View
             //this.Close();
         }
 
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
+
         private void login_Click(object sender, RoutedEventArgs e)
         {
             if (tbUsername.Text == "")
@@ -58,6 +78,13 @@ namespace EnglishCenter.View
                 mainWindow.User = u;
                 mainWindow.Show();
                 this.Close();
+                foreach (Button btn in FindVisualChildren<Button>(mainWindow))
+                {
+                    if (btn.Name == "btn_AddStudent")
+                    {
+                        //btn.Visibility = Visibility.Hidden;
+                    }
+                }
             }                
             else
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng");

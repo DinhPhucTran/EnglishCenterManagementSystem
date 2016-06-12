@@ -48,6 +48,7 @@ namespace EnglishCenter.View
         public MainWindow()
         {
             InitializeComponent();
+            updateListUser();
             mTrinhDoBus = new TrinhDoBUS();
             mCTHBus = new ChuongTrinhHocBUS();
             mHocVienBus = new HocVienBUS();
@@ -747,6 +748,12 @@ namespace EnglishCenter.View
             updateListLopDangMo();
         }
 
+        private void updateListUser()
+        {
+            List<User> userList = new UserBUS().getListUser();
+            lv_dsUser.ItemsSource = userList;
+        }
+
         private void tb_gvSearch_keyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
@@ -848,6 +855,7 @@ namespace EnglishCenter.View
             tb_popupUserInfo_permission.Text = new UserBUS().selectPermissonById(mUser.MPermission).MNamePermision;
             popup_userInfo.IsOpen = true;
         }
+
 
     }    
 }
