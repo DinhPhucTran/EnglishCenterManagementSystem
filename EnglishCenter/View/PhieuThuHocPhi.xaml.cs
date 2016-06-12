@@ -23,16 +23,25 @@ namespace EnglishCenter.View
     public partial class PhieuThuHocPhi : Window
     {
         List<LopHoc> mListLop;
-        List<HocVien> mListHocVien;
+        private HocVienBUS mHocVienBus;
+        public delegate void DataChangedEventHandler(object sender, EventArgs e);
+        public event DataChangedEventHandler DataChanged;
         public PhieuThuHocPhi()
         {
+            mHocVienBus = new HocVienBUS();
             InitializeComponent();
             mListLop = new LopHocBUS().getListLopHoc();
             cb_lop.ItemsSource = mListLop;
             cb_lop.SelectedIndex = 0;
 
-            mListHocVien = new List<HocVien>();
-            cb_tenHocVien.ItemsSource = mListHocVien;
+            
+            //List<String> listMaHv = mHocVienBus.getMaHVbyMaLop(((LopHoc)cb_lop.SelectedValue).MMaLop);
+            //foreach (String ma in listMaHv)
+            //{
+            //    HocVien hv = mHocVienBus.selectHocVien(ma);
+            //    mListHocVien.Add(hv);
+            //}
+            //cb_tenHocVien.ItemsSource = mListHocVien;
             
         }
 
@@ -58,8 +67,8 @@ namespace EnglishCenter.View
             max++;
             phieu.MMaPhieuThu = DateTime.Now.ToString("yyyy") + DateTime.Now.ToString("MM") + DateTime.Now.ToString("dd") + max;
 
-            phieu.MMaLopHoc = mListLop[cb_lop.SelectedIndex].MMaLop;
-            phieu.MMaHocVien = mListHocVien[cb_tenHocVien.SelectedIndex].MMaHocVien;
+            phieu.MMaLopHoc = ((LopHoc)cb_lop.SelectedValue).MMaLop;
+            phieu.MMaHocVien = ((HocVien)cb_tenHocVien.SelectedValue).MMaHocVien;
             phieu.MNgayLap = DateTime.Now;
             try
             {
@@ -79,7 +88,13 @@ namespace EnglishCenter.View
             {
                 MessageBox.Show("Thất bại!!!\nVui lòng kiểm tra lại dử liệu và thử lại");
             }
-            
+
+            //Notify changes
+            DataChangedEventHandler handler = DataChanged;
+            if (handler != null)
+            {
+                handler(this, new EventArgs());
+            }
             
             
         }
@@ -98,17 +113,29 @@ namespace EnglishCenter.View
 
         private void cb_lop_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            mListHocVien = new HocVienBUS().getHocVienByMaLop(mListLop[cb_lop.SelectedIndex].MMaLop.ToString());
-            cb_tenHocVien.ItemsSource = mListHocVien;
-            if (mListHocVien.Count != 0)
+            //mListHocVien = new HocVienBUS().getHocVienByMaLop(mListLop[cb_lop.SelectedIndex].MMaLop.ToString());
+            //cb_tenHocVien.ItemsSource = mListHocVien;
+            //if (mListHocVien.Count != 0)
+            //{
+            //    cb_tenHocVien.SelectedIndex = 0;
+            //}
+            
+            List<String> listMaHv = mHocVienBus.getMaHVbyMaLop(((LopHoc)cb_lop.SelectedValue).MMaLop);
+            List<HocVien> list = new List<HocVien>();
+            foreach (String ma in listMaHv)
             {
-                cb_tenHocVien.SelectedIndex = 0;
+                HocVien hv = mHocVienBus.selectHocVien(ma);
+                list.Add(hv);
             }
+            cb_tenHocVien.ItemsSource = list;
+            tb_sdt.Text = "";
         }
 
         private void cb_tenHocVien_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            tb_sdt.Text = mListHocVien[cb_tenHocVien.SelectedIndex].MSdt;
+            //tb_sdt.Text = mListHocVien[cb_tenHocVien.SelectedIndex].MSdt;
+            if(((HocVien)cb_tenHocVien.SelectedValue) != null)
+                tb_sdt.Text = ((HocVien)cb_tenHocVien.SelectedValue).MSdt;
         }
 
 

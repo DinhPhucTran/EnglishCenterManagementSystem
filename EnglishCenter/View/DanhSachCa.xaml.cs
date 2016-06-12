@@ -48,6 +48,9 @@ namespace EnglishCenter.View
                 Label tgKT = new Label();
                 tgKT.Width = ColumnTGKT.Width;
                 tgKT.Content = getTimeFromDateTime(mListCa[i].MThoiGianKetThuc);
+                maCa.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
+                tgBD.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
+                tgKT.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
                 sp.Children.Add(maCa);
                 sp.Children.Add(tgBD);
                 sp.Children.Add(tgKT);

@@ -56,7 +56,7 @@ namespace BusinessLogicTier
             return new LopHocDAO().getLopMoiNhatByMaHV(maHv);
         }
 
-        public List<LopHoc> selectLopHoc(String maLop)
+        public LopHoc selectLopHoc(String maLop)
         {
             return new LopHocDAO().selectLopHoc(maLop);
         }

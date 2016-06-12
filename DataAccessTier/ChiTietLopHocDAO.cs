@@ -37,5 +37,37 @@ namespace DataAccessTier
                 return false;
             }
         }
+
+        public List<ChiTietLopHoc> selectChiTietLopHoc(String maLop)
+        {
+            List<ChiTietLopHoc> result = new List<ChiTietLopHoc>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand cmd = new SqlCommand("CHI_TIET_LOP_HOC_SELECT", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaLopHoc", maLop);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ChiTietLopHoc ct = new ChiTietLopHoc();
+                    ct.MMaLopHoc = maLop;
+                    ct.MMaHocVien = dt.Rows[i]["MaHV"].ToString();
+                    ct.MTinhTrangDongHocPhi = Int32.Parse(dt.Rows[i]["TinhTrangDongHP"].ToString());
+                    ct.MKetQuaThi = float.Parse(dt.Rows[i]["KetQuaThi"].ToString());
+                    ct.MSoTienNo = Double.Parse(dt.Rows[i]["SoTienNo"].ToString());
+                    result.Add(ct);
+                }
+                connection.Close();
+            }
+            catch (Exception)
+            {
+                connection.Close();
+            }
+            return result;
+        }
     }
 }

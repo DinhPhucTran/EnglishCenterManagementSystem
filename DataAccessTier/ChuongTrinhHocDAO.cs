@@ -152,5 +152,31 @@ namespace DataAccessTier
             }
             return result;
         }
+
+        public String getTenChuongTrinhHocByMa(String maCTH)
+        {
+            String result = "";
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("CHUONG_TRINH_HOC_SELECT", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaCTHoc", maCTH);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                result = dt.Rows[0]["TenCTHoc"].ToString();
+                connection.Close();
+            }
+            catch (Exception)
+            {
+                connection.Close();
+                //throw;
+            }
+            return result;
+        }
     }
 }

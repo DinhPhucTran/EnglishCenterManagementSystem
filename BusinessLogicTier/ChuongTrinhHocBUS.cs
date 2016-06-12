@@ -43,5 +43,10 @@ namespace BusinessLogicTier
         {
             return mChuongTrinhHocDAO.getMaChuongTrinhHocFromTen(tenCT);
         }
+
+        public String getTenChuongTrinhHocByMa(String maCTH)
+        {
+            return mChuongTrinhHocDAO.getTenChuongTrinhHocByMa(maCTH);
+        }
     }
 }

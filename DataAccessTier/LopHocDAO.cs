@@ -317,7 +317,7 @@ namespace DataAccessTier
             return null;
         }
 
-        public List<LopHoc> selectLopHoc(String maLop)
+        public LopHoc selectLopHoc(String maLop)
         {
             List<LopHoc> listLop = new List<LopHoc>();
             try
@@ -348,7 +348,7 @@ namespace DataAccessTier
             {
                 connection.Close();
             }
-            return listLop;
+            return listLop[0];
         }
 
         public List<LopHoc_ThoiGianDTO> getListLopHocByDay(String maThu, DateTime ngayThi)

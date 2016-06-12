@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Ca.cs" />
     <Compile Include="ChiTietLopHoc.cs" />
+    <Compile Include="ChiTietLopHoc_TenHV.cs" />
     <Compile Include="ChiTietThiXepLop.cs" />
     <Compile Include="ChuongTrinhHoc.cs" />
     <Compile Include="ChuongTrinhHoc_SoHV.cs" />

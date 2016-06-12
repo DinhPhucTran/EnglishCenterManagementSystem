@@ -14,5 +14,10 @@ namespace BusinessLogicTier
         {
             return new ChiTietLopHocDAO().insertChiTietLopHoc(ct);
         }
+
+        public List<ChiTietLopHoc> selectChiTietLopHoc(String maLop)
+        {
+            return new ChiTietLopHocDAO().selectChiTietLopHoc(maLop);
+        }
     }
 }
