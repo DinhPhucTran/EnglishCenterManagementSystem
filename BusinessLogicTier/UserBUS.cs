@@ -15,6 +15,16 @@ namespace BusinessLogicTier
             return new UserDAO().checkUser(user);
         }
 
+        public User selectUserByUsername(String name)
+        {
+            return new UserDAO().selectUserByUsername(name);
+        }
+
+        public Permission selectPermissonById(String Id)
+        {
+            return new UserDAO().selectPermissonById(Id);
+        }
+
         public List<User> getListUser()
         {
             return new UserDAO().getListUser();

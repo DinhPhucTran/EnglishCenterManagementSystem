@@ -43,6 +43,7 @@ namespace EnglishCenter.View
         private ChuongTrinhHocBUS mCTHBus;
         private HocVienBUS mHocVienBus;
         private LopHocBUS mLopHocBus;
+        private User mUser;
 
         public MainWindow()
         {
@@ -61,6 +62,12 @@ namespace EnglishCenter.View
             mCurrentDate = DateTime.Today;
             initTKB();
             fillTKB();
+        }
+
+        public User User
+        {
+            get { return mUser; }
+            set { mUser = value; }
         }
 
         private void updateListHocVien()
@@ -841,5 +848,14 @@ namespace EnglishCenter.View
             DanhSachCa dsCa = new DanhSachCa();
             dsCa.ShowDialog();
         }
+
+        private void bt_userInfo_click(object sender, RoutedEventArgs e)
+        {
+            tb_popupUserInfo_username.Text = mUser.MUsername;
+            tb_popupUserInfo_permission.Text = new UserBUS().selectPermissonById(mUser.MPermission).MNamePermision;
+            popup_userInfo.IsOpen = true;
+        }
+
+
     }    
 }

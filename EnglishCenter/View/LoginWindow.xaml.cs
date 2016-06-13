@@ -39,8 +39,8 @@ namespace EnglishCenter.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //App.Current.Shutdown();
-            this.Close();
+            App.Current.Shutdown();
+            //this.Close();
         }
 
         public static List<T> GetLogicalChildCollection<T>(object parent) where T : DependencyObject
@@ -100,7 +100,8 @@ namespace EnglishCenter.View
                 return;
             }
             User user = new User(tbUsername.Text, tbPass.Password, "");
-            if (new UserBUS().checkUser(user)) {
+            if (new UserBUS().checkUser(user)) 
+            {
                 //lay permission theo user
                 String permission = new UserBUS().getPermissionByUser(user);
                 user.MPermission = permission;
@@ -120,25 +121,6 @@ namespace EnglishCenter.View
                     {
                         tab.Visibility = Visibility.Collapsed;
                     }
-                    //foreach (Button btn in a)
-                    {
-                        //for (int i = 0; i < listNameTab.Count; i++)
-                        //{
-                        //    if (btn.Name == listNameTab[i])
-                        //    {
-                        //        btn.Visibility = Visibility.Hidden;
-                        //        if (btn.Name.Contains("tab"))
-                        //        {
-                        //            btn.Visibility = Visibility.Collapsed;
-                        //        }
-                        //    }
-                        //}
-
-                        //if (btn.Name == listNameTab[i])
-                        //{
-                        //    btn.Visibility = Visibility.Hidden;
-                        //}
-                    }
                 }
                 
                 mainWindow.Show();
@@ -147,6 +129,15 @@ namespace EnglishCenter.View
             else
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng");
             
+        }
+
+        private void tb_username_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                loginButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                e.Handled = true;
+            }
         }
     }
 }

@@ -143,25 +143,25 @@ namespace EnglishCenter.View
             String ten = TenHocVien_tb.Text;
             if (ten == "")
             {
-                MessageBox.Show("Please, fill in your Name!");
+                MessageBox.Show("Không để trống tên học viên!");
                 return;
             }
             DateTime? ngaySinh = NgaySinhHV_dp.SelectedDate;
             if (ngaySinh == null)
             {
-                MessageBox.Show("Please, choose your Birthday!");
+                MessageBox.Show("Vui lòng nhập ngày sinh");
                 return;
             }
             if (mPhaiRadioButton == null)
             {
-                MessageBox.Show("You are female or male or ...? \n Please, check your Gender!");
+                MessageBox.Show("Chưa có thông tin giới tính");
                 return;
             }
             String phai = mPhaiRadioButton.Content.ToString();
             String diaChi = DiaChi_tb.Text;
             if (diaChi == "")
             {
-                MessageBox.Show("Please, enter your Address!");
+                MessageBox.Show("Vui lòng điền địa chỉ");
                 return;
             }
 
@@ -169,7 +169,7 @@ namespace EnglishCenter.View
             //if (!Regex.Match(soDT, @"^(\d[0-9]{9,11})$").Success)
             if(soDT == "")
             {
-                MessageBox.Show("Please, refill your Phone Number!");
+                MessageBox.Show("Vui lòng điền số điện thoại", "Thông báo");
                 return;
             }
 
@@ -198,7 +198,7 @@ namespace EnglishCenter.View
 
             if (!mHocVienBUS.insertHocVien(hv))
             {
-                MessageBox.Show("Insert Hoc Vien Failed.");
+                MessageBox.Show("Thêm học viên thất bại!", "Thông báo");
             }
             #endregion
 
@@ -241,6 +241,9 @@ namespace EnglishCenter.View
                     MessageBox.Show("Đã thêm học viên vào lớp " + mChiTietLop.MMaLopHoc, "Thông báo");
             }
             #endregion
+
+            if (!mHocVienBUS.insertHocVienNgayTiepNhan(hv, DateTime.Now))
+                MessageBox.Show("Ghi nhận ngày lập phiếu thất bại!", "Thông báo");
 
             resetComponent();
 
