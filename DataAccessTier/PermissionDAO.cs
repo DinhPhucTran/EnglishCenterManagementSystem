@@ -40,5 +40,33 @@ namespace DataAccessTier
             bool result = false;
             return result;
         }
+
+        public List<Permission> getListPermission()
+        {
+            List<Permission> result = new List<Permission>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("PERMISSION_LIST", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                result = dt.AsEnumerable().Select(m => new Permission
+                {
+                    MIdPermission = m.Field<String>("mIdPermission"),
+                    MNamePermision = m.Field<String>("mNamePermission")
+                }).ToList();
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
+        }
     }
 }

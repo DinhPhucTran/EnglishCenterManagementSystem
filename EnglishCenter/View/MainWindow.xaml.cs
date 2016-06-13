@@ -916,6 +916,17 @@ namespace EnglishCenter.View
             tabControl.SelectedIndex = 6;
         }
 
+        private void logout_btn_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow lg = new LoginWindow();
+            this.Close();
+            lg.Show();
+        }
 
+        private void btn_ThemUser_Click(object sender, RoutedEventArgs e)
+        {
+            SignUpWindow su = new SignUpWindow();
+            su.Show();
+        }
     }    
 }

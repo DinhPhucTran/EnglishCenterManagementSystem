@@ -43,11 +43,13 @@
     <Compile Include="ChiTietLopHocBUS.cs" />
     <Compile Include="ChiTietThiXepLopBUS.cs" />
     <Compile Include="ChuongTrinhHocBUS.cs" />
+    <Compile Include="DetailPermissionBUS.cs" />
     <Compile Include="GiangVienBUS.cs" />
     <Compile Include="DeThiBUS.cs" />
     <Compile Include="HocVienBUS.cs" />
     <Compile Include="KetQuaThiXLBUS.cs" />
     <Compile Include="LopHocBUS.cs" />
+    <Compile Include="PermissionBUS.cs" />
     <Compile Include="PhieuThuHocPhiBUS.cs" />
     <Compile Include="PhongBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

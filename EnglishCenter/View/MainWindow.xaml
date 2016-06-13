@@ -18,6 +18,8 @@
                 <TextBlock FontSize="20" HorizontalAlignment="Center" Margin="5 0 0 5" Height="25" VerticalAlignment="Bottom" Name="tb_header_username">admin</TextBlock>
                 <Button Style="{StaticResource DropdownButton}" Width="15" Height="15" Foreground="Black" Cursor="Hand"
                         HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2 0 10 10" Name="bt_userInfo" Click="bt_userInfo_click">▼</Button>
+                <Button Name="logout_btn" Click="logout_btn_Click" Content="Đăng xuất" Height="40" Foreground="Black" Cursor="Hand" FontSize="18"
+                        HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2 0 10 5"></Button>
                 <Popup PlacementTarget="{Binding ElementName=bt_userInfo}"
                         AllowsTransparency="True"  
                         PopupAnimation="Fade"
@@ -1282,8 +1284,8 @@
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,10,2" FontSize="15" Name="tb_lv_Username" Text="{Binding MUsername}"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 0 5 2" Text="{Binding MPermission, StringFormat='Quyền {0}'}"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,10,2" FontSize="20" Name="tb_lv_Username" Text="{Binding MUsername}"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 0 5 2" FontSize="15" Text="{Binding MPermission, StringFormat='Quyền {0}'}"/>
                                     <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Margin="10 5 5 5" BorderThickness="0" 
                                                             VerticalAlignment="Center" HorizontalAlignment="Center" Name="bt_lv_user_edit">
                                         <Button.Background>
@@ -1300,9 +1302,9 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <Button Name="btn_ThemUser" Grid.Row="1" Width="40" Height="40" 
+                    <Button Name="btn_ThemUser" Click="btn_ThemUser_Click" Grid.Row="1" Width="40" Height="40" 
                             Margin="31,93,29,191" HorizontalAlignment="Center" Padding="-10" Content="+"
-                            FontSize="30" ToolTip="Thêm người dùng."/>
+                            FontSize="30" ToolTip="Thêm người dùng"/>
                 </Grid>
             </TabItem>
         </TabControl>

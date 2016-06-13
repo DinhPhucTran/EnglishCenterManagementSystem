@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BusinessLogicTier;
 using DTO;
+using System.Collections;
 
 namespace EnglishCenter.View
 {
@@ -21,11 +22,12 @@ namespace EnglishCenter.View
     /// </summary>
     public partial class LoginWindow : Window
     {
-        MainWindow mainWindow;
+        public MainWindow mainWindow;
         public LoginWindow()
         {
-            InitializeComponent();
             mainWindow = new MainWindow();
+            InitializeComponent();
+            
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -40,22 +42,26 @@ namespace EnglishCenter.View
             //this.Close();
         }
 
-        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        public static List<T> GetLogicalChildCollection<T>(object parent) where T : DependencyObject
         {
-            if (depObj != null)
-            {
-                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-                {
-                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-                    if (child != null && child is T)
-                    {
-                        yield return (T)child;
-                    }
+            List<T> logicalCollection = new List<T>();
+            GetLogicalChildCollection(parent as DependencyObject, logicalCollection);
+            return logicalCollection;
+        }
 
-                    foreach (T childOfChild in FindVisualChildren<T>(child))
+        private static void GetLogicalChildCollection<T>(DependencyObject parent, List<T> logicalCollection) where T : DependencyObject
+        {
+            IEnumerable children = LogicalTreeHelper.GetChildren(parent);
+            foreach (object child in children)
+            {
+                if (child is DependencyObject)
+                {
+                    DependencyObject depChild = child as DependencyObject;
+                    if (child is T)
                     {
-                        yield return childOfChild;
+                        logicalCollection.Add(child as T);
                     }
+                    GetLogicalChildCollection(depChild, logicalCollection);
                 }
             }
         }
@@ -73,18 +79,31 @@ namespace EnglishCenter.View
                 return;
             }
             User user = new User(tbUsername.Text, tbPass.Password, "");
-            if (new UserBUS().checkUser(user)) {
-                User u = new UserBUS().selectUserByUsername(tbUsername.Text);
-                mainWindow.User = u;
-                mainWindow.Show();
-                this.Close();
-                foreach (Button btn in FindVisualChildren<Button>(mainWindow))
+            if (new UserBUS().checkUser(user)) 
+            {
+                //lay permission theo user
+                String permission = new UserBUS().getPermissionByUser(user);
+                user.MPermission = permission;
+                //lay danh sach tab theo permission
+                List<String> listNameTab = new DetailPermissionBUS().getListTabByPermission(permission);
+                List<Button> listBtn = GetLogicalChildCollection<Button>(mainWindow);
+                List<TabItem> listTab = GetLogicalChildCollection<TabItem>(mainWindow);
+                for (int i = 0; i < listNameTab.Count; i++)
                 {
-                    if (btn.Name == "btn_AddStudent")
+                    Button btn = listBtn.Find(m => m.Name == listNameTab[i]);
+                    if (btn != null)
                     {
-                        //btn.Visibility = Visibility.Hidden;
+                        btn.Visibility = Visibility.Hidden;
+                    }
+                    TabItem tab = listTab.Find(m =>  m.Name == listNameTab[i]);
+                    if (tab != null)
+                    {
+                        tab.Visibility = Visibility.Collapsed;
                     }
                 }
+                
+                mainWindow.Show();
+                this.Close();
             }                
             else
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng");
