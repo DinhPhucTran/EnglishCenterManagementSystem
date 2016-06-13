@@ -1,0 +1,2 @@
+ ALTER PROCEDURE [DBO].[GIANG_VIEN_UPDATE] (@MaGiangVien AS VARCHAR(15) ,@TenGiangVien AS NVARCHAR(50) ,@DiaChi AS NVARCHAR(100) ,@SoDT AS VARCHAR(15) ) AS UPDATE GIANG_VIEN SET 
+[TenGiangVien] = @TenGiangVien,[DiaChi] = @DiaChi,[SoDT] = @SoDT WHERE [MaGiangVien] = @MaGiangVien
