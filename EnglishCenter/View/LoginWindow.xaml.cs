@@ -101,7 +101,8 @@ namespace EnglishCenter.View
                         tab.Visibility = Visibility.Collapsed;
                     }
                 }
-                
+                User u = new UserBUS().selectUserByUsername(tbUsername.Text);
+                mainWindow.User = u;
                 mainWindow.Show();
                 this.Close();
             }                

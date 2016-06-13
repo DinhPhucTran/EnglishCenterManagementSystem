@@ -78,5 +78,11 @@ namespace EnglishCenter.View
                 MessageBox.Show("Thêm user thất bại.");
             }
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
     }
 }

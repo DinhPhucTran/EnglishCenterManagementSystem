@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         ResizeMode="NoResize"
-        Title="SignUpWindow" Height="300" Width="300">
+        Title="SignUpWindow" Height="300" Width="300"
+        MouseDown="Window_MouseDown">
     <Grid>
         <Image Source="/EnglishCenter;component/Resources/bigben.jpg" Stretch="UniformToFill">
         </Image>

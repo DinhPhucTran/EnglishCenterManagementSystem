@@ -4,7 +4,7 @@
         xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
         xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
         Title="English Center Management System" Height="600" Width="1120"
-        WindowState="Maximized"  Background="#F9F9F9" Icon="/Resources/ic_apple.png">
+        WindowState="Maximized"  Background="#F9F9F9" Icon="/Resources/ic_apple.png" Activated="mainWindow_activated">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -18,20 +18,20 @@
                 <TextBlock FontSize="20" HorizontalAlignment="Center" Margin="5 0 0 5" Height="25" VerticalAlignment="Bottom" Name="tb_header_username">admin</TextBlock>
                 <Button Style="{StaticResource DropdownButton}" Width="15" Height="15" Foreground="Black" Cursor="Hand"
                         HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2 0 10 10" Name="bt_userInfo" Click="bt_userInfo_click">▼</Button>
-                <Button Name="logout_btn" Click="logout_btn_Click" Content="Đăng xuất" Height="40" Foreground="Black" Cursor="Hand" FontSize="18"
-                        HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2 0 10 5"></Button>
+                
                 <Popup PlacementTarget="{Binding ElementName=bt_userInfo}"
                         AllowsTransparency="True"  
                         PopupAnimation="Fade"
                         Placement="Bottom" VerticalOffset="10" HorizontalOffset="-280"
                         Name="popup_userInfo" StaysOpen="False">
-                    <Grid Background="White" Margin="20" Width="300" Height="80">
+                    <Grid Background="White" Margin="20" Width="300" Height="120">
                         <Grid.Effect>
                             <DropShadowEffect Color="#FFDEDEDE" BlurRadius="10" Direction="280"/>
                         </Grid.Effect>
                         <Border BorderBrush="#00C0EF" BorderThickness="1">
                             <Grid>
                                 <Grid.RowDefinitions>
+                                    <RowDefinition/>
                                     <RowDefinition/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
@@ -43,6 +43,9 @@
                                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Chức vụ: " VerticalAlignment="Center" Margin="10"/>
                                 <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="10" Name="tb_popupUserInfo_username"/>
                                 <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="10" Name="tb_popupUserInfo_permission"/>
+
+                                <Button Grid.Row="2" Grid.ColumnSpan="2" Name="logout_btn" Click="logout_btn_Click" Content="Đăng xuất" Foreground="White"
+                                        HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="2 0 10 5"></Button>
                             </Grid>
                         </Border>
                     </Grid>

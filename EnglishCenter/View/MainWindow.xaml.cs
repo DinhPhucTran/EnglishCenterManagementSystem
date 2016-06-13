@@ -928,5 +928,11 @@ namespace EnglishCenter.View
             SignUpWindow su = new SignUpWindow();
             su.Show();
         }
+
+        private void mainWindow_activated(object sender, EventArgs e)
+        {
+            if (mUser != null)
+                tb_header_username.Text = mUser.MUsername;
+        }
     }    
 }
