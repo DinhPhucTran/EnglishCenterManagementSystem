@@ -15,6 +15,7 @@
 15. btn_ThemGiangVien: them giang vien()
 16. tabReport: bao cao quan ly trung tam (chua xong)
 17. tabSettings: cai dat tham so (chua xong)
+18. bt_themCth: them chuong trinh hoc
 
 
 user ---- nut xoa ------ nut sua

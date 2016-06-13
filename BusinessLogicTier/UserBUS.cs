@@ -19,5 +19,10 @@ namespace BusinessLogicTier
         {
             return new UserDAO().getListUser();
         }
+
+        public String getPermissionByUser(User user)
+        {
+            return new UserDAO().getPermissionByUser(user);
+        }
     }
 }

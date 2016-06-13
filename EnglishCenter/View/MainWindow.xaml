@@ -1249,8 +1249,8 @@
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,10,2" FontSize="15" Name="tb_lv_Username" Text="{Binding MUsername}"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 0 5 2" Text="{Binding MPermission, StringFormat='Quyền {0}'}"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,10,2" FontSize="20" Name="tb_lv_Username" Text="{Binding MUsername}"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 0 5 2" FontSize="15" Text="{Binding MPermission, StringFormat='Quyền {0}'}"/>
                                     <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Margin="10 5 5 5" BorderThickness="0" 
                                                             VerticalAlignment="Center" HorizontalAlignment="Center" Name="bt_lv_user_edit">
                                         <Button.Background>

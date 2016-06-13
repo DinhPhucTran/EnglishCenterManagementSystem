@@ -43,6 +43,7 @@
     <Compile Include="ChiTietLopHocBUS.cs" />
     <Compile Include="ChiTietThiXepLopBUS.cs" />
     <Compile Include="ChuongTrinhHocBUS.cs" />
+    <Compile Include="DetailPermissionBUS.cs" />
     <Compile Include="GiangVienBUS.cs" />
     <Compile Include="DeThiBUS.cs" />
     <Compile Include="HocVienBUS.cs" />
