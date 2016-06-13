@@ -10,6 +10,15 @@ namespace BusinessLogicTier
 {
     public class UserBUS
     {
+        public bool addUser(User user)
+        {
+            return new UserDAO().addUser(user);
+        }
+        public bool isExist(String username)
+        {
+            return new UserDAO().isExist(username);
+        }
+
         public bool checkUser(User user)
         {
             return new UserDAO().checkUser(user);

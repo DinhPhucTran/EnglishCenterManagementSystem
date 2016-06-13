@@ -49,6 +49,7 @@
     <Compile Include="HocVienBUS.cs" />
     <Compile Include="KetQuaThiXLBUS.cs" />
     <Compile Include="LopHocBUS.cs" />
+    <Compile Include="PermissionBUS.cs" />
     <Compile Include="PhieuThuHocPhiBUS.cs" />
     <Compile Include="PhongBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

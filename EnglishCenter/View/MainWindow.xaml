@@ -1296,9 +1296,9 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <Button Name="btn_ThemUser" Grid.Row="1" Width="40" Height="40" 
+                    <Button Name="btn_ThemUser" Click="btn_ThemUser_Click" Grid.Row="1" Width="40" Height="40" 
                             Margin="31,93,29,191" HorizontalAlignment="Center" Padding="-10" Content="+"
-                            FontSize="30" ToolTip="Thêm người dùng."/>
+                            FontSize="30" ToolTip="Thêm người dùng"/>
                 </Grid>
             </TabItem>
         </TabControl>

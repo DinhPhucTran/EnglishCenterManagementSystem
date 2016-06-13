@@ -11,6 +11,60 @@ namespace DataAccessTier
 {
     public class UserDAO: DBConnection
     {
+        public bool addUser(User user)
+        {
+            bool result = false;
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("USER_INSERT", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@mUsername", user.MUsername);
+                cmd.Parameters.AddWithValue("@mPassword", user.MPassword);
+                cmd.Parameters.AddWithValue("@mPermission", user.MPermission);
+                cmd.ExecuteNonQuery();
+                result = true;
+                connection.Close();
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
+        }
+
+        public bool isExist(String username)
+        {
+            bool result = false;
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("USER_CHECK_USERNAME", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@mUsename", username);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count >= 1)
+                {
+                    result = true;
+                }
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
+        }
+
         public bool checkUser(User user)
         {
             bool result = false;

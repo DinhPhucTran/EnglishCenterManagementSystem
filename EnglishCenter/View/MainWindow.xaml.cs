@@ -862,5 +862,11 @@ namespace EnglishCenter.View
             this.Close();
             lg.Show();
         }
+
+        private void btn_ThemUser_Click(object sender, RoutedEventArgs e)
+        {
+            SignUpWindow su = new SignUpWindow();
+            su.Show();
+        }
     }    
 }
