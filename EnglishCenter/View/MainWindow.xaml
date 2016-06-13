@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
         xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         Title="English Center Management System" Height="600" Width="1120"
         WindowState="Maximized"  Background="#F9F9F9" Icon="/Resources/ic_apple.png" Activated="mainWindow_activated">
     <Grid>
@@ -70,9 +71,9 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="10"/>
                                 <RowDefinition Height="150"/>
-                                <RowDefinition Height="500"/>
+                                <RowDefinition Height="390"/>
                                 <RowDefinition Height="200"/>
                             </Grid.RowDefinitions>
 
@@ -1234,9 +1235,167 @@
                 <TabItem.Header>
                     <WrapPanel>
                         <Image Width="30" Height="30" Source="/Resources/report.png"/>
-                        <TextBlock Margin="5">BÁO CÁO</TextBlock>
+                        <TextBlock Margin="5">THỐNG KÊ</TextBlock>
                     </WrapPanel>
                 </TabItem.Header>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <Grid Background="#F9F9F9" Cursor="Arrow">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Row="0" Grid.Column="0" Background="White" Margin="15 20 10 20">
+                            <Grid.Effect>
+                                <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                            </Grid.Effect>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="160"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Ngày" Foreground="#FF4D4D4D" FontSize="20" VerticalAlignment="Center" Margin="40 5 5 10"/>
+                            <DatePicker Grid.Row="0" Grid.Column="1" Margin="10 5 50 10" FontSize="20" Foreground="Black" HorizontalAlignment="Left" MinWidth="150" Name="datePicker_tabReport_currentDate" SelectedDateChanged="datePicker_tabReport_currentDate_selectedDateChanged"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Số học viên đăng kí mới:" Foreground="Black" VerticalAlignment="Center" Margin="10" FontSize="13"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Tổng thu:" Foreground="Black" Margin="10" VerticalAlignment="Center" FontSize="13"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="1" Foreground="Black" FontSize="15" Margin="10" Name="tb_tabReport_soHvNgay" Text="150" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Foreground="Black" FontSize="15" Margin="10" Name="tb_tabReport_tongThuNgay" Text="100000" VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Row="0" Grid.Column="1" Background="White" Margin="15 20 10 20">
+                            <Grid.Effect>
+                                <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                            </Grid.Effect>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="160"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Tháng" Foreground="#FF4D4D4D" FontSize="20" VerticalAlignment="Center" Margin="60 5 5 10"/>
+                            <Grid Grid.Row="0" Grid.Column="1" Margin="5 5 10 10" Width="200" HorizontalAlignment="Left">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="15"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox Grid.Column="0" Margin="0 0 10 0" Name="cb_tabReport_currentMonth" Foreground="Black" FontSize="20" HorizontalContentAlignment="Center" SelectionChanged="cb_tabReport_currentMonth_selectionChanged"/>
+                                <TextBlock Grid.Column="1" Text="/" FontSize="30" Foreground="Black" VerticalAlignment="Center"/>
+                                <ComboBox Grid.Column="2" Margin="10 0 0 0" Name="cb_tabReport_currentYear" Foreground="Black" FontSize="20" HorizontalContentAlignment="Center" SelectionChanged="cb_tabReport_currentYear_selectionChanged"/>
+                            </Grid>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Số học viên đăng kí mới:" Foreground="Black" VerticalAlignment="Center" Margin="10" FontSize="13"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Tổng thu:" Foreground="Black" Margin="10" VerticalAlignment="Center" FontSize="13"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="1" Foreground="Black" FontSize="15" Margin="10" Name="tb_tabReport_soHvThang" Text="500" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Foreground="Black" FontSize="15" Margin="10" Name="tb_tabReport_tongThuThang" Text="900000" VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Grid.Column="0" Background="White" Margin="15 10 10 10" Height="400">
+                            <Grid.Effect>
+                                <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                            </Grid.Effect>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Học viên đăng kí mới hàng tháng" Foreground="#FF4D4D4D" FontSize="20" VerticalAlignment="Center" Margin="40 5 5 0" Name="tb_tabReport_titleChartHvThang"/>
+                            
+                            <chartingToolkit:Chart Foreground="Black" BorderThickness="0" Grid.Row="1" Margin="10 -10 10 10">
+                                <chartingToolkit:Chart.LegendStyle>
+                                    <Style TargetType="Control">
+                                        <Setter Property="Width" Value="0"/>
+                                        <Setter Property="Height" Value="0"/>
+                                    </Style>
+                                </chartingToolkit:Chart.LegendStyle>
+                                <chartingToolkit:LineSeries Name="chart_hvThang" DependentValuePath="Value" IndependentValuePath="Key" IsSelectionEnabled="True" ItemsSource="{Binding}"/>
+                                <chartingToolkit:Chart.Axes>
+                                    <chartingToolkit:LinearAxis Orientation="Y" Minimum="0"/>
+                                </chartingToolkit:Chart.Axes>
+                            </chartingToolkit:Chart>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Grid.Column="1" Background="White" Margin="15 10 10 10" Height="400">
+                            <Grid.Effect>
+                                <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                            </Grid.Effect>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Foreground="#FF4D4D4D" FontSize="20" VerticalAlignment="Center" Margin="40 5 5 0" Name="tb_tabReport_titleChartThuThang"/>
+
+                            <chartingToolkit:Chart Foreground="Black" BorderThickness="0" Grid.Row="1" Margin="10 -10 10 10">
+                                <chartingToolkit:Chart.LegendStyle>
+                                    <Style TargetType="Control">
+                                        <Setter Property="Width" Value="0"/>
+                                        <Setter Property="Height" Value="0"/>
+                                    </Style>
+                                </chartingToolkit:Chart.LegendStyle>
+                                <chartingToolkit:LineSeries Name="chart_thuThang" DependentValuePath="Value" IndependentValuePath="Key" IsSelectionEnabled="True" ItemsSource="{Binding}"/>
+                                <chartingToolkit:Chart.Axes>
+                                    <chartingToolkit:LinearAxis Orientation="Y" Minimum="0"/>
+                                </chartingToolkit:Chart.Axes>
+                            </chartingToolkit:Chart>
+                        </Grid>
+
+                        <Grid Grid.Row="2" Grid.Column="0" Background="White" Margin="15 10 10 10" Height="400">
+                            <Grid.Effect>
+                                <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                            </Grid.Effect>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Tỉ lệ học viên" Foreground="#FF4D4D4D" FontSize="20" VerticalAlignment="Center" Margin="40 5 5 0" Name="tb_tabReport_titleChartGioiTinh"/>
+
+                            <chartingToolkit:Chart Foreground="Black" BorderThickness="0" Grid.Row="1" Margin="10 -10 10 10">
+                                <chartingToolkit:PieSeries Name="chart_gioiTinh" DependentValuePath="Value" IndependentValuePath="Key" IsSelectionEnabled="True" ItemsSource="{Binding}" BorderThickness="0"/>
+                            </chartingToolkit:Chart>
+                        </Grid>
+
+                        <Grid Grid.Row="2" Grid.Column="1" Background="White" Margin="15 10 10 10" Height="400">
+                            <Grid.Effect>
+                                <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                            </Grid.Effect>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Số học viên các chương trình học" Foreground="#FF4D4D4D" FontSize="20" VerticalAlignment="Center" Margin="40 5 5 0"/>
+
+                            <ScrollViewer Grid.Row="1" Margin="10 -10 0 0">
+                                <chartingToolkit:Chart Foreground="Black" BorderThickness="0">
+                                    <chartingToolkit:Chart.LegendStyle>
+                                        <Style TargetType="Control">
+                                            <Setter Property="Width" Value="0"/>
+                                            <Setter Property="Height" Value="0"/>
+                                        </Style>
+                                    </chartingToolkit:Chart.LegendStyle>
+                                    <chartingToolkit:BarSeries Name="chart_CthSoHv" DependentValuePath="Value" IndependentValuePath="Key" IsSelectionEnabled="True" ItemsSource="{Binding}"/>
+                                </chartingToolkit:Chart>
+                            </ScrollViewer>                            
+                        </Grid>
+
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
 
             <TabItem Name="tabSettings">
@@ -1251,7 +1410,7 @@
             <TabItem Name="tabPermission">
                 <TabItem.Header>
                     <WrapPanel>
-                        <Image Width="30" Height="30" Source="/Resources/user.png"/>
+                        <Image Width="30" Height="30" Source="/Resources/user_role.png"/>
                         <TextBlock Margin="5">PHÂN QUYỀN</TextBlock>
                     </WrapPanel>
                 </TabItem.Header>

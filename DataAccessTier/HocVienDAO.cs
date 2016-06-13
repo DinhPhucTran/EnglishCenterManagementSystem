@@ -338,6 +338,31 @@ namespace DataAccessTier
             }
         }
 
+        public List<DateTime> getListNgayTiepNhan()
+        {
+            List<DateTime> result = new List<DateTime>();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand cmd = new SqlCommand("HOCVIEN_NGAYTIEPNHAN_LIST", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DateTime date = DateTime.Parse(dt.Rows[i]["NgayTiepNhan"].ToString());
+                    result.Add(date);
+                }
+                connection.Close();
+            }
+            catch (Exception)
+            {
+                connection.Close();
+            }
+            return result;
+        }
 
     }
 }

@@ -44,24 +44,51 @@ namespace EnglishCenter.View
         private HocVienBUS mHocVienBus;
         private LopHocBUS mLopHocBus;
         private User mUser;
+        private DateTime mTabReportCurrentDate;
+        List<ChuongTrinhHoc_SoHV> mListChuongTrinhHoc_soHv;
 
         public MainWindow()
         {
             InitializeComponent();
-            updateListUser();
+            
             mTrinhDoBus = new TrinhDoBUS();
             mCTHBus = new ChuongTrinhHocBUS();
             mHocVienBus = new HocVienBUS();
             mLopHocBus = new LopHocBUS();
+
+            updateListUser();
             updateListLopDangMo();
             updateListGiaoVien();
             updateListTrinhDo();
             updateListChuongTrinhHoc();
             updateListHocVien();
-            updateLichThi();
+            updateLichThi();            
+
+            //Tab Lớp
             mCurrentDate = DateTime.Today;
             initTKB();
             fillTKB();
+
+            //Tab Thống kê
+            mTabReportCurrentDate = DateTime.Today;
+            datePicker_tabReport_currentDate.SelectedDate = mTabReportCurrentDate;
+            updateThongKeNgay();
+
+            List<int> listThang = new List<int>{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+            List<int> listNam = new List<int>();
+            for (int i = 2000; i <= 2099; i++)
+            {
+                listNam.Add(i);
+            }
+            cb_tabReport_currentMonth.ItemsSource = listThang;
+            cb_tabReport_currentMonth.SelectedValue = mTabReportCurrentDate.Month;
+            cb_tabReport_currentYear.ItemsSource = listNam;
+            cb_tabReport_currentYear.SelectedValue = mTabReportCurrentDate.Year;
+            updateThongKeThang();
+            updateChartHvThang();
+            updateChartThuThang();
+            updateChartGioiTinh();
+            updateChartCthSoHv();
         }
 
         public User User
@@ -150,7 +177,7 @@ namespace EnglishCenter.View
         private void updateListChuongTrinhHoc()
         {
             listChuongTrinhHoc = mCTHBus.getListChuongTrinhHoc();
-            List<ChuongTrinhHoc_SoHV> listHomeChuongTrinhHoc = new List<ChuongTrinhHoc_SoHV>();
+            mListChuongTrinhHoc_soHv = new List<ChuongTrinhHoc_SoHV>();
             foreach (ChuongTrinhHoc cth in listChuongTrinhHoc)
             {
                 int c = 0;
@@ -169,11 +196,11 @@ namespace EnglishCenter.View
                 cthHv.ChuongTrinhHoc = cth;
                 cthHv.SoHocVien = c;
                 cthHv.TenCTH = cth.MTenChuongTrinhHoc;
-                listHomeChuongTrinhHoc.Add(cthHv);
+                mListChuongTrinhHoc_soHv.Add(cthHv);
             }
 
-            lv_home_courses.ItemsSource = listHomeChuongTrinhHoc;
-            lvChuongTrinhHoc.ItemsSource = ChuongTrinhHoc_TrinhDo.getList(listHomeChuongTrinhHoc);
+            lv_home_courses.ItemsSource = mListChuongTrinhHoc_soHv;
+            lvChuongTrinhHoc.ItemsSource = ChuongTrinhHoc_TrinhDo.getList(mListChuongTrinhHoc_soHv);
             tb_home_NumberOfCourse.Text = listChuongTrinhHoc.Count.ToString();
 
             //ListView grouping
@@ -216,6 +243,141 @@ namespace EnglishCenter.View
             tb_home_NumberOfTeacher.Text = listGiangVien.Count.ToString();
             lv_dsGiangVien.ItemsSource = listGiangVien;
             tb_soGiangVien.Text = listGiangVien.Count.ToString();
+        }
+
+        private void updateThongKeNgay()
+        {
+            int soHv = 0;
+            double tongThu = 0;
+            List<DateTime> listHvNgay = mHocVienBus.getListNgayTiepNhan();
+            foreach (DateTime date in listHvNgay)
+            {
+                if (date.Date == mTabReportCurrentDate.Date)
+                {
+                    soHv++;
+                }
+            }
+            tb_tabReport_soHvNgay.Text = soHv.ToString();
+            
+
+            List<DTO.PhieuThuHocPhi> listThuNgay = new PhieuThuHocPhiBUS().getDanhSachPhieu();
+            foreach (DTO.PhieuThuHocPhi phieu in listThuNgay)
+            {
+                if (phieu.MNgayLap.Date == mTabReportCurrentDate)
+                {
+                    tongThu += phieu.MSoTienDong;
+                }
+            }
+            tb_tabReport_tongThuNgay.Text = tongThu.ToString();
+        }
+
+        private void updateThongKeThang()
+        {
+            int soHv = 0;
+            double tongThu = 0;
+            
+            if (cb_tabReport_currentYear.SelectedValue != null && cb_tabReport_currentMonth.SelectedValue != null)
+            {
+                List<DateTime> listHv = mHocVienBus.getListNgayTiepNhan();
+                foreach (DateTime date in listHv)
+                {
+                    if (date.Month == (int)cb_tabReport_currentMonth.SelectedValue && date.Year == (int)cb_tabReport_currentYear.SelectedValue)
+                    {
+                        soHv++;
+                    }
+                }
+                tb_tabReport_soHvThang.Text = soHv.ToString();
+
+
+                List<DTO.PhieuThuHocPhi> listThuNgay = new PhieuThuHocPhiBUS().getDanhSachPhieu();
+                foreach (DTO.PhieuThuHocPhi phieu in listThuNgay)
+                {
+                    if (phieu.MNgayLap.Month == (int)cb_tabReport_currentMonth.SelectedValue && phieu.MNgayLap.Year == (int)cb_tabReport_currentYear.SelectedValue)
+                    {
+                        tongThu += phieu.MSoTienDong;
+                    }
+                }
+                tb_tabReport_tongThuThang.Text = tongThu.ToString();
+            }
+        }
+
+        private void updateChartHvThang()
+        {
+            if (cb_tabReport_currentYear.SelectedValue != null)
+            {
+                tb_tabReport_titleChartHvThang.Text = "Học viên đăng kí mới hàng tháng (" + cb_tabReport_currentYear.SelectedValue.ToString() + ")";
+                List<DateTime> listNgayTiepNhan = mHocVienBus.getListNgayTiepNhan();
+                List<KeyValuePair<int, int>> valueList = new List<KeyValuePair<int, int>>();
+                int[] listHvThang = new int[13];
+                for (int i = 1; i <= 12; i++)
+                {
+                    listHvThang[i] = 0;
+                    foreach (DateTime date in listNgayTiepNhan)
+                    {
+                        if (date.Year == (int)cb_tabReport_currentYear.SelectedValue && date.Month == i)
+                            listHvThang[i]++;
+                    }
+                    valueList.Add(new KeyValuePair<int, int>(i, listHvThang[i]));
+                }
+
+                chart_hvThang.DataContext = valueList;
+                
+            }
+        }
+
+        private void updateChartThuThang()
+        {
+            if (cb_tabReport_currentYear.SelectedValue != null)
+            {
+                tb_tabReport_titleChartThuThang.Text = "Doanh thu hàng tháng (" + cb_tabReport_currentYear.SelectedValue.ToString() + ")";
+                List<DTO.PhieuThuHocPhi> listPhieuThu = new PhieuThuHocPhiBUS().getDanhSachPhieu();
+                List<KeyValuePair<int, double>> valueList = new List<KeyValuePair<int, double>>();
+                double[] listThuThang = new double[13];
+                for (int i = 1; i <= 12; i++)
+                {
+                    listThuThang[i] = 0;
+                    foreach (DTO.PhieuThuHocPhi phieu in listPhieuThu)
+                    {
+                        if (phieu.MNgayLap.Year == (int)cb_tabReport_currentYear.SelectedValue && phieu.MNgayLap.Month == i)
+                            listThuThang[i] += phieu.MSoTienDong;
+                    }
+                    valueList.Add(new KeyValuePair<int, double>(i, listThuThang[i]));
+                }
+
+                chart_thuThang.DataContext = valueList;
+
+            }
+        }
+
+        private void updateChartGioiTinh()
+        {
+            List<KeyValuePair<String, int>> valueList = new List<KeyValuePair<String, int>>();
+            int soHvNu = 0;
+            int soHvNam = 0;
+            int khac = 0;
+            foreach (HocVien hv in listActiveStudent)
+            {
+                if (hv.MPhai.Equals("Nữ"))
+                    soHvNu++;
+                else if (hv.MPhai.Equals("Nam"))
+                    soHvNam++;
+                else
+                    khac++;
+            }
+            valueList.Add(new KeyValuePair<String, int>("Nam", soHvNam));
+            valueList.Add(new KeyValuePair<String, int>("Nữ", soHvNu));            
+            valueList.Add(new KeyValuePair<String, int>("Khác", khac));
+            chart_gioiTinh.DataContext = valueList;
+        }
+
+        private void updateChartCthSoHv()
+        {
+            List<KeyValuePair<String, int>> valueList = new List<KeyValuePair<String, int>>();
+            foreach (ChuongTrinhHoc_SoHV cth in mListChuongTrinhHoc_soHv)
+            {
+                valueList.Add(new KeyValuePair<string, int>(cth.TenCTH, cth.SoHocVien));
+            }
+            chart_CthSoHv.DataContext = valueList;
         }
 
         private void btn_AddStudent_Click(object sender, RoutedEventArgs e)
@@ -934,5 +1096,24 @@ namespace EnglishCenter.View
             if (mUser != null)
                 tb_header_username.Text = mUser.MUsername;
         }
+
+        private void datePicker_tabReport_currentDate_selectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            mTabReportCurrentDate = (DateTime)datePicker_tabReport_currentDate.SelectedDate;
+            updateThongKeNgay();
+        }
+
+        private void cb_tabReport_currentMonth_selectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            updateThongKeThang();
+        }
+
+        private void cb_tabReport_currentYear_selectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            updateThongKeThang();
+            updateChartHvThang();
+            updateChartThuThang();
+        }
+        
     }    
 }

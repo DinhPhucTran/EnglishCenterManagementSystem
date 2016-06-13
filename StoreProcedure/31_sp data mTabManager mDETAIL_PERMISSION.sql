@@ -1,0 +1,28 @@
+INSERT INTO mTabManager VALUES ('bt_themTrinhDo', N'Thêm trình độ')
+INSERT INTO mTabManager VALUES ('btn_AddStudent', N'Thêm học viên')
+INSERT INTO mTabManager VALUES ('btn_ThemLop', N'Thêm lớp')
+INSERT INTO mTabManager VALUES ('btn_ThemPhong', N'Thêm phòng')
+INSERT INTO mTabManager VALUES ('btn_ThemLichThiXL', N'Thêm thi xếp lớp')
+INSERT INTO mTabManager VALUES ('btn_ThemDeThi', N'Thêm đề thi')
+INSERT INTO mTabManager VALUES ('btn_NhapKQThi', N'Nhập kết quả thi')
+INSERT INTO mTabManager VALUES ('btn_ThemGiangVien', N'Thêm giảng viên')
+INSERT INTO mTabManager VALUES ('tabPermission', N'Phân quyền')
+INSERT INTO mTabManager VALUES ('tabFees', N'Quản lý học phí')
+INSERT INTO mTabManager VALUES ('bt_themCth', N'Thêm chương trình học')
+
+INSERT INTO mDETAIL_PERMISSION VALUES ('GV', N'bt_themCth')
+INSERT INTO mDETAIL_PERMISSION VALUES ('GV', N'bt_themTrinhDo')
+INSERT INTO mDETAIL_PERMISSION VALUES ('GV', N'btn_AddStudent')
+--INSERT INTO mDETAIL_PERMISSION VALUES ('GV', N'btn_NhapKQThi')
+INSERT INTO mDETAIL_PERMISSION VALUES ('GV', N'btn_ThemGiangVien')
+INSERT INTO mDETAIL_PERMISSION VALUES ('GV', N'btn_ThemLichThiXL')
+INSERT INTO mDETAIL_PERMISSION VALUES ('GV', N'btn_ThemLop')
+INSERT INTO mDETAIL_PERMISSION VALUES ('GV', N'btn_ThemPhong')
+INSERT INTO mDETAIL_PERMISSION VALUES ('GV', N'tabFees')
+INSERT INTO mDETAIL_PERMISSION VALUES ('GV', N'tabPermission')
+INSERT INTO mDETAIL_PERMISSION VALUES ('HV', N'tabPermission')
+INSERT INTO mDETAIL_PERMISSION VALUES ('NVTV', N'btn_AddStudent')
+INSERT INTO mDETAIL_PERMISSION VALUES ('NVTV', N'tabFees')
+
+CREATE PROCEDURE [dbo].[HOCVIEN_NGAYTIEPNHAN_LIST]
+AS SELECT * FROM HOCVIEN_NGAYTIEPNHAN

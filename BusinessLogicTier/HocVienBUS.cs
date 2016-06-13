@@ -85,5 +85,10 @@ namespace BusinessLogicTier
         {
             return mHocVienDAO.insertHocVienNgayTiepNhan(hv, ngay);
         }
+
+        public List<DateTime> getListNgayTiepNhan()
+        {
+            return mHocVienDAO.getListNgayTiepNhan();
+        }
     }
 }
