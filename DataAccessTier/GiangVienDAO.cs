@@ -157,5 +157,32 @@ namespace DataAccessTier
             }
             return gv;
         }
+
+        public bool updateGiangVien(GiangVien gv)
+        {
+            bool result = false;
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("GIANG_VIEN_UPDATE", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaGiangVien", gv.MMaGiangVien);
+                cmd.Parameters.AddWithValue("@TenGiangVien", gv.MTenGiangVien);
+                cmd.Parameters.AddWithValue("@DiaChi", gv.MDiaChi);
+                cmd.Parameters.AddWithValue("@SoDT", gv.MSoDienThoai);
+                cmd.ExecuteNonQuery();
+                result = true;
+                connection.Close();
+            }
+            catch (Exception)
+            {
+                connection.Close();
+                throw;
+            }
+            return result;
+        }
     }
 }

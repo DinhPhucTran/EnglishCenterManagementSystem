@@ -47,7 +47,7 @@ namespace BusinessLogicTier
             }
             catch (Exception)
             {
-                throw;
+                //throw;
             }
             return result;
         }
@@ -55,6 +55,11 @@ namespace BusinessLogicTier
         public GiangVien selectGiangVien(String maGV)
         {
             return mGiangVienDAO.selectGiangVien(maGV);
+        }
+
+        public bool updateGiangVien(GiangVien gv)
+        {
+            return mGiangVienDAO.updateGiangVien(gv);
         }
     }
 }

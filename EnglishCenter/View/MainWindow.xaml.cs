@@ -269,7 +269,12 @@ namespace EnglishCenter.View
             private ChuongTrinhHoc_SoHV mCth;
             private TrinhDo mTd;
 
-            public ChuongTrinhHoc_SoHV CTH
+            public ChuongTrinhHoc CTH
+            {
+                get { return mCth.ChuongTrinhHoc; }
+            }
+
+            public ChuongTrinhHoc_SoHV CTH_SoHV
             {
                 get { return mCth; }
                 set { mCth = value; }
@@ -297,7 +302,7 @@ namespace EnglishCenter.View
                 foreach (ChuongTrinhHoc_SoHV cth in cths)
                 {
                     ChuongTrinhHoc_TrinhDo cth_td = new ChuongTrinhHoc_TrinhDo();
-                    cth_td.CTH = cth;
+                    cth_td.CTH_SoHV = cth;
                     cth_td.TrinhDo = bus.selectTrinhDo(cth.ChuongTrinhHoc.MMaTrinhDo);
                     list.Add(cth_td);
                 }
@@ -851,9 +856,64 @@ namespace EnglishCenter.View
 
         private void bt_userInfo_click(object sender, RoutedEventArgs e)
         {
-            tb_popupUserInfo_username.Text = mUser.MUsername;
-            tb_popupUserInfo_permission.Text = new UserBUS().selectPermissonById(mUser.MPermission).MNamePermision;
-            popup_userInfo.IsOpen = true;
+            if (mUser != null)
+            {
+                tb_popupUserInfo_username.Text = mUser.MUsername;
+                tb_popupUserInfo_permission.Text = new UserBUS().selectPermissonById(mUser.MPermission).MNamePermision;
+            }
+            if(popup_userInfo.IsOpen == true)
+                popup_userInfo.IsOpen = false;
+            else
+                popup_userInfo.IsOpen = true;
+        }
+
+        private void bt_themGiangVien_click(object sender, RoutedEventArgs e)
+        {
+            ThemGiangVien them = new ThemGiangVien();
+            them.DataChanged += ThemGiangVien_DataChanged;
+            them.ShowDialog();
+        }
+
+        private void ThemGiangVien_DataChanged(object sender, EventArgs e)
+        {
+            updateListGiaoVien();
+        }
+
+        private void bt_editCTH_click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            ChuongTrinhHoc_TrinhDo cth = button.DataContext as ChuongTrinhHoc_TrinhDo;
+            NewCourseForm cthForm = new NewCourseForm(cth.CTH);
+            cthForm.ShowDialog();
+        }
+
+        private void bt_editGv_click(object sender, RoutedEventArgs e)
+        {
+            Button bt = sender as Button;
+            GiangVien gv = bt.DataContext as GiangVien;
+            ThemGiangVien form = new ThemGiangVien(gv);
+            form.DataChanged += ThemGiangVien_DataChanged;
+            form.ShowDialog();
+        }
+
+        private void bt_toTabHocVien_click(object sender, RoutedEventArgs e)
+        {
+            tabControl.SelectedIndex = 1;
+        }
+
+        private void bt_toTabCTH_click(object sender, RoutedEventArgs e)
+        {
+            tabControl.SelectedIndex = 2;
+        }
+
+        private void bt_toTabLop_click(object sender, RoutedEventArgs e)
+        {
+            tabControl.SelectedIndex = 3;
+        }
+
+        private void bt_toTabGV_click(object sender, RoutedEventArgs e)
+        {
+            tabControl.SelectedIndex = 6;
         }
 
 

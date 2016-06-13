@@ -93,20 +93,20 @@
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
                 <Border Margin="5, 10 , 5, 5" BorderBrush="#CCCCCC" BorderThickness="2">
                     <Grid>
-                        <Grid.RowDefinitions>
+                        <!--<Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                        </Grid.RowDefinitions>-->
 
-                        <TextBlock Grid.Row="0" Margin="10,0,10,0" VerticalAlignment="Bottom" FontSize="15" Height="20" Text="Thời gian rảnh"/>
+                        <!--<TextBlock Grid.Row="0" Margin="10,0,10,0" VerticalAlignment="Bottom" FontSize="15" Height="20" Text="Thời gian rảnh"/>-->
 
-                        <Border Grid.Row="1" Margin="5,10,5,0" BorderBrush="#CCCCCC" BorderThickness="2">
+                        <!--<Border Grid.Row="1" Margin="5,10,5,0" BorderBrush="#CCCCCC" BorderThickness="2">-->
                             <ScrollViewer VerticalScrollBarVisibility="Hidden">
                                 <Grid Name="ThoiGianHoc_Grid">
 
                                 </Grid>
                             </ScrollViewer>
-                        </Border>
+                        <!--</Border>-->
 
                     </Grid>
                 </Border>

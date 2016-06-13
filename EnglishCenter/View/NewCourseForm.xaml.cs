@@ -24,12 +24,44 @@ namespace EnglishCenter.View
     public partial class NewCourseForm : Window
     {
         private List<TrinhDo> mListTD;
+        public bool IsUpdating;
         public NewCourseForm()
         {
             InitializeComponent();
+            
             mListTD = new TrinhDoBUS().getListTrinhDo();
             cbLevel.ItemsSource = mListTD;
         }
+
+        public NewCourseForm(ChuongTrinhHoc cth)
+        {
+            IsUpdating = true;
+            InitializeComponent();
+            mListTD = new TrinhDoBUS().getListTrinhDo();
+            cbLevel.ItemsSource = mListTD;
+            grid_headerBackground.Background = new SolidColorBrush(Color.FromRgb(239, 163, 0));
+            tb_Header.Text = "Sửa thông tin chương trình học";
+            initBoxes(cth);
+                    
+        }
+
+        private void initBoxes(ChuongTrinhHoc cth)
+        {
+            tb_CTH.Text = cth.MTenChuongTrinhHoc;
+            tb_minDiem.Text = cth.MDiemSoToiThieu.ToString();
+            tb_maxDiem.Text = cth.MDiemSoToiDa.ToString();
+            int index = 0;
+            for (int i = 0; i < mListTD.Count; i++)
+            {
+                if (mListTD[i].MMaTrinhDo.Equals(cth.MMaTrinhDo))
+                {
+                    index = i;
+                    break;
+                }
+            }
+            cbLevel.SelectedIndex = index;
+        }
+
         void onLuuBtnClick(object sender, RoutedEventArgs e)
         {
             if (tb_CTH.Text.ToString().Equals(""))
@@ -64,14 +96,24 @@ namespace EnglishCenter.View
                 return;
             }
             cth.MTenChuongTrinhHoc = tb_CTH.Text.ToString();
-            bool result = new ChuongTrinhHocBUS().themChuongTrinhHoc(cth);
+
+            bool result;
+            if (IsUpdating)
+            {
+                result = new ChuongTrinhHocBUS().suaChuongTrinhHoc(cth);
+            }
+            else
+            {
+                result = new ChuongTrinhHocBUS().themChuongTrinhHoc(cth);
+            }
+
             if (result)
             {
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Thêm vào database thất bại");
+                MessageBox.Show("Thêm chương trình học thất bại");
             }
         }
 

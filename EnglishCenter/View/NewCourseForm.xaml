@@ -19,14 +19,14 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="#00C0EF">
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="#00C0EF" Name="grid_headerBackground">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <Image Source="/EnglishCenter;component/Resources/class.png" Margin="10"/>
-            <TextBlock Grid.Column="1" Text="Thêm chương trình học" FontSize="30" Foreground="White" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1" Text="Thêm chương trình học" FontSize="30" Foreground="White" VerticalAlignment="Center" Name="tb_Header"/>
         </Grid>
 
         <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Tên chương trình học" FontSize="15" />

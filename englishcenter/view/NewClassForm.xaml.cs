@@ -57,6 +57,42 @@ namespace EnglishCenter.View
             createThoiGianHoc();
         }
 
+        public NewClassForm(LopHoc lop)
+        {
+            InitializeComponent();
+            mCaBUS = new CaBUS();
+            mThuBUS = new ThuBUS();
+            mTghBUS = new ThoiGianHocBUS();
+
+            ChuongTrinhHocBUS cthBus = new ChuongTrinhHocBUS();
+            mListCTH = cthBus.getListChuongTrinhHoc();
+            mListGV = new GiangVienBUS().getListGiangVien();
+            mListPhong = new PhongBUS().getListPhong();
+
+            cb_chuongTrinhHoc.ItemsSource = mListCTH;
+            cb_chuongTrinhHoc.SelectedIndex = 0;
+
+            cb_Gv.ItemsSource = mListGV;
+            cb_Gv.SelectedIndex = 0;
+
+            cb_phong.ItemsSource = mListPhong;
+            cb_phong.SelectedIndex = 0;
+
+            createThoiGianHoc();
+        }
+
+        private void initBoxes(LopHoc lop)
+        {
+            tb_hocPhi.Text = lop.MSoTien.ToString();
+            dp_ngayBD.SelectedDate = lop.MNgayBatDau;
+            dp_ngayKT.SelectedDate = lop.MNgayKetThuc;
+            dp_ngayKG.SelectedDate = lop.MNgayKhaiGiang;
+            for (int i = 0; i < mListCTH.Count; i++)
+            {
+                //if(mListCTH[i].)
+            }
+        }
+
         private void Button_Luu_Click(object sender, RoutedEventArgs e)
         {
             DateTime ngayKG, ngayBD, ngayKT;

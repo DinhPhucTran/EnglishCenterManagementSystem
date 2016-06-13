@@ -22,6 +22,10 @@ namespace EnglishCenter.View
     public partial class ThemGiangVien : Window
     {
         GiangVienBUS mGiangVienBUS;
+        public delegate void DataChangedEventHandler(object sender, EventArgs e);
+        public event DataChangedEventHandler DataChanged;
+        private bool isUpdating = false;
+        private String mMaGvUpdate;
 
         public ThemGiangVien()
         {
@@ -29,25 +33,68 @@ namespace EnglishCenter.View
             mGiangVienBUS = new GiangVienBUS();
         }
 
+        public ThemGiangVien(GiangVien gv)
+        {
+            InitializeComponent();
+            mGiangVienBUS = new GiangVienBUS();
+            isUpdating = true;
+            TenGV_tb.Text = gv.MTenGiangVien;
+            DiaChi_tb.Text = gv.MDiaChi;
+            SoDT_tb.Text = gv.MSoDienThoai;
+            tb_header.Text = "Sửa thông tin giảng viên";
+            grid_headerBackground.Background = new SolidColorBrush(Color.FromRgb(239, 163, 0));
+            mMaGvUpdate = gv.MMaGiangVien;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (TenGV_tb.Text == "" || SoDT_tb.Text == "")
             {
-                MessageBox.Show("You must fill all information!", "ERROR");
+                MessageBox.Show("Hãy điền đầy đủ thông tin!", "Thông báo");
                 return;
             }
             GiangVien gv = new GiangVien("",TenGV_tb.Text,
                                             DiaChi_tb.Text,
                                             SoDT_tb.Text);
-            bool insert = mGiangVienBUS.insertGiangVien(gv);
-            if (insert == true)
+            bool insert;
+            if (isUpdating)
             {
-                MessageBox.Show("Insert Successfully.");
+                gv.MMaGiangVien = mMaGvUpdate;
+                insert = mGiangVienBUS.updateGiangVien(gv);
             }
             else
             {
-                MessageBox.Show("Insert Failed");
+                insert = mGiangVienBUS.insertGiangVien(gv);
             }
+
+            if (insert == true)
+            {
+                if (isUpdating)
+                    MessageBox.Show("Đã sửa thông tin giáo viên", "Thông báo");
+                else
+                {
+                    MessageBox.Show("Thêm giáo viên thành công");
+                    TenGV_tb.Text = "";
+                    DiaChi_tb.Text = "";
+                    SoDT_tb.Text = "";
+                }
+                    
+                //Notify changes
+                DataChangedEventHandler handler = DataChanged;
+                if (handler != null)
+                {
+                    handler(this, new EventArgs());
+                }
+            }
+            else
+            {
+                MessageBox.Show("Failed!");
+            }
+        }
+
+        private void bt_exit_click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
