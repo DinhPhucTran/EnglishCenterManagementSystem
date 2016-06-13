@@ -18,6 +18,8 @@
                 <TextBlock FontSize="20" HorizontalAlignment="Center" Margin="5 0 0 5" Height="25" VerticalAlignment="Bottom">admin</TextBlock>
                 <Button Style="{StaticResource DropdownButton}" Width="15" Height="15" Foreground="Black" Cursor="Hand"
                         HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2 0 10 10" Name="bt_userInfo" Click="bt_userInfo_click">▼</Button>
+                <Button Name="logout_btn" Click="logout_btn_Click" Content="Đăng xuất" Height="40" Foreground="Black" Cursor="Hand" FontSize="18"
+                        HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2 0 10 5"></Button>
                 <Popup PlacementTarget="{Binding ElementName=bt_userInfo}"
                         AllowsTransparency="True"  
                         PopupAnimation="Fade"

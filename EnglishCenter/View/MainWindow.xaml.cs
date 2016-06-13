@@ -856,6 +856,11 @@ namespace EnglishCenter.View
             popup_userInfo.IsOpen = true;
         }
 
-
+        private void logout_btn_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow lg = new LoginWindow();
+            this.Close();
+            lg.Show();
+        }
     }    
 }
