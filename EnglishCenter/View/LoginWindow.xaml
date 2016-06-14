@@ -6,7 +6,8 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        MouseDown="Window_MouseDown">
+        MouseDown="Window_MouseDown"
+        Icon="/Resources/ic_apple.png">
     <Grid>
         <Image Source="/EnglishCenter;component/Resources/bigben.jpg" Stretch="UniformToFill">
         </Image>
