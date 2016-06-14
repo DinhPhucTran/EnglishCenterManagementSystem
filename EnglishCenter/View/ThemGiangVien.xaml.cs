@@ -70,7 +70,7 @@ namespace EnglishCenter.View
             if (insert == true)
             {
                 if (isUpdating)
-                    MessageBox.Show("Đã sửa thông tin giáo viên", "Thông báo");
+                    MessageBox.Show("Cập nhật thông tin giáo viên thành công", "New Age English");
                 else
                 {
                     MessageBox.Show("Thêm giáo viên thành công");

@@ -22,6 +22,8 @@ namespace EnglishCenter.View
     /// </summary>
     public partial class SuaHocVien : Window
     {
+        public delegate void DataChangedEventHandler(object sender, EventArgs e);
+        public event DataChangedEventHandler DataChanged;
         private RadioButton mPhaiRadioButton;
         private TrinhDoBUS mTrinhDoBUS;
         private ChuongTrinhHocBUS mChuongTrinhBUS;
@@ -110,32 +112,32 @@ namespace EnglishCenter.View
             String ten = tb_tenHocVien.Text;
             if (ten == "")
             {
-                MessageBox.Show("Please, fill in your Name!");
+                MessageBox.Show("Vui lòng nhập tên học viên.", "Thông báo");
                 return;
             }
             DateTime? ngaySinh = datePicker_ngaySinh.SelectedDate;
             if (ngaySinh == null)
             {
-                MessageBox.Show("Please, choose your Birthday!");
+                MessageBox.Show("Vui lòng nhập ngày sinh.", "Thông báo");
                 return;
             }
             if (mPhaiRadioButton == null)
             {
-                MessageBox.Show("You are female or male or ...? \n Please, check your Gender!");
+                MessageBox.Show("Vui lòng chọn giới tính.", "Thông báo");
                 return;
             }
             String phai = mPhaiRadioButton.Content.ToString();
             String diaChi = tb_diaChi.Text;
             if (diaChi == "")
             {
-                MessageBox.Show("Please, enter your Address!");
+                MessageBox.Show("Vui lòng nhập địa chỉ.", "Thông báo");
                 return;
             }
 
             String soDT = tb_Sdt.Text;
             if (soDT == "")
             {
-                MessageBox.Show("Please, refill your Phone Number!");
+                MessageBox.Show("Vui lòng nhập số điện thoại.", "Thông báo");
                 return;
             }
 
@@ -160,11 +162,21 @@ namespace EnglishCenter.View
             //    maCTMuonHoc = mChuongTrinhBUS.getMaCTFromTenCT(cb_ctMuonHoc.Text);
             //}
 
-            HocVien hv = new HocVien("", ten, (DateTime)ngaySinh, phai, diaChi, tb_email.Text, soDT);
+            HocVien hv = new HocVien(hocVien.MMaHocVien, ten, (DateTime)ngaySinh, phai, diaChi, tb_email.Text, soDT);
 
-            if (!mHocVienBUS.insertHocVien(hv))
+            if (!mHocVienBUS.updateHocVien(hv))
             {
                 MessageBox.Show("Sửa thông tin học viên thất bại!");
+            }
+            else
+            {
+                MessageBox.Show("Đã cập nhật thông tin học viên.", "New Age English");
+                //Notify changes
+                DataChangedEventHandler handler = DataChanged;
+                if (handler != null)
+                {
+                    handler(this, new EventArgs());
+                }
             }
         }
 

@@ -1313,9 +1313,9 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Học viên đăng kí mới hàng tháng" Foreground="#FF4D4D4D" FontSize="20" VerticalAlignment="Center" Margin="40 5 5 0" Name="tb_tabReport_titleChartHvThang"/>
-                            
-                            <chartingToolkit:Chart Foreground="Black" BorderThickness="0" Grid.Row="1" Margin="10 -10 10 10">
+                            <TextBlock Grid.Row="0" Text="Học viên đăng kí mới hàng tháng" Foreground="#FF4D4D4D" FontSize="20" VerticalAlignment="Center" Margin="40 5 5 0" Name="tb_tabReport_titleChartHvThang"/>
+                            <TextBlock Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10 10 10 50" Text="Tháng" Foreground="Black"/>
+                            <chartingToolkit:Chart Foreground="Black" BorderThickness="0" Grid.Row="1" Margin="10 -10 40 10">
                                 <chartingToolkit:Chart.LegendStyle>
                                     <Style TargetType="Control">
                                         <Setter Property="Width" Value="0"/>
@@ -1339,8 +1339,8 @@
                             </Grid.RowDefinitions>
 
                             <TextBlock Grid.Row="0" Grid.Column="0" Foreground="#FF4D4D4D" FontSize="20" VerticalAlignment="Center" Margin="40 5 5 0" Name="tb_tabReport_titleChartThuThang"/>
-
-                            <chartingToolkit:Chart Foreground="Black" BorderThickness="0" Grid.Row="1" Margin="10 -10 10 10">
+                            <TextBlock Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10 10 10 50" Text="Tháng" Foreground="Black"/>
+                            <chartingToolkit:Chart Foreground="Black" BorderThickness="0" Grid.Row="1" Margin="10 -10 40 10">
                                 <chartingToolkit:Chart.LegendStyle>
                                     <Style TargetType="Control">
                                         <Setter Property="Width" Value="0"/>

@@ -478,7 +478,8 @@ namespace EnglishCenter.View
         {
             Button button = sender as Button;
             HocVien_Lop hv = button.DataContext as HocVien_Lop;
-            SuaHocVien sua = new SuaHocVien(hv.HocVien);            
+            SuaHocVien sua = new SuaHocVien(hv.HocVien);
+            sua.DataChanged += ThemHocVien_DataChanged;
             sua.ShowDialog();
         }
 
