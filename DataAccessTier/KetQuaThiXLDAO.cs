@@ -60,5 +60,37 @@ namespace DataAccessTier
                 return null;
             }
         }
+
+        public List<string> getMaLopDeNghi(string maChuongTrinh, DateTime fromDate)
+        {
+            try
+            {
+                if (connection.State != System.Data.ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("DANH_SACH_LOP_SAP_MO_THEO_MA_CHT", connection);
+                cmd.Parameters.AddWithValue("@maCT", maChuongTrinh);
+                cmd.Parameters.AddWithValue("@fromDate", fromDate);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                List<String> list = new List<String>();
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    String maLop = dt.Rows[i][0].ToString();
+
+                    list.Add(maLop);
+                }
+                connection.Close();
+                return list;
+            }
+            catch (Exception)
+            {
+                connection.Close();
+                return null;
+            }
+        }
     }
 }

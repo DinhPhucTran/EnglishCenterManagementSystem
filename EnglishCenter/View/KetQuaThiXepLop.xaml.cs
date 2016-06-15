@@ -29,6 +29,11 @@ namespace EnglishCenter.View
             List<DateTime> khoangTG = new ThiXepLopBUS().getKhoangThoiGianLayThiXepLop(DateTime.Now);
             List<KetQuaThi> list =mBUS.getKetQuaThi(khoangTG[0],khoangTG[1]);
             lv_ketQua.ItemsSource = list;
+            foreach (KetQuaThi kqt in list)
+            {
+                List<string> cb_lopDeNghi = new KetQuaThiXLBUS().getMaLopDeNghi(kqt.MChuongTrinhDeNghi, kqt.MNgayThi);
+                
+            }
             
         }
     }
