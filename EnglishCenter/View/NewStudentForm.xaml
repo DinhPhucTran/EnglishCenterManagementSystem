@@ -49,6 +49,8 @@
             </Grid>-->
         </Grid>
 
+        <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Margin="5 40 5 10" FontSize="14" Text="1/1/1016" Foreground="#00C0EF" Name="tb_date"/>
+
         <!--<TextBlock Grid.Row="1" Grid.Column="0" Text="Mã học viên" FontSize="15" VerticalAlignment="Bottom" Padding="10" Height="40"/>
         <TextBox Grid.Row="1" Grid.Column="1" wpf:TextFieldAssist.Hint="Nhập mã học viên" VerticalAlignment="Bottom" Margin="0,0,0,5" Height="25"/>-->
 
@@ -124,13 +126,11 @@
                 <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="110"/>
                 <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="70"/>
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1" Content="Xếp lịch thi" Margin="10 0 10 0" Name="bt_xepLichThi" Click="bt_xepLichThiClick"/>
             <Button Grid.Column="2" Content="Xếp lớp" Margin="10 0 10 0" Name="bt_xepLop" Click="bt_xepLopClick" />
-            <Button Grid.Column="5" Name="Save_btn" Margin="10 0 10 0" Content="Lưu" Click="Save_btn_Click"/>
-            <Button Grid.Column="4" Margin="10 0 10 0" Content="In" Name="In_btn" Click="In_btn_Click"/>
+            <Button Grid.Column="4" Name="Save_btn" Margin="10 0 10 0" Content="Lưu" Click="Save_btn_Click"/>
             <Button Grid.Column="3" Margin="10 0 10 0" Content="Hủy" Name="btn_cancel" Click="btn_cancel_Click"/>
         </Grid>
 

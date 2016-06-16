@@ -76,17 +76,17 @@ namespace EnglishCenter.View
             }
             catch (Exception)
             {
-                MessageBox.Show("Kiểm tra lại số tiền");
+                MessageBox.Show("Vui lòng kiểm tra lại số tiền");
                 return;
             }
             bool result = bus.themPhieuThu(phieu);
             if (result == true)
             {
-                MessageBox.Show("Thành Công!!");
+                MessageBox.Show("Thành công.", "New Age English");
             }
             else
             {
-                MessageBox.Show("Thất bại!!!\nVui lòng kiểm tra lại dử liệu và thử lại");
+                MessageBox.Show("Không thể lưu dữ liệu, vui lòng thử lại sau.");
             }
 
 

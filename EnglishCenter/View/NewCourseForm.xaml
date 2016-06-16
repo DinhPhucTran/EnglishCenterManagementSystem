@@ -58,7 +58,7 @@
         <Grid Grid.Row="5" Grid.ColumnSpan="2">
             <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5" Click="onExitBtnClick"/>
             <Button Content="Lưu" HorizontalAlignment="Right" Margin="10,0,110,5" Click="onLuuBtnClick"/>
-            <Button Content="Hủy" HorizontalAlignment="Right" Margin="10,0,190,5" Click="onClearBtnClick"/>
+            <!--<Button Content="Hủy" HorizontalAlignment="Right" Margin="10,0,190,5" Click="onClearBtnClick"/>-->
         </Grid>
 
     </Grid>

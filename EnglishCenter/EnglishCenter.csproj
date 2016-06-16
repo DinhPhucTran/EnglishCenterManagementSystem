@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ic_apple.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
@@ -336,6 +339,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\user_role.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\marking_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\exam_edit_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\receipt_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ic_apple.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

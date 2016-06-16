@@ -63,7 +63,7 @@ namespace EnglishCenter.View
             CTDaHoc_cb.ItemsSource = mListChuongTrinhHoc;
             CTMuonHoc_cb.ItemsSource = mListChuongTrinhHoc;
             createThoiGianRanh();
-
+            tb_date.Text = DateTime.Today.ToShortDateString();
         }
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)

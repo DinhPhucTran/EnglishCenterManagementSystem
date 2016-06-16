@@ -2,27 +2,61 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
-        Title="LoginWindow" Height="400" Width="600"
+        Title="LoginWindow" Height="300" Width="500"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         MouseDown="Window_MouseDown"
         Icon="/Resources/ic_apple.png">
     <Grid>
-        <Image Source="/EnglishCenter;component/Resources/bigben.jpg" Stretch="UniformToFill">
-        </Image>
-        <Image Source="/EnglishCenter;component/Resources/user.png" Margin="113,108,448,241"/>
-        <Image Source="/EnglishCenter;component/Resources/locked.png" RenderTransformOrigin="0.5,0.5" Margin="118,164,448,182">
-
-        </Image>
-
-        <TextBlock Foreground="White" Margin="10,10,439,346" FontSize="16" FontWeight="Bold">ĐĂNG NHẬP</TextBlock>
-        <TextBox Name="tbUsername" Foreground="White" Margin="157,122,93,248" BorderBrush="#89FFFFFF" wpf:TextFieldAssist.Hint="Tên đăng nhập" FontSize="14" KeyUp="tb_username_KeyUp"></TextBox>
-        <PasswordBox Name="tbPass" Foreground="White" Margin="157,179,93,192" BorderBrush="#89FFFFFF" wpf:TextFieldAssist.Hint="Mật khẩu" FontSize="14" KeyUp="tb_username_KeyUp"></PasswordBox>
-        <Button Name="loginButton" Foreground="White" Margin="230,250,200,99" Height="Auto" Click="login_Click">Đăng nhập</Button>
-        <Grid VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 -1 -1 0" Width="25" Height="25">
-            <Button Padding="-1 -3 1 3" Background="Red" ToolTip="Đóng" BorderThickness="0" Click="Button_Click">❌</Button>
+        <Grid.Background>
+            <ImageBrush ImageSource="/EnglishCenter;component/Resources/bigben.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!--<Image Source="/EnglishCenter;component/Resources/bigben.jpg" Stretch="UniformToFill"/>-->
+        <TextBlock Grid.Row="0" Grid.Column="0" Foreground="White" Margin="10" FontSize="16" FontWeight="Bold">ĐĂNG NHẬP</TextBlock>
+        <Grid Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 -1 -1 0" Width="25" Height="25">
+            <Button Padding="0 -3 1 3" ToolTip="Đóng" BorderThickness="0" Click="Button_Click" Content="❌" Foreground="White">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
+        
+        <Image Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="10" Width="30" Height="30" Source="/EnglishCenter;component/Resources/user.png"/>
+        <Image Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="10" Width="30" Height="30" Source="/EnglishCenter;component/Resources/locked.png"/>
+        
+        <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="250" HorizontalAlignment="Left" Name="tbUsername" Foreground="White" BorderBrush="#89FFFFFF" wpf:TextFieldAssist.Hint="Tên đăng nhập" FontSize="14" KeyUp="tb_username_KeyUp"></TextBox>
+        <PasswordBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Width="250" HorizontalAlignment="Left" Name="tbPass" Foreground="White" BorderBrush="#89FFFFFF" wpf:TextFieldAssist.Hint="Mật khẩu" FontSize="14" KeyUp="tb_username_KeyUp"></PasswordBox>
+        
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Name="loginButton" Foreground="White" Click="login_Click">Đăng nhập</Button>
+        
         
     </Grid>
 </Window>

@@ -228,7 +228,7 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Foreground="Black" FontSize="30" Margin="20 10 0 5">Khóa học</TextBlock>
+                                    <TextBlock Grid.Row="0" Foreground="Black" FontSize="30" Margin="20 10 0 5">Chương trình học</TextBlock>
 
                                     <ListView Grid.Row="1" Name="lv_home_courses" Margin="2 0 0 2" BorderThickness="0">
                                         <ListView.ItemTemplate>
@@ -421,19 +421,19 @@
                                             <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,10,2" FontSize="15" Name="tb_lv_tenHV" Text="{Binding HocVien.MTenHocVien}"/>
                                             <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 0 5 2" Text="{Binding Lop.MMaLop, StringFormat='Lớp {0}'}"/>
                                             <TextBlock Grid.Row="1" Grid.Column="1" Margin="5,0,10,2" Name="tb_lv_maHV" Text="{Binding HocVien.MMaHocVien}"/>
-                                            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Margin="5 5 10 5" BorderThickness="0" 
+                                            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Margin="5 5 10 5" BorderThickness="0" ToolTip="Thu học phí"
                                                             VerticalAlignment="Center" HorizontalAlignment="Center" Name="bt_lv_hocPhiHv" Click="bt_hocPhiHvClick">
                                                 <Button.Background>
                                                     <ImageBrush ImageSource="/EnglishCenter;component/Resources/cash.png"/>
                                                 </Button.Background>
                                             </Button>
-                                            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Margin="10 5 5 5" BorderThickness="0" 
+                                            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Margin="10 5 5 5" BorderThickness="0" ToolTip="Cập nhật thông tin học viên"
                                                             VerticalAlignment="Center" HorizontalAlignment="Center" Name="bt_lv_editHV" Click="bt_editHvClick">
                                                 <Button.Background>
                                                     <ImageBrush ImageSource="/EnglishCenter;component/Resources/edit.png"/>
                                                 </Button.Background>
                                             </Button>
-                                            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="4" Margin="5 5 10 5" BorderThickness="0" 
+                                            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="4" Margin="5 5 10 5" BorderThickness="0" ToolTip="Chi tiết học viên"
                                                             VerticalAlignment="Center" HorizontalAlignment="Center" Name="bt_lv_viewHV" Click="bt_viewHvClick">
                                                 <Button.Background>
                                                     <ImageBrush ImageSource="/EnglishCenter;component/Resources/info_white.png"/>
@@ -592,7 +592,7 @@
                         <ColumnDefinition Width="6*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="20 10 20 -10" Background="White" Height="31">
+                    <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="20 10 20 -10" Height="31">
                         <Grid.Effect>
                             <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
                         </Grid.Effect>
@@ -606,12 +606,14 @@
                                        FontSize="20" Cursor="Arrow" Name="tb_soLopDangMo"/>
                         <TextBlock Grid.Column="2" Background="Red" Margin="0 0 0 0" Padding="5 5 8 6" VerticalAlignment="Center" FontSize="20" Cursor="Arrow"
                                        Text="Lớp đang mở"/>
-                        <Button Name="btn_ThemLop" Grid.Column="0" Padding="0" FontSize="15" Click="bt_themLop_click">✛</Button>
+                        <Button Name="btn_ThemLop" Grid.Column="0" Padding="0" FontSize="15" Click="bt_themLop_click" ToolTip="Thêm lớp mới">✛</Button>
                     </Grid>
 
-                    <Button Grid.Row="0" Grid.Column="1" Margin="0 20 200 0" Height="30" HorizontalAlignment="Right" Content="Ca" Background="Red" BorderThickness="0" Name="bt_soCa" Click="bt_soCa_click"/>
+                    <Button Grid.Row="0" Grid.Column="1" Margin="0 20 200 0" Height="30" HorizontalAlignment="Right" Content="Ca" 
+                            Background="Red" BorderThickness="0" Name="bt_soCa" Click="bt_soCa_click"
+                            ToolTip="Chi tiết thời gian học"/>
 
-                    <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Margin="15 10 20 -10" Background="White" Height="31">
+                    <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Margin="15 10 20 -10" Height="31">
                         <Grid.Effect>
                             <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
                         </Grid.Effect>
@@ -625,7 +627,7 @@
                                        FontSize="20" Cursor="Arrow" Name="tb_soPhong"/>
                         <TextBlock Grid.Column="1" Background="Red" Margin="0 0 1 0" Padding="5 5 8 6" VerticalAlignment="Center" FontSize="20" Cursor="Arrow"
                                        Text="Phòng học"/>
-                        <Button Name="btn_ThemPhong" Grid.Column="2" Padding="0" FontSize="15" Click="bt_themPhong_click">✛</Button>
+                        <Button Name="btn_ThemPhong" Grid.Column="2" Padding="0" FontSize="15" Click="bt_themPhong_click" ToolTip="Thêm phòng học">✛</Button>
                     </Grid>
 
                     <Grid Grid.Row="1" Grid.Column="0" Background="White" Margin="20">
@@ -851,8 +853,8 @@
                                         </Grid.RowDefinitions>
 
                                         <StackPanel Grid.Row="0" Grid.RowSpan="2" Background="Green">
-                                            <TextBlock Grid.Row="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding day}"/>
-                                            <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding year}"/>
+                                            <TextBlock Grid.Row="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding day}" Foreground="White"/>
+                                            <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding year}" Foreground="White"/>
                                         </StackPanel>
 
                                         <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" Margin="5 0 5 0" TextWrapping="Wrap" Text="{Binding title}"/>
@@ -866,7 +868,6 @@
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="120"/>
-                            <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -893,9 +894,36 @@
                             <TextBlock Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Foreground="Black" FontSize="40" Margin="5 0 0 0" Name="tb_soTXL">499</TextBlock>
                         </Grid>
 
-                        <Button Name="btn_ThemLichThiXL" Grid.Row="1" HorizontalAlignment="Center" Content="Thêm lịch thi xếp lớp" VerticalAlignment="Bottom" Click="bt_themTXL_click"/>
-                        <Button Name="btn_ThemDeThi" Grid.Row="2" HorizontalAlignment="Center" Content="Thêm đề thi" Click="bt_themDeThi_click"/>
-                        <Button Name="btn_NhapKQThi" Grid.Row="3" HorizontalAlignment="Center" Content="Nhập kết quả thi xếp lớp" VerticalAlignment="Top" Click="bt_nhapKetQuaTXL_click"/>
+                        <Button Name="btn_ThemLichThiXL" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="Auto" Click="bt_themTXL_click">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Source="/Resources/timeTable_white.png" Width="30" Height="30" Margin="5"/>
+                                <TextBlock Text="Thêm lịch thi xếp lớp" Grid.Row="1"/>
+                            </Grid>
+                        </Button>
+                        <Button Name="btn_ThemDeThi" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Click="bt_themDeThi_click">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Source="/Resources/exam_edit_white.png" Margin="5" Width="30" Height="30"/>
+                                <TextBlock Text="Thêm đề thi" Grid.Row="1"/>
+                            </Grid>
+                        </Button>
+                        <Button Name="btn_NhapKQThi" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Height="Auto" Click="bt_nhapKetQuaTXL_click">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Source="/Resources/marking_white.png" Width="30" Height="30" Margin="5"/>
+                                <TextBlock Text="Nhập kết quả thi xếp lớp" Grid.Row="1"/>
+                            </Grid>
+                        </Button>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -980,7 +1008,16 @@
                                             Click="bt_hvtnClick" Content="➞" ToolTip="Hiển thị danh sách học viên tiềm năng"/>-->
                         </Grid>
 
-                        <Button Grid.Row="1" Content="Lập phiếu thu học phí" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" Click="bt_lapPhieuThuHP_click"/>
+                        <Button Grid.Row="1" HorizontalAlignment="Center" Height="Auto" VerticalAlignment="Top" Margin="10" Click="bt_lapPhieuThuHP_click">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Source="/Resources/receipt_white.png" Width="30" Height="30" Margin="5"/>
+                                <TextBlock Text="Lập phiếu thu học phí" Grid.Row="1"/>
+                            </Grid>
+                        </Button>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -1021,7 +1058,7 @@
                                        FontSize="20" Cursor="Arrow" Name="tb_soTrinhDo"/>
                                 <TextBlock Grid.Column="1" Background="Red" Margin="0 0 1 0" Padding="5 5 8 6" VerticalAlignment="Center" FontSize="20" Cursor="Arrow"
                                        Text="Trình độ"/>
-                                <Button Grid.Column="2" Padding="0" FontSize="15" Name="bt_themTrinhDo" Click="btThemTrinhDo_click">✛</Button>
+                                <Button Grid.Column="2" Padding="0" FontSize="15" Name="bt_themTrinhDo" Click="btThemTrinhDo_click" ToolTip="Thêm trình độ">✛</Button>
                             </Grid>
 
                             <Grid Grid.Row="1" Margin="15 0 20 12" Background="White" Height="31">
@@ -1039,7 +1076,7 @@
                                        FontSize="20" Cursor="Arrow" Name="tb_soCTH"/>
                                 <TextBlock Grid.Column="1" Background="Red" Margin="0 0 1 0" Padding="5 5 8 6" VerticalAlignment="Center" FontSize="20" Cursor="Arrow"
                                        Text="Chương trình học"/>
-                                <Button Grid.Column="2" Padding="0" FontSize="15" Name="bt_themCth" Click="btThemCth_click" Grid.ColumnSpan="2">✛</Button>
+                                <Button Grid.Column="2" Padding="0" FontSize="15" Name="bt_themCth" Click="btThemCth_click" Grid.ColumnSpan="2" ToolTip="Thêm chương trình học">✛</Button>
                             </Grid>
                         </Grid>
                     </DockPanel>

@@ -35,7 +35,8 @@
         <TextBox Name="TenGV_tb" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="250" HorizontalAlignment="Left" Margin="5,0,50,5" Height="25"/>
 
         <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Số điện thoại" FontSize="15" />
-        <TextBox Name="SoDT_tb" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="250" HorizontalAlignment="Left" Margin="5,0,50,5" Height="25"/>    
+        <TextBox Name="SoDT_tb" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="250" 
+                 HorizontalAlignment="Left" Margin="5,0,50,5" Height="25" PreviewTextInput="NumberValidationTextBox"/>    
         
         <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Địa chỉ" FontSize="15" />
         <TextBox Name="DiaChi_tb" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="250" HorizontalAlignment="Left" Margin="5,0,50,5" Height="25"/>

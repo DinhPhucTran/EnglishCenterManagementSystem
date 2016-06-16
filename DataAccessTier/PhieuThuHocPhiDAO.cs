@@ -60,8 +60,9 @@ namespace DataAccessTier
                 command.Parameters.AddWithValue("@MaPhieuThu", phieu.MMaPhieuThu);
                 command.Parameters.AddWithValue("@MaLopHoc", phieu.MMaLopHoc);
                 command.Parameters.AddWithValue("@MaHocVien", phieu.MMaHocVien);
-                command.Parameters.AddWithValue("@NgayLap", phieu.MNgayLap.ToString());
-                command.Parameters.AddWithValue("@SoTienDong", phieu.MSoTienDong.ToString());
+                //command.Parameters.AddWithValue("@NgayLap", phieu.MNgayLap.ToString());
+                command.Parameters.Add("@NgayLap", SqlDbType.Date).Value = phieu.MNgayLap.ToString("yyyy-MM-dd h:m:s");
+                command.Parameters.AddWithValue("@SoTienDong", phieu.MSoTienDong);
                 command.ExecuteNonQuery();
                 connection.Close();
                 return true;
@@ -70,6 +71,7 @@ namespace DataAccessTier
             {
                 connection.Close();
                 Console.WriteLine(ex);
+                //throw;
             }
             return false;
         }

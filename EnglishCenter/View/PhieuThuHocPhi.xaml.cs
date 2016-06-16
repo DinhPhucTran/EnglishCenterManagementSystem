@@ -68,7 +68,13 @@ namespace EnglishCenter.View
             phieu.MMaPhieuThu = DateTime.Now.ToString("yyyy") + DateTime.Now.ToString("MM") + DateTime.Now.ToString("dd") + max;
 
             phieu.MMaLopHoc = ((LopHoc)cb_lop.SelectedValue).MMaLop;
-            phieu.MMaHocVien = ((HocVien)cb_tenHocVien.SelectedValue).MMaHocVien;
+            if(cb_tenHocVien.SelectedValue != null)
+                phieu.MMaHocVien = ((HocVien)cb_tenHocVien.SelectedValue).MMaHocVien;
+            else
+            {
+                MessageBox.Show("Vui lòng chọn tên học viên");
+                return;
+            }
             phieu.MNgayLap = DateTime.Now;
             try
             {
@@ -76,17 +82,17 @@ namespace EnglishCenter.View
             }
             catch (Exception)
             {
-                MessageBox.Show("Kiểm tra lại số tiền");
+                MessageBox.Show("Vui lòng kiểm tra lại số tiền");
                 return;
             }
             bool result = bus.themPhieuThu(phieu);
             if (result == true)
             {
-                MessageBox.Show("Thành Công!!");
+                MessageBox.Show("Thành Công!");
             }
             else
             {
-                MessageBox.Show("Thất bại!!!\nVui lòng kiểm tra lại dử liệu và thử lại");
+                MessageBox.Show("Không thể lưu dữ liệu, vui lòng thử lại sau.");
             }
 
             //Notify changes

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BusinessLogicTier;
 using DTO;
+using System.Text.RegularExpressions;
 
 namespace EnglishCenter.View
 {
@@ -95,6 +96,12 @@ namespace EnglishCenter.View
         private void bt_exit_click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
