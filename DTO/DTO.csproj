@@ -52,6 +52,7 @@
     <Compile Include="HocVien_Lop.cs" />
     <Compile Include="KetQuaThi.cs" />
     <Compile Include="ListItemThiXepLop.cs" />
+    <Compile Include="LopDeNghi.cs" />
     <Compile Include="LopHoc.cs" />
     <Compile Include="LopHoc_ThoiGianDTO.cs" />
     <Compile Include="Lop_GiangVien.cs" />

@@ -47,7 +47,7 @@
                         <TextBlock Grid.Row="0" Grid.Column="6"  Margin="5,0,10,2" Name="tb_KQT" Text="{Binding MKetQua}"/>
                         <TextBlock Grid.Row="0" Grid.Column="7"  Margin="5,0,10,2" Name="tb_email" Text="{Binding MEmail}"/>
                         <TextBlock Grid.Row="0" Grid.Column="8"  Margin="5,0,10,2" Name="tb_ctDeNghi" Text="{Binding MChuongTrinhDeNghi}"/>
-                        <ComboBox Grid.Row="0" Grid.Column="9"  Margin="5,0,10,2" Name="cb_lopDeNghi" Text="{Binding HocVien.MTenHocVien}"/>
+                        <ComboBox Grid.Row="0" Grid.Column="9"  Margin="5,0,10,2" Name="cb_lopDeNghi" ItemsSource ="{Binding MMaLopDeNghi}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

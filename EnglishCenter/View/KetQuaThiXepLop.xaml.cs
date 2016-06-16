@@ -31,8 +31,16 @@ namespace EnglishCenter.View
             lv_ketQua.ItemsSource = list;
             foreach (KetQuaThi kqt in list)
             {
-                List<string> cb_lopDeNghi = new KetQuaThiXLBUS().getMaLopDeNghi(kqt.MChuongTrinhDeNghi, kqt.MNgayThi);
-                
+                List<string> cb_lopDeNghi = new KetQuaThiXLBUS().getMaLopDeNghiVaMongMuon(kqt.MChuongTrinhDeNghi, kqt.MChuongTrinhMuonHoc, kqt.MNgayThi);
+                foreach (string s in cb_lopDeNghi)
+                {
+
+                }
+                kqt.MMaLopDeNghi = cb_lopDeNghi;
+                if (cb_lopDeNghi.Count != 0)
+                {
+                    int a = 1;
+                }
             }
             
         }

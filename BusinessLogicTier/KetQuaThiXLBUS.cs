@@ -17,5 +17,9 @@ namespace BusinessLogicTier
         {
             return new KetQuaThiXLDAO().getMaLopDeNghi(maChuongTrinh, fromDate);
         }
+        public List<String> getMaLopDeNghiVaMongMuon(String maChuongTrinhDeNghi, String maChuongMongMuon, DateTime fromDate)
+        {
+            return new KetQuaThiXLDAO().getMaLopDeNghi(maChuongTrinhDeNghi, maChuongMongMuon, fromDate);
+        }
     }
 }
