@@ -7,7 +7,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -47,10 +47,15 @@
                         <TextBlock Grid.Row="0" Grid.Column="6"  Margin="5,0,10,2" Name="tb_KQT" Text="{Binding MKetQua}"/>
                         <TextBlock Grid.Row="0" Grid.Column="7"  Margin="5,0,10,2" Name="tb_email" Text="{Binding MEmail}"/>
                         <TextBlock Grid.Row="0" Grid.Column="8"  Margin="5,0,10,2" Name="tb_ctDeNghi" Text="{Binding MChuongTrinhDeNghi}"/>
-                        <ComboBox Grid.Row="0" Grid.Column="9"  Margin="5,0,10,2" Name="cb_lopDeNghi" ItemsSource ="{Binding MMaLopDeNghi}"/>
+                        <ComboBox Grid.Row="0" Grid.Column="9"  Margin="5,0,10,2" Name="cb_lopDeNghi" ItemsSource ="{Binding MMaLopDeNghi}" SelectionChanged="cb_lopDeNghi_SelectionChanged" SelectedIndex="0"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+            <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5" Click="Button_Click_Thoat"/>
+            <Button Content="Lưu" HorizontalAlignment="Right" Margin="10,0,110,5" Click="Button_Click_Luu"/>
+        </Grid>
     </Grid>
 </Window>

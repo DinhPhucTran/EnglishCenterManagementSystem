@@ -9,6 +9,7 @@ namespace DTO
     public class KetQuaThi
     {
         public KetQuaThi() {
+            MSelectedMaLop = 0;
         }
         public String mMaHV;
         private String mTenHV;
@@ -144,6 +145,13 @@ namespace DTO
             get { return mMaLopDeNghi; }
             set { mMaLopDeNghi = value; }
         }
-        
+        private int mSelectedMaLop;
+
+        public int MSelectedMaLop
+        {
+            get { return mSelectedMaLop; }
+            set { mSelectedMaLop = value; }
+        }
+
     }
 }

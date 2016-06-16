@@ -21,15 +21,16 @@ namespace EnglishCenter.View
     /// </summary>
     public partial class KetQuaThiXepLop : Window
     {
+        private List<KetQuaThi> mList;
         private KetQuaThiXLBUS mBUS;
         public KetQuaThiXepLop()
         {
             mBUS =  new KetQuaThiXLBUS();
             InitializeComponent();
             List<DateTime> khoangTG = new ThiXepLopBUS().getKhoangThoiGianLayThiXepLop(DateTime.Now);
-            List<KetQuaThi> list =mBUS.getKetQuaThi(khoangTG[0],khoangTG[1]);
-            lv_ketQua.ItemsSource = list;
-            foreach (KetQuaThi kqt in list)
+            mList =mBUS.getKetQuaThi(khoangTG[0],khoangTG[1]);
+            lv_ketQua.ItemsSource = mList;
+            foreach (KetQuaThi kqt in mList)
             {
                 List<string> cb_lopDeNghi = new KetQuaThiXLBUS().getMaLopDeNghiVaMongMuon(kqt.MChuongTrinhDeNghi, kqt.MChuongTrinhMuonHoc, kqt.MNgayThi);
                 foreach (string s in cb_lopDeNghi)
@@ -37,12 +38,50 @@ namespace EnglishCenter.View
 
                 }
                 kqt.MMaLopDeNghi = cb_lopDeNghi;
-                if (cb_lopDeNghi.Count != 0)
-                {
-                    int a = 1;
-                }
+                
             }
             
+        }
+
+        private void cb_lopDeNghi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            KetQuaThi kqt = (KetQuaThi)cb.DataContext;
+            kqt.MSelectedMaLop = cb.SelectedIndex;
+            if (!cb.Text.Equals(""))
+            {
+                MessageBox.Show(kqt.MTenHV+ " - "+kqt.MMaLopDeNghi[kqt.MSelectedMaLop]);
+            }
+        }
+
+        private void Button_Click_Luu(object sender, RoutedEventArgs e)
+        {
+            foreach (KetQuaThi kqt in mList)
+            {
+                if (kqt.MMaLopDeNghi.Count != 0)
+                {
+                    ChiTietLopHoc ctlh = new ChiTietLopHoc();
+                    ctlh.MMaLopHoc = kqt.MMaLopDeNghi[kqt.MSelectedMaLop];
+                    ctlh.MMaHocVien = kqt.mMaHV;
+                    //ctlh.MTinhTrangDongHocPhi = 0;
+                    ctlh.MKetQuaThi = kqt.MKetQua;
+                    //ctlh.MSoTienNo = null;
+                    bool result = new ChiTietLopHocBUS().insertChiTietLopHoc(ctlh);
+                    if (result == false)
+                    {
+                        MessageBox.Show("them du lieu that bai");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thành Công!");
+                        this.Close();
+                    }
+                }
+            }
+        }
+        private void Button_Click_Thoat(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
