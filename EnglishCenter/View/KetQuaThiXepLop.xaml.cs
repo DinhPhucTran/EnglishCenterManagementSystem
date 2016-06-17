@@ -63,9 +63,10 @@ namespace EnglishCenter.View
                     ChiTietLopHoc ctlh = new ChiTietLopHoc();
                     ctlh.MMaLopHoc = kqt.MMaLopDeNghi[kqt.MSelectedMaLop];
                     ctlh.MMaHocVien = kqt.mMaHV;
-                    //ctlh.MTinhTrangDongHocPhi = 0;
+                    ctlh.MTinhTrangDongHocPhi = 0;
+                    ctlh.MSoTienNo = new LopHocBUS().selectLopHoc(ctlh.MMaLopHoc).MSoTien;
                     ctlh.MKetQuaThi = kqt.MKetQua;
-                    //ctlh.MSoTienNo = null;
+                    
                     bool result = new ChiTietLopHocBUS().insertChiTietLopHoc(ctlh);
                     if (result == false)
                     {
