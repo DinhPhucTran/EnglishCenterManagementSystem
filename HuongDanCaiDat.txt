@@ -1,0 +1,17 @@
+ĐỀ TÀI QUẢN LÝ HỌC VIÊN TẠI TRUNG TÂM ANH NGỮ
+Nguyễn Thị Nhơn 13520590
+Trần Đình Phúc 13520636
+Phạm Ngọc Quang Sang 13520698
+
+
+/******************************
+Hướng dẫn cài đặt 
+	Restore file QL_ANHNGU.bak vào SQL Server
+	Chạy file English Center Managerment System.msi trong thư mục \Setup\Setup\Express\DVD-5\DiskImages\DISK1
+		để tiến hành cài đặt phần mềm.
+	Thay đổi giá trị connectionString trong file App.config trong thư mục cài đặt bằng connection string tương ứng với cơ sở dữ liệu.
+	
+	Tên đăng nhập vào phần mềm: admin, mật khẩu: admin (Quản trị viên)
+	Tên đăng nhập: a, mật khẩu: 123 (Giáo viên)
+	
+/*******************************

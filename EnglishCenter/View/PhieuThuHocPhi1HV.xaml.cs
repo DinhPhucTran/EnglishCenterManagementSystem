@@ -82,7 +82,13 @@ namespace EnglishCenter.View
             bool result = bus.themPhieuThu(phieu);
             if (result == true)
             {
-                MessageBox.Show("Thành công.", "New Age English");
+                bool result1 = new PhieuThuHocPhiBUS().updateSoTienNo(phieu.MMaHocVien, phieu.MMaLopHoc, phieu.MSoTienDong);
+                if (result1 == true)
+                    MessageBox.Show("Thành Công!");
+                else
+                {
+                    MessageBox.Show("Không thể lưu dữ liệu, vui lòng thử lại sau. Lổi cập nhật số tiền nợ");
+                }
             }
             else
             {

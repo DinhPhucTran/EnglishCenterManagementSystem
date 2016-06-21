@@ -43,5 +43,10 @@ namespace BusinessLogicTier
         {
             return new UserDAO().getPermissionByUser(user);
         }
+
+        public bool updatePassword(String username, String pass)
+        {
+            return new UserDAO().updatePassword(username, pass);
+        }
     }
 }

@@ -6,25 +6,37 @@
         xmlns:local="clr-namespace:EnglishCenter.View"
         xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="SignUpWindow" Height="300" Width="300"
+        Title="SignUpWindow" Height="500" Width="500"
         MouseDown="Window_MouseDown">
-    <Grid>
-        <Image Source="/EnglishCenter;component/Resources/bigben.jpg" Stretch="UniformToFill">
+    <Grid Background="#F9F9F9">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!--<Image Source="/EnglishCenter;component/Resources/loginBg.png" Stretch="UniformToFill">
+        </Image>-->
+        <Image Grid.Row="1" Grid.Column="0" Source="/EnglishCenter;component/Resources/user_black.png" Margin="10" Width="40" Height="40" HorizontalAlignment="Right"/>
+        <Image Grid.Row="2" Grid.Column="0" Width="40" HorizontalAlignment="Right" Margin="10" Source="/EnglishCenter;component/Resources/locked_black.png" RenderTransformOrigin="0.5,0.5">
         </Image>
-        <Image Source="/EnglishCenter;component/Resources/user.png" Margin="38,41,231,229"/>
-        <Image Source="/EnglishCenter;component/Resources/locked.png" RenderTransformOrigin="0.5,0.5" Margin="35,89,230,179">
-        </Image>
-        <Image Source="/EnglishCenter;component/Resources/locked.png" RenderTransformOrigin="0.5,0.5" Margin="35,144,230,124"/>
+        <Image Source="/EnglishCenter;component/Resources/locked_black.png" RenderTransformOrigin="0.5,0.5" Margin="10" HorizontalAlignment="Right" Width="40" Grid.Row="3"/>
 
-        <TextBlock Foreground="White" Margin="8,7,212,249" FontSize="14" FontWeight="Bold">ĐĂNG KÝ</TextBlock>
-        <TextBox Name="tbUsername" Foreground="White" Margin="76,41,39,229" BorderBrush="#89FFFFFF" wpf:TextFieldAssist.Hint="Tên đăng nhập" FontSize="12"></TextBox>
-        <PasswordBox Name="tbPass" Foreground="White" Margin="75,89,41,179" BorderBrush="#89FFFFFF" wpf:TextFieldAssist.Hint="Mật khẩu" FontSize="14"></PasswordBox>
-        <PasswordBox Name="tbRePass" Foreground="White" Margin="76,144,40,124" BorderBrush="#89FFFFFF" wpf:TextFieldAssist.Hint="Xác nhận lại" FontSize="14"></PasswordBox>
-        <ComboBox Name="cbPermission" Foreground="Black" DisplayMemberPath="MNamePermision" Margin="74,194,41,76" BorderBrush="#89FFFFFF" wpf:TextFieldAssist.Hint="Quyền" FontSize="12">
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Foreground="#FF4D4D4D" FontSize="14" FontWeight="Bold" Margin="10">ĐĂNG KÝ</TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="tbUsername" Foreground="#FF4D4D4D" Margin="10" VerticalAlignment="Center" wpf:TextFieldAssist.Hint="Tên đăng nhập" FontSize="12"></TextBox>
+        <PasswordBox Grid.Row="2" Grid.Column="1" Name="tbPass" Foreground="#FF4D4D4D" Margin="10" VerticalAlignment="Center"  wpf:TextFieldAssist.Hint="Mật khẩu" FontSize="14"></PasswordBox>
+        <PasswordBox Grid.Row="3" Grid.Column="1" Name="tbRePass" Foreground="#FF4D4D4D" Margin="10" VerticalAlignment="Center" wpf:TextFieldAssist.Hint="Xác nhận lại" FontSize="14"></PasswordBox>
+        <ComboBox Grid.Row="4" Grid.Column="1" Name="cbPermission" Foreground="#FF4D4D4D" DisplayMemberPath="MNamePermision" Margin="10" wpf:TextFieldAssist.Hint="Quyền" FontSize="12">
         </ComboBox>
-        <Button Name="signup_Button" Foreground="White" Margin="98,246,89,10" Height="Auto" Click="signup_Button_Click" RenderTransformOrigin="0.5,0.5">Đăng ký</Button>
-        <Button Padding="0" Height="Auto" Background="Red" Cursor="Arrow" ToolTip="Đóng" BorderThickness="0" Click="Button_Click" Margin="263,6,5,264" RenderTransformOrigin="10.877,-9.615">❌</Button>
+        <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Name="signup_Button" Foreground="White" Margin="10" Height="Auto" Click="signup_Button_Click" RenderTransformOrigin="0.5,0.5">Đăng ký</Button>
+        <!--<Button Padding="0" Height="Auto" Background="Red" Cursor="Arrow" ToolTip="Đóng" BorderThickness="0" Click="Button_Click" Margin="263,6,5,264" RenderTransformOrigin="10.877,-9.615">❌</Button>-->
     </Grid>
 </Window>

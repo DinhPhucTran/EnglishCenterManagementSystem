@@ -871,6 +871,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0" Width="350" Height="100" Background="White" Margin="10">
@@ -922,6 +923,17 @@
                                 </Grid.RowDefinitions>
                                 <Image Grid.Row="0" Source="/Resources/marking_white.png" Width="30" Height="30" Margin="5"/>
                                 <TextBlock Text="Nhập kết quả thi xếp lớp" Grid.Row="1"/>
+                            </Grid>
+                        </Button>
+
+                        <Button Name="btn_XepLop" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Top" Height="Auto" Click="bt_thi_xepLop_click">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Source="/Resources/marking_white.png" Width="30" Height="30" Margin="5"/>
+                                <TextBlock Text="Xếp lớp học viên" Grid.Row="1"/>
                             </Grid>
                         </Button>
                     </Grid>
@@ -1442,6 +1454,43 @@
                         <TextBlock Margin="5">CÀI ĐẶT</TextBlock>
                     </WrapPanel>
                 </TabItem.Header>
+                <Grid Background="#F9F9F9">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="0" Background="White" Margin="20 20 10 10">
+                        <Grid.Effect>
+                            <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                        </Grid.Effect>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Tab mặc định" Foreground="Black" Margin="10" VerticalAlignment="Bottom"/>
+                        <ComboBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10" Width="50" Name="cb_defaultTab" Foreground="Black"/>
+                        <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Margin="10 10 20 10" Content="Lưu" Click="bt_settings_save"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="0" Background="White" Margin="20 20 10 10">
+                        <Grid.Effect>
+                            <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                        </Grid.Effect>
+                        <Grid.RowDefinitions>
+                        </Grid.RowDefinitions>
+                        <Button Content="Đổi mật khẩu" HorizontalAlignment="Center" Margin="10" Click="bt_doiMatKhau_click"/>
+                    </Grid>
+                </Grid>
             </TabItem>
 
             <TabItem Name="tabPermission">
@@ -1485,7 +1534,7 @@
 
                                     <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,10,2" FontSize="20" Name="tb_lv_Username" Text="{Binding MUsername}"/>
                                     <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 0 5 2" FontSize="15" Text="{Binding MPermission, StringFormat='Quyền {0}'}"/>
-                                    <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Margin="10 5 5 5" BorderThickness="0" 
+                                    <!--<Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Margin="10 5 5 5" BorderThickness="0" 
                                                             VerticalAlignment="Center" HorizontalAlignment="Center" Name="bt_lv_user_edit">
                                         <Button.Background>
                                             <ImageBrush ImageSource="/EnglishCenter;component/Resources/edit.png"/>
@@ -1496,7 +1545,7 @@
                                         <Button.Background>
                                             <ImageBrush ImageSource="/EnglishCenter;component/Resources/info_white.png"/>
                                         </Button.Background>
-                                    </Button>
+                                    </Button>-->
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>

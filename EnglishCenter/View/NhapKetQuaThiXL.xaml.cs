@@ -61,6 +61,7 @@ namespace EnglishCenter.View
                 MessageBox.Show("Điểm thi chưa được cập nhật!");
                 return;
             }
+            MessageBox.Show("Đã lưu");
             //lay chuong trinh de nghi tu diem thi
         }
         

@@ -16,6 +16,7 @@ using DTO;
 using BusinessLogicTier;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using System.Configuration;
 
 namespace EnglishCenter.View
 {
@@ -89,6 +90,28 @@ namespace EnglishCenter.View
             updateChartThuThang();
             updateChartGioiTinh();
             updateChartCthSoHv();
+            try
+            {
+                tabControl.SelectedIndex = Int32.Parse(ConfigurationManager.AppSettings.Get("defaultTab"));
+            }
+            catch (Exception)
+            {
+
+            }
+            List<int> listTabNumber = new List<int>();
+            for (int i = 1; i <= 10; i++)
+            {
+                listTabNumber.Add(i);
+            }
+            cb_defaultTab.ItemsSource = listTabNumber;
+            try
+            {
+                cb_defaultTab.SelectedIndex = Int32.Parse(ConfigurationManager.AppSettings.Get("defaultTab")) - 1;
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         public User User
@@ -914,6 +937,7 @@ namespace EnglishCenter.View
         private void ThemLop_DataChanged(object sender, EventArgs e)
         {
             updateListLopDangMo();
+            fillTKB();
         }
 
         private void updateListUser()
@@ -1114,6 +1138,28 @@ namespace EnglishCenter.View
             updateThongKeThang();
             updateChartHvThang();
             updateChartThuThang();
+        }
+
+        private void bt_settings_save(object sender, RoutedEventArgs e)
+        {
+            Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            configuration.AppSettings.Settings["defaultTab"].Value = cb_defaultTab.SelectedValue.ToString();
+            configuration.Save();
+
+            ConfigurationManager.RefreshSection("appSettings");
+        }
+
+        private void bt_doiMatKhau_click(object sender, RoutedEventArgs e)
+        {
+            DoiMatKhau mk = new DoiMatKhau();
+            mk.User = mUser;
+            mk.ShowDialog();
+        }
+
+        private void bt_thi_xepLop_click(object sender, RoutedEventArgs e)
+        {
+            KetQuaThiXepLop kq = new KetQuaThiXepLop();
+            kq.ShowDialog();
         }
         
     }    

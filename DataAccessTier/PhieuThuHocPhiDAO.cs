@@ -125,6 +125,31 @@ namespace DataAccessTier
             }
             return false;
         }
+
+        public bool updateSoTienNo(string maHv, string maLop, double soTien)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand command = new SqlCommand("update_so_tien_no", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@maLop", maLop);
+                command.Parameters.AddWithValue("@maHV", maHv);
+                command.Parameters.AddWithValue("@soTien", soTien);
+                command.ExecuteNonQuery();
+                connection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                Console.WriteLine(ex);
+            }
+            return false;
+        }
     }
 
     

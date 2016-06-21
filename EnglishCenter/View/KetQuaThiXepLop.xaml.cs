@@ -33,10 +33,7 @@ namespace EnglishCenter.View
             foreach (KetQuaThi kqt in mList)
             {
                 List<string> cb_lopDeNghi = new KetQuaThiXLBUS().getMaLopDeNghiVaMongMuon(kqt.MChuongTrinhDeNghi, kqt.MChuongTrinhMuonHoc, kqt.MNgayThi);
-                foreach (string s in cb_lopDeNghi)
-                {
-
-                }
+                
                 kqt.MMaLopDeNghi = cb_lopDeNghi;
                 
             }

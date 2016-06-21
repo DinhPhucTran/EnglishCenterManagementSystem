@@ -196,5 +196,26 @@ namespace DataAccessTier
             }
             return result;
         }
+
+        public bool updatePassword(String username, String pass)
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand cmd = new SqlCommand("USER_UPDATE_PASSWORD", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@pass", pass);
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+                connection.Close();
+                return false;
+            }
+        }
     }
 }

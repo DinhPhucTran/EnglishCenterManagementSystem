@@ -31,5 +31,9 @@ namespace BusinessLogicTier
         {
             return mDao.getListPhieuThu();
         }
+        public bool updateSoTienNo(String maHv, String maLop, double soTien)
+        {
+            return mDao.updateSoTienNo(maHv, maLop, soTien);
+        }
     }
 }
