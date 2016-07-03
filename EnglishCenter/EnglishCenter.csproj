@@ -85,8 +85,14 @@
     <Compile Include="View\DoiMatKhau.xaml.cs">
       <DependentUpon>DoiMatKhau.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditConnectionString.xaml.cs">
+      <DependentUpon>EditConnectionString.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\KetQuaThiXepLop.xaml.cs">
       <DependentUpon>KetQuaThiXepLop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginError.xaml.cs">
+      <DependentUpon>LoginError.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -137,7 +143,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\EditConnectionString.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\KetQuaThiXepLop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoginError.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -242,6 +256,7 @@
   <ItemGroup>
     <None Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -364,6 +379,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\locked_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\error.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

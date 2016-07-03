@@ -11,6 +11,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
@@ -42,8 +43,11 @@
         <TextBlock Name="tb_lop"  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" 
                   MinWidth="250" HorizontalAlignment="Left" Margin="5,0,50,3" FontSize="17"/>
 
-        <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Số tiền" FontSize="15" Foreground="#FF6BA6D6"/>
-        <TextBox Name="tb_soTien" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="200" Margin="5,0,200,3" Height="25"
+        <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Số tiền nợ" FontSize="15" Foreground="#FF6BA6D6"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Bottom" Margin="5,0,200,3" Name="tb_soTienNo"/>
+        
+        <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Bottom" Margin="20,0,10,5" Text="Số tiền đóng" FontSize="15" Foreground="#FF6BA6D6"/>
+        <TextBox Name="tb_soTien" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" MinWidth="200" Margin="5,0,200,3" Height="25"
                  PreviewTextInput="NumberValidationTextBox"/>
 
         <Grid Grid.Row="7" Grid.ColumnSpan="2">

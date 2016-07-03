@@ -340,19 +340,19 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
-		<row><td>BusinessLogicTier.dll</td><td>{2E7ECAEC-77AF-46F0-8B35-FE66C580814B}</td><td>INSTALLDIR</td><td>2</td><td/><td>businesslogictier.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DTO.dll</td><td>{FAA162F7-24BD-411A-A5C0-1892D09C5DD9}</td><td>INSTALLDIR</td><td>2</td><td/><td>dto.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DataAccessTier.dll</td><td>{1970C6DB-4954-4F08-9B73-B9FA87768C69}</td><td>INSTALLDIR</td><td>2</td><td/><td>dataaccesstier.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>EnglishCenter.exe</td><td>{F2B18795-4D44-49BA-BBA5-9ADBCC9A0610}</td><td>INSTALLDIR</td><td>2</td><td/><td>englishcenter.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>EnglishCenter.vshost.exe</td><td>{1386D6E6-90E1-42D5-85C4-F8865ED52CD7}</td><td>INSTALLDIR</td><td>2</td><td/><td>englishcenter.vshost.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>BusinessLogicTier.dll</td><td>{82879CC1-FF49-4406-A13B-92E5040847FF}</td><td>INSTALLDIR</td><td>2</td><td/><td>businesslogictier.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DTO.dll</td><td>{1AC595F0-CAB2-4513-9559-8553E28B1086}</td><td>INSTALLDIR</td><td>2</td><td/><td>dto.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>DataAccessTier.dll</td><td>{2278C6B1-63F2-4D7E-BAB4-173E9D0E366E}</td><td>INSTALLDIR</td><td>2</td><td/><td>dataaccesstier.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EnglishCenter.exe</td><td>{0313AF60-4A99-4E65-BA0C-ECD591227E70}</td><td>INSTALLDIR</td><td>2</td><td/><td>englishcenter.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{C972FA5C-89F8-49EE-A51C-8B12E459999E}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{32F4A451-6969-4BF2-B271-C9ED408F6C01}</td><td>DATABASEDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>MaterialDesignColors.dll</td><td>{E4BCC96B-0FDB-4F74-9B85-B8069507FCB8}</td><td>INSTALLDIR</td><td>2</td><td/><td>materialdesigncolors.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>MaterialDesignThemes.Wpf.dll</td><td>{140CDA37-9B46-4903-970F-EB551B3C3128}</td><td>INSTALLDIR</td><td>2</td><td/><td>materialdesignthemes.wpf.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>System.Windows.Controls.DataVisualization.Toolkit.dll</td><td>{53FDCDAB-2D73-414C-8F87-EAA4DD889CDE}</td><td>INSTALLDIR</td><td>2</td><td/><td>system.windows.controls.data</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>System.Windows.Controls.Input.Toolkit.dll</td><td>{426D283D-6359-4C1F-8312-D0F451207934}</td><td>INSTALLDIR</td><td>2</td><td/><td>system.windows.controls.inpu</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>System.Windows.Controls.Layout.Toolkit.dll</td><td>{D5D173BF-7CFB-4F3C-A86D-BD6AB47FD66E}</td><td>INSTALLDIR</td><td>2</td><td/><td>system.windows.controls.layo</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>WPFToolkit.dll</td><td>{10FEDA23-7E42-44E8-862A-65983B9AD52B}</td><td>INSTALLDIR</td><td>2</td><td/><td>wpftoolkit.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT2</td><td>{C13F4A15-7278-4C22-8354-01B0502E0580}</td><td>AppDataFolder</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>MaterialDesignColors.dll</td><td>{E192B71A-E807-4011-9C5D-0DCA363F0951}</td><td>INSTALLDIR</td><td>2</td><td/><td>materialdesigncolors.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>MaterialDesignThemes.Wpf.dll</td><td>{A6E8EA17-3C9E-4830-A2A7-7B4D57D16CCD}</td><td>INSTALLDIR</td><td>2</td><td/><td>materialdesignthemes.wpf.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>System.Windows.Controls.DataVisualization.Toolkit.dll</td><td>{F9413CF9-B8B3-4DD8-914E-76C14BCCCEFB}</td><td>INSTALLDIR</td><td>2</td><td/><td>system.windows.controls.data</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>System.Windows.Controls.Input.Toolkit.dll</td><td>{2C10CDBD-ED81-4516-A619-5B7052D20F1E}</td><td>INSTALLDIR</td><td>2</td><td/><td>system.windows.controls.inpu</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>System.Windows.Controls.Layout.Toolkit.dll</td><td>{4870FE61-D380-4EF5-9747-505E5EBBBDC6}</td><td>INSTALLDIR</td><td>2</td><td/><td>system.windows.controls.layo</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>WPFToolkit.dll</td><td>{1FBBD3BE-CC48-415B-A29D-743DCE1D808D}</td><td>INSTALLDIR</td><td>2</td><td/><td>wpftoolkit.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1062,14 +1062,15 @@
 	<table name="CreateFolder">
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>AppDataFolder</td><td>ISX_DEFAULTCOMPONENT2</td></row>
 		<row><td>DATABASEDIR</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>INSTALLDIR</td><td>BusinessLogicTier.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DTO.dll</td></row>
 		<row><td>INSTALLDIR</td><td>DataAccessTier.dll</td></row>
 		<row><td>INSTALLDIR</td><td>EnglishCenter.exe</td></row>
-		<row><td>INSTALLDIR</td><td>EnglishCenter.vshost.exe</td></row>
 		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT1</td></row>
+		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT2</td></row>
 		<row><td>INSTALLDIR</td><td>MaterialDesignColors.dll</td></row>
 		<row><td>INSTALLDIR</td><td>MaterialDesignThemes.Wpf.dll</td></row>
 		<row><td>INSTALLDIR</td><td>System.Windows.Controls.DataVisualization.Toolkit.dll</td></row>
@@ -1091,6 +1092,7 @@
 		<row><td>ISSelfRegisterCosting</td><td>1</td><td>ISSELFREG.DLL</td><td>ISSelfRegisterCosting</td><td/><td/></row>
 		<row><td>ISSelfRegisterFiles</td><td>3073</td><td>ISSELFREG.DLL</td><td>ISSelfRegisterFiles</td><td/><td/></row>
 		<row><td>ISSelfRegisterFinalize</td><td>1</td><td>ISSELFREG.DLL</td><td>ISSelfRegisterFinalize</td><td/><td/></row>
+		<row><td>ISSetAllUsers</td><td>257</td><td>SetAllUsers.dll</td><td>SetAllUsers</td><td/><td/></row>
 		<row><td>ISUnSelfRegisterFiles</td><td>3073</td><td>ISSELFREG.DLL</td><td>ISUnSelfRegisterFiles</td><td/><td/></row>
 		<row><td>LaunchProgramFileFromSetupCompleteSuccess</td><td>1</td><td>NewBinary19</td><td>LaunchProgram</td><td/><td/></row>
 		<row><td>SetARPINSTALLLOCATION</td><td>51</td><td>ARPINSTALLLOCATION</td><td>[INSTALLDIR]</td><td/><td/></row>
@@ -1198,6 +1200,7 @@
 		<row><td>WindowsFolder</td><td>TARGETDIR</td><td>.:Windows</td><td/><td>0</td><td/></row>
 		<row><td>WindowsVolume</td><td>TARGETDIR</td><td>.:WinRoot</td><td/><td>0</td><td/></row>
 		<row><td>englis_1_englisg_center_managerment_system</td><td>uit</td><td>ENGLIS~1|Englisg Center Managerment System</td><td/><td>1</td><td/></row>
+		<row><td>englis_1_english_center_managerment_system</td><td>uit</td><td>ENGLIS~1|English Center Managerment System</td><td/><td>1</td><td/></row>
 		<row><td>uit</td><td>ProgramMenuFolder</td><td>UIT</td><td/><td>1</td><td/></row>
 	</table>
 
@@ -1894,9 +1897,9 @@
 		<row><td>AlwaysInstall</td><td>DTO.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DataAccessTier.dll</td></row>
 		<row><td>AlwaysInstall</td><td>EnglishCenter.exe</td></row>
-		<row><td>AlwaysInstall</td><td>EnglishCenter.vshost.exe</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT1</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT2</td></row>
 		<row><td>AlwaysInstall</td><td>MaterialDesignColors.dll</td></row>
 		<row><td>AlwaysInstall</td><td>MaterialDesignThemes.Wpf.dll</td></row>
 		<row><td>AlwaysInstall</td><td>System.Windows.Controls.DataVisualization.Toolkit.dll</td></row>
@@ -1919,17 +1922,11 @@
 		<col def="S72">ISComponentSubFolder_</col>
 		<row><td>app.config</td><td>ISX_DEFAULTCOMPONENT</td><td>APP~1.CON|App.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\App.config</td><td>1</td><td/></row>
 		<row><td>businesslogictier.dll</td><td>BusinessLogicTier.dll</td><td>BUSINE~1.DLL|BusinessLogicTier.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\BusinessLogicTier.dll</td><td>1</td><td/></row>
-		<row><td>businesslogictier.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>BUSINE~1.PDB|BusinessLogicTier.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\BusinessLogicTier.pdb</td><td>1</td><td/></row>
 		<row><td>dataaccesstier.dll</td><td>DataAccessTier.dll</td><td>DATAAC~1.DLL|DataAccessTier.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\DataAccessTier.dll</td><td>1</td><td/></row>
-		<row><td>dataaccesstier.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>DATAAC~1.PDB|DataAccessTier.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\DataAccessTier.pdb</td><td>1</td><td/></row>
 		<row><td>dto.dll</td><td>DTO.dll</td><td>DTO.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\DTO.dll</td><td>1</td><td/></row>
-		<row><td>dto.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>DTO.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\DTO.pdb</td><td>1</td><td/></row>
 		<row><td>englishcenter.exe</td><td>EnglishCenter.exe</td><td>ENGLIS~1.EXE|EnglishCenter.exe</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\EnglishCenter.exe</td><td>1</td><td/></row>
-		<row><td>englishcenter.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>ENGLIS~1.CON|EnglishCenter.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\EnglishCenter.exe.config</td><td>1</td><td/></row>
-		<row><td>englishcenter.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>ENGLIS~1.PDB|EnglishCenter.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\EnglishCenter.pdb</td><td>1</td><td/></row>
-		<row><td>englishcenter.vshost.exe</td><td>EnglishCenter.vshost.exe</td><td>ENGLIS~1.EXE|EnglishCenter.vshost.exe</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\EnglishCenter.vshost.exe</td><td>1</td><td/></row>
-		<row><td>englishcenter.vshost.exe.con</td><td>ISX_DEFAULTCOMPONENT</td><td>ENGLIS~1.CON|EnglishCenter.vshost.exe.Config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\EnglishCenter.vshost.exe.Config</td><td>1</td><td/></row>
-		<row><td>englishcenter.vshost.exe.man</td><td>ISX_DEFAULTCOMPONENT</td><td>ENGLIS~1.MAN|EnglishCenter.vshost.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\EnglishCenter.vshost.exe.manifest</td><td>1</td><td/></row>
+		<row><td>englishcenter.exe.config</td><td>ISX_DEFAULTCOMPONENT2</td><td>ENGLIS~1.CON|EnglishCenter.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\EnglishCenter.exe.config</td><td>1</td><td/></row>
+		<row><td>englishcenter.exe.config1</td><td>ISX_DEFAULTCOMPONENT</td><td>ENGLIS~1.CON|EnglishCenter.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\EnglishCenter.exe.config</td><td>1</td><td/></row>
 		<row><td>materialdesigncolors.dll</td><td>MaterialDesignColors.dll</td><td>MATERI~1.DLL|MaterialDesignColors.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\MaterialDesignColors.dll</td><td>1</td><td/></row>
 		<row><td>materialdesignthemes.wpf.dll</td><td>MaterialDesignThemes.Wpf.dll</td><td>MATERI~1.DLL|MaterialDesignThemes.Wpf.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\MaterialDesignThemes.Wpf.dll</td><td>1</td><td/></row>
 		<row><td>ql_anhngu.bak</td><td>ISX_DEFAULTCOMPONENT1</td><td>QL_ANH~1.BAK|QL_ANHNGU.bak</td><td>0</td><td/><td/><td/><td>1</td><td>D:\GitHub\EnglishCenter\QL_ANHNGU.bak</td><td>1</td><td/></row>
@@ -1952,6 +1949,7 @@
 	<table name="ISAssistantTag">
 		<col key="yes" def="s72">Tag</col>
 		<col def="S255">Data</col>
+		<row><td>PROJECT_ASSISTANT_DEFAULT_FEATURE</td><td>AlwaysInstall</td></row>
 	</table>
 
 	<table name="ISBillBoard">
@@ -2078,19 +2076,19 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
-		<row><td>BusinessLogicTier.dll</td><td/><td/><td>_99872072_D7F7_471E_B546_24C0D26718DB_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DTO.dll</td><td/><td/><td>_063745A9_5618_4996_BD28_F0F782EA23EB_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DataAccessTier.dll</td><td/><td/><td>_282F08E7_7C10_4BA9_AE93_0B2FABEFF842_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>EnglishCenter.exe</td><td/><td/><td>_B192C16C_3F17_4D83_A550_39EC0C7D6AE3_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>EnglishCenter.vshost.exe</td><td/><td/><td>_30CB8157_6B12_41B3_9166_F5C338409F4D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>BusinessLogicTier.dll</td><td/><td/><td>_C142665F_89B6_4597_81D9_CDF23D8F034A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DTO.dll</td><td/><td/><td>_0D6F055F_0600_4F8F_9A3C_9ADDE14C1157_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>DataAccessTier.dll</td><td/><td/><td>_63BA6A2C_C871_4FA0_8D35_29103FBF7F12_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EnglishCenter.exe</td><td/><td/><td>_32637FB8_F423_45B6_B628_A862860CC689_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_EF9326C4_3CD5_47B9_A328_EE3A32FE1EFD_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_66DACE81_52F5_4C73_AD57_73DDDB6C108A_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>MaterialDesignColors.dll</td><td/><td/><td>_442E8FA7_4C42_426C_9F42_611B34997A7C_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>MaterialDesignThemes.Wpf.dll</td><td/><td/><td>_8D690731_A030_4BF8_B800_31567D578006_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>System.Windows.Controls.DataVisualization.Toolkit.dll</td><td/><td/><td>_CA35B2EF_146D_4B38_9705_03D91EA8E216_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>System.Windows.Controls.Input.Toolkit.dll</td><td/><td/><td>_467E19A8_31B9_4E6F_8DA5_9A46224947AC_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>System.Windows.Controls.Layout.Toolkit.dll</td><td/><td/><td>_E4684A3A_4697_4B61_93AF_C9E39CF2F7B8_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>WPFToolkit.dll</td><td/><td/><td>_4B0C3626_E231_4E2D_8F19_C10A4EB4055D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT2</td><td/><td/><td>_9460DC16_3318_4779_BB3C_79F8DFFDFB3A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>MaterialDesignColors.dll</td><td/><td/><td>_AF499D7F_097F_4B6A_8F39_8ADDCFFBE154_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>MaterialDesignThemes.Wpf.dll</td><td/><td/><td>_FFB333C9_CBC0_483C_A7EF_F92D8E394619_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>System.Windows.Controls.DataVisualization.Toolkit.dll</td><td/><td/><td>_B5BC589C_0D1E_4CEF_A8CE_4B5F8661766B_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>System.Windows.Controls.Input.Toolkit.dll</td><td/><td/><td>_045AA4FB_B4E3_407B_A00E_F776A0F7EFEE_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>System.Windows.Controls.Layout.Toolkit.dll</td><td/><td/><td>_FD1C6803_8515_4917_90A2_8E002AFFE8C2_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>WPFToolkit.dll</td><td/><td/><td>_B19ADA71_FD18_4AFF_9692_DD5C9837AC7C_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2678,7 +2676,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>UIT</td><td>0</td><td/><td>-1960560348</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>UIT</td><td>0</td><td/><td>195344151</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>-1960570495</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>-1960570495</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1033</td><td>The operating system is not adequate for running [ProductName].</td><td>0</td><td/><td>-1960570495</td></row>
@@ -3491,7 +3489,17 @@
 		<row><td>IDS_SETUPEXE_EXPIRE_MSG</td><td>1033</td><td>This setup works until %s. The setup will now exit.</td><td>0</td><td/><td>-1960570495</td></row>
 		<row><td>IDS_SETUPEXE_LAUNCH_COND_E</td><td>1033</td><td>This setup was built with an evaluation version of InstallShield and can only be launched from setup.exe.</td><td>0</td><td/><td>-1960570495</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>Englisg Center Managerment Systerm</td><td>0</td><td/><td>-1960539580</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME10</td><td>1033</td><td>LAUNCH~1.EXE|Launch EnglishCenter.exe</td><td>0</td><td/><td>195342571</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME11</td><td>1033</td><td>LAUNCH~1.EXE|Launch EnglishCenter.vshost.exe</td><td>0</td><td/><td>195342571</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME12</td><td>1033</td><td>New Age English</td><td>0</td><td/><td>195335798</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>LAUNCH~1.EXE|Launch EnglishCenter.vshost.exe</td><td>0</td><td/><td>-1960537564</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME3</td><td>1033</td><td>LAUNCH~1.EXE|Launch EnglishCenter.exe</td><td>0</td><td/><td>-349958358</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME4</td><td>1033</td><td>EnglishCenter</td><td>0</td><td/><td>-349959925</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME5</td><td>1033</td><td>LAUNCH~1.EXE|Launch EnglishCenter.vshost.exe</td><td>0</td><td/><td>195298506</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME6</td><td>1033</td><td>LAUNCH~1.EXE|Launch EnglishCenter.exe</td><td>0</td><td/><td>195313290</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME7</td><td>1033</td><td>LAUNCH~1.EXE|Launch EnglishCenter.vshost.exe</td><td>0</td><td/><td>195313290</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME8</td><td>1033</td><td>LAUNCH~1.EXE|Launch EnglishCenter.exe</td><td>0</td><td/><td>195307274</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME9</td><td>1033</td><td>LAUNCH~1.EXE|Launch EnglishCenter.vshost.exe</td><td>0</td><td/><td>195307274</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>-1960570495</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>-1960570495</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>-1960570495</td></row>
@@ -3781,9 +3789,10 @@
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>-1960570495</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>-1960570495</td></row>
 		<row><td>ID_STRING1</td><td>1033</td><td/><td>0</td><td/><td>-1960568447</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>http://www.UIT.com</td><td>0</td><td/><td>-1960560348</td></row>
-		<row><td>ID_STRING3</td><td>1033</td><td>UIT</td><td>0</td><td/><td>-1960560348</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>http://www.UIT.com</td><td>0</td><td/><td>195344151</td></row>
+		<row><td>ID_STRING3</td><td>1033</td><td>UIT</td><td>0</td><td/><td>195344151</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>LAUNCH~1.EXE|Launch EnglishCenter.exe</td><td>0</td><td/><td>-1960517084</td></row>
+		<row><td>ID_STRING5</td><td>1033</td><td>New Age English</td><td>0</td><td/><td>195341942</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>-1960570495</td></row>
 	</table>
 
@@ -3897,10 +3906,19 @@
 		<col def="V0">Data</col>
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
-		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\setupicon.ico</td><td>0</td></row>
+		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProjectFolder&gt;\ic_apple.ico</td><td>0</td></row>
 		<row><td>EnglishCenter.exe1_360A6BD96D1948A4B9DF600FDFE3F266.exe</td><td/><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\EnglishCenter.exe</td><td>0</td></row>
+		<row><td>EnglishCenter.exe1_9CDFD9BC79C84448B45B15648834AA70.exe</td><td/><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\EnglishCenter.exe</td><td>0</td></row>
+		<row><td>EnglishCenter.exe_00E6838E55B6415A871DC8A7EF99C2A1.exe</td><td/><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\EnglishCenter.exe</td><td>0</td></row>
+		<row><td>EnglishCenter.exe_1300E12C21A04BEF8F2407E7B456D4B3.exe</td><td/><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\EnglishCenter.exe</td><td>0</td></row>
+		<row><td>EnglishCenter.exe_2469FA0A2A4C4787A5666DF48AC313D3.exe</td><td/><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Release\EnglishCenter.exe</td><td>0</td></row>
 		<row><td>EnglishCenter.exe_E5E91060FA3645849017436F199A9C72.exe</td><td/><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Debug\EnglishCenter.exe</td><td>0</td></row>
+		<row><td>EnglishCenter.exe_E94A36E0834F42D79917E3ACE88DAB8D.exe</td><td/><td>D:\GitHub\EnglishCenter\EnglishCenter\bin\Release\EnglishCenter.exe</td><td>0</td></row>
 		<row><td>EnglishCenter.vsho_1030FBC7BBC441DF92F2527D919AB6A8.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>EnglishCenter.vsho_790EAB2C991348F398FD9995028A2679.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>EnglishCenter.vsho_7CA313EC2C0C42C3B951909C14649847.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>EnglishCenter.vsho_F4504ABF2805421EB3D1BC51C2F3C16C.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
+		<row><td>EnglishCenter.vsho_F4744506FC064255AA82D87A3AF199D7.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 	</table>
 
 	<table name="IniFile">
@@ -3946,6 +3964,7 @@
 		<row><td>ISSelfRegisterCosting</td><td/><td>2201</td><td/><td/></row>
 		<row><td>ISSelfRegisterFiles</td><td/><td>5601</td><td/><td/></row>
 		<row><td>ISSelfRegisterFinalize</td><td/><td>6601</td><td/><td/></row>
+		<row><td>ISSetAllUsers</td><td>Not Installed</td><td>10</td><td/><td/></row>
 		<row><td>ISUnSelfRegisterFiles</td><td/><td>2202</td><td/><td/></row>
 		<row><td>InstallFiles</td><td/><td>4000</td><td>InstallFiles</td><td/></row>
 		<row><td>InstallFinalize</td><td/><td>6600</td><td>InstallFinalize</td><td/></row>
@@ -3977,7 +3996,7 @@
 		<row><td>RegisterUser</td><td/><td>6000</td><td>RegisterUser</td><td/></row>
 		<row><td>RemoveDuplicateFiles</td><td/><td>3400</td><td>RemoveDuplicateFiles</td><td/></row>
 		<row><td>RemoveEnvironmentStrings</td><td/><td>3300</td><td>RemoveEnvironmentStrings</td><td/></row>
-		<row><td>RemoveExistingProducts</td><td/><td>1410</td><td>RemoveExistingProducts</td><td/></row>
+		<row><td>RemoveExistingProducts</td><td/><td>6601</td><td>RemoveExistingProducts</td><td/></row>
 		<row><td>RemoveFiles</td><td/><td>3500</td><td>RemoveFiles</td><td/></row>
 		<row><td>RemoveFolders</td><td/><td>3600</td><td>RemoveFolders</td><td/></row>
 		<row><td>RemoveIniValues</td><td/><td>3100</td><td>RemoveIniValues</td><td/></row>
@@ -4033,7 +4052,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{47B22328-2479-43B4-832B-C368524B1256}</td></row>
 		<row><td>ISUSSignature</td><td>{43B83075-10F6-497D-B7E8-69BE8176768C}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewISToday</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewISToday,viewUpgradePaths,viewProject</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4063,6 +4082,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>FileCost</td><td/><td>900</td><td>FileCost</td><td/></row>
 		<row><td>FindRelatedProducts</td><td/><td>430</td><td>FindRelatedProducts</td><td/></row>
 		<row><td>ISPreventDowngrade</td><td>ISFOUNDNEWERPRODUCTVERSION</td><td>450</td><td>ISPreventDowngrade</td><td/></row>
+		<row><td>ISSetAllUsers</td><td>Not Installed</td><td>10</td><td/><td/></row>
 		<row><td>InstallWelcome</td><td>Not Installed</td><td>1210</td><td>InstallWelcome</td><td/></row>
 		<row><td>IsolateComponents</td><td/><td>950</td><td>IsolateComponents</td><td/></row>
 		<row><td>LaunchConditions</td><td>Not Installed</td><td>410</td><td>LaunchConditions</td><td/></row>
@@ -4408,7 +4428,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[INSTALLDIR]EnglishCenter.exe</td><td/></row>
-		<row><td>ProductCode</td><td>{B19516A3-3FBC-49C5-90F6-9048CB90DE7B}</td><td/></row>
+		<row><td>ProductCode</td><td>{D8EA4C92-63DA-42B4-8B78-2DAECC4B7F5F}</td><td/></row>
 		<row><td>ProductName</td><td>English Center Managerment System</td><td/></row>
 		<row><td>ProductVersion</td><td>1.0</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
@@ -4423,7 +4443,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>SERIALNUMBER</td><td/><td/></row>
 		<row><td>SERIALNUMVALSUCCESSRETVAL</td><td>1</td><td/></row>
 		<row><td>SHOWLAUNCHPROGRAM</td><td>-1</td><td/></row>
-		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR</td><td/></row>
+		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;ISACTIONPROP3</td><td/></row>
 		<row><td>SelectedSetupType</td><td>##IDS__DisplayName_Typical##</td><td/></row>
 		<row><td>SetupType</td><td>Typical</td><td/></row>
 		<row><td>UpgradeCode</td><td>{D9FAC896-BD1F-49E7-932C-A160B194BF8E}</td><td/></row>
@@ -4486,10 +4506,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="L255">FileName</col>
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
-		<row><td>EnglishCenter.exe</td><td>EnglishCenter.exe</td><td/><td>englis_1_englisg_center_managerment_system</td><td>2</td></row>
-		<row><td>EnglishCenter.vshost.exe</td><td>EnglishCenter.vshost.exe</td><td/><td>englis_1_englisg_center_managerment_system</td><td>2</td></row>
-		<row><td>FileKey1</td><td>EnglishCenter.exe</td><td/><td>uit</td><td>2</td></row>
-		<row><td>FileKey2</td><td>EnglishCenter.exe</td><td/><td>englis_1_englisg_center_managerment_system</td><td>2</td></row>
+		<row><td>EnglishCenter.exe</td><td>EnglishCenter.exe</td><td/><td>englis_1_english_center_managerment_system</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -4575,9 +4592,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>EnglishCenter.exe</td><td>englis_1_englisg_center_managerment_system</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>EnglishCenter.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>EnglishCenter.exe_E5E91060FA3645849017436F199A9C72.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>EnglishCenter.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>EnglishCenter.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>EnglishCenter.exe1_360A6BD96D1948A4B9DF600FDFE3F266.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>EnglishCenter.vshost.exe</td><td>englis_1_englisg_center_managerment_system</td><td>##IDS_SHORTCUT_DISPLAY_NAME2##</td><td>EnglishCenter.vshost.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>EnglishCenter.vsho_1030FBC7BBC441DF92F2527D919AB6A8.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>EnglishCenter.exe</td><td>englis_1_english_center_managerment_system</td><td>##IDS_SHORTCUT_DISPLAY_NAME12##</td><td>EnglishCenter.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>EnglishCenter.exe_1300E12C21A04BEF8F2407E7B456D4B3.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>EnglishCenter.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME12##</td><td>EnglishCenter.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>EnglishCenter.exe1_9CDFD9BC79C84448B45B15648834AA70.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">
@@ -4700,6 +4716,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="s72">ActionProperty</col>
 		<col def="S72">ISDisplayName</col>
 		<row><td>{00000000-0000-0000-0000-000000000000}</td><td>***ALL_VERSIONS***</td><td></td><td></td><td>2</td><td/><td>ISFOUNDNEWERPRODUCTVERSION</td><td>ISPreventDowngrade</td></row>
+		<row><td>{D9FAC896-BD1F-49E7-932C-A160B194BF8E}</td><td></td><td>1.0</td><td></td><td>768</td><td/><td>ISACTIONPROP3</td><td>NewUpgradeEntry1</td></row>
 	</table>
 
 	<table name="Verb">

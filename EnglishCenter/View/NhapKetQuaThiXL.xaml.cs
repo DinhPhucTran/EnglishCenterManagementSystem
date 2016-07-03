@@ -23,6 +23,7 @@ namespace EnglishCenter.View
     public partial class NhapKetQuaThiXL : Window
     {
         String mMaThiXL;
+        List<ChiTietThiXepLop> mDanhSachChiTietTXL;
         public NhapKetQuaThiXL()
         {
             InitializeComponent();
@@ -40,15 +41,24 @@ namespace EnglishCenter.View
         private void dsTXL_cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             mMaThiXL = ((ThiXepLop)dsTXL_cb.SelectedItem).MMaThiXL;
-            List<ChiTietThiXepLop> mDanhSachChiTietTXL = new ChiTietThiXepLopBUS().getChiTietTXLByMaTXL(mMaThiXL);
-            listHV_lv.ItemsSource = mDanhSachChiTietTXL;
+            mDanhSachChiTietTXL = new ChiTietThiXepLopBUS().getChiTietTXLByMaTXL(mMaThiXL);
+            List<ChiTietThiXepLop_HocVien> listChiTietTXL_HV = new List<ChiTietThiXepLop_HocVien>();
+            HocVienBUS hocVienBus = new HocVienBUS();
+            foreach (ChiTietThiXepLop ctxl in mDanhSachChiTietTXL)
+            {
+                ChiTietThiXepLop_HocVien ct = new ChiTietThiXepLop_HocVien(ctxl, hocVienBus.selectHocVien(ctxl.MMaHocVien));
+                listChiTietTXL_HV.Add(ct);
+            }
+
+            listHV_lv.ItemsSource = listChiTietTXL_HV;
         }
 
         private void Luu_btn_Click(object sender, RoutedEventArgs e)
         {
             List<ChiTietThiXepLop> temp = new List<ChiTietThiXepLop>();
             ChiTietThiXepLopBUS ctTXL_BUS = new ChiTietThiXepLopBUS();
-            foreach (ChiTietThiXepLop i in listHV_lv.ItemsSource) 
+            //foreach (ChiTietThiXepLop i in listHV_lv.ItemsSource) 
+            foreach (ChiTietThiXepLop i in mDanhSachChiTietTXL) 
             {
                 i.MChuongTrinhDeNghi = ctTXL_BUS.getMaCTHocDeNghi(i.MMaThiXepLop, i.MMaHocVien);
                 temp.Add(i);
@@ -71,6 +81,11 @@ namespace EnglishCenter.View
             {
                 ((TextBox)sender).Text = "0";
             }
+        }
+
+        private void bt_thoat_click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

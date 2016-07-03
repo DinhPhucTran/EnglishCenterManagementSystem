@@ -352,6 +352,7 @@ namespace DataAccessTier
             {
                 connection.Close();
                 System.Console.WriteLine(e.Message);
+                //throw;
             }
             return khoangTG;
         }

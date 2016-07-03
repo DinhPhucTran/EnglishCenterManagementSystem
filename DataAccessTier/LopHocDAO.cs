@@ -319,7 +319,8 @@ namespace DataAccessTier
 
         public LopHoc selectLopHoc(String maLop)
         {
-            List<LopHoc> listLop = new List<LopHoc>();
+            //List<LopHoc> listLop = new List<LopHoc>();
+            LopHoc lop = new LopHoc();
             try
             {
                 if (connection.State != ConnectionState.Open)
@@ -330,25 +331,35 @@ namespace DataAccessTier
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    LopHoc lop = new LopHoc();
-                    lop.MMaLop = maLop;
-                    lop.MMaCTHoc = dt.Rows[i]["MaCTHoc"].ToString();
-                    lop.MMaGiangVien = dt.Rows[i]["MaGV"].ToString();
-                    lop.MMaPhong = dt.Rows[i]["MaPhong"].ToString();
-                    lop.MNgayBatDau = DateTime.Parse(dt.Rows[i]["ThoiGianBD"].ToString());
-                    lop.MNgayKetThuc = DateTime.Parse(dt.Rows[i]["ThoiGianKT"].ToString());
-                    lop.MNgayKhaiGiang = DateTime.Parse(dt.Rows[i]["NgayKhaiGiang"].ToString());
-                    lop.MSoTien = double.Parse(dt.Rows[i]["SoTien"].ToString());
-                    listLop.Add(lop);
-                }
+                //for (int i = 0; i < dt.Rows.Count; i++)
+                //{
+                //    LopHoc lop = new LopHoc();
+                //    lop.MMaLop = maLop;
+                //    lop.MMaCTHoc = dt.Rows[i]["MaCTHoc"].ToString();
+                //    lop.MMaGiangVien = dt.Rows[i]["MaGV"].ToString();
+                //    lop.MMaPhong = dt.Rows[i]["MaPhong"].ToString();
+                //    lop.MNgayBatDau = DateTime.Parse(dt.Rows[i]["ThoiGianBD"].ToString());
+                //    lop.MNgayKetThuc = DateTime.Parse(dt.Rows[i]["ThoiGianKT"].ToString());
+                //    lop.MNgayKhaiGiang = DateTime.Parse(dt.Rows[i]["NgayKhaiGiang"].ToString());
+                //    lop.MSoTien = double.Parse(dt.Rows[i]["SoTien"].ToString());
+                //    listLop.Add(lop);
+                //}
+                lop.MMaLop = maLop;
+                lop.MMaCTHoc = dt.Rows[0]["MaCTHoc"].ToString();
+                lop.MMaGiangVien = dt.Rows[0]["MaGV"].ToString();
+                lop.MMaPhong = dt.Rows[0]["MaPhong"].ToString();
+                lop.MNgayBatDau = DateTime.Parse(dt.Rows[0]["ThoiGianBD"].ToString());
+                lop.MNgayKetThuc = DateTime.Parse(dt.Rows[0]["ThoiGianKT"].ToString());
+                lop.MNgayKhaiGiang = DateTime.Parse(dt.Rows[0]["NgayKhaiGiang"].ToString());
+                lop.MSoTien = double.Parse(dt.Rows[0]["SoTien"].ToString());
+                connection.Close();
             }
             catch (Exception)
             {
                 connection.Close();
             }
-            return listLop[0];
+            //return listLop[0];
+            return lop;
         }
 
         public List<LopHoc_ThoiGianDTO> getListLopHocByDay(String maThu, DateTime ngayThi)

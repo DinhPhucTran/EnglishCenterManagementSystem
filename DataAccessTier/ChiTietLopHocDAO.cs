@@ -69,5 +69,34 @@ namespace DataAccessTier
             }
             return result;
         }
+
+        public ChiTietLopHoc selectChiTietLopHocByMaHV(String maHV)
+        {
+            ChiTietLopHoc ctl = new ChiTietLopHoc();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+                SqlCommand cmd = new SqlCommand("CHI_TIET_LOP_HOC_SELECT_BY_MAHV", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaHV", maHV);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                ctl.MMaLopHoc = maHV;
+                ctl.MMaHocVien = dt.Rows[0]["MaHV"].ToString();
+                ctl.MTinhTrangDongHocPhi = Int32.Parse(dt.Rows[0]["TinhTrangDongHP"].ToString());
+                ctl.MKetQuaThi = float.Parse(dt.Rows[0]["KetQuaThi"].ToString());
+                ctl.MSoTienNo = Double.Parse(dt.Rows[0]["SoTienNo"].ToString());
+                    
+                connection.Close();
+            }
+            catch (Exception)
+            {
+                connection.Close();
+            }
+            return ctl;
+        }
     }
 }

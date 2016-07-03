@@ -39,6 +39,7 @@ namespace EnglishCenter.View
             mListPhong = mPhongBUS.getListPhong();
             cb_deThi.ItemsSource = new DeThiBUS().getListDeThi();
             cb_deThi.SelectedIndex = 0;
+            dp_ngayThi.DisplayDateStart = DateTime.Today;
         }
 
         private void Button_Huy_Click(object sender, RoutedEventArgs e)

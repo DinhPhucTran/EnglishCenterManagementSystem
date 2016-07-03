@@ -1,33 +1,70 @@
 ﻿<Window x:Class="EnglishCenter.View.KetQuaThiXepLop"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="KetQuaThiXepLop" Height="750" Width="1300">
+        Title="New Age English" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen" Icon="/Resources/ic_apple.png"
+        Background="#F8F8F8">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="0"/>
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Kết quả thi xếp lớp" Foreground="Black" Margin="10 0 0 5" VerticalAlignment="Bottom"/>
+        <Grid.Resources>
+            <Style TargetType="ListViewItem">
+                <Style.Triggers>
+                    <Trigger Property="ItemsControl.AlternationIndex"  Value="0">
+                        <Setter Property="Background" Value="LightBlue" />
+                    </Trigger>
+                    <Trigger Property="ItemsControl.AlternationIndex"  Value="1">
+                        <Setter Property="Background" Value="White" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
 
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="#00C0EF">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <ListView Name="lv_ketQua" Background="White" BorderThickness="0" Grid.Row="2" Grid.Column="0" Width="1300">
-            <ListView.ItemTemplate>
+            <Image Source="/EnglishCenter;component/Resources/marking_white.png" Margin="10"/>
+            <TextBlock Grid.Column="1" Text="Kết quả thi xếp lớp" FontSize="30" Foreground="White" VerticalAlignment="Center"/>
+        </Grid>
+        <ListView Name="lv_ketQua" Background="White" Grid.Row="2" Grid.Column="0" Margin="10" AlternationCount="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Tên học viên" DisplayMemberBinding="{Binding MTenHV}"/>
+                    <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding MNgaySinh, StringFormat=dd/MM/yyyy}"/>
+                    <GridViewColumn Header="Phái" Width="50" DisplayMemberBinding="{Binding MGioiTinh}"/>
+                    <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding MSdt}"/>
+                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding MEmail}"/>
+                    <GridViewColumn Header="Chương trình đã học" Width="120" DisplayMemberBinding="{Binding MMaCTDaHoc}"/>
+                    <GridViewColumn Header="Chương trình muốn học" Width="140" DisplayMemberBinding="{Binding MMaCTMuonHoc}"/>
+                    <GridViewColumn Header="Kết quả" Width="50" DisplayMemberBinding="{Binding MKetQua}"/>
+                    <GridViewColumn Header="Chương trình đề nghị" Width="130" DisplayMemberBinding="{Binding MChuongTrinhDeNghi}"/>
+                    <GridViewColumn Header="Lớp đề nghị" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox Name="cb_lopDeNghi" ItemsSource ="{Binding MMaLopDeNghi}" SelectionChanged="cb_lopDeNghi_SelectionChanged" SelectedIndex="0"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <!--<ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Background="#FFE7ECF1" Margin="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="250"/>
-                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="80"/>
                             <ColumnDefinition Width="50"/>
                             <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="75"/>
-                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="50"/>
                             <ColumnDefinition Width="50"/>
                             <ColumnDefinition Width="150"/>
                             <ColumnDefinition Width="150"/>
@@ -50,10 +87,10 @@
                         <ComboBox Grid.Row="0" Grid.Column="9"  Margin="5,0,10,2" Name="cb_lopDeNghi" ItemsSource ="{Binding MMaLopDeNghi}" SelectionChanged="cb_lopDeNghi_SelectionChanged" SelectedIndex="0"/>
                     </Grid>
                 </DataTemplate>
-            </ListView.ItemTemplate>
+            </ListView.ItemTemplate>-->
         </ListView>
 
-        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+        <Grid Grid.Row="3">
             <Button Content="Thoát" HorizontalAlignment="Right" Margin="10,0,20,5" Click="Button_Click_Thoat"/>
             <Button Content="Lưu" HorizontalAlignment="Right" Margin="10,0,110,5" Click="Button_Click_Luu"/>
         </Grid>

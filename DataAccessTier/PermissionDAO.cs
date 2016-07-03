@@ -68,5 +68,31 @@ namespace DataAccessTier
             }
             return result;
         }
+
+        public Permission selectPermissionById(String id)
+        {
+            Permission result = new Permission();
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                SqlCommand cmd = new SqlCommand("PERMISSION_SELECT", connection);
+                cmd.Parameters.AddWithValue("@ID", id);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                result.MIdPermission = id;
+                result.MNamePermision = dt.Rows[0]["mNamePermission"].ToString();
+            }
+            catch (Exception e)
+            {
+                connection.Close();
+                System.Console.WriteLine(e.Message);
+            }
+            return result;
+        }
     }
 }

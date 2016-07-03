@@ -21,11 +21,13 @@ namespace EnglishCenter.View
     /// </summary>
     public partial class PhieuThuHocPhi1HV : Window
     {
+        public delegate void DataChangedEventHandler(object sender, EventArgs e);
+        public event DataChangedEventHandler DataChanged;
+
         public PhieuThuHocPhi1HV()
         {
             InitializeComponent();
             tb_Date.Text = DateTime.Now.ToShortDateString();
-            
         }
 
         public String MaHocVien { get; set; }
@@ -83,8 +85,18 @@ namespace EnglishCenter.View
             if (result == true)
             {
                 bool result1 = new PhieuThuHocPhiBUS().updateSoTienNo(phieu.MMaHocVien, phieu.MMaLopHoc, phieu.MSoTienDong);
+                tb_soTienNo.Text = new ChiTietLopHocBUS().selectChiTietLopHocByMaHV(phieu.MMaHocVien).MSoTienNo.ToString();
+                tb_soTien.Text = "";
                 if (result1 == true)
-                    MessageBox.Show("Thành Công!");
+                {
+                    MessageBox.Show("Đã lưu.");
+                    //Notify changes
+                    DataChangedEventHandler handler = DataChanged;
+                    if (handler != null)
+                    {
+                        handler(this, new EventArgs());
+                    }
+                }
                 else
                 {
                     MessageBox.Show("Không thể lưu dữ liệu, vui lòng thử lại sau. Lổi cập nhật số tiền nợ");

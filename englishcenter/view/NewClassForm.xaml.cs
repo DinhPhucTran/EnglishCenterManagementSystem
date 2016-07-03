@@ -55,6 +55,7 @@ namespace EnglishCenter.View
             cb_phong.SelectedIndex = 0;
 
             createThoiGianHoc();
+            dp_ngayBD.SelectedDate = DateTime.Today;
         }
 
         public NewClassForm(LopHoc lop)
@@ -150,7 +151,7 @@ namespace EnglishCenter.View
                         {
                             if (selectedThoiGianHoc[i].kiemTraTrungThoiGian(lpThoiGianHoc[j]) == true)
                             {
-                                MessageBox.Show("Thời gian đả chọn trùng với thời gian của lớp: " + lp.MMaLop + " - phong: " + lp.MMaPhong);
+                                MessageBox.Show("Thời gian đã chọn trùng thời gian với lớp: " + lp.MMaLop + " - phòng: " + lp.MMaPhong);
                                 return;
                             }
                         }
@@ -161,7 +162,7 @@ namespace EnglishCenter.View
             bool result = new LopHocBUS().themLopHoc(lopHoc);
             if (!result)
             {
-                MessageBox.Show("failed for unknown reason");
+                MessageBox.Show("Đã có lỗi xảy ra, vui lòng thử lại sau.");
                 return;
             }
             else
@@ -170,7 +171,7 @@ namespace EnglishCenter.View
                 {
                     mTghBUS.xoaThoiGianHocCuaLop(lopHoc.MMaLop);
                     new LopHocBUS().xoaLopHoc(lopHoc.MMaLop);
-                    MessageBox.Show("Lổi trong quá trình thêm Thời gian học vào database");
+                    MessageBox.Show("Không thể thêm thời gian học, vui lòng thử lại sau.");
                     return;
                 }
                 MessageBox.Show("Thêm thành công!");
@@ -228,7 +229,16 @@ namespace EnglishCenter.View
 
         private void createThoiGianHoc()
         {
-            List<Thu> listThu = mThuBUS.getAllThu();
+            //List<Thu> listThu = mThuBUS.getAllThu();
+            List<Thu> listThu = new List<Thu>();
+            listThu.Add(new Thu("Monday", "Thứ Hai"));
+            listThu.Add(new Thu("Tuesday", "Thứ Ba"));
+            listThu.Add(new Thu("Wednesday", "Thứ Tư"));
+            listThu.Add(new Thu("Thursday", "Thứ Năm"));
+            listThu.Add(new Thu("Friday", "Thứ Sáu"));
+            listThu.Add(new Thu("Saturday", "Thứ Bảy"));
+            listThu.Add(new Thu("Sunday", "Chủ Nhật"));
+
             List<Ca> listCa = mCaBUS.getAllCa();
             //ThoiGianHoc_Grid.ShowGridLines = true;
             #region ThoiGianRanh_GUI

@@ -23,11 +23,31 @@ namespace EnglishCenter.View
     public partial class LoginWindow : Window
     {
         public MainWindow mainWindow;
+        private UserBUS mUserBus;
         public LoginWindow()
-        {
-            mainWindow = new MainWindow();
-            InitializeComponent();
+        {            
             
+            mUserBus = new UserBUS();             
+            checkConnection();                         
+        }
+
+        //Kiểm tra kết nối đến database
+        private void checkConnection()
+        {
+            if (!mUserBus.isConnectionOpen())
+            {
+                //Nếu có lỗi xảy ra thì hiện cửa sổ thông báo
+                LoginError error = new LoginError();
+                error.Show();
+                this.Close();
+            }
+            else
+            {
+                //Hiển cửa sổ làm việc chính
+                mainWindow = new MainWindow();
+                InitializeComponent();
+                tbUsername.Focus();
+            }
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -66,6 +86,7 @@ namespace EnglishCenter.View
             }
         }
 
+        //Kiểm tra user, chỉ hiện những control được phép truy cập
         private void login_Click(object sender, RoutedEventArgs e)
         {
             if (tbUsername.Text == "")
@@ -79,10 +100,10 @@ namespace EnglishCenter.View
                 return;
             }
             User user = new User(tbUsername.Text, tbPass.Password, "");
-            if (new UserBUS().checkUser(user)) 
+            if (mUserBus.checkUser(user))
             {
                 //lay permission theo user
-                String permission = new UserBUS().getPermissionByUser(user);
+                String permission = mUserBus.getPermissionByUser(user);
                 user.MPermission = permission;
                 //lay danh sach tab theo permission
                 List<String> listNameTab = new DetailPermissionBUS().getListTabByPermission(permission);
@@ -95,22 +116,23 @@ namespace EnglishCenter.View
                     {
                         btn.Visibility = Visibility.Hidden;
                     }
-                    TabItem tab = listTab.Find(m =>  m.Name == listNameTab[i]);
+                    TabItem tab = listTab.Find(m => m.Name == listNameTab[i]);
                     if (tab != null)
                     {
                         tab.Visibility = Visibility.Collapsed;
                     }
                 }
-                User u = new UserBUS().selectUserByUsername(tbUsername.Text);
+                User u = mUserBus.selectUserByUsername(tbUsername.Text);
                 mainWindow.User = u;
                 mainWindow.Show();
                 this.Close();
-            }                
+            }
             else
-                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng");
+                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             
         }
 
+        //Ấn Enter thay vì click button Đăng nhập
         private void tb_username_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)

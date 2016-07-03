@@ -43,6 +43,7 @@
     <Compile Include="ChiTietLopHoc.cs" />
     <Compile Include="ChiTietLopHoc_TenHV.cs" />
     <Compile Include="ChiTietThiXepLop.cs" />
+    <Compile Include="ChiTietThiXepLop_HocVien.cs" />
     <Compile Include="ChuongTrinhHoc.cs" />
     <Compile Include="ChuongTrinhHoc_SoHV.cs" />
     <Compile Include="DetailPermission.cs" />

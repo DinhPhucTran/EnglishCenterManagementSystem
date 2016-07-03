@@ -11,6 +11,31 @@ namespace DataAccessTier
 {
     public class UserDAO: DBConnection
     {
+        public bool isConnectionOpen()
+        {
+            bool result;
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                    result = true;
+                }
+                else
+                {
+                    result = true;
+                }
+            }
+            catch (Exception)
+            {
+                result = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return result;
+        }
         public bool addUser(User user)
         {
             bool result = false;
@@ -48,7 +73,7 @@ namespace DataAccessTier
                 }
                 SqlCommand cmd = new SqlCommand("USER_CHECK_USERNAME", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@mUsename", username);
+                cmd.Parameters.AddWithValue("@mUserName", username);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);

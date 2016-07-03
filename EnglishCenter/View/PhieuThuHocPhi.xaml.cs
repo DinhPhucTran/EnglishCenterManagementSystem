@@ -26,6 +26,7 @@ namespace EnglishCenter.View
         private HocVienBUS mHocVienBus;
         public delegate void DataChangedEventHandler(object sender, EventArgs e);
         public event DataChangedEventHandler DataChanged;
+
         public PhieuThuHocPhi()
         {
             mHocVienBus = new HocVienBUS();

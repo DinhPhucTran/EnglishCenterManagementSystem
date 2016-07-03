@@ -27,5 +27,10 @@ namespace DTO
             get { return lopHoc; }
             set { lopHoc = value; }
         }
+
+        public string TenHocVien
+        {
+            get { return hocVien.MTenHocVien.Split(' ').Last(); }
+        }
     }
 }

@@ -40,12 +40,12 @@ namespace DTO
             get { return mLop.MNgayBatDau.ToShortDateString(); }
         }
 
-        public String StringNgayKT
+        public string StringNgayKT
         {
             get { return mLop.MNgayKetThuc.ToShortDateString(); }
         }
 
-        public String StringNgayKhaiGiang
+        public string StringNgayKhaiGiang
         {
             get { return mLop.MNgayKhaiGiang.ToShortDateString(); }
         }

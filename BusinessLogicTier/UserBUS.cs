@@ -48,5 +48,15 @@ namespace BusinessLogicTier
         {
             return new UserDAO().updatePassword(username, pass);
         }
+
+        public bool isConnectionOpen()
+        {
+            return new UserDAO().isConnectionOpen();
+        }
+
+        public void setConnectionString(String conStr)
+        {
+            
+        }
     }
 }

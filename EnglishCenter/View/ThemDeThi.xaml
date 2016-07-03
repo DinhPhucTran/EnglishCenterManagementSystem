@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:EnglishCenter.View"
         mc:Ignorable="d"
         Title="ThemDeThi" Height="270" Width="350"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Icon="/Resources/ic_apple.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>

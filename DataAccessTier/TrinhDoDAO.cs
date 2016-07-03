@@ -60,10 +60,11 @@ namespace DataAccessTier
                 }
                 connection.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 connection.Close();
-                throw;
+                //throw;
+                System.Console.WriteLine(ex.ToString());
             }
             return result;
         }

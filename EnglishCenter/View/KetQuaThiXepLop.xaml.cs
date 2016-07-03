@@ -27,17 +27,23 @@ namespace EnglishCenter.View
         {
             mBUS =  new KetQuaThiXLBUS();
             InitializeComponent();
-            List<DateTime> khoangTG = new ThiXepLopBUS().getKhoangThoiGianLayThiXepLop(DateTime.Now);
-            mList =mBUS.getKetQuaThi(khoangTG[0],khoangTG[1]);
-            lv_ketQua.ItemsSource = mList;
-            foreach (KetQuaThi kqt in mList)
+            try
             {
-                List<string> cb_lopDeNghi = new KetQuaThiXLBUS().getMaLopDeNghiVaMongMuon(kqt.MChuongTrinhDeNghi, kqt.MChuongTrinhMuonHoc, kqt.MNgayThi);
-                
-                kqt.MMaLopDeNghi = cb_lopDeNghi;
-                
+                List<DateTime> khoangTG = new ThiXepLopBUS().getKhoangThoiGianLayThiXepLop(DateTime.Now);
+                mList = mBUS.getKetQuaThi(khoangTG[0], khoangTG[1]);
+                lv_ketQua.ItemsSource = mList;
+                foreach (KetQuaThi kqt in mList)
+                {
+                    List<string> cb_lopDeNghi = new KetQuaThiXLBUS().getMaLopDeNghiVaMongMuon(kqt.MChuongTrinhDeNghi, kqt.MChuongTrinhMuonHoc, kqt.MNgayThi);
+
+                    kqt.MMaLopDeNghi = cb_lopDeNghi;
+
+                }
             }
-            
+            catch (Exception)
+            {
+                MessageBox.Show("Chưa có lớp mới!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void cb_lopDeNghi_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -67,11 +73,11 @@ namespace EnglishCenter.View
                     bool result = new ChiTietLopHocBUS().insertChiTietLopHoc(ctlh);
                     if (result == false)
                     {
-                        MessageBox.Show("them du lieu that bai");
+                        MessageBox.Show("Đã có lỗi xảy ra, vui lòng thử lại sau.");
                     }
                     else
                     {
-                        MessageBox.Show("Thành Công!");
+                        MessageBox.Show("Đã lưu!");
                         this.Close();
                     }
                 }

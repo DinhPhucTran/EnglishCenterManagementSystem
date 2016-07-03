@@ -14,5 +14,10 @@ namespace BusinessLogicTier
         {
             return new PermissionDAO().getListPermission();
         }
+
+        public Permission selectPermissionById(String id)
+        {
+            return new PermissionDAO().selectPermissionById(id);
+        }
     }
 }

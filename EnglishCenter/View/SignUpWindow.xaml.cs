@@ -21,6 +21,10 @@ namespace EnglishCenter.View
     /// </summary>
     public partial class SignUpWindow : Window
     {
+
+        public delegate void DataChangedEventHandler(object sender, EventArgs e);
+        public event DataChangedEventHandler DataChanged;
+
         public SignUpWindow()
         {
             InitializeComponent();
@@ -36,22 +40,23 @@ namespace EnglishCenter.View
         {
             if (tbUsername.Text == "")
             {
-                MessageBox.Show("Điền tên đăng nhập.");
+                MessageBox.Show("Vui lòng điền tên đăng nhập.");
                 return;
             }
             if (tbPass.Password == "")
             {
-                MessageBox.Show("Điền mật khẩu.");
+                MessageBox.Show("Vui lòng nhập mật khẩu.");
                 return;
             }
             if (tbRePass.Password == "")
             {
-                MessageBox.Show("Xác nhận lại mật khẩu.");
+                MessageBox.Show("Vui lòng xác nhận lại mật khẩu.");
                 return;
             }
             if (tbPass.Password != tbRePass.Password)
             {
                 MessageBox.Show("Mật khẩu không trùng khớp.");
+                return;
             }
             if (new UserBUS().isExist(tbUsername.Text))
             {
@@ -61,17 +66,28 @@ namespace EnglishCenter.View
             String idPermission = "";
             if (cbPermission.Text == "")
             {
-                MessageBox.Show("Chọn quyền truy cập hệ thống cho user.");
+                MessageBox.Show("Vui lòng chọn quyền truy cập hệ thống cho user.");
                 return;
             }
             else
             {
                 idPermission = ((Permission)cbPermission.SelectedItem).MIdPermission;
             }
+
             User user = new User(tbUsername.Text, tbPass.Password, idPermission);
             if (new UserBUS().addUser(user))
             {
                 MessageBox.Show("Thêm user thành công.");
+                tbUsername.Text = "";
+                tbPass.Password = "";
+                tbRePass.Password = "";
+
+                //Notify changes
+                DataChangedEventHandler handler = DataChanged;
+                if (handler != null)
+                {
+                    handler(this, new EventArgs());
+                }
             }
             else
             {

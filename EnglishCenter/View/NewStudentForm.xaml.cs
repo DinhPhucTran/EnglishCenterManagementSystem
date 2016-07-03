@@ -64,6 +64,8 @@ namespace EnglishCenter.View
             CTMuonHoc_cb.ItemsSource = mListChuongTrinhHoc;
             createThoiGianRanh();
             tb_date.Text = DateTime.Today.ToShortDateString();
+            NgaySinhHV_dp.DisplayDateStart = new DateTime(1900, 1, 1);
+            NgaySinhHV_dp.DisplayDateEnd = DateTime.Today.AddYears(-2);
         }
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
@@ -73,7 +75,16 @@ namespace EnglishCenter.View
 
         private void createThoiGianRanh()
         {
-            List<Thu> listThu = mThuBUS.getAllThu();
+            //List<Thu> listThu = mThuBUS.getAllThu();
+            List<Thu> listThu = new List<Thu>();
+            listThu.Add(new Thu("Monday", "Thứ Hai"));
+            listThu.Add(new Thu("Tuesday", "Thứ Ba"));
+            listThu.Add(new Thu("Wednesday", "Thứ Tư"));
+            listThu.Add(new Thu("Thursday", "Thứ Năm"));
+            listThu.Add(new Thu("Friday", "Thứ Sáu"));
+            listThu.Add(new Thu("Saturday", "Thứ Bảy"));
+            listThu.Add(new Thu("Sunday", "Chủ Nhật"));
+
             List<Ca> listCa = mCaBUS.getAllCa();
             //ThoiGianRanh_Grid.ShowGridLines = true;
             #region ThoiGianRanh_GUI
@@ -143,18 +154,18 @@ namespace EnglishCenter.View
             String ten = TenHocVien_tb.Text;
             if (ten == "")
             {
-                MessageBox.Show("Không để trống tên học viên!");
+                MessageBox.Show("Vui lòng nhập tên học viên.");
                 return;
             }
             DateTime? ngaySinh = NgaySinhHV_dp.SelectedDate;
             if (ngaySinh == null)
             {
-                MessageBox.Show("Vui lòng nhập ngày sinh");
+                MessageBox.Show("Vui lòng nhập ngày sinh.");
                 return;
             }
             if (mPhaiRadioButton == null)
             {
-                MessageBox.Show("Chưa có thông tin giới tính");
+                MessageBox.Show("Vui lòng chọn giới tính.");
                 return;
             }
             String phai = mPhaiRadioButton.Content.ToString();
@@ -198,7 +209,7 @@ namespace EnglishCenter.View
 
             if (!mHocVienBUS.insertHocVien(hv))
             {
-                MessageBox.Show("Thêm học viên thất bại!", "Thông báo");
+                MessageBox.Show("Thêm học viên thất bại!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             #endregion
 
@@ -235,6 +246,7 @@ namespace EnglishCenter.View
             {
                 mChiTietLop.MMaHocVien = hv.MMaHocVien;
                 mChiTietLop.MTinhTrangDongHocPhi = 0;
+                mChiTietLop.MSoTienNo = new LopHocBUS().selectLopHoc(mChiTietLop.MMaLopHoc).MSoTien;
                 if (!(new ChiTietLopHocBUS().insertChiTietLopHoc(mChiTietLop)))
                     MessageBox.Show("Xếp lớp không thành công!", "Thông báo");
                 else
@@ -301,7 +313,7 @@ namespace EnglishCenter.View
                     thuCa = listChecked[i].Name;
                     thu = thuCa.Substring(0, thuCa.IndexOf('_'));
                     ca = thuCa.Substring(thuCa.IndexOf('_') + 1);
-                    if (xl.MNgayThi.ToString("dddd", new CultureInfo("en-US")).Equals(thu) && xl.MCaThi.Equals(ca))
+                    if (xl.MNgayThi.ToString("dddd", new CultureInfo("en-US")).Equals(thu) && xl.MCaThi.Equals(ca) && xl.MNgayThi > DateTime.Today)
                     {
                         //mListThiXLDeNghi.Add(xl);
                         mListThiXLCa.Add(new ThiXepLop_Ca(xl, mCaBUS.selectCa(xl.MCaThi)));
@@ -315,7 +327,8 @@ namespace EnglishCenter.View
             {
                 foreach (ThiXepLop xl in mListAllThiXL)
                 {
-                    mListThiXLCa.Add(new ThiXepLop_Ca(xl, mCaBUS.selectCa(xl.MCaThi)));
+                    if(xl.MNgayThi > DateTime.Today)
+                        mListThiXLCa.Add(new ThiXepLop_Ca(xl, mCaBUS.selectCa(xl.MCaThi)));
                 }
             }
             lv_popup_thiXL.ItemsSource = mListThiXLCa;

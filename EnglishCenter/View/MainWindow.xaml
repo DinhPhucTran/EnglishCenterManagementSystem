@@ -42,8 +42,8 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Tên đăng nhập: " VerticalAlignment="Center" Margin="10"/>
                                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Chức vụ: " VerticalAlignment="Center" Margin="10"/>
-                                <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="10" Name="tb_popupUserInfo_username"/>
-                                <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="10" Name="tb_popupUserInfo_permission"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="10" Name="tb_popupUserInfo_username" FontSize="15"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="10" Name="tb_popupUserInfo_permission" FontSize="15"/>
 
                                 <Button Grid.Row="2" Grid.ColumnSpan="2" Name="logout_btn" Click="logout_btn_Click" Content="Đăng xuất" Foreground="White"
                                         HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="2 0 10 5"></Button>
@@ -191,11 +191,11 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
                                     <TextBlock  Grid.Row="0" Foreground="Black" FontSize="30" Margin="20 10 0 10">Lịch thi</TextBlock>
-
-                                    <ListView Grid.Row="1" Name="lv_home_schedule" Margin="5,0,0,0" BorderThickness="0">
-                                        <ListView.ItemTemplate>
+                                    <ScrollViewer Grid.Row="1" Margin="5,0,0,0">
+                                    <ItemsControl  Name="lv_home_schedule" BorderThickness="0">
+                                        <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid Background="#3C8DBC" Height="60" Margin="10" MinWidth="500">
+                                                <Grid Background="#3C8DBC" Height="60" Margin="10 2 10 2" MinWidth="500">
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="70"/>
                                                         <ColumnDefinition />
@@ -214,8 +214,9 @@
                                                     <TextBlock Grid.Row="1" Grid.Column="1" FontSize="15" Margin="5 0 5 0" TextWrapping="WrapWithOverflow" Text="{Binding detail}"/>
                                                 </Grid>
                                             </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                    </ScrollViewer>
                                 </Grid>
 
                                 <Grid Grid.Column="2" Background="White" Margin="0,20,30,0">
@@ -230,22 +231,24 @@
 
                                     <TextBlock Grid.Row="0" Foreground="Black" FontSize="30" Margin="20 10 0 5">Chương trình học</TextBlock>
 
-                                    <ListView Grid.Row="1" Name="lv_home_courses" Margin="2 0 0 2" BorderThickness="0">
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Grid Background="#39CCCC" Width="300" Height="40" Margin="10">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition/>
-                                                        <ColumnDefinition Width="30"/>
-                                                        <ColumnDefinition Width="30"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock Grid.Column="0" Padding="5"  FontSize="20" VerticalAlignment="Center" Text="{Binding TenCTH}"/>
-                                                    <Image Grid.Column="1" Source="/Resources/students.png" />
-                                                    <TextBlock Grid.Column="2" FontSize="25" Text="{Binding SoHocVien}"/>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
+                                    <ScrollViewer Grid.Row="1" Margin="2 0 0 2">
+                                        <ItemsControl Name="lv_home_courses" BorderThickness="0">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid Background="#39CCCC" Width="330" Height="40" Margin="10 2 10 2" HorizontalAlignment="Stretch">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition/>
+                                                            <ColumnDefinition Width="30"/>
+                                                            <ColumnDefinition Width="30"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Grid.Column="0" Padding="5"  FontSize="20" VerticalAlignment="Center" Text="{Binding TenCTH}"/>
+                                                        <Image Grid.Column="1" Source="/Resources/students.png" />
+                                                        <TextBlock Grid.Column="2" FontSize="25" Text="{Binding SoHocVien}"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </ScrollViewer>
 
                                     <!--<ScrollViewer VerticalScrollBarVisibility="Auto">
                                         <StackPanel>
@@ -404,7 +407,7 @@
                             <ListView Name="lv_dsHocVien" Background="White" BorderThickness="0" Margin="15 5 10 10" HorizontalContentAlignment="Stretch">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid Background="#FFE7ECF1" Margin="5 1 1 1">
+                                        <Grid Background="#FFF1F0F0" Margin="5 1 1 1">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="180"/>
                                                 <ColumnDefinition Width="100*"/>
@@ -448,47 +451,53 @@
                                            PopupAnimation="Fade"
                                            Placement="Right"
                                            HorizontalOffset="10"
-                                           Name="popup_detailHV">
+                                           Name="popup_detailHV"
+                                           StaysOpen="False">
+
                                 <Grid Background="White" Margin="20">
                                     <Grid.Effect>
                                         <DropShadowEffect Color="#FFC3C3C3" BlurRadius="15" Direction="280"/>
                                     </Grid.Effect>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="30"/>
-                                        <RowDefinition Height="30"/>
-                                        <RowDefinition Height="30"/>
-                                        <RowDefinition Height="30"/>
-                                        <RowDefinition Height="30"/>
-                                        <RowDefinition Height="30"/>
-                                        <RowDefinition Height="30"/>
-                                        <RowDefinition Height="30"/>
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="70"/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
+                                    <Border BorderBrush="#00C0EF" BorderThickness="1">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition Height="30"/>
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="70"/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
 
-                                    <Button Grid.Row="0" Grid.Column="1" Margin="0 0 5 0" Content="⛌" Padding="0" Background="Transparent" HorizontalAlignment="Right"
+                                            <Button Grid.Row="0" Grid.Column="1" Margin="0 0 5 0" Content="⛌" Padding="0" Background="Transparent" HorizontalAlignment="Right"
                                                     Name="bt_popup_close" Width="20" Height="20" Click="bt_popupClick" BorderThickness="0" Foreground="#FFC3C3C3"/>
 
-                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Học viên: " Foreground="Black" Margin="5"/>
-                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Phái: " Foreground="Black" Margin="5"/>
-                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Lớp: " Foreground="Black" Margin="5"/>
-                                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Ngày sinh: " Foreground="Black" Margin="5"/>
-                                    <TextBlock Grid.Row="5" Grid.Column="0" Text="SĐT: " Foreground="Black" Margin="5"/>
-                                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Email: " Foreground="Black" Margin="5"/>
-                                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Địa chỉ: " Foreground="Black" Margin="5"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Học viên: " Foreground="Black" Margin="5"/>
+                                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Phái: " Foreground="Black" Margin="5"/>
+                                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Lớp: " Foreground="Black" Margin="5"/>
+                                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Ngày sinh: " Foreground="Black" Margin="5"/>
+                                            <TextBlock Grid.Row="5" Grid.Column="0" Text="SĐT: " Foreground="Black" Margin="5"/>
+                                            <TextBlock Grid.Row="6" Grid.Column="0" Text="Email: " Foreground="Black" Margin="5"/>
+                                            <TextBlock Grid.Row="7" Grid.Column="0" Text="Địa chỉ: " Foreground="Black" Margin="5"/>
 
-                                    <TextBlock Grid.Row="1" Grid.Column="1" Name="tb_popup_tenHV" Text="Adam Levin Katy Perry" 
+                                            <TextBlock Grid.Row="1" Grid.Column="1" Name="tb_popup_tenHV" Text="Adam Levin Katy Perry" 
                                                        Foreground="Black" Margin="0 0 5 6" FontSize="17" FontWeight="SemiBold"/>
-                                    <TextBlock Grid.Row="2" Grid.Column="1" Name="tb_popup_gioiTinh" Text="Nam" Foreground="Black" Margin="0 5 5 5"/>
-                                    <TextBlock Grid.Row="3" Grid.Column="1" Name="tb_popup_lop" Foreground="Black" Margin="0 5 5 5"/>
-                                    <TextBlock Grid.Row="4" Grid.Column="1" Name="tb_popup_ngaySinh" Foreground="Black" Margin="0 5 5 5" Text="5/6/1995"/>
-                                    <TextBlock Grid.Row="5" Grid.Column="1" Name="tb_popup_sdt" Foreground="Black" Margin="0 5 5 5" Text="01698833511"/>
-                                    <TextBlock Grid.Row="6" Grid.Column="1" Name="tb_popup_email" Foreground="Black" Margin="0 5 5 5" Text="abc@gmail.com"/>
-                                    <TextBlock Grid.Row="7" Grid.Column="1" Name="tb_popup_diachi" Foreground="Black" Margin="0 5 5 5" Text="NYC, USA"/>
+                                            <TextBlock Grid.Row="2" Grid.Column="1" Name="tb_popup_gioiTinh" Text="Nam" Foreground="Black" Margin="0 5 5 5"/>
+                                            <TextBlock Grid.Row="3" Grid.Column="1" Name="tb_popup_lop" Foreground="Black" Margin="0 5 5 5"/>
+                                            <TextBlock Grid.Row="4" Grid.Column="1" Name="tb_popup_ngaySinh" Foreground="Black" Margin="0 5 5 5" Text="5/6/1995"/>
+                                            <TextBlock Grid.Row="5" Grid.Column="1" Name="tb_popup_sdt" Foreground="Black" Margin="0 5 5 5" Text="01698833511"/>
+                                            <TextBlock Grid.Row="6" Grid.Column="1" Name="tb_popup_email" Foreground="Black" Margin="0 5 5 5" Text="abc@gmail.com"/>
+                                            <TextBlock Grid.Row="7" Grid.Column="1" Name="tb_popup_diachi" Foreground="Black" Margin="0 5 5 5" Text="NYC, USA"/>
 
+                                        </Grid>
+                                    </Border>
                                 </Grid>
                             </Popup>
                         </Grid>
@@ -657,8 +666,9 @@
                         <ListView Grid.Row="2" Margin="10" Name= "lv_tabLop_dsLop" HorizontalContentAlignment="Stretch">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Background="#FFE2E0E0" Margin="5" Cursor="Arrow">
+                                    <Grid Background="#FFE2E0E0" Margin="5 2 5 1">
                                         <Grid.RowDefinitions>
+                                            <RowDefinition/>
                                             <RowDefinition/>
                                             <RowDefinition/>
                                             <RowDefinition/>
@@ -666,31 +676,36 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="110"/>
                                             <ColumnDefinition/>
-                                            <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="60"/>
+                                            <ColumnDefinition Width="60"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" FontSize="16" FontWeight="SemiBold" Text="{Binding Lop.MMaLop}"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 5 0 0" Text="Phòng: "/>
-                                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="5 5 0 0" FontSize="12" Text="{Binding Lop.MMaPhong}"/>
-                                        <Button Grid.Row="0" Grid.RowSpan="5" Grid.Column="2" HorizontalAlignment="Right" Margin="10 10 5 10" BorderThickness="0" 
-                                                Click="bt_dsLop_ViewTGH" Width="22" Height="22">
+
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 5 0 0" Text="Chương trình học: "/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="5 5 0 0" FontSize="12" Text="{Binding TenChuongTrinhHoc}"/>
+
+                                        <TextBlock Grid.Row="3" Grid.Column="0" Margin="5 5 0 0" Text="Phòng: "/>
+                                        <TextBlock Grid.Row="3" Grid.Column="1" Margin="5 5 0 0" FontSize="12" Text="{Binding Lop.MMaPhong}"/>
+                                        <Button Grid.Row="0" Grid.RowSpan="6" Grid.Column="2" HorizontalAlignment="Right" Margin="10 10 5 10" BorderThickness="0" 
+                                                Click="bt_dsLop_ViewTGH" Width="30" Height="30">
                                             <Button.Background>
                                                 <ImageBrush ImageSource="/EnglishCenter;component/Resources/timeTable_white.png"/>
                                             </Button.Background>
                                         </Button>
-                                        <Button Grid.Row="0" Grid.RowSpan="5" Grid.Column="3" HorizontalAlignment="Right" Margin="5 10 10 10" BorderThickness="0" Click="bt_dsLop_viewChiTietLop">
+                                        <Button Grid.Row="0" Grid.RowSpan="6" Grid.Column="3" HorizontalAlignment="Right" Margin="0 5 10 5" BorderThickness="0" 
+                                                Click="bt_dsLop_viewChiTietLop" Width="40" Height="40">
                                             <Button.Background>
                                                 <ImageBrush ImageSource="/EnglishCenter;component/Resources/students.png"/>
                                             </Button.Background>
                                         </Button>
                                         <TextBlock Grid.Row="2" Grid.Column="0" Margin="5 0 0 0" VerticalAlignment="Bottom" Text="Giáo viên: "/>
                                         <TextBlock Grid.Row="2" Grid.Column="1" Margin="5 0 0 0" FontSize="14" Text="{Binding TenGiangVien}"/>
-                                        <TextBlock Grid.Row="3" Grid.Column="0" Margin="5 0 0 0" VerticalAlignment="Bottom" Text="Ngày bắt đầu: "/>
-                                        <TextBlock Grid.Row="3" Grid.Column="1" Margin="5 0 0 0" FontSize="14" Text="{Binding StringNgayBD}"/>
-                                        <TextBlock Grid.Row="4" Grid.Column="0" Margin="5 0 0 5" VerticalAlignment="Bottom" Text="Ngày kết thúc: "/>
-                                        <TextBlock Grid.Row="4" Grid.Column="1" Margin="5 0 0 5" FontSize="14" Text="{Binding StringNgayKT}"/>
+                                        <TextBlock Grid.Row="4" Grid.Column="0" Margin="5 0 0 0" VerticalAlignment="Bottom" Text="Ngày khai giảng: "/>
+                                        <TextBlock Grid.Row="4" Grid.Column="1" Margin="5 0 0 0" FontSize="14" Text="{Binding StringNgayKhaiGiang}"/>
+                                        <TextBlock Grid.Row="5" Grid.Column="0" Margin="5 0 0 5" VerticalAlignment="Bottom" Text="Ngày kết thúc: "/>
+                                        <TextBlock Grid.Row="5" Grid.Column="1" Margin="5 0 0 5" FontSize="14" Text="{Binding StringNgayKT}"/>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -728,7 +743,8 @@
                                 AllowsTransparency="True"  
                                 PopupAnimation="Fade"
                                 Placement="Right" HorizontalOffset="-100"
-                                Name="popup_chiTietLop">
+                                Name="popup_chiTietLop"
+                               StaysOpen="False">
                             <Grid Background="White" Margin="25" Width="305">
                                 <Grid.Effect>
                                     <DropShadowEffect Color="#FFC3C3C3" BlurRadius="20" Direction="280"/>
@@ -749,7 +765,7 @@
                                                 <GridView>
                                                     <GridViewColumn Header="Tên học viên" Width="Auto" DisplayMemberBinding="{Binding TenHocVien}"/>
                                                     <GridViewColumn Header="Kết quả thi" Width="80" DisplayMemberBinding="{Binding ChiTietLop.MKetQuaThi}"/>
-                                                    <GridViewColumn Header="Nợ" Width="50" DisplayMemberBinding="{Binding ChiTietLop.MSoTienNo}"/>
+                                                    <GridViewColumn Header="Nợ" Width="Auto" DisplayMemberBinding="{Binding ChiTietLop.MSoTienNo}"/>
                                                 </GridView>
                                             </ListView.View>
                                         </ListView>
@@ -839,30 +855,32 @@
                         </Grid.RowDefinitions>
                         <TextBlock  Grid.Row="0" Foreground="Black" FontSize="30" Margin="20 10 0 10">Lịch thi</TextBlock>
 
-                        <ListView Grid.Row="1" Name="lv_exams_schedule" Margin="5,0,0,0" BorderThickness="0">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Background="#3C8DBC" Height="60" Margin="10 5 5 0" MinWidth="400">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="70"/>
-                                            <ColumnDefinition />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
+                        <ScrollViewer Grid.Row="1" Margin="5,0,0,0">
+                            <ItemsControl Name="lv_exams_schedule" BorderThickness="0">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Background="#3C8DBC" Height="60" Margin="10 5 5 0" MinWidth="400">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="70"/>
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
 
-                                        <StackPanel Grid.Row="0" Grid.RowSpan="2" Background="Green">
-                                            <TextBlock Grid.Row="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding day}" Foreground="White"/>
-                                            <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding year}" Foreground="White"/>
-                                        </StackPanel>
+                                            <StackPanel Grid.Row="0" Grid.RowSpan="2" Background="Green">
+                                                <TextBlock Grid.Row="0" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{Binding day}" Foreground="White"/>
+                                                <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{Binding year}" Foreground="White"/>
+                                            </StackPanel>
 
-                                        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" Margin="5 0 5 0" TextWrapping="Wrap" Text="{Binding title}"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="1" FontSize="15" Margin="5 0 5 0" TextWrapping="WrapWithOverflow" Text="{Binding detail}"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                                            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" Margin="5 0 5 0" TextWrapping="Wrap" Text="{Binding title}"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="1" FontSize="15" Margin="5 0 5 0" TextWrapping="WrapWithOverflow" Text="{Binding detail}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
                     </Grid>
 
                     <Grid Grid.Row="1" Grid.Column="1">
@@ -932,7 +950,7 @@
                                     <RowDefinition/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <Image Grid.Row="0" Source="/Resources/marking_white.png" Width="30" Height="30" Margin="5"/>
+                                <Image Grid.Row="0" Source="/Resources/students.png" Width="30" Height="30" Margin="5"/>
                                 <TextBlock Text="Xếp lớp học viên" Grid.Row="1"/>
                             </Grid>
                         </Button>
@@ -965,7 +983,7 @@
                         <ListView Grid.Row="1" Name="lv_dsHocVien_HP" Margin="15 5 0 10" HorizontalContentAlignment="Stretch">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Background="#FFE7ECF1" Margin="5 1 1 1" MouseLeftButtonDown="item_dsNoHP_MouseLeftDown" Cursor="Arrow">
+                                    <Grid Background="#FFE2E0E0" Margin="5 1 1 1" MouseLeftButtonDown="item_dsNoHP_MouseLeftDown" Cursor="Arrow">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="180"/>
                                             <ColumnDefinition Width="100*"/>
@@ -1101,7 +1119,7 @@
                         <ListView Name="lvChuongTrinhHoc" HorizontalContentAlignment="Stretch">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Height="60" Margin="10 7 20 0" Background="#FFCFD7DE">
+                                    <Grid Height="60" Margin="10 7 20 0" Background="#FFE2E0E0">
                                         <Grid.Effect>
                                             <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
                                         </Grid.Effect>
@@ -1192,7 +1210,7 @@
                         <ListView Grid.Row="2" Name="lv_dsGiangVien" Margin="10 10 10 10" HorizontalContentAlignment="Stretch" SelectionChanged="lv_dsGiangVien_selectionChanged">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Background="#FFDADADA" Margin="5 2 5 2">
+                                    <Grid Background="#FFE2E0E0" Margin="5 2 5 2">
                                         <Grid.RowDefinitions>
                                             <RowDefinition/>
                                             <RowDefinition/>
@@ -1237,7 +1255,7 @@
                         <ListView Grid.Row="1" BorderThickness="0" Margin="10" Name="lv_lopByGv" HorizontalContentAlignment="Stretch">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Background="#FFDADADA" Margin="5 2 5 2">
+                                    <Grid Background="#FFE2E0E0" Margin="5 2 5 2">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="50"/>
                                             <ColumnDefinition/>
@@ -1454,7 +1472,7 @@
                         <TextBlock Margin="5">CÀI ĐẶT</TextBlock>
                     </WrapPanel>
                 </TabItem.Header>
-                <Grid Background="#F9F9F9">
+                <Grid Background="#F9F9F9" Cursor="Arrow">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="200"/>
                         <RowDefinition Height="100"/>
@@ -1474,22 +1492,25 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="100"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Row="0" Grid.Column="0" Text="Tab mặc định" Foreground="Black" Margin="10" VerticalAlignment="Bottom"/>
-                        <ComboBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10" Width="50" Name="cb_defaultTab" Foreground="Black"/>
-                        <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Margin="10 10 20 10" Content="Lưu" Click="bt_settings_save"/>
+                        <ComboBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10" Width="150" 
+                                  Name="cb_defaultTab" Foreground="Black" SelectionChanged="cb_defaultTab_selectionChanged"/>
+                        <!--<Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Margin="10 10 20 10" Content="Lưu" Click="bt_settings_save"/>-->
+
+                        <Button Grid.Row="1" Grid.ColumnSpan="2" Content="Đổi mật khẩu" HorizontalAlignment="Left" Margin="10" Click="bt_doiMatKhau_click"/>
                     </Grid>
 
-                    <Grid Grid.Row="1" Grid.Column="0" Background="White" Margin="20 20 10 10">
+                    <!--<Grid Grid.Row="1" Grid.Column="0" Background="White" Margin="20 20 10 10">
                         <Grid.Effect>
                             <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
                         </Grid.Effect>
                         <Grid.RowDefinitions>
                         </Grid.RowDefinitions>
-                        <Button Content="Đổi mật khẩu" HorizontalAlignment="Center" Margin="10" Click="bt_doiMatKhau_click"/>
-                    </Grid>
+                        
+                    </Grid>-->
                 </Grid>
             </TabItem>
 
@@ -1500,41 +1521,55 @@
                         <TextBlock Margin="5">PHÂN QUYỀN</TextBlock>
                     </WrapPanel>
                 </TabItem.Header>
-                <Grid Background="White">
+                <Grid Background="#F9F9F9" Cursor="Arrow">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition/>
-                        <RowDefinition Height="70"/>
-                    </Grid.RowDefinitions>
-                    <StackPanel Grid.Column="0" Grid.RowSpan="3" Background="#F39C12">
-                        <Image Source="/Resources/user.png" Margin="10"/>
-                    </StackPanel>
 
-                    <TextBlock Grid.Column="1" Grid.Row="0" Foreground="Black" FontSize="16" Padding="5">Danh sách người dùng</TextBlock>
-                    <ListView Name="lv_dsUser" Grid.Row="1" Grid.Column="1" Background="White" BorderThickness="0" Margin="15 5 10 10">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Background="#FFE7ECF1" Margin="5 1 1 1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="180"/>
-                                        <ColumnDefinition Width="100*"/>
-                                        <ColumnDefinition Width="50*"/>
-                                        <ColumnDefinition Width="50*"/>
-                                        <ColumnDefinition Width="50*"/>
-                                    </Grid.ColumnDefinitions>
+                    <Grid Background="White" Margin="20">
+                        <Grid.Effect>
+                            <DropShadowEffect Color="#FFDCD8D8" ShadowDepth="2"/>
+                        </Grid.Effect>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Column="0" Grid.RowSpan="3" Background="#F39C12">
+                            <Image Source="/Resources/user.png" Margin="10"/>
+                        </StackPanel>
 
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="1" Grid.Row="0" Foreground="Black" FontSize="16" Padding="5">Danh sách người dùng</TextBlock>
+                        <ScrollViewer Grid.Row="1" Grid.Column="1" Margin="15 5 0 10" HorizontalContentAlignment="Stretch">
+                            <ItemsControl Name="lv_dsUser"  Background="White" BorderThickness="0" >
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Background="#FFE2E0E0" Margin="5 1 1 1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="180"/>
+                                                <ColumnDefinition Width="100*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                            </Grid.ColumnDefinitions>
 
-                                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,10,2" FontSize="20" Name="tb_lv_Username" Text="{Binding MUsername}"/>
-                                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 0 5 2" FontSize="15" Text="{Binding MPermission, StringFormat='Quyền {0}'}"/>
-                                    <!--<Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Margin="10 5 5 5" BorderThickness="0" 
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,10,2" FontSize="20" Name="tb_lv_Username" Text="{Binding UserName}" Foreground="Black"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Margin="5 0 5 2" FontSize="15" Text="{Binding PermissionName}" Foreground="Black"/>
+                                            <!--<Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" Margin="10 5 5 5" BorderThickness="0" 
                                                             VerticalAlignment="Center" HorizontalAlignment="Center" Name="bt_lv_user_edit">
                                         <Button.Background>
                                             <ImageBrush ImageSource="/EnglishCenter;component/Resources/edit.png"/>
@@ -1546,14 +1581,16 @@
                                             <ImageBrush ImageSource="/EnglishCenter;component/Resources/info_white.png"/>
                                         </Button.Background>
                                     </Button>-->
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                    <Button Name="btn_ThemUser" Click="btn_ThemUser_Click" Grid.Row="1" Width="40" Height="40" 
-                            Margin="31,93,29,191" HorizontalAlignment="Center" Padding="-10" Content="+"
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                        <Button Name="btn_ThemUser" Click="btn_ThemUser_Click" Grid.Row="1" Width="40" Height="40" VerticalAlignment="Bottom"
+                            Margin="10" HorizontalAlignment="Center" Padding="0 -2 0 5" Content="+"
                             FontSize="30" ToolTip="Thêm người dùng"/>
-                </Grid>
+                    </Grid>
+                </Grid>                
             </TabItem>
         </TabControl>
     </Grid>

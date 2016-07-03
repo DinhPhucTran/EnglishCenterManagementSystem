@@ -39,14 +39,16 @@ namespace EnglishCenter.View
         private DateTime mCurrentDate;
         private List<Ca> mListCa;
         private List<Phong> mListPhong;
-        public static List<Lop_GiangVien> mListLopGV;
+        //public static List<Lop_GiangVien> mListLopGV;
+        public List<Lop_Gv_Cth> mListLopGV;
         private TrinhDoBUS mTrinhDoBus;
         private ChuongTrinhHocBUS mCTHBus;
         private HocVienBUS mHocVienBus;
         private LopHocBUS mLopHocBus;
         private User mUser;
         private DateTime mTabReportCurrentDate;
-        List<ChuongTrinhHoc_SoHV> mListChuongTrinhHoc_soHv;
+        private List<ChuongTrinhHoc_SoHV> mListChuongTrinhHoc_soHv;
+        private List<HocVien_Lop> mListHvMoiwLop;
 
         public MainWindow()
         {
@@ -57,12 +59,14 @@ namespace EnglishCenter.View
             mHocVienBus = new HocVienBUS();
             mLopHocBus = new LopHocBUS();
 
+            //Update các danh sách
             updateListUser();
             updateListLopDangMo();
             updateListGiaoVien();
             updateListTrinhDo();
             updateListChuongTrinhHoc();
             updateListHocVien();
+            upDateListHvNoHP();
             updateLichThi();            
 
             //Tab Lớp
@@ -90,23 +94,30 @@ namespace EnglishCenter.View
             updateChartThuThang();
             updateChartGioiTinh();
             updateChartCthSoHv();
+
+            //Tab Cài đặt
             try
             {
-                tabControl.SelectedIndex = Int32.Parse(ConfigurationManager.AppSettings.Get("defaultTab"));
+                tabControl.SelectedIndex = Properties.Settings.Default.DefaultTab;
             }
             catch (Exception)
             {
 
             }
-            List<int> listTabNumber = new List<int>();
-            for (int i = 1; i <= 10; i++)
-            {
-                listTabNumber.Add(i);
-            }
-            cb_defaultTab.ItemsSource = listTabNumber;
+            List<string> listTabs = new List<string>();
+            listTabs.Add("Trang chủ");
+            listTabs.Add("Học viên");
+            listTabs.Add("Lớp");
+            listTabs.Add("Thi");
+            listTabs.Add("Học phí");
+            listTabs.Add("Chương trình học");
+            listTabs.Add("Giáo viên");
+            listTabs.Add("Thống kê");
+            listTabs.Add("Cài đặt");
+            cb_defaultTab.ItemsSource = listTabs;
             try
             {
-                cb_defaultTab.SelectedIndex = Int32.Parse(ConfigurationManager.AppSettings.Get("defaultTab")) - 1;
+                cb_defaultTab.SelectedIndex = Properties.Settings.Default.DefaultTab;
             }
             catch (Exception)
             {
@@ -120,6 +131,7 @@ namespace EnglishCenter.View
             set { mUser = value; }
         }
 
+        //Update danh sách học viên
         private void updateListHocVien()
         {
             listActiveStudent = new List<HocVien>();
@@ -152,12 +164,15 @@ namespace EnglishCenter.View
             listAllStudent = new HocVienBUS().getListHocVien();
             listNewStudent = listAllStudent.Except(listHVdaXepLop, new MaHvComparer()).ToList<HocVien>();
 
-            lv_dsHocVien.ItemsSource = listHvDangHocWLop.OrderBy(o => o.HocVien.MTenHocVien).ToList();
+            listHvDangHocWLop = new List<HocVien_Lop>(listHvDangHocWLop.OrderBy(o => o.TenHocVien).ToList()); //Sắp xếp danh sách học viên theo tên
+
+            lv_dsHocVien.ItemsSource = listHvDangHocWLop;
             tb_numberOfActiveStudent.Text = listActiveStudent.Count.ToString();
             tb_home_NumberOfStudent.Text = listActiveStudent.Count.ToString();
             tb_numberOfNewStudent.Text = listNewStudent.Count.ToString();
         }
 
+        //Update danh sách lớp đang mở
         private void updateListLopDangMo()
         {
             listLopDangMo = new LopHocBUS().getListLopHocByTime(DateTime.Now, DateTime.Now);
@@ -165,18 +180,17 @@ namespace EnglishCenter.View
             cb_filterHV_lop.ItemsSource = listLopDangMo;
 
             //Tab Lớp
-            mListLopGV = new List<Lop_GiangVien>();
+            mListLopGV = new List<Lop_Gv_Cth>();
             GiangVienBUS gvBus = new GiangVienBUS();
             foreach (LopHoc lop in listLopDangMo)
             {
-                mListLopGV.Add(new Lop_GiangVien(lop, gvBus.selectGiangVien(lop.MMaGiangVien)));
+                mListLopGV.Add(new Lop_Gv_Cth(lop, gvBus.selectGiangVien(lop.MMaGiangVien)));
             }
             lv_tabLop_dsLop.ItemsSource = mListLopGV;
-            tb_soLopDangMo.Text = listLopDangMo.Count.ToString();
-            upDateListHvNoHP();
-            
+            tb_soLopDangMo.Text = listLopDangMo.Count.ToString();            
         }
 
+        //Update danh sách học viên nợ học phí
         private void upDateListHvNoHP()
         {
             listHVNoHocPhi = new List<HocVien_Lop>();
@@ -197,6 +211,7 @@ namespace EnglishCenter.View
             tb_soHvNoHp.Text = listHVNoHocPhi.Count.ToString();
         }
 
+        //Update danh sách chương trình học
         private void updateListChuongTrinhHoc()
         {
             listChuongTrinhHoc = mCTHBus.getListChuongTrinhHoc();
@@ -226,19 +241,21 @@ namespace EnglishCenter.View
             lvChuongTrinhHoc.ItemsSource = ChuongTrinhHoc_TrinhDo.getList(mListChuongTrinhHoc_soHv);
             tb_home_NumberOfCourse.Text = listChuongTrinhHoc.Count.ToString();
 
-            //ListView grouping
+            //Nhóm các chương trình học theo trình độ
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvChuongTrinhHoc.ItemsSource);
             PropertyGroupDescription groupDescription = new PropertyGroupDescription("TrinhDo.MTenTrinhDo");
             view.GroupDescriptions.Add(groupDescription);
             tb_soCTH.Text = listChuongTrinhHoc.Count.ToString();
         }
 
+        //Update danh sách trình độ
         private void updateListTrinhDo()
         {
             listTrinhDo = mTrinhDoBus.getListTrinhDo();
             tb_soTrinhDo.Text = listTrinhDo.Count.ToString();
         }
 
+        //Update lịch thi xếp lớp
         private void updateLichThi()
         {
             List<ListItemThiXepLop> listHomeThi = new List<ListItemThiXepLop>();
@@ -260,6 +277,7 @@ namespace EnglishCenter.View
             tb_soTXL.Text = listHomeThi.Count.ToString();
         }
 
+        //Update danh sách giáo viên
         private void updateListGiaoVien()
         {
             listGiangVien = new GiangVienBUS().getListGiangVien();
@@ -268,6 +286,7 @@ namespace EnglishCenter.View
             tb_soGiangVien.Text = listGiangVien.Count.ToString();
         }
 
+        //Thống kê theo ngày trong tab Thống kê
         private void updateThongKeNgay()
         {
             int soHv = 0;
@@ -294,6 +313,7 @@ namespace EnglishCenter.View
             tb_tabReport_tongThuNgay.Text = tongThu.ToString();
         }
 
+        //Thống kê theo tháng trong tab Thống kê
         private void updateThongKeThang()
         {
             int soHv = 0;
@@ -324,6 +344,7 @@ namespace EnglishCenter.View
             }
         }
 
+        //Update biểu đồ học viên theo tháng của từng năm
         private void updateChartHvThang()
         {
             if (cb_tabReport_currentYear.SelectedValue != null)
@@ -348,6 +369,7 @@ namespace EnglishCenter.View
             }
         }
 
+        //Update biểu đồ doanh thu theo tháng của từng năm
         private void updateChartThuThang()
         {
             if (cb_tabReport_currentYear.SelectedValue != null)
@@ -372,6 +394,7 @@ namespace EnglishCenter.View
             }
         }
 
+        //Biểu đồ tỉ lệ giới tính học viên
         private void updateChartGioiTinh()
         {
             List<KeyValuePair<String, int>> valueList = new List<KeyValuePair<String, int>>();
@@ -393,6 +416,7 @@ namespace EnglishCenter.View
             chart_gioiTinh.DataContext = valueList;
         }
 
+        //Biểu đồ số lượng học viên của các chương trình học
         private void updateChartCthSoHv()
         {
             List<KeyValuePair<String, int>> valueList = new List<KeyValuePair<String, int>>();
@@ -403,27 +427,32 @@ namespace EnglishCenter.View
             chart_CthSoHv.DataContext = valueList;
         }
 
+        //Thêm học viên mới
         private void btn_AddStudent_Click(object sender, RoutedEventArgs e)
         {
             NewStudentForm studentForm = new NewStudentForm();
-            studentForm.DataChanged += ThemHocVien_DataChanged;
+            studentForm.DataChanged += ThemHocVien_DataChanged; //Update danh sách học viên sau khi bấm lưu
             studentForm.ShowDialog();
         }
 
+        //Thêm chương trình học
         private void btThemCth_click(object sender, RoutedEventArgs e)
         {
             NewCourseForm newCourseForm = new NewCourseForm();
             newCourseForm.ShowDialog();
         }
 
+
+        //Thêm trình độ
         private void btThemTrinhDo_click(object sender, RoutedEventArgs e)
         {
             NewLevelForm levelForm = new NewLevelForm();
             levelForm.ShowDialog();
         }
 
+        //Các clas mở rộng để hiển thị thêm thông tin trong các danh sách
         #region Extended classes
-        internal class MaHvComparer : IEqualityComparer<HocVien>
+        public class MaHvComparer : IEqualityComparer<HocVien>
         {
             public int GetHashCode(HocVien hv)
             {
@@ -495,8 +524,90 @@ namespace EnglishCenter.View
 
             }
         }
+
+        public class Lop_Gv_Cth
+        {
+            Lop_GiangVien mLopGv;
+            string mTenCth;
+
+            public Lop_Gv_Cth(LopHoc lop, GiangVien gv)
+            {
+                mLopGv = new Lop_GiangVien(lop, gv);
+                mTenCth = new ChuongTrinhHocBUS().getTenChuongTrinhHocByMa(lop.MMaCTHoc);
+            }
+
+            public LopHoc Lop
+            {
+                get { return mLopGv.Lop; }
+            }
+
+            public Lop_GiangVien Lop_GiangVien
+            {
+                get { return mLopGv; }   
+            }
+
+            public string TenGiangVien
+            {
+                get { return mLopGv.TenGiangVien; }
+            }
+
+            public string StringNgayBD
+            {
+                get { return mLopGv.StringNgayBD; }
+            }
+
+            public string StringNgayKT
+            {
+                get { return mLopGv.StringNgayKT; }
+            }
+
+            public string StringNgayKhaiGiang
+            {
+                get { return mLopGv.StringNgayKhaiGiang; }
+            }
+
+            public string TenChuongTrinhHoc
+            {
+                get { return mTenCth; }
+            }
+        }
+
+        public class User_Permission
+        {
+            private User mUser;
+            private Permission mPer;
+
+            public User_Permission(User user, Permission per)
+            {
+                mUser = user;
+                mPer = per;
+            }
+
+            public User_Permission(User user)
+            {
+                mUser = user;
+                mPer = new PermissionBUS().selectPermissionById(mUser.MPermission);
+            }
+
+            public User User
+            {
+                get { return mUser; }
+                set { mUser = value; }
+            }
+
+            public string UserName
+            {
+                get { return mUser.MUsername; }
+            }
+
+            public string PermissionName
+            {
+                get { return mPer.MNamePermision; }
+            }
+        }
         #endregion
 
+        //Sửa thông tin học viên
         private void bt_editHvClick(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
@@ -506,6 +617,7 @@ namespace EnglishCenter.View
             sua.ShowDialog();
         }
 
+        //Hiện popup thông tin chi tiết của học viên
         private void bt_viewHvClick(object sender, RoutedEventArgs e)
         {
             popup_detailHV.IsOpen = false;
@@ -526,11 +638,13 @@ namespace EnglishCenter.View
             
         }
 
+        //Đóng popup
         private void bt_popupClick(object sender, RoutedEventArgs e)
         {
             popup_detailHV.IsOpen = false;
         }
 
+        //Thu học phí
         private void bt_hocPhiHvClick(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
@@ -542,10 +656,12 @@ namespace EnglishCenter.View
                 phieuThu.tb_tenHocVien.Text = hocvien.HocVien.MTenHocVien;
                 phieuThu.tb_lop.Text = hocvien.Lop.MMaLop;
                 phieuThu.tb_sdt.Text = hocvien.HocVien.MSdt;
+                phieuThu.tb_soTienNo.Text = new ChiTietLopHocBUS().selectChiTietLopHocByMaHV(hocvien.HocVien.MMaHocVien).MSoTienNo.ToString();
                 phieuThu.Show();
             }
         }
 
+        //Lọc danh sách học viên theo các thông tin tìm kiếm
         private void bt_filterHvClick(object sender, RoutedEventArgs e)
         {
             LopHoc lop = (LopHoc)cb_filterHV_lop.SelectedValue;
@@ -575,14 +691,13 @@ namespace EnglishCenter.View
                         && (Regex.IsMatch(hv.MEmail, tb_filterHV_email.Text)))
                         {
                             listFilterHv.Add(new HocVien_Lop(hv, lopBus.getLopMoiNhatByMaHV(hv.MMaHocVien)));
-                            //MessageBox.Show(lopBus.getLopMoiNhatByMaHV(hv.MMaHocVien).MMaLop);
                         }
                     }
 
                     if (tb_filterHV_ten.Text != "" || tb_filterHV_sdt.Text != "" || tb_filterHV_email.Text != "")
                         lv_dsHocVien.ItemsSource = listFilterHv;
                     else
-                        lv_dsHocVien.ItemsSource = listHvDangHocWLop.OrderBy(o => o.HocVien.MTenHocVien).ToList();
+                        lv_dsHocVien.ItemsSource = listHvDangHocWLop;
                 }
 
             }
@@ -670,6 +785,7 @@ namespace EnglishCenter.View
             }
         }
 
+        //Chỉ cho phép nhập số trong textbox
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
@@ -698,6 +814,7 @@ namespace EnglishCenter.View
             }
         }
 
+        //Chuyển string thành không dấu
         public static string ConvertToUnSign(string text)
         {
             for (int i = 33; i < 48; i++)
@@ -720,8 +837,6 @@ namespace EnglishCenter.View
                 text = text.Replace(((char)i).ToString(), "");
             }
 
-            //text = text.Replace(" ", "-"); //Comment lại để không đưa khoảng trắng thành ký tự -
-
             Regex regex = new Regex(@"\p{IsCombiningDiacriticalMarks}+");
 
             string strFormD = text.Normalize(System.Text.NormalizationForm.FormD);
@@ -729,20 +844,26 @@ namespace EnglishCenter.View
             return regex.Replace(strFormD, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
         }
 
+        //Hiện danh sách học viên tiềm năng
         private void bt_hvtnClick(object sender, RoutedEventArgs e)
         {
-            List<HocVien_Lop> listHvMoiwLop = new List<HocVien_Lop>();
-            LopHocBUS bus = new LopHocBUS();
-            foreach (HocVien hv in listNewStudent)
+            if (mListHvMoiwLop == null)
             {
-                HocVien_Lop hvl = new HocVien_Lop();
-                hvl.HocVien = hv;
-                hvl.Lop = bus.getLopMoiNhatByMaHV(hv.MMaHocVien);
-                listHvMoiwLop.Add(hvl);
+                mListHvMoiwLop = new List<HocVien_Lop>();
+                LopHocBUS bus = new LopHocBUS();
+                foreach (HocVien hv in listNewStudent)
+                {
+                    HocVien_Lop hvl = new HocVien_Lop();
+                    hvl.HocVien = hv;
+                    hvl.Lop = bus.getLopMoiNhatByMaHV(hv.MMaHocVien);
+                    mListHvMoiwLop.Add(hvl);
+                }
+                mListHvMoiwLop = new List<HocVien_Lop>(mListHvMoiwLop.OrderBy(o => o.TenHocVien).ToList());
             }
-            lv_dsHocVien.ItemsSource = listHvMoiwLop;
+            lv_dsHocVien.ItemsSource = mListHvMoiwLop;
         }
 
+        //Hiện danh sách học viên chính thức
         private void bt_hvctClick(object sender, RoutedEventArgs e)
         {
             lv_dsHocVien.ItemsSource = listHvDangHocWLop;
@@ -750,8 +871,8 @@ namespace EnglishCenter.View
 
         private void ThemHocVien_DataChanged(object sender, EventArgs e)
         {
-            //System.Windows.MessageBox.Show("Updated", "MainWindow");
             updateListHocVien();
+            upDateListHvNoHP();
         }
 
         private void bt_popupLopTGH_Close_Click(object sender, RoutedEventArgs e)
@@ -759,10 +880,11 @@ namespace EnglishCenter.View
             popup_lopTGH.IsOpen = false;
         }
 
+        //Xem thời gian học của lớp
         private void bt_dsLop_ViewTGH(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            Lop_GiangVien lopGV = button.DataContext as Lop_GiangVien;
+            Lop_Gv_Cth lopGV = button.DataContext as Lop_Gv_Cth;
             popup_lopTGH.IsOpen = false;
             List<ThoiGianHoc> listTGH = new ThoiGianHocBUS().getThoiGianHocCuaLop(lopGV.Lop.MMaLop);
             if (listTGH != null)
@@ -776,6 +898,7 @@ namespace EnglishCenter.View
             }
         }
 
+        //Khởi tạo grid thời khóa biểu
         private void initTKB()
         {
             mListCa = new CaBUS().getAllCa();
@@ -794,6 +917,7 @@ namespace EnglishCenter.View
             tb_soPhong.Text = mListPhong.Count.ToString();
         }
 
+        //Hiện các lớp vào thời khóa biểu theo ngày được chọn
         private void fillTKB()
         {
             grid_TKB.Children.Clear();
@@ -839,7 +963,7 @@ namespace EnglishCenter.View
             {
                 foreach (ThoiGianHoc tgh in lop.ListThoiGianHoc)
                 {
-                    if (tgh.MMaThu.Equals(today))
+                    if (tgh.MMaThu.Equals(today) && lop.LopHoc.MNgayBatDau < mCurrentDate && lop.LopHoc.MNgayKetThuc > mCurrentDate)
                     {
                         TextBlock tb = new TextBlock();
                         tb.Text = lop.MaLop;
@@ -858,18 +982,21 @@ namespace EnglishCenter.View
             }
         }
 
+        //Trở về ngày trước đó trong thời khóa biểu
         private void bt_preDay_click(object sender, RoutedEventArgs e)
         {
             mCurrentDate = mCurrentDate.AddDays(-1);
             fillTKB();
         }
 
+        //Đến ngày tiếp theo trong thời khóa biểu
         private void bt_nextDay_click(object sender, RoutedEventArgs e)
         {
             mCurrentDate = mCurrentDate.AddDays(1);
             fillTKB();
         }
 
+        //Chọn ngày TKB
         private void datePicker_currentDate_selectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             mCurrentDate = (DateTime)datePicker_currentDate.SelectedDate;
@@ -885,16 +1012,18 @@ namespace EnglishCenter.View
             }
         }
 
+        //Tìm kiếm lớp mã lớp, tên giảng viên hoặc tên chương trình học
         private void bt_lopSearch_click(object sender, RoutedEventArgs e)
         {
-            List<Lop_GiangVien> listLopSearch = new List<Lop_GiangVien>();
+            List<Lop_Gv_Cth> listLopSearch = new List<Lop_Gv_Cth>();
             if(tb_lopSearch.Text == "")
                 lv_tabLop_dsLop.ItemsSource = mListLopGV;
             else {
-                foreach (Lop_GiangVien lop in mListLopGV)
+                foreach (Lop_Gv_Cth lop in mListLopGV)
                 {
                     if(Regex.IsMatch(lop.Lop.MMaLop, tb_lopSearch.Text, RegexOptions.IgnoreCase)
-                        || Regex.IsMatch(ConvertToUnSign(lop.TenGiangVien), ConvertToUnSign(tb_lopSearch.Text), RegexOptions.IgnoreCase))
+                        || Regex.IsMatch(ConvertToUnSign(lop.TenGiangVien), ConvertToUnSign(tb_lopSearch.Text), RegexOptions.IgnoreCase)
+                        || Regex.IsMatch(ConvertToUnSign(lop.TenChuongTrinhHoc), ConvertToUnSign(tb_lopSearch.Text), RegexOptions.IgnoreCase))
                     {
                         listLopSearch.Add(lop);
                     }
@@ -903,6 +1032,7 @@ namespace EnglishCenter.View
             }
         }
 
+        //Thêm lớp mới
         private void bt_themLop_click(object sender, RoutedEventArgs e)
         {
             NewClassForm classForm = new NewClassForm();
@@ -910,24 +1040,28 @@ namespace EnglishCenter.View
             classForm.ShowDialog();
         }
 
+        //Thêm phòng học
         private void bt_themPhong_click(object sender, RoutedEventArgs e)
         {
             NewClassRoom classRoom = new NewClassRoom();
             classRoom.ShowDialog();
         }
 
+        //Thêm lịch thi xếp lớp
         private void bt_themTXL_click(object sender, RoutedEventArgs e)
         {
             ThemLichThi themLichThi = new ThemLichThi();
             themLichThi.ShowDialog();
         }
 
+        //Thêm đề thi (demo)
         private void bt_themDeThi_click(object sender, RoutedEventArgs e)
         {
             ThemDeThi themDeThi = new ThemDeThi();
             themDeThi.ShowDialog();
         }
 
+        //Nhập kết quả thi xếp lớp
         private void bt_nhapKetQuaTXL_click(object sender, RoutedEventArgs e)
         {
             NhapKetQuaThiXL nhapKQ = new NhapKetQuaThiXL();
@@ -940,10 +1074,14 @@ namespace EnglishCenter.View
             fillTKB();
         }
 
+        //Update danh sách user
         private void updateListUser()
         {
             List<User> userList = new UserBUS().getListUser();
-            lv_dsUser.ItemsSource = userList;
+            List<User_Permission> listUser_Per = new List<User_Permission>();
+            foreach (User user in userList)
+                listUser_Per.Add(new User_Permission(user));
+            lv_dsUser.ItemsSource = listUser_Per;
         }
 
         private void tb_gvSearch_keyUp(object sender, KeyEventArgs e)
@@ -955,6 +1093,7 @@ namespace EnglishCenter.View
             }
         }
 
+        //Tìm giáo viên theo mã hoặc tên giáo viên
         private void bt_gvSearch_click(object sender, RoutedEventArgs e)
         {
             List<GiangVien> listgvSearch = new List<GiangVien>();
@@ -974,10 +1113,18 @@ namespace EnglishCenter.View
             }
         }
 
+        //Hiện danh sách các lớp mà giáo viên đang dạy
         private void lv_dsGiangVien_selectionChanged(object sender, SelectionChangedEventArgs e)
         {
             GiangVien gv = (GiangVien)lv_dsGiangVien.SelectedValue;
-            lv_lopByGv.ItemsSource = new LopHocBUS().getListLopHocByMaGiangVien(gv.MMaGiangVien);
+            try
+            {
+                lv_lopByGv.ItemsSource = new LopHocBUS().getListLopHocByMaGiangVien(gv.MMaGiangVien);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+            }
         }
 
         private void bt_popupChiTietLop_close(object sender, RoutedEventArgs e)
@@ -985,11 +1132,13 @@ namespace EnglishCenter.View
             popup_chiTietLop.IsOpen = false;
         }
 
+        //Xem chi tiết lớp học
         private void bt_dsLop_viewChiTietLop(object sender, RoutedEventArgs e)
         {
             popup_chiTietLop.IsOpen = false;
             Button button = sender as Button;
-            Lop_GiangVien lop = button.DataContext as Lop_GiangVien;
+           // Lop_GiangVien lop = button.DataContext as Lop_GiangVien;
+            Lop_Gv_Cth lop = button.DataContext as Lop_Gv_Cth;
             List<ChiTietLopHoc> listCTL = new ChiTietLopHocBUS().selectChiTietLopHoc(lop.Lop.MMaLop);
             List<ChiTietLopHoc_TenHV> listCTL_Ten = new List<ChiTietLopHoc_TenHV>();
             foreach (ChiTietLopHoc ct in listCTL)
@@ -1004,6 +1153,7 @@ namespace EnglishCenter.View
             popup_chiTietLop.IsOpen = true;
         }
 
+        //Lập phiếu thu học phí cho học viên được chọn trong tab Học phí
         private void item_dsNoHP_MouseLeftDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)
@@ -1017,12 +1167,15 @@ namespace EnglishCenter.View
                     phieuThu.tb_tenHocVien.Text = hocvien.HocVien.MTenHocVien;
                     phieuThu.tb_lop.Text = hocvien.Lop.MMaLop;
                     phieuThu.tb_sdt.Text = hocvien.HocVien.MSdt;
+
+                    phieuThu.DataChanged += ThuHocPhi_DataChanged;
                     phieuThu.Show();
                 }
                 e.Handled = true;
             }
         }
 
+        //Lập phiếu thu học phí với học viên được chọn sau
         private void bt_lapPhieuThuHP_click(object sender, RoutedEventArgs e)
         {
             PhieuThuHocPhi phieu = new PhieuThuHocPhi();
@@ -1041,6 +1194,7 @@ namespace EnglishCenter.View
             dsCa.ShowDialog();
         }
 
+        //Xem chi tiết user (ở góc trên bên phải màn hình)
         private void bt_userInfo_click(object sender, RoutedEventArgs e)
         {
             if (mUser != null)
@@ -1054,6 +1208,7 @@ namespace EnglishCenter.View
                 popup_userInfo.IsOpen = true;
         }
 
+        //Thêm giáo viên mới
         private void bt_themGiangVien_click(object sender, RoutedEventArgs e)
         {
             ThemGiangVien them = new ThemGiangVien();
@@ -1066,6 +1221,7 @@ namespace EnglishCenter.View
             updateListGiaoVien();
         }
 
+        //Sửa thông tin chương trình học
         private void bt_editCTH_click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
@@ -1074,6 +1230,7 @@ namespace EnglishCenter.View
             cthForm.ShowDialog();
         }
 
+        //Sửa thông tin giáo viên
         private void bt_editGv_click(object sender, RoutedEventArgs e)
         {
             Button bt = sender as Button;
@@ -1083,6 +1240,7 @@ namespace EnglishCenter.View
             form.ShowDialog();
         }
 
+        //Các nút xem chi tiết trên tab Home
         private void bt_toTabHocVien_click(object sender, RoutedEventArgs e)
         {
             tabControl.SelectedIndex = 1;
@@ -1103,6 +1261,7 @@ namespace EnglishCenter.View
             tabControl.SelectedIndex = 6;
         }
 
+        //Đăng xuất (trên popup xem chi tiết user ở góc trên bên phải màn hình)
         private void logout_btn_Click(object sender, RoutedEventArgs e)
         {
             LoginWindow lg = new LoginWindow();
@@ -1110,11 +1269,19 @@ namespace EnglishCenter.View
             lg.Show();
         }
 
+        //Thêm user (chỉ quyền Admin mới được thêm user)
         private void btn_ThemUser_Click(object sender, RoutedEventArgs e)
         {
             SignUpWindow su = new SignUpWindow();
+            su.DataChanged += ThemUser_DataChanged;
             su.Show();
         }
+
+        private void ThemUser_DataChanged(object sender, EventArgs e)
+        {
+            updateListUser();
+        }
+
 
         private void mainWindow_activated(object sender, EventArgs e)
         {
@@ -1140,15 +1307,7 @@ namespace EnglishCenter.View
             updateChartThuThang();
         }
 
-        private void bt_settings_save(object sender, RoutedEventArgs e)
-        {
-            Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            configuration.AppSettings.Settings["defaultTab"].Value = cb_defaultTab.SelectedValue.ToString();
-            configuration.Save();
-
-            ConfigurationManager.RefreshSection("appSettings");
-        }
-
+        //Đổi mật khẩu ở tab Cài đặt
         private void bt_doiMatKhau_click(object sender, RoutedEventArgs e)
         {
             DoiMatKhau mk = new DoiMatKhau();
@@ -1160,6 +1319,21 @@ namespace EnglishCenter.View
         {
             KetQuaThiXepLop kq = new KetQuaThiXepLop();
             kq.ShowDialog();
+        }
+
+        //Đổi tab mặc định khi khởi động
+        private void cb_defaultTab_selectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                Properties.Settings.Default.DefaultTab = cb_defaultTab.SelectedIndex;
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Đã có lỗi xảy ra, vui lòng thử lại sau.", "Thông báo");
+                cb_defaultTab.SelectedIndex = -1;
+            }
         }
         
     }    
